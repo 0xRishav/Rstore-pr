@@ -68,13 +68,9 @@ function App() {
 
   const getSortedDate = (productList, sortBy) => {
     if (sortBy && sortBy === "LOW_TO_HIGH") {
-      return productList.sort((a, b) => {
-        return a.price - b.price;
-      });
+      return productList.sort((a, b) => a.price - b.price);
     } else if (sortBy && sortBy === "HIGH_TO_LOW") {
-      return productList.sort((a, b) => {
-        return b.price - a.price;
-      });
+      return productList.sort((a, b) => b.price - a.price);
     }
     return productList;
   };
