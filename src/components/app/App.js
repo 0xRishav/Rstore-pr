@@ -136,17 +136,8 @@ function App() {
               />
             ))}
         {productsToShow === "Wishlist" &&
-          products.filter((product) => product.isInWishlist).length ===
-            0 && (
-            <div
-              style={{
-                fontSize: "2rem",
-                fontWeight: "600",
-                textAlign: "center",
-              }}
-            >
-              wishlist is empty
-            </div>
+          products.filter((product) => product.isInWishlist).length === 0 && (
+            <div className="App__emptyWishlist">wishlist is empty</div>
           )}
 
         {productsToShow === "Cart" &&
@@ -156,16 +147,14 @@ function App() {
         {productsToShow === "Cart" &&
           products.filter((ele) => ele.isInCart).length !== 0 && (
             <div className="App__totalApplyOfferWrapper">
-              <div className="App__totalCartPrice">
+              <div className="App__totalCartPriceContainer">
                 Total: Rs.{" "}
                 {newTotal ? (
                   <div style={{ display: "flex" }}>
-                    <div
-                      style={{ textDecoration: "line-through", opacity: "50%" }}
-                    >
+                    <div className="App__totalCartPrice--original">
                       {totalPrice}
                     </div>
-                    <div style={{ color: "#34C759", marginLeft: "16px" }}>
+                    <div className="App__totalCartPrice--discounted">
                       {newTotal}
                     </div>
                   </div>

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./Checkbox.css";
 
-function Checkbox({ type }) {
+function Checkbox({ name }) {
   const { showFreeShippingOnly, showFastDeliveryOnly, dispatch } = useContext(
     ProductsContext
   ).products;
@@ -15,13 +15,13 @@ function Checkbox({ type }) {
           onChange={() =>
             dispatch({
               type:
-                type === "Free Shipping"
+                name === "Free Shipping"
                   ? "TOGGLE_SHOWFREESHIPPING"
                   : "TOGGLE_SHOWFASTDELIVERY",
             })
           }
           checked={
-            type === "Free Shipping"
+            name === "Free Shipping"
               ? showFreeShippingOnly === true
               : showFastDeliveryOnly === true
           }
@@ -42,7 +42,7 @@ function Checkbox({ type }) {
           </svg>
         </span>
       </span>
-      <span className="radio__label">{type}</span>
+      <span className="radio__label">{name}</span>
     </label>
   );
 }

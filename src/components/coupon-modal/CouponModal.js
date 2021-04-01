@@ -37,24 +37,14 @@ function CouponModal({
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button
-          onClick={closeModal}
-          style={{
-            background: "transparent",
-            border: "none",
-            color: "#007aff",
-            cursor: "pointer",
-            position: "absolute",
-            top: "10%",
-            right: "10%",
-          }}
-        >
+        <button onClick={closeModal} className="CouponModal__button">
           x
         </button>
         {couponCodes.map((coupon, index) => (
           <div
             onClick={() => handleCouponClick(index)}
-            style={{ cursor: "pointer", margin: "16px" }}
+            className="CouponModal__code"
+            key={index}
           >
             {coupon.name}
           </div>

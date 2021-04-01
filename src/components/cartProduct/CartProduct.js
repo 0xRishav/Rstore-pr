@@ -16,12 +16,12 @@ function CartProduct({
   const TotalPrice = getTotalPrice();
 
   return (
-    <div className="cartProduct">
+    <div className="CartProduct">
       <div className="hr-div"></div>
-      <div className="cartProduct__wrapper">
-        <img className="cartProduct__image" src={image} alt={`${name}image`} />
-        <div className="cartProduct__name">{name}</div>
-        <div className="cartProduct__quantityWrapper">
+      <div className="CartProduct__wrapper">
+        <img className="CartProduct__image" src={image} alt={`${name}image`} />
+        <div className="CartProduct__name">{name}</div>
+        <div className="CartProduct__quantityWrapper">
           <button
             className="Product__button--secondary"
             onClick={() => dispatch({ type: "INCREASE_QUANTITY", payload: id })}
@@ -36,7 +36,7 @@ function CartProduct({
             -
           </button>
         </div>
-        <div className="cartProduct__subTotal">Rs. {price * quantity}</div>
+        <div className="CartProduct__subTotal">Rs. {price * quantity}</div>
         <div
           className="CartProduct__removeProuctLink"
           onClick={() => dispatch({ type: "TOGGLE_ITEM_IN_CART", payload: id })}
