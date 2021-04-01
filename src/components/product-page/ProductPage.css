@@ -42,14 +42,14 @@
   margin: 16px 8px;
   margin-left: 0;
   padding: 4px 8px;
-  background: #c6c6c8;
+  background: var(--light-grey-clr);
   display: block;
   border-radius: 6px;
   font-size: 0.7rem;
 }
 
 .ProductPage__button--primary {
-  background: #007aff;
+  background: var(--light-blue-clr);
   border: none;
   outline: none;
   padding: 8px 16px;
@@ -59,7 +59,7 @@
 }
 
 .ProductPage__button--primary:hover {
-  background: #0c82ff;
+  background: var(--bright-light-blue-clr);
 }
 
 @media (max-width: 768px) {

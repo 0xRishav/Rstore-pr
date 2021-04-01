@@ -25,7 +25,7 @@
   align-items: center;
 }
 .Product__button--primary {
-  background: #007aff;
+  background: var(--light-blue-clr);
   border: none;
   outline: none;
   padding: 8px 16px;
@@ -35,7 +35,7 @@
   color: white;
 }
 .Product__button--primary:hover {
-  background: #0c82ff;
+  background: var(--bright-light-blue-clr);
 }
 .Product__button--secondary {
   outline: none;
@@ -43,15 +43,15 @@
   border-radius: 8px;
   margin: 8px 16px;
   cursor: pointer;
-  border: 1px solid #007aff;
+  border: 1px solid var(--light-blue-clr);
   background: transparent;
-  color: #007aff;
+  color: var(--light-blue-clr);
   font-weight: 500;
   transition: all 0.2s ease-in-out;
 }
 .Product__button--secondary:hover {
   border: none;
-  background: #007aff;
+  background: var(--light-blue-clr);
   color: white;
 }
 
@@ -64,7 +64,7 @@
 .Product__offer {
   margin: 1px 0;
   padding: 4px 8px;
-  background: #c6c6c8;
+  background: var(--light-grey-clr);
   display: block;
   border-radius: 6px;
   font-size: 0.7rem;

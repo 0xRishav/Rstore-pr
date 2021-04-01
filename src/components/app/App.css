@@ -35,7 +35,7 @@
 }
 
 .App__ApplyCode {
-  color: #007aff;
+  color: var(--light-blue-clr);
   cursor: pointer;
 }
 
@@ -54,7 +54,7 @@
   opacity: 50%;
 }
 .App__totalCartPrice--discounted {
-  color: #34c759;
+  color: var(--light-green-clr);
   margin-left: 16px;
 }
 

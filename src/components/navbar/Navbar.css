@@ -1,33 +1,33 @@
 .navbar__wrapper {
   text-align: center;
   width: 100%;
-  background-color: #333333;
+  background-color: var(--dark-grey-text-clr);
   height: 5vh;
-  color: #d7d7d7;
+  color: var(--light-grey-text-clr);
   transition: all 0.2s ease-in;
-  z-index: 10;
+  z-index: var(--zindex-header);
 }
 .navbar__Link {
-  color: #d7d7d7;
+  color: var(--light-grey-text-clr);
   text-decoration: none;
 }
 .Navbar__logo {
-  color: #d7d7d7;
+  color: var(--light-grey-text-clr);
   text-decoration: none;
 }
 .Navbar__logo--scrolled {
-  color: #333333;
+  color: var(--dark-grey-text-clr);
 }
 .navbar__wrapper--scrolled {
   position: fixed;
   top: 0;
   backdrop-filter: blur(100px) contrast(0.8);
   background-color: transparent;
-  color: #333333;
+  color: var(--dark-grey-text-clr);
 }
 
 .navbar__Link--scrolled {
-  color: #333333;
+  color: var(--dark-grey-text-clr);
 }
 .navbar__wrapper ul {
   list-style: none;
@@ -55,7 +55,7 @@ ul > a > li {
 }
 
 ul > a > li:hover {
-  color: #007aff;
+  color: var(--light-blue-clr);
 }
 
 .navbar__productCount {

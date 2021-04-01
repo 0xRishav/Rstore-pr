@@ -44,7 +44,7 @@
 }
 
 .hr-div {
-  border: 1px solid #c6c6c8;
+  border: 1px solid var(--light-grey-clr);
   width: 95%;
   margin: auto;
 }
@@ -54,7 +54,7 @@
   bottom: 0;
   right: 3%;
   font-size: 0.8rem;
-  color: #007aff;
+  color: var(--light-blue-clr);
   cursor: pointer;
 }
 
