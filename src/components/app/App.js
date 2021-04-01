@@ -113,13 +113,15 @@ function App() {
         <div className="products-wrapper">
           {productsToShow === "AllProducts" &&
             filteredData.map((product) => (
-              <Product {...product} dispatch={dispatch} />
+              <Product {...product} dispatch={dispatch} key={product.id} />
             ))}
 
           {productsToShow === "Wishlist" &&
             products
               .filter((product) => product.isInWishlist === true)
-              .map((product) => <Product {...product} dispatch={dispatch} />)}
+              .map((product) => (
+                <Product {...product} dispatch={dispatch} key={product.id} />
+              ))}
         </div>
 
         {productsToShow === "Cart" &&
@@ -130,6 +132,7 @@ function App() {
                 {...product}
                 dispatch={dispatch}
                 getTotalPrice={getTotalPrice}
+                key={product.id}
               />
             ))}
         {productsToShow === "Wishlist" &&
