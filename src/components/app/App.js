@@ -54,8 +54,8 @@ function App() {
 
   // MODAL
 
-  const getTotalPriceReducer = (acc, val) => {
-    return acc + val.price * val.quantity;
+  const getTotalPriceReducer = (acc, { price, quantity }) => {
+    return acc + price * quantity;
   };
 
   const getTotalPrice = () => {
