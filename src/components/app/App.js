@@ -60,7 +60,7 @@ function App() {
 
   const getTotalPrice = () => {
     const totalPrice = products
-      .filter((product) => product.isInCart === true)
+      .filter((product) => product.isInCart)
       .reduce(getTotalPriceReducer, 0);
 
     return totalPrice;
@@ -118,7 +118,7 @@ function App() {
 
           {productsToShow === "Wishlist" &&
             products
-              .filter((product) => product.isInWishlist === true)
+              .filter((product) => product.isInWishlist)
               .map((product) => (
                 <Product {...product} dispatch={dispatch} key={product.id} />
               ))}
@@ -126,7 +126,7 @@ function App() {
 
         {productsToShow === "Cart" &&
           products
-            .filter((product) => product.isInCart === true)
+            .filter((product) => product.isInCart)
             .map((product) => (
               <CartProduct
                 {...product}
@@ -136,7 +136,7 @@ function App() {
               />
             ))}
         {productsToShow === "Wishlist" &&
-          products.filter((product) => product.isInWishlist === true).length ===
+          products.filter((product) => product.isInWishlist).length ===
             0 && (
             <div
               style={{
@@ -150,11 +150,11 @@ function App() {
           )}
 
         {productsToShow === "Cart" &&
-          products.filter((ele) => ele.isInCart === true).length !== 0 && (
+          products.filter((ele) => ele.isInCart).length !== 0 && (
             <div className="hr-div"></div>
           )}
         {productsToShow === "Cart" &&
-          products.filter((ele) => ele.isInCart === true).length !== 0 && (
+          products.filter((ele) => ele.isInCart).length !== 0 && (
             <div className="App__totalApplyOfferWrapper">
               <div className="App__totalCartPrice">
                 Total: Rs.{" "}
@@ -185,7 +185,7 @@ function App() {
             </div>
           )}
         {productsToShow === "Cart" &&
-          products.filter((ele) => ele.isInCart === true).length === 0 && (
+          products.filter((ele) => ele.isInCart).length === 0 && (
             <div className="App__totalCartPrice">Cart Is Empty</div>
           )}
       </div>
