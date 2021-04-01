@@ -23,8 +23,6 @@ function CouponModal({
     },
   };
 
-  var subtitle;
-
   return (
     <div>
       <div className="App__ApplyCode" onClick={openModal}>
