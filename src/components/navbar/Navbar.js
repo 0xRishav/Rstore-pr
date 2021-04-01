@@ -71,11 +71,11 @@ function Navbar() {
                 onClick={() =>
                   dispatch({
                     type: "PRODUCTS_TO_SHOW",
-                    payload: "All Products",
+                    payload: "AllProducts",
                   })
                 }
               >
-                All Products
+                AllProducts
               </li>
             </Link>
 

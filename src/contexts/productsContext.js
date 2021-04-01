@@ -7,7 +7,7 @@ export const ProductsContextProvider = ({ children }) => {
   const initialState = {
     products: [],
     isLoading: false,
-    productsToShow: "All Products",
+    productsToShow: "AllProducts",
     isErr: false,
     sortBy: null,
     showFastDeliveryOnly: false,

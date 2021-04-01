@@ -105,13 +105,13 @@ function App() {
       <Navbar />
       <div className="App">
         <div className="App__checkboxRadioBtnWrapper">
-          {productsToShow === "All Products" && <SortRadioBtns />}
-          {productsToShow === "All Products" && <FilterCheckboxes />}
+          {productsToShow === "AllProducts" && <SortRadioBtns />}
+          {productsToShow === "AllProducts" && <FilterCheckboxes />}
         </div>
 
         {isLoading && <Loader />}
         <div className="products-wrapper">
-          {productsToShow === "All Products" &&
+          {productsToShow === "AllProducts" &&
             filteredData.map((product) => (
               <Product {...product} dispatch={dispatch} />
             ))}
