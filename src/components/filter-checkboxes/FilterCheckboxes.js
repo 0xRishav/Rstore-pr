@@ -1,4 +1,3 @@
-import React from "react";
 import "./FilterCheckboxes.css";
 import { Checkbox } from "../index";
 
