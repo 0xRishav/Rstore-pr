@@ -7,3 +7,4 @@ export { default as Checkbox } from "./checkbox/Checkbox";
 export { default as SortRadioBtns } from "./sort-radio-btns/SortRadioBtns";
 export { default as FilterCheckboxes } from "./filter-checkboxes/FilterCheckboxes";
 export { default as CouponModal } from "./coupon-modal/CouponModal";
+export { default as CartWishlistBtn } from "./cart-wishlist-btn/CartWishlistBtn";

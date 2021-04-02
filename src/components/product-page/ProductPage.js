@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router";
-import { Navbar } from "..";
+import { CartWishlistBtn, Navbar } from "..";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./ProductPage.css";
 
@@ -35,24 +35,14 @@ function ProductPage() {
               <div className="productPage__offer">Free Shipping</div>
             )}
           </div>
-            <div className="ProductPage__buttonWrapper">
-              <button
-                onClick={() =>
-                  dispatch({ type: "TOGGLE_ITEM_IN_CART", payload: id })
-                }
-                className="ProductPage__button--primary"
-              >
-                {isInCart ? "Remove From Cart" : "Add To Cart"}
-              </button>
-              <button
-                onClick={() =>
-                  dispatch({ type: "TOGGLE_ITEM_IN_WISHLIST", payload: id })
-                }
-                className="Product__button--secondary"
-              >
-                {isInWishlist ? "Remove From Wishlist" : "Add To Wishlist"}
-              </button>
-            </div>
+          <div className="ProductPage__buttonWrapper">
+            <CartWishlistBtn
+              id={id}
+              isInCart={isInCart}
+              isInWishlist={isInWishlist}
+              dispatch={dispatch}
+            />
+          </div>
         </div>
       </div>
     </div>

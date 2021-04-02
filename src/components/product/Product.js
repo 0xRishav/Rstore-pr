@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Product.css";
 import { AiFillTag } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { CartWishlistBtn } from "..";
 
 function Product({
   id,
@@ -16,10 +17,26 @@ function Product({
   fastDelivery,
   freeShipping,
 }) {
+  const [imageToBeShown, setImageToBeShown] = useState(image[0]);
+
+  const imageMouseEnterHandler = () => {
+    setImageToBeShown(image[1]);
+  };
+
+  const imageMouseLeaveHandler = () => {
+    setImageToBeShown(image[0]);
+  };
+
   return (
     <div className="Product">
       <Link to={`/product/${id}`}>
-        <img className="Product__image" src={image} alt="productImage" />
+        <img
+          className="Product__image"
+          src={imageToBeShown}
+          onMouseEnter={imageMouseEnterHandler}
+          onMouseLeave={imageMouseLeaveHandler}
+          alt="productImage"
+        />
       </Link>
       <h3 className="Product__productName">{name}</h3>
       <p className="Product__price">Rs. {price}</p>
@@ -37,20 +54,12 @@ function Product({
         )}
       </div>
       <div className="Product__buttonWrapper">
-        <button
-          onClick={() => dispatch({ type: "TOGGLE_ITEM_IN_CART", payload: id })}
-          className="Product__button--primary"
-        >
-          {isInCart ? "Remove From Cart" : "Add To Cart"}
-        </button>
-        <button
-          onClick={() =>
-            dispatch({ type: "TOGGLE_ITEM_IN_WISHLIST", payload: id })
-          }
-          className="Product__button--secondary"
-        >
-          {isInWishlist ? "Remove From Wishlist" : "Add To Wishlist"}
-        </button>
+        <CartWishlistBtn
+          id={id}
+          isInCart={isInCart}
+          isInWishlist={isInWishlist}
+          dispatch={dispatch}
+        />
       </div>
     </div>
   );
