@@ -26,3 +26,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+/* Buttons */
+.blue-btn--primary {
+  background: var(--light-blue-clr);
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 8px 16px;
+  cursor: pointer;
+  color: white;
+}
+.blue-btn--primary:hover {
+  background: var(--bright-light-blue-clr);
+}
+.blue-btn--secondary {
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 8px 16px;
+  cursor: pointer;
+  border: 1px solid var(--light-blue-clr);
+  background: transparent;
+  color: var(--light-blue-clr);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+.blue-btn--secondary:hover {
+  border: none;
+  background: var(--light-blue-clr);
+  color: white;
+}
