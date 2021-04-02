@@ -1,0 +1,14 @@
+.CouponModal__button {
+  background: transparent;
+  border: none;
+  color: var(--light-blue-clr);
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+
+.CouponModal__code {
+  margin-top: 16px;
+  cursor: pointer;
+}
