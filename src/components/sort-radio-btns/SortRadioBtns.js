@@ -4,6 +4,11 @@ import "./SortRadioBtns.css";
 
 function SortRadioBtns() {
   const { sortBy, dispatch } = useContext(ProductsContext).products;
+
+  const handleSortBtnOnChange = (payload) => {
+    dispatch({ type: "SORT_BY", payload: payload });
+  };
+  
   return (
     <div className="radio-btn-wrapper">
       <h5>Sort By Price: </h5>
@@ -14,9 +19,7 @@ function SortRadioBtns() {
           id="low-to-high"
           value="sort"
           name="sort"
-          onChange={() => {
-            dispatch({ type: "SORT_BY", payload: "LOW_TO_HIGH" });
-          }}
+          onChange={() => handleSortBtnOnChange("LOW_TO_HIGH")}
           checked={sortBy && sortBy === "LOW_TO_HIGH"}
           className="radio-btn"
         />
@@ -30,9 +33,7 @@ function SortRadioBtns() {
           id="high-to-low"
           value="sort"
           name="sort"
-          onChange={() => {
-            dispatch({ type: "SORT_BY", payload: "HIGH_TO_LOW" });
-          }}
+          onChange={() => handleSortBtnOnChange("HIGH_TO_LOW")}
           checked={sortBy && sortBy === "HIGH_TO_LOW"}
           className="radio-btn"
         />
