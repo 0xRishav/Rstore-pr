@@ -12,6 +12,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import ProductPage from "./components/product-page/ProductPage";
+import Homepage from "./pages/homepage/Homepage";
 
 setupMockServer();
 
@@ -21,6 +22,9 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route path="/" exact>
+            <Homepage />
+          </Route>
+          <Route path="/products" exact>
             <App />
           </Route>
           <Route path="/product/:id" exact>
