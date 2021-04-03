@@ -58,3 +58,30 @@ code {
   background: var(--light-blue-clr);
   color: white;
 }
+
+.products-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-column-gap: 16px;
+  grid-gap: 16px;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .products-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .products-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 425px) {
+  .products-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
