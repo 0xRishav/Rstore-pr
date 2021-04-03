@@ -1,9 +1,9 @@
 :root {
-  --light-blue-clr: #007aff;
+  --light-blue-clr: #06c;
   --light-green-clr: #34c759;
   --light-grey-clr: #c6c6c8;
   --light-grey-text-clr: #d7d7d7;
-  --dark-grey-text-clr: #333333;
+  --dark-grey-text-clr: black;
   --bright-light-blue-clr: #0c82ff;
   --ckeckbox-blue-clr: #2196f3;
   --zindex-modal: 9000;
@@ -26,7 +26,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 
 /* Buttons */
 .blue-btn--primary {
