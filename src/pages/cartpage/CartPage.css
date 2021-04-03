@@ -1,0 +1,29 @@
+.CartPage__totalApplyOfferWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 45%;
+  margin: auto;
+  margin-top: 16px;
+}
+
+.CartPage__totalCartPriceContainer {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.CartPage__totalCartPrice--original {
+  text-decoration: line-through;
+  opacity: 50%;
+}
+.CartPage__totalCartPrice--discounted {
+  color: var(--light-green-clr);
+  margin-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .CartPage__totalApplyOfferWrapper {
+    width: 100%;
+  }
+}
