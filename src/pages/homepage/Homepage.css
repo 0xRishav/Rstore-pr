@@ -1,0 +1,57 @@
+.Homepage {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
+
+.Homepage__subHeading {
+  font-size: 3rem;
+}
+
+.Homepage__featuredProductsWrapper {
+  width: 90%;
+  margin: auto;
+}
+
+.Homepage__featuredProductContainer {
+  margin: 16px auto;
+}
+
+.Homepage__featuredProdImage {
+  width: 50%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.Homepage__featuredProdName {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+.Homepage__featuredProdLogo {
+  margin: 0 16px;
+}
+
+.Homepage__featuredProductContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Homepage__infoContainer {
+  width: 50%;
+}
+
+.Homepage__categoryWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 32px;
+  margin: 16px;
+}
+
+.Homepage__categoryImage {
+  width: 80%;
+  height: 40vh;
+  object-fit: cover;
+}
