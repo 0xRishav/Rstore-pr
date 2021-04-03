@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BuyNowTextLinks, ImageSlider, Navbar } from "../../components";
 import { SiOneplus, SiHp } from "react-icons/si";
 import { AiFillApple } from "react-icons/ai";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
+import { ProductsContext } from "../../contexts/productsContext";
 
 function Homepage() {
   const bannerImages = [
@@ -23,9 +24,9 @@ function Homepage() {
       productUrl: "/product/379318e2-aebf-4079-8882-42cb158be836",
     },
   ];
+
   return (
     <div className="Homepage">
-      <Navbar />
       <ImageSlider images={bannerImages} parent="homepage" />
       <h2 className="Homepage__subHeading">Featured Products</h2>
       <div className="Homepage__featuredProductsWrapper">
