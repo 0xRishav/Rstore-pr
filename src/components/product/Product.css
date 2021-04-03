@@ -1,7 +1,7 @@
 .Product__image {
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
+  width: 350px;
+  height: 500px;
+  object-fit: contain;
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
   transition: all 0.3s ease-in-out;
