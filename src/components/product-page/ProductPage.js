@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useParams } from "react-router";
-import { CartWishlistBtn, Navbar } from "..";
+import { CartWishlistBtn } from "..";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./ProductPage.css";
 
@@ -21,7 +21,6 @@ function ProductPage() {
 
   return (
     <div className="productPage">
-      <Navbar />
       <div className="productPage__wrapper">
         <img className="productPage__image" src={image} alt={`${name}-Image`} />
         <div className="ProductPage__rightContainer">
