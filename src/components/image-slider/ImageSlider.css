@@ -1,0 +1,41 @@
+.bannerImage {
+  height: 85vh;
+  width: 100%;
+  object-fit: cover;
+}
+.ImageSlider {
+  position: relative;
+}
+
+.ImageSlider__sliderBtn {
+  position: absolute;
+  top: 50%;
+  padding: 16px;
+  border-radius: 50px;
+  outline: unset;
+  border: none;
+  background: rgba(255, 255, 255, 0.199);
+  cursor: pointer;
+}
+.ImageSlider__sliderBtn--left {
+  left: 2%;
+}
+
+.ImageSlider__sliderBtn--right {
+  right: 2%;
+}
+
+.ImageSlider__linkBtnWrapper {
+  margin: auto;
+  width: 30%;
+  margin-top: 16px;
+}
+
+.ImageSlider__link {
+  margin-left: 16px;
+  color: var(--light-blue-clr);
+  text-decoration: unset;
+}
+.ImageSlider__link:hover {
+  text-decoration: underline;
+}
