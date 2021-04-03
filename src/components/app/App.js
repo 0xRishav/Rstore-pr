@@ -116,12 +116,12 @@ function App() {
               <Product {...product} dispatch={dispatch} key={product.id} />
             ))}
 
-          {productsToShow === "Wishlist" &&
+          {/* {productsToShow === "Wishlist" &&
             products
               .filter((product) => product.isInWishlist)
               .map((product) => (
                 <Product {...product} dispatch={dispatch} key={product.id} />
-              ))}
+              ))} */}
         </div>
 
         {productsToShow === "Cart" &&
@@ -135,10 +135,10 @@ function App() {
                 key={product.id}
               />
             ))}
-        {productsToShow === "Wishlist" &&
+        {/* {productsToShow === "Wishlist" &&
           products.filter((product) => product.isInWishlist).length === 0 && (
             <div className="App__emptyWishlist">wishlist is empty</div>
-          )}
+          )} */}
 
         {productsToShow === "Cart" &&
           products.filter((ele) => ele.isInCart).length !== 0 && (
