@@ -99,7 +99,7 @@ function Navbar() {
 
           <li>
             <Link
-              to="/"
+              to="/wishlist"
               onClick={() =>
                 dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
               }
@@ -129,7 +129,7 @@ function Navbar() {
 
           <li>
             <Link
-              to="/"
+              to="/cart"
               onClick={() =>
                 dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Cart" })
               }

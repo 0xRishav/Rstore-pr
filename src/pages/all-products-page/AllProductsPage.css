@@ -1,0 +1,9 @@
+.AllProductsPage__checkboxRadioBtnWrapper {
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .AllProductsPage__checkboxRadioBtnWrapper {
+    flex-direction: column;
+  }
+}
