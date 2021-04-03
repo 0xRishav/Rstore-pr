@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Navbar } from "..";
 
 import "./App.css";
 
