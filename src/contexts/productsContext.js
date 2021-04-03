@@ -103,8 +103,35 @@ export const ProductsContextProvider = ({ children }) => {
     })();
   }, []);
 
+  const getSortedDate = (productList, sortBy) => {
+    if (sortBy && sortBy === "LOW_TO_HIGH") {
+      return productList.sort((a, b) => a.price - b.price);
+    } else if (sortBy && sortBy === "HIGH_TO_LOW") {
+      return productList.sort((a, b) => b.price - a.price);
+    }
+    return productList;
+  };
+
+  const getFilteredData = (
+    productList,
+    { showFastDeliveryOnly, showFreeShippingOnly }
+  ) => {
+    return productList
+      .filter((product) => {
+        return showFastDeliveryOnly ? product.fastDelivery : true;
+      })
+      .filter((product2) => {
+        return showFreeShippingOnly ? product2.freeShipping : true;
+      });
+  };
+
+  const sortedData = getSortedDate(state.products, state.sortBy);
+  const filteredData = getFilteredData(sortedData, { ...state });
+
   return (
-    <ProductsContext.Provider value={{ products: { ...state, dispatch } }}>
+    <ProductsContext.Provider
+      value={{ products: { ...state, dispatch, filteredData } }}
+    >
       {children}
     </ProductsContext.Provider>
   );
