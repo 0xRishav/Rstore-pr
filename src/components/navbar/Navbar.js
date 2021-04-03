@@ -1,12 +1,19 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
 import { ProductsContext } from "../../contexts/productsContext";
 import { Link } from "react-router-dom";
+import { AiOutlineSearch } from "react-icons/ai";
 
 function Navbar() {
   const { products, dispatch } = useContext(ProductsContext).products;
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isSearchClicked, setIsSearchClicked] = useState(false);
+  const navbarRef = useRef(null);
+
+  const serchClickHandler = () => {
+    setIsSearchClicked(true);
+  };
 
   const transitionNavbar = () => {
     if (window.scrollY > 100) {
@@ -46,76 +53,93 @@ function Navbar() {
           : "navbar__wrapper navbar__wrapper--scrolled"
       }
     >
-      <div className="navbar">
-        <Link
-          to="/"
-          className={
-            isScrolled === false
-              ? "Navbar__logo"
-              : "Navbar__logo Navbar__logo--scrolled"
-          }
-        >
-          <div>RStore</div>
-        </Link>
-        <div className="navbar__linkWrapper">
-          <ul>
-            <Link
-              to="/"
-              className={
-                isScrolled === false
-                  ? "navbar__Link"
-                  : "navbar__Link navbar__Link--scrolled"
-              }
-            >
-              <li
-                onClick={() =>
-                  dispatch({
-                    type: "PRODUCTS_TO_SHOW",
-                    payload: "AllProducts",
-                  })
-                }
-              >
-                AllProducts
-              </li>
+      <div className="navbar" ref={navbarRef}>
+        <ul className="navbar__ul">
+          <li>
+            <Link to="/" className="Navbar__logo">
+              <div>RStore</div>
             </Link>
+          </li>
 
+          <li>
             <Link
               to="/"
-              className={
-                isScrolled === false
-                  ? "navbar__Link"
-                  : "navbar__Link navbar__Link--scrolled"
+              className="navbar__Link"
+              onClick={() =>
+                dispatch({
+                  type: "PRODUCTS_TO_SHOW",
+                  payload: "AllProducts",
+                })
               }
             >
-              <li
-                onClick={() =>
-                  dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
-                }
-              >
-                Wishlist
-              </li>
+              All Products
             </Link>
+          </li>
+
+          <li>
+            <Link to="/Mobile" className="navbar__Link">
+              Mobile
+            </Link>
+          </li>
+          <li>
+            <Link to="/TV" className="navbar__Link">
+              TV
+            </Link>
+          </li>
+          <li>
+            <Link to="/Laptop" className="navbar__Link">
+              Laptop
+            </Link>
+          </li>
+          <li>
+            <Link to="/Watch" className="navbar__Link">
+              Watch
+            </Link>
+          </li>
+
+          <li>
             <Link
               to="/"
-              className={
-                isScrolled === false
-                  ? "navbar__Link"
-                  : "navbar__Link navbar__Link--scrolled"
+              onClick={() =>
+                dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
               }
+              className="navbar__Link"
             >
-              <li>
-                <div className="navbar__cartIconWrapper">
-                  <BsBag
-                    onClick={() => {
-                      dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Cart" });
-                    }}
+              Wishlist
+            </Link>
+          </li>
+
+          <li>
+            <div className="navbar__Link" onClick={serchClickHandler}>
+              {!isSearchClicked && (
+                <AiOutlineSearch className="navbar__searchIcon" />
+              )}
+              {isSearchClicked && (
+                <div className="navbar__searchboxWrapper">
+                  <input
+                    type="text"
+                    placeholder="Search here..."
+                    className="navbar__searchbox"
                   />
-                  <span className="navbar__productCount">{cartCount}</span>
+                  <AiOutlineSearch className="navbar__searchIcon" />
                 </div>
-              </li>
+              )}
+            </div>
+          </li>
+
+          <li>
+            <Link
+              to="/"
+              onClick={() =>
+                dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Cart" })
+              }
+              className="navbar__Link"
+            >
+              <BsBag />
+              <span className="navbar__productCount">{cartCount}</span>
             </Link>
-          </ul>
-        </div>
+          </li>
+        </ul>
       </div>
     </div>
   );

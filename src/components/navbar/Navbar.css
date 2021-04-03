@@ -2,35 +2,29 @@
   text-align: center;
   width: 100%;
   background-color: var(--dark-grey-text-clr);
-  height: 5vh;
+  height: 6vh;
   color: var(--light-grey-text-clr);
   transition: all 0.2s ease-in;
+  opacity: 90%;
   z-index: var(--zindex-header);
-}
-.navbar__Link {
-  color: var(--light-grey-text-clr);
-  text-decoration: none;
+  background: black;
 }
 .Navbar__logo {
   color: var(--light-grey-text-clr);
   text-decoration: none;
-}
-.Navbar__logo--scrolled {
-  color: var(--dark-grey-text-clr);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0 16px;
+  cursor: pointer;
 }
 .navbar__wrapper--scrolled {
   position: fixed;
   top: 0;
-  backdrop-filter: blur(100px) contrast(0.8);
+  color: var(--dark-grey-text-clr);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
   background-color: transparent;
-  color: var(--dark-grey-text-clr);
-}
-
-.navbar__Link--scrolled {
-  color: var(--dark-grey-text-clr);
-}
-.navbar__wrapper ul {
-  list-style: none;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .navbar {
@@ -42,25 +36,48 @@
   height: 100%;
 }
 
-.navbar__linkWrapper > ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-ul > a > li {
+.navbar__Link {
+  color: var(--light-grey-text-clr);
+  text-decoration: none;
   margin: 0 16px;
-  transition: all 0.1s ease-in;
   cursor: pointer;
+  transition: all 0.1s ease-in;
 }
-
-ul > a > li:hover {
+.navbar__Link:hover {
   color: var(--light-blue-clr);
 }
 
+.navbar__ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  height: 100%;
+  width: 90%;
+}
 .navbar__productCount {
   position: relative;
   bottom: 0;
   right: 0;
   font-size: 10px;
+}
+
+.navbar__searchbox {
+  background: white;
+  height: 150%;
+  /* opacity: 30%; */
+  outline: 0;
+  border: none;
+  border-bottom: 1px var(--light-grey-text-clr);
+  /* color: white; */
+}
+.navbar__searchIcon {
+  font-size: 20px;
+  margin-left: 16px;
+}
+
+.navbar__searchboxWrapper {
+  display: flex;
+  align-items: center;
 }
