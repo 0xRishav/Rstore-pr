@@ -8,3 +8,5 @@ export { default as SortRadioBtns } from "./sort-radio-btns/SortRadioBtns";
 export { default as FilterCheckboxes } from "./filter-checkboxes/FilterCheckboxes";
 export { default as CouponModal } from "./coupon-modal/CouponModal";
 export { default as CartWishlistBtn } from "./cart-wishlist-btn/CartWishlistBtn";
+export { default as ImageSlider } from "./image-slider/ImageSlider";
+export { default as BuyNowTextLinks } from "./buy-now-text-links/BuyNowTextLinks";
