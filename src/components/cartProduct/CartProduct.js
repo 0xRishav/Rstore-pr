@@ -36,7 +36,9 @@ function CartProduct({
             -
           </button>
         </div>
-        <div className="CartProduct__subTotal">Rs. {price * quantity}</div>
+        <div className="CartProduct__subTotal">
+          Rs. {(price * quantity).toLocaleString()}
+        </div>
         <div
           className="CartProduct__removeProuctLink"
           onClick={() => dispatch({ type: "TOGGLE_ITEM_IN_CART", payload: id })}

@@ -39,7 +39,7 @@ function Product({
         />
       </Link>
       <h3 className="Product__productName">{name}</h3>
-      <p className="Product__price">Rs. {price}</p>
+      <p className="Product__price">Rs. {price.toLocaleString()}</p>
       <div className="Product__offerWrapper">
         {fastDelivery && (
           <span className="Product__offer">
