@@ -92,7 +92,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/Watch" className="navbar__Link">
+            <Link to="/watch" className="navbar__Link">
               Watch
             </Link>
           </li>

@@ -9,6 +9,7 @@ import {
   LaptopsPage,
   MobilesPage,
   TVPage,
+  WatchPage,
   WishlistPage,
 } from "../../pages";
 import ProductPage from "../product-page/ProductPage";
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/laptop">
             <LaptopsPage />
+          </Route>
+          <Route path="/watch">
+            <WatchPage />
           </Route>
           <Route path="/product/:id">
             <ProductPage />
