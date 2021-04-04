@@ -3,6 +3,7 @@ import {
   FilterCheckboxes,
   Loader,
   Product,
+  SortFilterWrapper,
   SortRadioBtns,
 } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
@@ -23,10 +24,7 @@ function AllProductsPage() {
 
   return (
     <div className="AllProductsPage">
-      <div className="AllProductsPage__checkboxRadioBtnWrapper">
-        {productsToShow === "AllProducts" && <SortRadioBtns />}
-        {productsToShow === "AllProducts" && <FilterCheckboxes />}
-      </div>
+      <SortFilterWrapper />
 
       {isLoading && <Loader />}
       <div className="products-wrapper">

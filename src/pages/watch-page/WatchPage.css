@@ -1,0 +1,17 @@
+.WatchPage__filterDropDownContainer {
+  position: relative;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 140px;
+}
+
+.WatchPage__filterHeading {
+  margin-right: 16px;
+}
+.WatchPage__filterDropDownBtn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

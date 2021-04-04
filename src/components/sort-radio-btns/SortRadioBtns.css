@@ -2,16 +2,6 @@
   margin-bottom: 0;
 }
 
-/* Radio btn styles */
-
-.radio-btn-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  margin: auto;
-}
-
 .radio-btn-container {
   display: block;
   position: relative;
@@ -80,6 +70,10 @@
   font-size: 2rem;
   font-weight: 700;
   margin: 32px 0;
+}
+
+.radio-btn-container {
+  margin: 16px 0;
 }
 
 @media (max-width: 856px) {

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Loader, Product } from "../../components";
+import { Loader, Product, SortFilterWrapper } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./MobilesPage.css";
 
@@ -12,6 +12,7 @@ function MobilesPage() {
   );
   return (
     <div className="MobilesPage">
+      <SortFilterWrapper />
       {isLoading && <Loader />}
       <div className="products-wrapper">
         {Mobiles.map((product) => (

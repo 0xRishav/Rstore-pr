@@ -8,10 +8,10 @@ function SortRadioBtns() {
   const handleSortBtnOnChange = (payload) => {
     dispatch({ type: "SORT_BY", payload: payload });
   };
-  
+
   return (
     <div className="radio-btn-wrapper">
-      <h5>Sort By Price: </h5>
+      <h5>Price: </h5>
 
       <label className="radio-btn-container" for="low-to-high">
         <input

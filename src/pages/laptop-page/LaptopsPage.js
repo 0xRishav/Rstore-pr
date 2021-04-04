@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Loader, Product } from "../../components";
+import { Loader, Product, SortFilterWrapper } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./LaptopsPage.css";
 
@@ -12,6 +12,7 @@ function LaptopsPage() {
   );
   return (
     <div className="LaptopsPage">
+      <SortFilterWrapper />
       {isLoading && <Loader />}
       <div className="products-wrapper">
         {Laptops.map((product) => (
