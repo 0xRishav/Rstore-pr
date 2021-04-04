@@ -87,7 +87,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link to="/Laptop" className="navbar__Link">
+            <Link to="/laptop" className="navbar__Link">
               Laptop
             </Link>
           </li>

@@ -6,6 +6,7 @@ import {
   AllProductsPage,
   CartPage,
   Homepage,
+  LaptopsPage,
   MobilesPage,
   TVPage,
   WishlistPage,
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/mobile">
             <MobilesPage />
+          </Route>
+          <Route path="/laptop">
+            <LaptopsPage />
           </Route>
           <Route path="/product/:id">
             <ProductPage />
