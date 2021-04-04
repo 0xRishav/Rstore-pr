@@ -2,6 +2,7 @@ export const initialData = [
   // **************************************MOBILES******************************************************
   // APPLE
   {
+    id: 1,
     name: "Apple iPhone 11 (64GB) - Black",
     brand: "Apple",
     category: "Mobiles",
@@ -41,6 +42,7 @@ export const initialData = [
   },
 
   {
+    id: 2,
     name: "Apple iPhone 12 Pro Max (128GB) - Pacific Blue",
     brand: "Apple",
     category: "Mobiles",
@@ -74,6 +76,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 3,
     name: "Apple iPhone 12 (64GB) - Blue",
     brand: "Apple",
     category: "Mobiles",
@@ -108,6 +111,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 4,
     name: "iPhone 11 Pro Max (256GB) - Space Grey",
     brand: "Apple",
     category: "Mobiles",
@@ -146,6 +150,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 5,
     name: "Apple iPhone XR 64GB - Black",
     brand: "Apple",
     category: "Mobiles",
@@ -186,6 +191,7 @@ export const initialData = [
 
   // OnePlus
   {
+    id: 6,
     name: "OnePlus 8T 5G (Aquamarine Green, 8GB RAM, 128GB Storage)",
     brand: "OnePlus",
     category: "Mobiles",
@@ -221,6 +227,7 @@ export const initialData = [
   },
 
   {
+    id: 7,
     name: "OnePlus Nord 5G (Gray Onyx, 12GB RAM, 256GB Storage)",
     brand: "OnePlus",
     category: "Mobiles",
@@ -257,6 +264,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 8,
     name: "OnePlus 5 (Slate Gray 6GB RAM + 64GB memory)",
     brand: "OnePlus",
     category: "Mobiles",
@@ -293,6 +301,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 9,
     name: "OnePlus Nord 5G (Blue Marble, 12GB RAM, 256GB Storage)",
     brand: "OnePlus",
     category: "Mobiles",
@@ -327,6 +336,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 10,
     name: "OnePlus 7 Pro (Nebula Blue, 8GB RAM, 256GB Storage)",
     brand: "OnePlus",
     category: "Mobiles",
@@ -363,6 +373,7 @@ export const initialData = [
 
   // Samsung
   {
+    id: 11,
     name:
       "Samsung Galaxy S20 + (Cosmic Gray, 8GB RAM, 128GB Storage) Without Offer",
     brand: "Samsung",
@@ -397,6 +408,7 @@ export const initialData = [
   },
 
   {
+    id: 12,
     name: "Samsung Galaxy S20 FE (Cloud Lavender, 8GB RAM, 128GB Storage)",
     brand: "Samsung",
     category: "Mobiles",
@@ -427,6 +439,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 13,
     name: "Samsung Galaxy S21 5G (Phantom Gray, 8GB, 128GB Storage)",
     brand: "Samsung",
     category: "Mobiles",
@@ -459,6 +472,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 14,
     name: "Samsung Galaxy Z Fold2 5G Mystic Bronze, 12GB RAM, 256GB Storage",
     brand: "Samsung",
     category: "Mobiles",
@@ -495,6 +509,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 15,
     name: "Samsung Galaxy M31s (Mirage Blue, 8GB RAM, 128GB Storage)",
     brand: "Samsung",
     category: "Mobiles",
@@ -534,6 +549,7 @@ export const initialData = [
   // MI
 
   {
+    id: 16,
     name: "Mi 10i 5G (Midnight Black, 8GB RAM, 128GB Storage)",
     brand: "Mi",
     category: "Mobiles",
@@ -567,6 +583,7 @@ export const initialData = [
   },
 
   {
+    id: 17,
     name: "Redmi Note 9 (Arctic White, 4GB RAM, 64GB Storage)",
     brand: "Mi",
     category: "Mobiles",
@@ -597,6 +614,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 18,
     name: "Mi 10T Pro 5G (Cosmic Black, 8GB RAM, 128GB Storage)",
     brand: "Mi",
     category: "Mobiles",
@@ -631,6 +649,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 19,
     name:
       "Mi 10 (Coral Green, 8GB RAM, 256GB Storage) - 108MP Quad Camera, SD 865 Processor, 5G Ready",
     brand: "Mi",
@@ -668,6 +687,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 20,
     name: "Redmi Note 10 Pro Max (Vintage Bronze, 6GB RAM, 128GB Storage)",
     brand: "Mi",
     category: "Mobiles",
@@ -705,6 +725,7 @@ export const initialData = [
   // *************************************    TV     *****************************************************
   // OnePlus
   {
+    id: 21,
     name:
       "OnePlus Y Series 80 cm (32 inches) HD Ready LED Smart Android TV 32Y1 (Black)",
     brand: "OnePlus",
@@ -738,6 +759,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 22,
     name:
       "OnePlus Y Series 108 cm (43 inches) Full HD LED Smart Android TV 43Y1 (Black)",
     brand: "OnePlus",
@@ -773,6 +795,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 23,
     name:
       "OnePlus 138.8 cm (55 inches) Q1 Series 4K Certified Android QLED TV 55Q1IN Pro (Black)",
     brand: "OnePlus",
@@ -808,6 +831,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 24,
     name:
       "OnePlus U Series 138.8 cm (55 inches) 55U1 Series 4K Ultra HD LED Smart Android TV 55UA0A01 (Black)",
     brand: "OnePlus",
@@ -843,6 +867,7 @@ export const initialData = [
 
   // MI
   {
+    id: 25,
     name: "Mi TV 4A PRO 80 cm (32 inches) HD Ready Android LED TV (Black)",
     category: "MI",
     images: [
@@ -872,6 +897,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 26,
     name: "Mi TV 4A PRO 108 cm (43 Inches) Full HD Android LED TV (Black)",
     category: "MI",
     images: [
@@ -903,6 +929,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 27,
     name: "Mi TV 4X 125.7 cm (50 Inches) 4K Ultra HD Android LED TV (Black)",
     category: "MI",
     images: [
@@ -934,6 +961,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 28,
     name: "Mi TV 4X 138.8 cm (55 Inches) Ultra HD Android LED TV (Black)",
     category: "MI",
     images: [
@@ -967,6 +995,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 29,
     name:
       "MI TV 4A Horizon Edition 108cm (43 inches) Full HD Android LED TV (Black)",
     category: "MI",
@@ -1003,6 +1032,7 @@ export const initialData = [
 
   // Realme
   {
+    id: 30,
     name: "Realme 108 cm (43 Inches) Full HD Smart TV",
     brand: "Realme",
     category: "TV",
@@ -1037,6 +1067,7 @@ export const initialData = [
 
   // LG
   {
+    id: 31,
     name: "LG 108 cm (43 inches) 4K Ultra HD Smart LED TV",
     brand: "LG",
     category: "TV",
@@ -1069,6 +1100,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 32,
     name:
       "LG 80 cm (32 inches) HD Ready Smart LED TV 32LM563BPTC (Dark Iron Gray)",
     brand: "LG",
@@ -1102,6 +1134,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 33,
     name:
       "LG 108 cm (43 inches) Full HD LED Smart TV 43LM5650PTA (Ceramic Black)",
     brand: "LG",
@@ -1135,6 +1168,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 34,
     name:
       "LG 139 cm (55 inches) 4K UHD Smart LED TV 55UM7290PTD (Ceramic BK + Dark Steel Silver)",
     brand: "LG",
@@ -1168,6 +1202,7 @@ export const initialData = [
     isInStock: true,
   },
   {
+    id: 35,
     name: "LG 139 cm (55 inches) 4K Ultra HD Smart LED TV 55SK8500PTA (Black)",
     brand: "LG",
     category: "TV",
@@ -1206,6 +1241,7 @@ export const initialData = [
   // HP
 
   {
+    id: 36,
     name: "HP Spectre x360 13-ap0121TU 2019 13.3-inch Full HD Laptop",
     brand: "HP",
     category: "Laptop",
@@ -1239,6 +1275,7 @@ export const initialData = [
   },
 
   {
+    id: 37,
     name: "Apple MacBook Pro",
     brand: "Apple",
     category: "Laptop",
@@ -1264,6 +1301,302 @@ export const initialData = [
     ],
     price: 116790,
     rating: 4,
+    isInStock: true,
+  },
+
+  // ******************* Watch *******************
+  // Apple
+  {
+    id: 38,
+    name: "Apple Watch Series 6",
+    brand: "Apple",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/71qMIJnrhFL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/81EhTfo2wZL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/81NH99pXawL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/81QWhq3s7RL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71DjkbX9XGL._SL1500_.jpg",
+    ],
+    about: [
+      "GPS + Cellular model lets you call, text, and get directions without your phone",
+
+      "Measure your blood oxygen with an all-new sensor and app",
+
+      "Check your heart rhythm with the ECG app",
+
+      "The Always-On Retina display is 2.5x brighter outdoors when your wrist is down",
+
+      "S6 SiP is up to 20% faster than Series 5",
+
+      "5GHz Wi-Fi and U1 Ultra Wideband chip",
+    ],
+    price: 52900,
+    rating: 4.5,
+    isInStock: true,
+  },
+
+  {
+    id: 39,
+    name: "Apple Watch SE",
+    brand: "Apple",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/71rhrO49SmL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/81brXenmEGL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/8152WGKLjqL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/81Yg%2BhEmS2L._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/714YSQfCLVL._SL1500_.jpg",
+    ],
+    about: [
+      "GPS model lets you take calls and reply to texts from your wrist",
+
+      "Large Retina OLED display",
+
+      "Up to 2x faster processor than Series 3",
+
+      "Track your daily activity on Apple Watch and see your trends in the Fitness app on iPhone",
+
+      "Measure workouts like running, walking, cycling, yoga, swimming, and dance",
+
+      "Swimproof design",
+    ],
+    price: 32899,
+    rating: 4.5,
+    isInStock: true,
+  },
+
+  {
+    id: 40,
+    name: "Apple Watch Series 3",
+    brand: "Apple",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/71EoGntO5bL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71hSF2zjcGL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71o1ZmwMPxL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/710%2BQCLWITL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71Ew4N66zqL._SL1500_.jpg",
+    ],
+    about: [
+      "GPS",
+
+      "Retina display",
+
+      "Swimproof",
+
+      "Optical heart sensor",
+
+      "Store and stream music, podcasts and audiobooks",
+
+      "Elevation",
+    ],
+    price: 23900,
+    rating: 4.5,
+    isInStock: true,
+  },
+
+  {
+    id: 41,
+    name: "Samsung Galaxy Watch",
+    brand: "Samsung",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/71oNPZKNTfL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71hEA%2BdHZ6L._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71PhaADDTPL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71Zs1DDFCLL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71e2uGxwn2L._SL1500_.jpg",
+    ],
+    about: [
+      "Super AMOLED display with customizable Always on Watch faces",
+
+      "24/7 Activity Tracking - 4 stage Sleep, Activity with continuous HRM and Stress monitoring",
+
+      "39 built in trackers with 50m Water Resistance",
+
+      "Galaxy Watch 4G can be activated only with Samsung Galaxy Smartphones (Android 5.0 & 1.5GB or higher) for using in standalone 4G mode",
+    ],
+    price: 19990,
+    rating: 4.5,
+    isInStock: true,
+  },
+
+  {
+    id: 42,
+    name: "Samsung Galaxy Watch Active 2",
+    brand: "Samsung",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/61uej9efKYL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71BbEhvMi2L._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/719sB3iCHML._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71kkZYH5QgL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71E4Mkt2pbL._SL1500_.jpg",
+    ],
+    about: [
+      "country of origin:India",
+
+      "Super AMOLED display with customizable Always on Watch faces",
+
+      "24/7 Activity Tracking - 4 stage Sleep, Activity with continuous HRM and Stress monitoring",
+
+      "39 built in trackers with 50m Water Resistance",
+
+      "Connectivity - Bluetooth 5.0. Compatible with Android 5.0 or higher and RAM 1.5GB above. iPhone: iPhone 5 and above, iOS 9.0 or above",
+
+      "Display Size: 3.45cm",
+    ],
+    price: 19900,
+    rating: 4.5,
+    isInStock: true,
+  },
+
+  {
+    id: 43,
+    name: "Noise Colorfit Pro 2 Full Touch Control Smart Watch",
+    brand: "Noise",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/6113mS%2BxhyL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71R3TF2wIcL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71a81l4gTcL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71jqx3bL6DL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/61yciKu9KBL._SL1500_.jpg",
+    ],
+    about: [
+      "Bluetooth Version v5.0",
+
+      "Get a 1-year assured warranty from NOISE. Manage your warranty claims 24x7 by typing SUPPORT.GONOISE.COM in your browser's address bar. For product related queries please reach out to us at 8882132132 or drop an email at PRODUCTFEEDBACK@NEXXBASE.COM",
+
+      '"The brilliant 1.3" colour display is now full capacitive touch, supporting taps and swipes, so it is easy to read and operate.',
+
+      "The strong polycarbonate case makes the ColorFit Pro 2 featherlight on your wrist and is available in 4 beautiful colours with matching swappable straps",
+
+      "24x7 heart rate monitoring with the built in optical HR monitor that measures your heart rate every five minutes.",
+    ],
+    price: 2999,
+    rating: 4,
+    isInStock: true,
+  },
+
+  {
+    id: 44,
+    name: "Realme Fashion Watch",
+    brand: "Realme",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/71pYXdg9%2BIL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71A3Hg7hm4L._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71htNyVh3rL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71rPVueepmL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71MjIrjE8hL._SL1500_.jpg",
+    ],
+    about: [
+      "call notification 20 times (hang up after waiting for 10s)",
+
+      "smart connect - control your phone camera and music from your watch",
+
+      "raise your wrist and light up the screen 80 times/day",
+
+      "smart notifications for sms, calls, whatsapp, and other apps",
+
+      "realme link app - get all your fitness data on your phone seamlessly (only for android)",
+    ],
+    price: 3488,
+    rating: 3.5,
+    isInStock: true,
+  },
+
+  {
+    id: 45,
+    name: '"Realme Watch S 1.3" Large"',
+    brand: "Realme",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/51KsSgYGOKL._SL1348_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/711wddDzP8L._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/71kkZXKl6sL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/61WCZuvbe%2BL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/81Iuxf8yAaL._SL1500_.jpg",
+    ],
+    about: [
+      "3.3cm (1.3 inch) Auto Brightness Touchscreen",
+
+      "Heart Rate & Blood Oxygen Monitor, IP68 Water Resistant with 16 Sport Modes",
+
+      "100+ Stylish Watch Faces to be Updated via OTA | Aluminium Alloy Case for a Premium Look and Durability",
+
+      "Magnetic Charging Base for Hassle-free Charging",
+
+      "Touchscreen",
+    ],
+    price: 4999,
+    rating: 4.5,
+    isInStock: true,
+  },
+
+  {
+    id: 46,
+    name: '"Realme Watch S Pro 1.4" Large"',
+    brand: "Realme",
+    category: "Watch",
+    images: [
+      "https://images-na.ssl-images-amazon.com/images/I/61-SQrGpBWL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/61TF1YxZnaL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/61WsslrmtTL._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/61qHWWy5N2L._SL1500_.jpg",
+
+      "https://images-na.ssl-images-amazon.com/images/I/51hvSfan2cL._SL1500_.jpg",
+    ],
+    about: [
+      "3.5cm (1.39 inch) Large AMOLED Touchscreen | 14 Days Battery Life",
+
+      "Always On Display Mode will Reduce the Battery Run-time|Battery Run-time: Upto 7 Days (with Always On Display)",
+
+      "Stainless Steel Case for a Premium Look and Durability 100+ Stylish Watch Faces | High Precision Dual Satellite GPS",
+
+      "Blood Oxygen & Heart Rate Monitor for Accurate Health Tracking | 15 Sports Modes | 5ATM Water Resistance (Upto 50m)",
+
+      "realme link app - get all your fitness data on your phone seamlessly (only for android)",
+    ],
+    price: 3488,
+    rating: 3.5,
     isInStock: true,
   },
 ];
