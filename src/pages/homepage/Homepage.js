@@ -7,21 +7,24 @@ import { Link } from "react-router-dom";
 import { ProductsContext } from "../../contexts/productsContext";
 
 function Homepage() {
+  const { products } = useContext(ProductsContext).products;
+  console.log(products);
+
   const bannerImages = [
     {
       imageUrl:
         "https://www.spark.co.nz/content/dam/telecomcms/responsive/images/shop/apple/iphone-12-pro/buy-now/buy-now-consumer/iphone12-buy-now-banner-mobile.jpg",
-      productUrl: "/product/218b86a4-d7bb-495b-a5a5-5334fac1c606",
+      productUrl: "/product/2",
     },
     {
       imageUrl:
         "https://theaxo.com/wp-content/uploads/2020/10/OnePlus-8T-1024x576.jpg",
-      productUrl: "/product/614e6ceb-f887-4991-8576-ade4177f3869",
+      productUrl: "/product/6",
     },
     {
       imageUrl:
         "https://about.att.com/ecms/dam/snr/2020/February2020/StoryLevelBanner/01.24.2020_Samsung%20Device-combo_STORY_LEVEL_BANNER_1600x483.jpg",
-      productUrl: "/product/379318e2-aebf-4079-8882-42cb158be836",
+      productUrl: "/product/12",
     },
   ];
 
@@ -41,7 +44,7 @@ function Homepage() {
               <SiOneplus color="red" className="Homepage__featuredProdLogo" />
               OnePlus 8T
             </div>
-            <BuyNowTextLinks link="/product/614e6ceb-f887-4991-8576-ade4177f3869" />
+            <BuyNowTextLinks link="/product/6" />
           </div>
         </div>
 
@@ -49,12 +52,12 @@ function Homepage() {
           <div className="Homepage__infoContainer">
             <div className="Homepage__featuredProdName">
               <AiFillApple
-                color="#CECECE"
+                color="black"
                 className="Homepage__featuredProdLogo"
               />
               iPhone 11
             </div>
-            <BuyNowTextLinks link="/product/bb463b8b-b76c-4f6a-9726-65ab5730b69b" />
+            <BuyNowTextLinks link="/product/1" />
           </div>
           <img
             className="Homepage__featuredProdImage"
@@ -74,7 +77,7 @@ function Homepage() {
               <SiHp color="#0091CF" className="Homepage__featuredProdLogo" />
               HP Spectre x360
             </div>
-            <BuyNowTextLinks link="/product/c89e14b7-af05-4c38-865c-a607c295adb2" />
+            <BuyNowTextLinks link="/product/36" />
           </div>
         </div>
       </div>
@@ -82,13 +85,10 @@ function Homepage() {
       <div className="Homepage__featuredProductContainer">
         <div className="Homepage__infoContainer">
           <div className="Homepage__featuredProdName">
-            <AiFillApple
-              color="#CECECE"
-              className="Homepage__featuredProdLogo"
-            />
+            <AiFillApple color="black" className="Homepage__featuredProdLogo" />
             Apple MacBook Pro
           </div>
-          <BuyNowTextLinks link="/product/f732eae8-1a75-4875-9023-11730c4e6054" />
+          <BuyNowTextLinks link="/product/37" />
         </div>
         <img
           className="Homepage__featuredProdImage"
