@@ -2,7 +2,14 @@ import React, { useContext } from "react";
 // import { Switch, Route } from "react-router-dom";
 import { Switch, Route, Router } from "react-router-dom";
 import { Navbar } from "..";
-import { AllProductsPage, CartPage, Homepage, WishlistPage } from "../../pages";
+import {
+  AllProductsPage,
+  CartPage,
+  Homepage,
+  MobilesPage,
+  TVPage,
+  WishlistPage,
+} from "../../pages";
 import ProductPage from "../product-page/ProductPage";
 
 import "./App.css";
@@ -24,6 +31,12 @@ function App() {
           </Route>
           <Route path="/cart">
             <CartPage />
+          </Route>
+          <Route path="/tv">
+            <TVPage />
+          </Route>
+          <Route path="/mobile">
+            <MobilesPage />
           </Route>
           <Route path="/product/:id">
             <ProductPage />

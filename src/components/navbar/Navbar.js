@@ -63,7 +63,7 @@ function Navbar() {
 
           <li>
             <Link
-              to="/"
+              to="/products"
               className="navbar__Link"
               onClick={() =>
                 dispatch({
@@ -77,12 +77,12 @@ function Navbar() {
           </li>
 
           <li>
-            <Link to="/Mobile" className="navbar__Link">
+            <Link to="/mobile" className="navbar__Link">
               Mobile
             </Link>
           </li>
           <li>
-            <Link to="/TV" className="navbar__Link">
+            <Link to="/tv" className="navbar__Link">
               TV
             </Link>
           </li>
