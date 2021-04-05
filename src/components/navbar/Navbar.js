@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
 import { ProductsContext } from "../../contexts/productsContext";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 
 function Navbar() {
@@ -56,13 +56,13 @@ function Navbar() {
       <div className="navbar" ref={navbarRef}>
         <ul className="navbar__ul">
           <li>
-            <Link to="/" className="Navbar__logo">
+            <NavLink to="/" className="Navbar__logo">
               <div>RStore</div>
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/products"
               className="navbar__Link"
               onClick={() =>
@@ -71,42 +71,60 @@ function Navbar() {
                   payload: "AllProducts",
                 })
               }
+              activeClassName="Navbar__activeLink"
             >
               All Products
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/mobile" className="navbar__Link">
+            <NavLink
+              to="/mobile"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
               Mobile
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/tv" className="navbar__Link">
+            <NavLink
+              to="/tv"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
               TV
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/laptop" className="navbar__Link">
+            <NavLink
+              to="/laptop"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
               Laptop
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/watch" className="navbar__Link">
+            <NavLink
+              to="/watch"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
               Watch
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/wishlist"
               onClick={() =>
                 dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
               }
               className="navbar__Link"
+              activeClassName="Navbar__activeLink"
             >
               Wishlist
-            </Link>
+            </NavLink>
           </li>
 
           <li>
@@ -128,16 +146,17 @@ function Navbar() {
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/cart"
               onClick={() =>
                 dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Cart" })
               }
               className="navbar__Link"
+              activeClassName="Navbar__activeLink"
             >
               <BsBag />
               <span className="navbar__productCount">{cartCount}</span>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
