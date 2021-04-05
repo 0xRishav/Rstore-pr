@@ -4,8 +4,8 @@ import { Checkbox, SortRadioBtns } from "../index";
 import "./FilterDropDown.css";
 
 function FilterDropDown() {
-  const { dispatch } = useContext(ProductsContext).products;
-  const [priceFilterInput, setPriceFilterInput] = useState(false);
+  const { dispatch, filterPrice } = useContext(ProductsContext).products;
+  const [priceFilterInput, setPriceFilterInput] = useState(150000);
 
   const priceFilterInputHandler = (e) => {
     setPriceFilterInput(e.target.value);
@@ -23,8 +23,8 @@ function FilterDropDown() {
       <input
         type="range"
         min="0"
-        max="149998"
-        value={priceFilterInput}
+        max="150000"
+        value={filterPrice}
         onChange={priceFilterInputHandler}
       />
     </div>
