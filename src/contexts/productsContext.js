@@ -131,7 +131,7 @@ export const ProductsContextProvider = ({ children }) => {
         return showFreeShippingOnly ? product2.freeShipping : true;
       })
       .filter((product3) => {
-        return filterPrice ? product3.price > filterPrice : true;
+        return filterPrice ? product3.price <= filterPrice : true;
       });
   };
 
