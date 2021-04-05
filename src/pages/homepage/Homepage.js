@@ -105,8 +105,8 @@ function Homepage() {
             alt="mobiles-banner"
             className="Homepage__categoryImage"
           />
-          <h3>Mobile</h3>
-          <BuyNowTextLinks link="" />
+          <h2>Mobile</h2>
+          <BuyNowTextLinks link="/mobile" />
         </div>
         <div className="Homepage__categoryContainer">
           <img
@@ -114,8 +114,8 @@ function Homepage() {
             alt="laptop-banner"
             className="Homepage__categoryImage"
           />
-          <h3>Laptop</h3>
-          <BuyNowTextLinks link="" />
+          <h2>Laptop</h2>
+          <BuyNowTextLinks link="/laptop" />
         </div>
         <div className="Homepage__categoryContainer">
           <img
@@ -123,8 +123,8 @@ function Homepage() {
             alt="TV-banner"
             className="Homepage__categoryImage"
           />
-          <h3>TV</h3>
-          <BuyNowTextLinks link="" />
+          <h2>TV</h2>
+          <BuyNowTextLinks link="/tv" />
         </div>
         <div className="Homepage__categoryContainer">
           <img
@@ -132,8 +132,8 @@ function Homepage() {
             alt=""
             className="Homepage__categoryImage"
           />
-          <h3>Smart Watch</h3>
-          <BuyNowTextLinks link="" />
+          <h2>Smart Watch</h2>
+          <BuyNowTextLinks link="/watch" />
         </div>
       </div>
     </div>
