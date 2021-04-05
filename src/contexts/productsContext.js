@@ -12,6 +12,7 @@ export const ProductsContextProvider = ({ children }) => {
     sortBy: null,
     showFastDeliveryOnly: false,
     showFreeShippingOnly: false,
+    filterPrice: false,
   };
 
   const ProductsReducer = (state, action) => {
@@ -83,6 +84,12 @@ export const ProductsContextProvider = ({ children }) => {
       case "TOGGLE_SHOWFREESHIPPING":
         return { ...state, showFreeShippingOnly: !state.showFreeShippingOnly };
 
+      case "FILTER_BY_PRICE":
+        return {
+          ...state,
+          filterPrice: action.payload,
+        };
+
       default:
         return state;
     }
@@ -114,7 +121,7 @@ export const ProductsContextProvider = ({ children }) => {
 
   const getFilteredData = (
     productList,
-    { showFastDeliveryOnly, showFreeShippingOnly }
+    { showFastDeliveryOnly, showFreeShippingOnly, filterPrice }
   ) => {
     return productList
       .filter((product) => {
@@ -122,6 +129,9 @@ export const ProductsContextProvider = ({ children }) => {
       })
       .filter((product2) => {
         return showFreeShippingOnly ? product2.freeShipping : true;
+      })
+      .filter((product3) => {
+        return filterPrice ? product3.price > filterPrice : true;
       });
   };
 
