@@ -2,7 +2,7 @@
   display: flex;
 }
 
-@media (max-width: 900px) {
+@media only screen and (max-width: 900px) {
   .AllProductsPage__checkboxRadioBtnWrapper {
     flex-direction: column;
   }
