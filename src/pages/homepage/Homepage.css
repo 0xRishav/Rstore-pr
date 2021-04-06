@@ -3,10 +3,11 @@
   text-align: center;
   width: 100%;
   margin: auto;
+  margin-top: 6vh;
 }
 
 .Homepage__subHeading {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .Homepage__featuredProductsWrapper {
@@ -25,7 +26,7 @@
 }
 
 .Homepage__featuredProdName {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 .Homepage__featuredProdLogo {
@@ -54,4 +55,32 @@
   width: 80%;
   height: 40vh;
   object-fit: cover;
+}
+
+@media only screen and (max-width: 543px) {
+  .Homepage__featuredProductContainer {
+    flex-direction: column;
+    height: 94vh;
+  }
+  .Homepage__featuredProdImage {
+    height: 70%;
+  }
+  .Homepage__featuredProdImage {
+    width: 100%;
+  }
+  .Homepage__infoContainer {
+    width: 100%;
+    height: 30%;
+    margin-top: 5%;
+  }
+  .Homepage__featuredProductContainer:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+  .macbookpro-img {
+    width: 90%;
+  }
+  .Homepage__categoryWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 }

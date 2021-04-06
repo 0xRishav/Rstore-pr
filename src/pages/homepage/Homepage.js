@@ -5,15 +5,19 @@ import { AiFillApple } from "react-icons/ai";
 import "./Homepage.css";
 import { Link } from "react-router-dom";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useWindowDimensions } from "../../custom-hooks";
 
 function Homepage() {
   const { products } = useContext(ProductsContext).products;
   console.log(products);
+  const { width } = useWindowDimensions();
 
   const bannerImages = [
     {
       imageUrl:
-        "https://www.spark.co.nz/content/dam/telecomcms/responsive/images/shop/apple/iphone-12-pro/buy-now/buy-now-consumer/iphone12-buy-now-banner-mobile.jpg",
+        width > 754
+          ? "https://www.spark.co.nz/content/dam/telecomcms/responsive/images/shop/apple/iphone-12-pro/buy-now/buy-now-consumer/iphone12-buy-now-banner-mobile.jpg"
+          : "https://www.apple.com/v/home/x/images/heroes/iphone-12-pro/iphone_12_pro_us__e5oyysg4k0ya_small_2x.jpg",
       productUrl: "/product/2",
     },
     {
@@ -23,7 +27,7 @@ function Homepage() {
     },
     {
       imageUrl:
-        "https://about.att.com/ecms/dam/snr/2020/February2020/StoryLevelBanner/01.24.2020_Samsung%20Device-combo_STORY_LEVEL_BANNER_1600x483.jpg",
+        "https://images.samsung.com/is/image/samsung/assets/in/smartphones/galaxy-s20/galaxy-s20-fe/Homepage_banner1440.jpg",
       productUrl: "/product/12",
     },
   ];
@@ -91,7 +95,7 @@ function Homepage() {
           <BuyNowTextLinks link="/product/37" />
         </div>
         <img
-          className="Homepage__featuredProdImage"
+          className="Homepage__featuredProdImage macbookpro-img"
           src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/0a175488400949.5dd52df927373.jpg"
           alt="macbookpro"
         />
