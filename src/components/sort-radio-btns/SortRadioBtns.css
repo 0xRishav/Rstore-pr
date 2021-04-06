@@ -76,7 +76,7 @@
   margin: 16px 0;
 }
 
-@media (max-width: 856px) {
+@media only screen and (max-width: 856px) {
   .radio-btn-wrapper {
     width: 100%;
   }
