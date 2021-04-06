@@ -27,6 +27,10 @@ function Product({
     setImageToBeShown(image[0]);
   };
 
+  const truncate = (string, n) => {
+    return string?.length > n ? string.substr(0, n - 1) + "..." : string;
+  };
+
   return (
     <div className="Product">
       <Link to={`/product/${id}`}>
@@ -38,7 +42,7 @@ function Product({
           alt="productImage"
         />
       </Link>
-      <h3 className="Product__productName">{name}</h3>
+      <h3 className="Product__productName">{truncate(name, 20)}</h3>
       <p className="Product__price">Rs. {price.toLocaleString()}</p>
       <div className="Product__offerWrapper">
         {fastDelivery && (
@@ -53,12 +57,14 @@ function Product({
           </span>
         )}
       </div>
+
       <div className="Product__buttonWrapper">
         <CartWishlistBtn
           id={id}
           isInCart={isInCart}
           isInWishlist={isInWishlist}
           dispatch={dispatch}
+          isProductsPage
         />
       </div>
     </div>
