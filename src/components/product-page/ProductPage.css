@@ -5,16 +5,19 @@
   position: relative;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
+  margin-top: 6%;
+  text-align: left;
 }
 
 .productPage__image {
   width: 30%;
   height: 80%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 16px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px; */
   transition: all 0.3s ease-in-out;
+  padding: 16px;
 }
 
 .ProductPage__rightContainer {
@@ -27,9 +30,10 @@
   margin-bottom: 8px;
 }
 
-.productPage__description {
-  font-size: 1.2rem;
-  margin-bottom: 32px;
+.productPage__price {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 16px auto;
 }
 .productPage__offerWrapper {
   display: flex;
@@ -62,9 +66,10 @@
   background: var(--bright-light-blue-clr);
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .productPage__wrapper {
     flex-direction: column;
+    height: auto;
   }
   .productPage__image {
     width: 100%;
@@ -76,4 +81,11 @@
   .productPage__description {
     margin-bottom: 0;
   }
+  .productPage__name {
+    margin-top: 16px;
+  }
+}
+
+.ProductPage__aboutLi {
+  margin: 8px auto;
 }
