@@ -67,7 +67,7 @@ function CartPage() {
       {cartProducts.length !== 0 && (
         <div className="CartPage__totalApplyOfferWrapper">
           <div className="CartPage__totalCartPriceContainer">
-            Total: Rs.{" ".toLocaleString()}
+            Total: Rs.
             {newTotal ? (
               <div style={{ display: "flex" }}>
                 <div className="CartPage__totalCartPrice--original">
@@ -78,7 +78,7 @@ function CartPage() {
                 </div>
               </div>
             ) : (
-              <div>{totalPrice}</div>
+              <div>{totalPrice.toLocaleString()}</div>
             )}
           </div>
           <CouponModal

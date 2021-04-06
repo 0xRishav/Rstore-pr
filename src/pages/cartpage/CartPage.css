@@ -22,7 +22,7 @@
   margin-left: 16px;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .CartPage__totalApplyOfferWrapper {
     width: 100%;
   }
