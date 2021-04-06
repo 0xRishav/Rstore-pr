@@ -1,0 +1,15 @@
+.allProductsBtns {
+  display: flex;
+  flex-direction: column;
+}
+.allProductsBtns {
+  display: block;
+}
+
+.allProductsBtn {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media only screen and (max-width: 474px) {
+}
