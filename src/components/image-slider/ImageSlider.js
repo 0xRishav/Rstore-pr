@@ -21,14 +21,26 @@ const ImageSlider = ({ images, parent }) => {
 
   return (
     images.length > 0 && (
-      <div className="ImageSlider">
+      <div
+        className={
+          parent === "homepage"
+            ? "ImageSlider"
+            : "ImageSlider ImageSlider--productPage"
+        }
+      >
         <button
           onClick={slideLeft}
           className="ImageSlider__sliderBtn ImageSlider__sliderBtn--left"
         >
           {"<"}
         </button>
-        <img className="bannerImage" src={images[index].imageUrl} alt={index} />
+        <img
+          className={
+            parent === "homepage" ? "bannerImage" : "productPage__image"
+          }
+          src={parent === "homepage" ? images[index].imageUrl : images[index]}
+          alt={index}
+        />
         <button
           onClick={slideRight}
           className="ImageSlider__sliderBtn ImageSlider__sliderBtn--right"

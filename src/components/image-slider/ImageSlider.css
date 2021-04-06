@@ -9,7 +9,7 @@
 
 .ImageSlider__sliderBtn {
   position: absolute;
-  top: 50%;
+  top: 40%;
   padding: 16px;
   border-radius: 50px;
   outline: unset;
@@ -27,7 +27,7 @@
 
 .ImageSlider__linkBtnWrapper {
   margin: auto;
-  width: 30%;
+  width: 100%;
   margin-top: 16px;
 }
 
@@ -38,4 +38,30 @@
 }
 .ImageSlider__link:hover {
   text-decoration: underline;
+}
+
+.productPage__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  /* box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px; */
+  transition: all 0.3s ease-in-out;
+  padding: 16px;
+}
+
+.ImageSlider--productPage {
+  height: 80vh;
+  width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .productPage__image {
+    width: 100%;
+    height: 100%;
+  }
+  .ImageSlider--productPage {
+    height: 60vh;
+    width: 100%;
+  }
 }
