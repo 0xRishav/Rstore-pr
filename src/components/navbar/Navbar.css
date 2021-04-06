@@ -5,9 +5,11 @@
   height: 6vh;
   color: var(--light-grey-text-clr);
   transition: all 0.2s ease-in;
-  opacity: 90%;
+  /* opacity: 90%; */
   z-index: var(--zindex-header);
   background: black;
+  position: fixed;
+  top: 0;
 }
 .Navbar__logo {
   color: var(--light-grey-text-clr);
@@ -18,8 +20,6 @@
   cursor: pointer;
 }
 .navbar__wrapper--scrolled {
-  position: fixed;
-  top: 0;
   color: var(--dark-grey-text-clr);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
@@ -54,7 +54,8 @@
   align-items: center;
   margin: auto;
   height: 100%;
-  width: 90%;
+  width: 100%;
+  padding: 0;
 }
 .navbar__productCount {
   position: relative;
@@ -84,4 +85,73 @@
 
 .Navbar__activeLink {
   color: var(--light-blue-clr);
+}
+
+.Navbar__sideMenu {
+  position: fixed;
+  height: 94vh;
+  left: 0;
+  width: 100%;
+  top: 6vh;
+  z-index: var(--zindex-header);
+  color: white;
+  backdrop-filter: saturate(180%) blur(20px);
+  background-color: transparent;
+  background: black;
+  opacity: 100%;
+}
+
+.Navbar__sideMenuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.Navbar__searchInputContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  margin: auto;
+  margin-top: 16px;
+}
+
+.Navbar__searchInput {
+  width: 100%;
+  padding-right: 40px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  outline: unset;
+  border-radius: 8px;
+  color: #6e6e73;
+}
+
+.Navbar__searchInputIcon {
+  position: absolute;
+  right: 10px;
+  color: black;
+}
+
+.Navbar__sideMenu--linkWrapper {
+  width: 80%;
+  position: relative;
+  margin: auto;
+  text-align: left;
+}
+
+.Navbar__sideMenu--linkConatiner {
+  margin: 16px 8px;
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .navbar__Link {
+    margin: 0;
+  }
 }

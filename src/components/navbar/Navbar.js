@@ -4,11 +4,17 @@ import { BsBag } from "react-icons/bs";
 import { ProductsContext } from "../../contexts/productsContext";
 import { NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
+import { useWindowDimensions } from "../../custom-hooks";
+import { IoReorderTwoOutline } from "react-icons/io5";
+import { AiOutlineClose } from "react-icons/ai";
+import { BiSearch } from "react-icons/bi";
 
 function Navbar() {
   const { products, dispatch } = useContext(ProductsContext).products;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
+  const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const { height, width } = useWindowDimensions();
   const navbarRef = useRef(null);
 
   const serchClickHandler = () => {
@@ -42,9 +48,16 @@ function Navbar() {
       .reduce(cartCountReducer, 0);
   };
 
+  const handleMenuClick = () => {
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
+
   cartCount = getCartCount();
 
-  console.log({ cartCount });
+  const sideNavLinkClickHandler = () => {
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
+
   return (
     <div
       className={
@@ -53,97 +66,207 @@ function Navbar() {
           : "navbar__wrapper navbar__wrapper--scrolled"
       }
     >
+      {isSideMenuOpen && width < 770 && (
+        <div className="Navbar__sideMenu">
+          <nav className="Navbar__sideMenuNav">
+            <div className="Navbar__searchInputContainer">
+              <input
+                type="text"
+                className="Navbar__searchInput"
+                placeholder="Search..."
+              />
+              <BiSearch className="Navbar__searchInputIcon" color="#6e6e73" />
+            </div>
+            <div className="Navbar__sideMenu--linkWrapper">
+              <div
+                className="Navbar__sideMenu--linkConatiner"
+                style={{ marginTop: "32px" }}
+              >
+                <NavLink
+                  to="/products"
+                  className="navbar__Link"
+                  onClick={sideNavLinkClickHandler}
+                  activeClassName="Navbar__activeLink"
+                >
+                  All Products
+                </NavLink>
+              </div>
+
+              <div className="hr-div"></div>
+              <div className="Navbar__sideMenu--linkConatiner">
+                <NavLink
+                  to="/mobile"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                  onClick={sideNavLinkClickHandler}
+                >
+                  Mobile
+                </NavLink>
+              </div>
+
+              <div className="hr-div"></div>
+              <div className="Navbar__sideMenu--linkConatiner">
+                <NavLink
+                  to="/tv"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                  onClick={sideNavLinkClickHandler}
+                >
+                  TV
+                </NavLink>
+              </div>
+
+              <div className="hr-div"></div>
+              <div className="Navbar__sideMenu--linkConatiner">
+                <NavLink
+                  to="/laptop"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                  onClick={sideNavLinkClickHandler}
+                >
+                  Laptop
+                </NavLink>
+              </div>
+
+              <div className="hr-div"></div>
+              <div className="Navbar__sideMenu--linkConatiner">
+                <NavLink
+                  to="/watch"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                  onClick={sideNavLinkClickHandler}
+                >
+                  Watch
+                </NavLink>
+              </div>
+
+              <div className="hr-div"></div>
+              <div className="Navbar__sideMenu--linkConatiner">
+                <NavLink
+                  to="/wishlist"
+                  onClick={() =>
+                    dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
+                  }
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                  onClick={sideNavLinkClickHandler}
+                >
+                  Wishlist
+                </NavLink>
+              </div>
+            </div>
+          </nav>
+        </div>
+      )}
       <div className="navbar" ref={navbarRef}>
         <ul className="navbar__ul">
+          {width < 770 && (
+            <li>
+              {isSideMenuOpen ? (
+                <AiOutlineClose
+                  onClick={handleMenuClick}
+                  style={{ cursor: "pointer" }}
+                  color="white"
+                />
+              ) : (
+                <IoReorderTwoOutline
+                  onClick={handleMenuClick}
+                  style={{ cursor: "pointer" }}
+                  color="white"
+                />
+              )}
+            </li>
+          )}
           <li>
             <NavLink to="/" className="Navbar__logo">
               <div>RStore</div>
             </NavLink>
           </li>
 
-          <li>
-            <NavLink
-              to="/products"
-              className="navbar__Link"
-              onClick={() =>
-                dispatch({
-                  type: "PRODUCTS_TO_SHOW",
-                  payload: "AllProducts",
-                })
-              }
-              activeClassName="Navbar__activeLink"
-            >
-              All Products
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/mobile"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
-            >
-              Mobile
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/tv"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
-            >
-              TV
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/laptop"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
-            >
-              Laptop
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/watch"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
-            >
-              Watch
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink
-              to="/wishlist"
-              onClick={() =>
-                dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
-              }
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
-            >
-              Wishlist
-            </NavLink>
-          </li>
-
-          <li>
-            <div className="navbar__Link" onClick={serchClickHandler}>
-              {!isSearchClicked && (
-                <AiOutlineSearch className="navbar__searchIcon" />
-              )}
-              {isSearchClicked && (
-                <div className="navbar__searchboxWrapper">
-                  <input
-                    type="text"
-                    placeholder="Search here..."
-                    className="navbar__searchbox"
-                  />
-                  <AiOutlineSearch className="navbar__searchIcon" />
+          {width > 770 ? (
+            <>
+              <li>
+                <NavLink
+                  to="/products"
+                  className="navbar__Link"
+                  onClick={() =>
+                    dispatch({
+                      type: "PRODUCTS_TO_SHOW",
+                      payload: "AllProducts",
+                    })
+                  }
+                  activeClassName="Navbar__activeLink"
+                >
+                  All Products
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/mobile"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                >
+                  Mobile
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/tv"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                >
+                  TV
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/laptop"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                >
+                  Laptop
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/watch"
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                >
+                  Watch
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/wishlist"
+                  onClick={() =>
+                    dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
+                  }
+                  className="navbar__Link"
+                  activeClassName="Navbar__activeLink"
+                >
+                  Wishlist
+                </NavLink>
+              </li>
+              <li>
+                <div className="navbar__Link" onClick={serchClickHandler}>
+                  {!isSearchClicked && (
+                    <AiOutlineSearch className="navbar__searchIcon" />
+                  )}
+                  {isSearchClicked && (
+                    <div className="navbar__searchboxWrapper">
+                      <input
+                        type="text"
+                        placeholder="Search here..."
+                        className="navbar__searchbox"
+                      />
+                      <AiOutlineSearch className="navbar__searchIcon" />
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </li>
+              </li>
+            </>
+          ) : null}
 
           <li>
             <NavLink
