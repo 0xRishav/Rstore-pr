@@ -9,6 +9,7 @@ import {
   Homepage,
   LaptopsPage,
   MobilesPage,
+  SearchPage,
   TVPage,
   WatchPage,
   WishlistPage,
@@ -52,6 +53,9 @@ function App() {
             </Route>
             <Route path="/product/:id">
               <ProductPage />
+            </Route>
+            <Route path="/search">
+              <SearchPage />
             </Route>
           </div>
         </ScrollToTop>
