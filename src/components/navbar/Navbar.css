@@ -98,7 +98,7 @@
   backdrop-filter: saturate(180%) blur(20px);
   background-color: transparent;
   background: black;
-  opacity: 100% !important;
+  opacity: 1 !important;
 }
 
 .Navbar__sideMenuNav {
