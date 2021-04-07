@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
 import { ProductsContext } from "../../contexts/productsContext";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
@@ -14,6 +14,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
   const { height, width } = useWindowDimensions();
   const navbarRef = useRef(null);
 
@@ -58,6 +59,20 @@ function Navbar() {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
 
+  const handleSearchInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const filteredProducts = products.filter((product) => {
+    if (
+      product.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      product.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchInput.toLowerCase())
+    ) {
+      return product;
+    }
+  });
+
   return (
     <div
       className={
@@ -74,8 +89,15 @@ function Navbar() {
                 type="text"
                 className="Navbar__searchInput"
                 placeholder="Search..."
+                onChange={handleSearchInputChange}
               />
-              <BiSearch className="Navbar__searchInputIcon" color="#6e6e73" />
+              <Link
+                to={{ pathname: "/search", state: { filteredProducts } }}
+                className="Navbar__searchInputIcon"
+                onClick={() => setIsSideMenuOpen(false)}
+              >
+                <BiSearch className="Navbar__searchInputIcon" color="#6e6e73" />
+              </Link>
             </div>
             <div className="Navbar__sideMenu--linkWrapper">
               <div
@@ -259,6 +281,7 @@ function Navbar() {
                         type="text"
                         placeholder="Search here..."
                         className="navbar__searchbox"
+                        onChange={handleSearchInputChange}
                       />
                       <AiOutlineSearch className="navbar__searchIcon" />
                     </div>
