@@ -869,7 +869,8 @@ export const initialData = [
   {
     id: 25,
     name: "Mi TV 4A PRO 80 cm (32 inches) HD Ready Android LED TV (Black)",
-    category: "MI",
+    brand: "MI",
+    category: "TV",
     images: [
       "https://images-na.ssl-images-amazon.com/images/I/71qOOWyfc7L._SL1500_.jpg",
 
@@ -899,7 +900,8 @@ export const initialData = [
   {
     id: 26,
     name: "Mi TV 4A PRO 108 cm (43 Inches) Full HD Android LED TV (Black)",
-    category: "MI",
+    brand: "MI",
+    category: "TV",
     images: [
       "https://images-na.ssl-images-amazon.com/images/I/710rArA2OPL._SL1500_.jpg",
 
@@ -931,7 +933,8 @@ export const initialData = [
   {
     id: 27,
     name: "Mi TV 4X 125.7 cm (50 Inches) 4K Ultra HD Android LED TV (Black)",
-    category: "MI",
+    brand: "MI",
+    category: "TV",
     images: [
       "https://images-na.ssl-images-amazon.com/images/I/710rArA2OPL._SL1500_.jpg",
 
@@ -963,7 +966,8 @@ export const initialData = [
   {
     id: 28,
     name: "Mi TV 4X 138.8 cm (55 Inches) Ultra HD Android LED TV (Black)",
-    category: "MI",
+    brand: "MI",
+    category: "TV",
     images: [
       "https://images-na.ssl-images-amazon.com/images/I/71zRDT-NHfL._SL1500_.jpg",
 
@@ -998,7 +1002,8 @@ export const initialData = [
     id: 29,
     name:
       "MI TV 4A Horizon Edition 108cm (43 inches) Full HD Android LED TV (Black)",
-    category: "MI",
+      brand: "MI",
+      category: "TV",
     images: [
       "https://images-na.ssl-images-amazon.com/images/I/71Cf27AHBEL._SL1500_.jpg",
 
