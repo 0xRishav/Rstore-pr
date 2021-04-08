@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { CartProduct, CouponModal } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./CartPage.css";
 
 function CartPage() {
-  const { products, dispatch } = useContext(ProductsContext).products;
+  const { products, dispatch } = useProduct();
   const cartProducts = products.filter((product) => product.isInCart);
 
   const [selectedCoupon, setSelectedCoupon] = useState(false);

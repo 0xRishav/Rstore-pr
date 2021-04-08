@@ -7,6 +7,7 @@ import {
   SortRadioBtns,
 } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./AllProductsPage.css";
 
 function AllProductsPage() {
@@ -20,7 +21,7 @@ function AllProductsPage() {
     showFreeShippingOnly,
     dispatch,
     filteredData,
-  } = useContext(ProductsContext).products;
+  } = useProduct();
 
   return (
     <div className="AllProductsPage">

@@ -6,9 +6,10 @@ import "./Homepage.css";
 import { Link } from "react-router-dom";
 import { ProductsContext } from "../../contexts/productsContext";
 import { useWindowDimensions } from "../../custom-hooks";
+import { useProduct } from "../../helpers";
 
 function Homepage() {
-  const { products } = useContext(ProductsContext).products;
+  const { products } = useProduct();
   console.log(products);
   const { width } = useWindowDimensions();
 

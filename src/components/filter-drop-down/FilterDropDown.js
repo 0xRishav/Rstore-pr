@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import { Checkbox, SortRadioBtns } from "../index";
 import "./FilterDropDown.css";
 
 function FilterDropDown() {
-  const { dispatch, filterPrice } = useContext(ProductsContext).products;
+  const { dispatch, filterPrice } = useProduct();
   const [priceFilterInput, setPriceFilterInput] = useState(150000);
 
   const priceFilterInputHandler = (e) => {

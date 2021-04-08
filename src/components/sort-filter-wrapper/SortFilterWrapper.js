@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FilterDropDown, SortDropdown } from "..";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./SortFilterWrapper.css";
 
 function SortFilterWrapper() {
@@ -10,14 +11,14 @@ function SortFilterWrapper() {
     showFreeShippingOnly,
     filterPrice,
     sortBy,
-  } = useContext(ProductsContext).products;
+  } = useProduct();
   const [showFilterDropDown, setShowFilterDropDown] = useState(false);
   const [showSortDropDown, setShowSortDropDown] = useState(false);
 
   const filterDropDownClickHandler = () => {
     if (showSortDropDown === true) {
       setShowSortDropDown(false);
-  }
+    }
     setShowFilterDropDown(!showFilterDropDown);
   };
   const sortDropDownClickHandler = () => {

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./SortRadioBtns.css";
 
 function SortRadioBtns() {
-  const { sortBy, dispatch } = useContext(ProductsContext).products;
+  const { sortBy, dispatch } = useProduct();
 
   const handleSortBtnOnChange = (payload) => {
     dispatch({ type: "SORT_BY", payload: payload });

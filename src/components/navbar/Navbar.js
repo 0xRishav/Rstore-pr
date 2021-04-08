@@ -8,9 +8,10 @@ import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
+import { useProduct } from "../../helpers";
 
 function Navbar() {
-  const { products, dispatch } = useContext(ProductsContext).products;
+  const { products, dispatch } = useProduct();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);

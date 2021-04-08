@@ -4,10 +4,11 @@ import { CartWishlistBtn, ImageSlider } from "..";
 import { ProductsContext } from "../../contexts/productsContext";
 import StarRatings from "react-star-ratings";
 import "./ProductPage.css";
+import { useProduct } from "../../helpers";
 
 function ProductPage() {
   const { id } = useParams();
-  const { products, dispatch } = useContext(ProductsContext).products;
+  const { products, dispatch } = useProduct();
 
   const {
     name,
@@ -21,7 +22,6 @@ function ProductPage() {
     about,
     rating,
   } = products.find((product) => product.id === id);
-
 
   return (
     <div className="productPage">
