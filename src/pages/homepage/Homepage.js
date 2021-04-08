@@ -10,7 +10,6 @@ import { useProduct } from "../../helpers";
 
 function Homepage() {
   const { products } = useProduct();
-  console.log(products);
   const { width } = useWindowDimensions();
 
   const bannerImages = [

@@ -15,13 +15,7 @@ function SearchPage() {
     ProductsContext
   ).products;
 
-  console.log("before");
-
-  console.log("PRODS", products);
-
   const location = useLocation();
-
-  console.log("after");
 
   return (
     <div className="SearchPage">

@@ -13,7 +13,6 @@ function FilterDropDown() {
     dispatch({ type: "FILTER_BY_PRICE", payload: priceFilterInput });
   };
 
-  console.log("PRICE", priceFilterInput);
 
   return (
     <div className="FilterDropDown">

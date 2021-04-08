@@ -6,17 +6,4 @@ const useProduct = () => {
   return obj;
 };
 
-
 export default useProduct;
-
-// {
-//     dispatch,
-//     filterPrice,
-//     products,
-//     isLoading,
-//     productsToShow,
-//     isErr,
-//     sortBy,
-//     showFastDeliveryOnly,
-//     showFreeShippingOnly,
-//   }
