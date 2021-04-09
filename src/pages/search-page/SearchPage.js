@@ -16,18 +16,23 @@ function SearchPage() {
   ).products;
 
   const location = useLocation();
+  const { filteredProducts } = location.state;
+  console.log(location);
 
   return (
     <div className="SearchPage">
-      <h1>This is Search page</h1>
       <SortFilterWrapper />
 
       {isLoading && <Loader />}
-      <div className="products-wrapper">
-        {products.map((product) => (
-          <Product {...product} dispatch={dispatch} key={product.id} />
-        ))}
-      </div>
+      {filteredProducts.length === 0 ? (
+        <h1>No Such Product is available</h1>
+      ) : (
+        <div className="products-wrapper">
+          {filteredProducts.map((product) => (
+            <Product {...product} dispatch={dispatch} key={product.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

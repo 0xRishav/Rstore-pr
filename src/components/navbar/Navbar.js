@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
 import { ProductsContext } from "../../contexts/productsContext";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
@@ -39,6 +39,8 @@ function Navbar() {
     };
   }, []);
 
+  let history = useHistory();
+
   let cartCount = 0;
   const cartCountReducer = (acc, val) => {
     return acc + val.quantity;
@@ -73,6 +75,14 @@ function Navbar() {
       return product;
     }
   });
+  console.log("HISTORY", history);
+
+  const handleSearchKeyPress = (e) => {
+    if (e.key === "Enter") {
+      history.push("/search", { filteredProducts });
+      setIsSideMenuOpen(false);
+    }
+  };
 
   return (
     <div
@@ -91,6 +101,7 @@ function Navbar() {
                 className="Navbar__searchInput"
                 placeholder="Search..."
                 onChange={handleSearchInputChange}
+                onKeyPress={handleSearchKeyPress}
               />
               <Link
                 to={{
@@ -286,8 +297,17 @@ function Navbar() {
                         placeholder="Search here..."
                         className="navbar__searchbox"
                         onChange={handleSearchInputChange}
+                        onKeyPress={handleSearchKeyPress}
                       />
-                      <AiOutlineSearch className="navbar__searchIcon" />
+                      <Link
+                        to={{
+                          pathname: "/search",
+                          state: { filteredProducts: filteredProducts },
+                        }}
+                        className="Navbar__desktopSearchLink"
+                      >
+                        <AiOutlineSearch className="navbar__searchIcon" />
+                      </Link>
                     </div>
                   )}
                 </div>

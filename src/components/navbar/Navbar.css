@@ -145,6 +145,10 @@
   margin: 16px 8px;
 }
 
+.Navbar__desktopSearchLink {
+  color: var(--white-clr);
+}
+
 @media only screen and (max-width: 900px) {
   .navbar {
     width: 95%;
