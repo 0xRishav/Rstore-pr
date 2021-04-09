@@ -8,6 +8,7 @@
   --ckeckbox-blue-clr: #2196f3;
   --white-clr: white;
   --black-clr: black;
+  --min-opacity-white: rgba(255, 255, 255, 0.1);
   --whitesmoke-clr: whitesmoke;
   --zindex-modal: 9000;
   --zindex-overlay: 8000;
