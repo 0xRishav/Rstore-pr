@@ -8,7 +8,7 @@ import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
-import { useProduct } from "../../helpers";
+import useProduct from "../../helpers/useProducts";
 
 function Navbar() {
   const { products, dispatch } = useProduct();
@@ -128,7 +128,7 @@ function Navbar() {
               </div>
 
               <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkConatiner">
+              <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/tv"
                   className="navbar__Link"
