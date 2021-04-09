@@ -12,11 +12,7 @@ const ImageSlider = ({ images, parent }) => {
 
   const slideLeft = () => {
     const nextIndex = index - 1;
-    if (nextIndex < 0) {
-      setIndex(images.length - 1); // returns last index of images array if index is less than 0
-    } else {
-      setIndex(nextIndex);
-    }
+    nextIndex < 0 ? setIndex(images.length - 1) : setIndex(nextIndex);
   };
 
   return (
