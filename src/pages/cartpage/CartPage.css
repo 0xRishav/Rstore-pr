@@ -15,7 +15,7 @@
 
 .CartPage__totalCartPrice--original {
   text-decoration: line-through;
-  opacity: 50%;
+  opacity: 0.5;
 }
 .CartPage__totalCartPrice--discounted {
   color: var(--light-green-clr);
