@@ -41,7 +41,7 @@
   border-radius: 8px;
   margin: 8px 16px;
   cursor: pointer;
-  color: white;
+  color: var(--white-clr);
 }
 .Product__button--primary:hover {
   background: var(--bright-light-blue-clr);
@@ -61,7 +61,7 @@
 .Product__button--secondary:hover {
   border: none;
   background: var(--light-blue-clr);
-  color: white;
+  color: var(--white-clr);
 }
 
 .Product__offerWrapper {

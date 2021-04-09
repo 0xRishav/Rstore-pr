@@ -56,5 +56,5 @@
 }
 
 .radio__label {
-  color: black;
+  color: var(--black-clr);
 }

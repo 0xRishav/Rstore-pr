@@ -2,7 +2,7 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  background: whitesmoke;
+  background: var(--whitesmoke-clr);
   padding: 32px;
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;

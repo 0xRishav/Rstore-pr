@@ -14,7 +14,8 @@
   border-radius: 50px;
   outline: unset;
   border: none;
-  background: rgba(255, 255, 255, 0.199);
+  background: var(--white-clr);
+  opacity: 0.2;
   cursor: pointer;
 }
 .ImageSlider__sliderBtn--left {

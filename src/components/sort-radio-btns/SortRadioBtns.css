@@ -63,7 +63,7 @@
   width: 6.4px;
   height: 6.4px;
   border-radius: 64px;
-  background: white;
+  background: var(--white-clr);
 }
 
 .App__totalCartPrice {

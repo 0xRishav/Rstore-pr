@@ -7,7 +7,7 @@
   transition: all 0.2s ease-in;
   /* opacity: 90%; */
   z-index: var(--zindex-header);
-  background: black;
+  background: var(--black-clr);
   position: fixed;
   top: 0;
 }
@@ -24,7 +24,8 @@
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
   background-color: transparent;
-  background: rgba(0, 0, 0, 0.8);
+  background: var(--black-clr);
+  opacity: 0.8;
 }
 
 .navbar {
@@ -65,13 +66,12 @@
 }
 
 .navbar__searchbox {
-  background: white;
+  background: var(--white-clr);
   height: 150%;
   /* opacity: 30%; */
   outline: 0;
   border: none;
   border-bottom: 1px var(--light-grey-text-clr);
-  /* color: white; */
 }
 .navbar__searchIcon {
   font-size: 20px;
@@ -94,10 +94,10 @@
   width: 100%;
   top: 6vh;
   z-index: var(--zindex-header);
-  color: white;
+  color: var(--white-clr);
   backdrop-filter: saturate(180%) blur(20px);
   background-color: transparent;
-  background: black;
+  background: var(--black-clr);
   opacity: 1 !important;
 }
 
@@ -120,7 +120,8 @@
   width: 100%;
   padding-right: 40px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--black-clr);
+  opacity: 0.1;
   border: none;
   outline: unset;
   border-radius: 8px;
@@ -130,7 +131,7 @@
 .Navbar__searchInputIcon {
   position: absolute;
   right: 10px;
-  color: black;
+  color: var(--black-clr);
   top: 29%;
 }
 

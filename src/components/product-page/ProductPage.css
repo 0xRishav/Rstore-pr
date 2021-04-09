@@ -59,7 +59,7 @@
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
-  color: white;
+  color: var(--white-clr);
 }
 
 .ProductPage__button--primary:hover {

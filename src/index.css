@@ -6,6 +6,9 @@
   --dark-grey-text-clr: black;
   --bright-light-blue-clr: #0c82ff;
   --ckeckbox-blue-clr: #2196f3;
+  --white-clr: white;
+  --black-clr: black;
+  --whitesmoke-clr: whitesmoke;
   --zindex-modal: 9000;
   --zindex-overlay: 8000;
   --zindex-dropdown: 7000;
