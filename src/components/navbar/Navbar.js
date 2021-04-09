@@ -93,7 +93,10 @@ function Navbar() {
                 onChange={handleSearchInputChange}
               />
               <Link
-                to={{ pathname: "/search", state: { filteredProducts } }}
+                to={{
+                  pathname: "/search",
+                  state: { filteredProducts: filteredProducts },
+                }}
                 className="Navbar__searchInputIcon"
                 onClick={() => setIsSideMenuOpen(false)}
               >
@@ -102,7 +105,7 @@ function Navbar() {
             </div>
             <div className="Navbar__sideMenu--linkWrapper">
               <div
-                className="Navbar__sideMenu--linkConatiner"
+                className="Navbar__sideMenu--linkContainer"
                 style={{ marginTop: "32px" }}
               >
                 <NavLink
@@ -116,7 +119,7 @@ function Navbar() {
               </div>
 
               <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkConatiner">
+              <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/mobile"
                   className="navbar__Link"
@@ -140,7 +143,7 @@ function Navbar() {
               </div>
 
               <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkConatiner">
+              <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/laptop"
                   className="navbar__Link"
@@ -152,7 +155,7 @@ function Navbar() {
               </div>
 
               <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkConatiner">
+              <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/watch"
                   className="navbar__Link"
@@ -164,7 +167,7 @@ function Navbar() {
               </div>
 
               <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkConatiner">
+              <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/wishlist"
                   onClick={() =>

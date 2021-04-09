@@ -120,8 +120,7 @@
   width: 100%;
   padding-right: 40px;
   padding: 8px 16px;
-  background: var(--black-clr);
-  opacity: 0.1;
+  background: var(--min-opacity-white);
   border: none;
   outline: unset;
   border-radius: 8px;
