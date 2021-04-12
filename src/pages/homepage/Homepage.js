@@ -12,6 +12,49 @@ function Homepage() {
   const { products } = useProduct();
   const { width } = useWindowDimensions();
 
+  const lgo = (
+    <AiFillApple color="black" className="Homepage__featuredProdLogo" />
+  );
+
+  const featuredProducts = [
+    {
+      name: "OnePlus 8T",
+      imgSrc:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/a71331107041495.5fac2c616f3ae.jpg",
+      alt: "one-plus-phone",
+      logo: <SiOneplus color="red" className="Homepage__featuredProdLogo" />,
+      link: "/product/6",
+    },
+    {
+      name: "iPhone 11",
+      imgSrc:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/disp/230a8486312713.5d9580970f876.jpg",
+      alt: "iphone-11",
+      logo: (
+        <AiFillApple color="black" className="Homepage__featuredProdLogo" />
+      ),
+      link: "/product/1",
+    },
+    {
+      name: "HP Spectre x360",
+      imgSrc:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/1400/131e2099947973.5efde4c45921a.jpg",
+      alt: "HP-Spectre-x360",
+      logo: <SiHp color="#0091CF" className="Homepage__featuredProdLogo" />,
+      link: "/product/36",
+    },
+    {
+      name: "Apple Macbook pro",
+      imgSrc:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/0a175488400949.5dd52df927373.jpg",
+      alt: "Apple-Macbook-pro",
+      logo: (
+        <AiFillApple color="black" className="Homepage__featuredProdLogo" />
+      ),
+      link: "/product/37",
+    },
+  ];
+
   const bannerImages = [
     {
       imageUrl:
@@ -35,71 +78,29 @@ function Homepage() {
   return (
     <div className="Homepage">
       <ImageSlider images={bannerImages} parent="homepage" />
+
+      {/* FEATURED PRODS */}
       <h2 className="Homepage__subHeading">Featured Products</h2>
       <div className="Homepage__featuredProductsWrapper">
-        <div className="Homepage__featuredProductContainer">
-          <img
-            className="Homepage__featuredProdImage"
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/a71331107041495.5fac2c616f3ae.jpg"
-            alt="oneplus-phone"
-          />
-          <div className="Homepage__infoContainer">
-            <div className="Homepage__featuredProdName">
-              <SiOneplus color="red" className="Homepage__featuredProdLogo" />
-              OnePlus 8T
+        {featuredProducts.map((product) => (
+          <div className="Homepage__featuredProductContainer">
+            <img
+              className="Homepage__featuredProdImage"
+              src={product.imgSrc}
+              alt={product.alt}
+            />
+            <div className="Homepage__infoContainer">
+              <div className="Homepage__featuredProdName">
+                {product.logo}
+                {product.name}
+              </div>
+              <BuyNowTextLinks link={product.link} />
             </div>
-            <BuyNowTextLinks link="/product/6" />
           </div>
-        </div>
-
-        <div className="Homepage__featuredProductContainer">
-          <div className="Homepage__infoContainer">
-            <div className="Homepage__featuredProdName">
-              <AiFillApple
-                color="black"
-                className="Homepage__featuredProdLogo"
-              />
-              iPhone 11
-            </div>
-            <BuyNowTextLinks link="/product/1" />
-          </div>
-          <img
-            className="Homepage__featuredProdImage"
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/230a8486312713.5d9580970f876.jpg"
-            alt="iphone11"
-          />
-        </div>
-
-        <div className="Homepage__featuredProductContainer">
-          <img
-            className="Homepage__featuredProdImage"
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/131e2099947973.5efde4c45921a.jpg"
-            alt="oneplus-phone"
-          />
-          <div className="Homepage__infoContainer">
-            <div className="Homepage__featuredProdName">
-              <SiHp color="#0091CF" className="Homepage__featuredProdLogo" />
-              HP Spectre x360
-            </div>
-            <BuyNowTextLinks link="/product/36" />
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="Homepage__featuredProductContainer">
-        <div className="Homepage__infoContainer">
-          <div className="Homepage__featuredProdName">
-            <AiFillApple color="black" className="Homepage__featuredProdLogo" />
-            Apple MacBook Pro
-          </div>
-          <BuyNowTextLinks link="/product/37" />
-        </div>
-        <img
-          className="Homepage__featuredProdImage macbookpro-img"
-          src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/0a175488400949.5dd52df927373.jpg"
-          alt="macbookpro"
-        />
-      </div>
+      {/* CAT */}
 
       <h2 className="Homepage__subHeading">Categories</h2>
       <div className="Homepage__categoryWrapper">

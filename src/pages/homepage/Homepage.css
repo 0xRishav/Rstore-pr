@@ -15,10 +15,6 @@
   margin: auto;
 }
 
-.Homepage__featuredProductContainer {
-  margin: 16px auto;
-}
-
 .Homepage__featuredProdImage {
   width: 50%;
   height: 80vh;
@@ -37,6 +33,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 16px auto;
+}
+
+.Homepage__featuredProductContainer:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 .Homepage__infoContainer {
@@ -62,6 +63,9 @@
     flex-direction: column;
     height: 94vh;
   }
+  .Homepage__featuredProductContainer:nth-child(even) {
+    flex-direction: column;
+  }
   .Homepage__featuredProdImage {
     height: 70%;
   }
@@ -72,9 +76,6 @@
     width: 100%;
     height: 30%;
     margin-top: 5%;
-  }
-  .Homepage__featuredProductContainer:nth-child(even) {
-    flex-direction: column-reverse;
   }
   .macbookpro-img {
     width: 90%;
