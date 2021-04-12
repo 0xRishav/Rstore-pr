@@ -20,6 +20,11 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  border: none;
+  background: var(--light-blue-clr);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
 }
 
 .SortFilterWrapper__sortDropDownContainer {
@@ -38,4 +43,9 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  border: none;
+  background: var(--light-blue-clr);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
 }

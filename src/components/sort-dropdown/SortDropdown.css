@@ -9,3 +9,9 @@
   width: 220px;
   text-align: left;
 }
+
+@media (max-width: 640px) {
+  .SortDropdown {
+    left: -5%;
+  }
+}
