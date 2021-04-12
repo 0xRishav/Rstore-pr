@@ -12,10 +12,6 @@ function Homepage() {
   const { products } = useProduct();
   const { width } = useWindowDimensions();
 
-  const lgo = (
-    <AiFillApple color="black" className="Homepage__featuredProdLogo" />
-  );
-
   const featuredProducts = [
     {
       name: "OnePlus 8T",
@@ -75,6 +71,37 @@ function Homepage() {
     },
   ];
 
+  const categories = [
+    {
+      name: "Mobile",
+      imgSrc:
+        "https://fdn.gsmarena.com/imgroot/news/20/08/huawei-y9a-specs-design-ad-banner/-1220x526/gsmarena_004.jpg",
+      alt: "mobiles-banner",
+      link: "/mobile",
+    },
+    {
+      name: "Laptop",
+      imgSrc:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/3c018587711043.5dc0b3f75a8ca.jpg",
+      alt: "laptops-banner",
+      link: "/laptop",
+    },
+    {
+      name: "TV",
+      imgSrc:
+        "https://oasis.opstatics.com/content/dam/oasis/page/store/tv/new/New-TV_Banner_1600x1200.jpg",
+      alt: "TV-banner",
+      link: "/tv",
+    },
+    {
+      name: "Smart Watch",
+      imgSrc:
+        "https://cdn.dribbble.com/users/1146422/screenshots/6781898/main.png?compress=1&resize=800x600",
+      alt: "Watch-banner",
+      link: "/watch",
+    },
+  ];
+
   return (
     <div className="Homepage">
       <ImageSlider images={bannerImages} parent="homepage" />
@@ -100,46 +127,21 @@ function Homepage() {
         ))}
       </div>
 
-      {/* CAT */}
+
 
       <h2 className="Homepage__subHeading">Categories</h2>
       <div className="Homepage__categoryWrapper">
-        <div className="Homepage__categoryContainer">
-          <img
-            src="https://fdn.gsmarena.com/imgroot/news/20/08/huawei-y9a-specs-design-ad-banner/-1220x526/gsmarena_004.jpg"
-            alt="mobiles-banner"
-            className="Homepage__categoryImage"
-          />
-          <h2>Mobile</h2>
-          <BuyNowTextLinks link="/mobile" />
-        </div>
-        <div className="Homepage__categoryContainer">
-          <img
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/3c018587711043.5dc0b3f75a8ca.jpg"
-            alt="laptop-banner"
-            className="Homepage__categoryImage"
-          />
-          <h2>Laptop</h2>
-          <BuyNowTextLinks link="/laptop" />
-        </div>
-        <div className="Homepage__categoryContainer">
-          <img
-            src="https://oasis.opstatics.com/content/dam/oasis/page/store/tv/new/New-TV_Banner_1600x1200.jpg"
-            alt="TV-banner"
-            className="Homepage__categoryImage"
-          />
-          <h2>TV</h2>
-          <BuyNowTextLinks link="/tv" />
-        </div>
-        <div className="Homepage__categoryContainer">
-          <img
-            src="https://cdn.dribbble.com/users/1146422/screenshots/6781898/main.png?compress=1&resize=800x600"
-            alt=""
-            className="Homepage__categoryImage"
-          />
-          <h2>Smart Watch</h2>
-          <BuyNowTextLinks link="/watch" />
-        </div>
+        {categories.map((category) => (
+          <div className="Homepage__categoryContainer">
+            <img
+              src={category.imgSrc}
+              alt={category.alt}
+              className="Homepage__categoryImage"
+            />
+            <h2>{category.name}</h2>
+            <BuyNowTextLinks link={category.link} />
+          </div>
+        ))}
       </div>
     </div>
   );
