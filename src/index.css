@@ -1,11 +1,15 @@
 :root {
-  --light-blue-clr: #007aff;
+  --light-blue-clr: #06c;
   --light-green-clr: #34c759;
   --light-grey-clr: #c6c6c8;
   --light-grey-text-clr: #d7d7d7;
-  --dark-grey-text-clr: #333333;
+  --dark-grey-text-clr: black;
   --bright-light-blue-clr: #0c82ff;
   --ckeckbox-blue-clr: #2196f3;
+  --white-clr: white;
+  --black-clr: black;
+  --min-opacity-white: rgba(255, 255, 255, 0.1);
+  --whitesmoke-clr: whitesmoke;
   --zindex-modal: 9000;
   --zindex-overlay: 8000;
   --zindex-dropdown: 7000;
@@ -25,4 +29,94 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Buttons */
+.blue-btn--primary {
+  background: var(--light-blue-clr);
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 8px 16px;
+  cursor: pointer;
+  color: white;
+  margin-left: 0;
+}
+.blue-btn--primary:hover {
+  background: var(--bright-light-blue-clr);
+}
+.blue-btn--secondary {
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin: 8px 16px;
+  cursor: pointer;
+  border: 1px solid var(--light-blue-clr);
+  background: transparent;
+  color: var(--light-blue-clr);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  margin-right: 0;
+}
+.blue-btn--secondary:hover {
+  /* border: none; */
+  background: var(--light-blue-clr);
+  color: white;
+}
+
+.products-wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 16px;
+  grid-gap: 16px;
+  margin-top: 16px;
+}
+
+.checkbox-radio-btn-wrapper {
+  display: flex;
+}
+
+.hr-div {
+  border: 1px solid var(--light-grey-clr);
+  width: 95%;
+  margin: auto;
+}
+.hr-div--nav {
+  border: 1px solid var(--light-grey-clr);
+  width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 1000px) {
+  .products-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* @media only screen and (max-width: 970px) {
+  .products-wrapper {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+} */
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+  .products-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  html {
+    font-size: 14px;
+  }
+  .products-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .Product__image {
+    width: 70%;
+  }
 }

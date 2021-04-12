@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { useParams } from "react-router";
-import { CartWishlistBtn, Navbar } from "..";
+import { CartWishlistBtn, ImageSlider } from "..";
 import { ProductsContext } from "../../contexts/productsContext";
+import StarRatings from "react-star-ratings";
 import "./ProductPage.css";
+import { useProduct } from "../../helpers";
 
 function ProductPage() {
   const { id } = useParams();
-  const { products, dispatch } = useContext(ProductsContext).products;
+  const { products, dispatch } = useProduct();
 
   const {
     name,
@@ -17,16 +19,23 @@ function ProductPage() {
     isInWishlist,
     fastDelivery,
     freeShipping,
+    about,
+    rating,
   } = products.find((product) => product.id === id);
 
   return (
     <div className="productPage">
-      <Navbar />
       <div className="productPage__wrapper">
-        <img className="productPage__image" src={image} alt={`${name}-Image`} />
+        <ImageSlider images={image} parent={ProductPage} />
         <div className="ProductPage__rightContainer">
           <div className="productPage__name">{name}</div>
-          <div className="productPage__description">{description}</div>
+          <div className="productPage__price">Rs. {price.toLocaleString()}</div>
+          <StarRatings
+            rating={rating}
+            starDimension="16px"
+            starSpacing="2px"
+            starRatedColor="#06c"
+          />
           <div className="productPage__offerWrapper">
             {fastDelivery && (
               <div className="productPage__offer">Fast Delivery</div>
@@ -35,6 +44,7 @@ function ProductPage() {
               <div className="productPage__offer">Free Shipping</div>
             )}
           </div>
+
           <div className="ProductPage__buttonWrapper">
             <CartWishlistBtn
               id={id}
@@ -43,6 +53,12 @@ function ProductPage() {
               dispatch={dispatch}
             />
           </div>
+          <ul>
+            <h4>About this Product</h4>
+            {about.map((about) => (
+              <li className="ProductPage__aboutLi">{about}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { createServer, Model, RestSerializer } from "miragejs";
 import faker from "faker";
+import { initialData } from "./data";
 
 faker.seed(123);
 
@@ -20,20 +21,39 @@ export default function setupMockServer() {
     },
 
     seeds(server) {
-      [...Array(50)].forEach((_) => {
-        server.create("product", {
-          id: faker.random.uuid(),
-          name: faker.commerce.productName(),
-          image: faker.random.image(),
-          price: faker.commerce.price(),
-          description: faker.commerce.productDescription(),
-          isInCart: false,
-          isInWishlist: false,
-          fastDelivery: faker.random.boolean(),
-          freeShipping: faker.random.boolean(),
-          quantity: 1,
-        });
-      });
+      [...initialData].forEach(
+        ({
+          id,
+          name,
+          brand,
+          category,
+          images,
+          about,
+          price,
+          rating,
+          isInStock,
+        }) => {
+          server.create("product", {
+            id,
+            name,
+            brand,
+            category,
+
+            image: images,
+            about,
+
+            price,
+            rating,
+            isInStock,
+            description: faker.commerce.productDescription(),
+            isInCart: false,
+            isInWishlist: false,
+            fastDelivery: faker.random.boolean(),
+            freeShipping: faker.random.boolean(),
+            quantity: 1,
+          });
+        }
+      );
     },
   });
 }

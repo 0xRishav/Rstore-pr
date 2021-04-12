@@ -1,0 +1,51 @@
+.SortFilterWrapper {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.SortFilterWrapper__filterDropDownContainer {
+  position: relative;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 190px;
+}
+
+.SortFilterWrapper__filterHeading {
+  margin-right: 16px;
+}
+.SortFilterWrapper__filterDropDownBtn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: var(--light-blue-clr);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.SortFilterWrapper__sortDropDownContainer {
+  position: relative;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 250px;
+}
+
+.SortFilterWrapper__sortHeading {
+  margin-right: 16px;
+}
+.SortFilterWrapper__sortDropDownBtn {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: var(--light-blue-clr);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}

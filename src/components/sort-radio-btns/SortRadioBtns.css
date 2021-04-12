@@ -2,16 +2,6 @@
   margin-bottom: 0;
 }
 
-/* Radio btn styles */
-
-.radio-btn-wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  margin: auto;
-}
-
 .radio-btn-container {
   display: block;
   position: relative;
@@ -73,7 +63,7 @@
   width: 6.4px;
   height: 6.4px;
   border-radius: 64px;
-  background: white;
+  background: var(--white-clr);
 }
 
 .App__totalCartPrice {
@@ -82,7 +72,11 @@
   margin: 32px 0;
 }
 
-@media (max-width: 856px) {
+.radio-btn-container {
+  margin: 16px 0;
+}
+
+@media only screen and (max-width: 856px) {
   .radio-btn-wrapper {
     width: 100%;
   }

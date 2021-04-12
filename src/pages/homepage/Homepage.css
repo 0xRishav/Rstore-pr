@@ -1,0 +1,87 @@
+.Homepage {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-top: 6vh;
+}
+
+.Homepage__subHeading {
+  font-size: 2.5rem;
+}
+
+.Homepage__featuredProductsWrapper {
+  width: 90%;
+  margin: auto;
+}
+
+.Homepage__featuredProdImage {
+  width: 50%;
+  height: 80vh;
+  object-fit: cover;
+}
+
+.Homepage__featuredProdName {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.Homepage__featuredProdLogo {
+  margin: 0 16px;
+}
+
+.Homepage__featuredProductContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px auto;
+}
+
+.Homepage__featuredProductContainer:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.Homepage__infoContainer {
+  width: 50%;
+}
+
+.Homepage__categoryWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 32px;
+  margin: 16px;
+}
+
+.Homepage__categoryImage {
+  width: 80%;
+  height: 40vh;
+  object-fit: cover;
+}
+
+@media only screen and (max-width: 543px) {
+  .Homepage__featuredProductContainer {
+    flex-direction: column;
+    height: 94vh;
+  }
+  .Homepage__featuredProductContainer:nth-child(even) {
+    flex-direction: column;
+  }
+  .Homepage__featuredProdImage {
+    height: 70%;
+  }
+  .Homepage__featuredProdImage {
+    width: 100%;
+  }
+  .Homepage__infoContainer {
+    width: 100%;
+    height: 30%;
+    margin-top: 5%;
+  }
+  .macbookpro-img {
+    width: 90%;
+  }
+  .Homepage__categoryWrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+}

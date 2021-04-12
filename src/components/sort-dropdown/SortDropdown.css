@@ -1,0 +1,17 @@
+.SortDropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  background: var(--whitesmoke-clr);
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  width: 220px;
+  text-align: left;
+}
+
+@media (max-width: 640px) {
+  .SortDropdown {
+    left: -5%;
+  }
+}

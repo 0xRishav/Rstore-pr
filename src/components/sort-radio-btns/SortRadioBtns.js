@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./SortRadioBtns.css";
 
 function SortRadioBtns() {
-  const { sortBy, dispatch } = useContext(ProductsContext).products;
+  const { sortBy, dispatch } = useProduct();
 
   const handleSortBtnOnChange = (payload) => {
     dispatch({ type: "SORT_BY", payload: payload });
   };
-  
+
   return (
     <div className="radio-btn-wrapper">
-      <h5>Sort By Price: </h5>
+      <h5>Price: </h5>
 
       <label className="radio-btn-container" for="low-to-high">
         <input

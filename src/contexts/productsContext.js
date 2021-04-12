@@ -12,6 +12,7 @@ export const ProductsContextProvider = ({ children }) => {
     sortBy: null,
     showFastDeliveryOnly: false,
     showFreeShippingOnly: false,
+    filterPrice: false,
   };
 
   const ProductsReducer = (state, action) => {
@@ -83,6 +84,12 @@ export const ProductsContextProvider = ({ children }) => {
       case "TOGGLE_SHOWFREESHIPPING":
         return { ...state, showFreeShippingOnly: !state.showFreeShippingOnly };
 
+      case "FILTER_BY_PRICE":
+        return {
+          ...state,
+          filterPrice: action.payload,
+        };
+
       default:
         return state;
     }
@@ -103,8 +110,38 @@ export const ProductsContextProvider = ({ children }) => {
     })();
   }, []);
 
+  const getSortedDate = (productList, sortBy) => {
+    if (sortBy && sortBy === "LOW_TO_HIGH") {
+      return productList.sort((a, b) => a.price - b.price);
+    } else if (sortBy && sortBy === "HIGH_TO_LOW") {
+      return productList.sort((a, b) => b.price - a.price);
+    }
+    return productList;
+  };
+
+  const getFilteredData = (
+    productList,
+    { showFastDeliveryOnly, showFreeShippingOnly, filterPrice }
+  ) => {
+    return productList
+      .filter((product) => {
+        return showFastDeliveryOnly ? product.fastDelivery : true;
+      })
+      .filter((product2) => {
+        return showFreeShippingOnly ? product2.freeShipping : true;
+      })
+      .filter((product3) => {
+        return filterPrice ? product3.price <= filterPrice : true;
+      });
+  };
+
+  const sortedData = getSortedDate(state.products, state.sortBy);
+  const filteredData = getFilteredData(sortedData, { ...state });
+
   return (
-    <ProductsContext.Provider value={{ products: { ...state, dispatch } }}>
+    <ProductsContext.Provider
+      value={{ products: { ...state, dispatch, filteredData } }}
+    >
       {children}
     </ProductsContext.Provider>
   );
