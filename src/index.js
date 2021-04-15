@@ -9,16 +9,19 @@ import { BrowserRouter } from "react-router-dom";
 import ProductPage from "./components/product-page/ProductPage";
 import Homepage from "./pages/homepage/Homepage";
 import { WishlistPage, CartPage, AllProductsPage } from "./pages";
+import { AuthContextProvider } from "./contexts/authContext";
 
 setupMockServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProductsContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ProductsContextProvider>
+    <AuthContextProvider>
+      <ProductsContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ProductsContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
