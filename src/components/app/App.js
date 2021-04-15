@@ -1,14 +1,8 @@
 import React, { useContext } from "react";
 // import { Switch, Route } from "react-router-dom";
-import {
-  Switch,
-  Route,
-  withRouter,
-  HashRouter,
-  Routes,
-} from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { Navbar } from "..";
-import { _ScrollToTop } from "../../helpers";
+import { PrivateRoute, _ScrollToTop } from "../../helpers";
 import {
   AllProductsPage,
   CartPage,
@@ -36,7 +30,8 @@ function App() {
           <Route exact path="/" component={Homepage} />
           <div className="App">
             <Route path="/products" component={AllProductsPage} />
-            <Route path="/wishlist" component={WishlistPage} />
+            <PrivateRoute path="/wishlist" component={WishlistPage} />
+            {/* <Route path="/wishlist" component={WishlistPage} /> */}
             <Route path="/cart" component={CartPage} />
             <Route path="/tv" component={TVPage} />
             <Route path="/mobile" component={MobilesPage} />
