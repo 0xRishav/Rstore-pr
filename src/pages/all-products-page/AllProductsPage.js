@@ -3,6 +3,7 @@ import {
   FilterCheckboxes,
   Loader,
   Product,
+  SignInSignOutBtn,
   SortFilterWrapper,
   SortRadioBtns,
 } from "../../components";
@@ -25,7 +26,10 @@ function AllProductsPage() {
 
   return (
     <div className="AllProductsPage">
-      <SortFilterWrapper />
+      <div className="AllProductsPage__sortfilteSignBtnWrapper">
+        <SortFilterWrapper />
+        <SignInSignOutBtn />
+      </div>
 
       {isLoading && <Loader />}
       <div className="products-wrapper">
