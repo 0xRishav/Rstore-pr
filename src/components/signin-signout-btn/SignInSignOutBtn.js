@@ -8,7 +8,7 @@ function SignInSignOutBtn() {
     authContext
   ).loginInfo;
   return (
-    <Link to="/">
+    <Link to="/signin">
       <button className="blue-btn--primary">
         {isUserLoggedIn ? "Sign Out" : "Sign In"}
       </button>
