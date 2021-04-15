@@ -13,3 +13,4 @@ export { default as BuyNowTextLinks } from "./buy-now-text-links/BuyNowTextLinks
 export { default as FilterDropDown } from "./filter-drop-down/FilterDropDown";
 export { default as SortFilterWrapper } from "./sort-filter-wrapper/SortFilterWrapper";
 export { default as SortDropdown } from "./sort-dropdown/SortDropdown";
+export { default as SignInSignOutBtn } from "./signin-signout-btn/SignInSignOutBtn";
