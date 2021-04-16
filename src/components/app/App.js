@@ -14,6 +14,7 @@ import {
   TVPage,
   WatchPage,
   WishlistPage,
+  SignUpPage,
 } from "../../pages";
 import ProductPage from "../product-page/ProductPage";
 
@@ -40,6 +41,7 @@ function App() {
             <Route path="/product/:id" component={ProductPage} />
             <Route path="/search" component={SearchPage} />
             <Route path="/signin" component={SignInPage} />
+            <Route path="/signup" component={SignUpPage} />
           </div>
         </ScrollToTop>
       </Switch>
