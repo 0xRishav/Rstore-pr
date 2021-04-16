@@ -1,6 +1,6 @@
-const fakeAuthAPI = (username, password, users) => {
+export default function fakeAuthAPI(username, password, users) {
   const user = users.find((user) => user.username === username);
-  return (new Promise() = (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (username === user.username && password === user.password) {
         resolve({ success: true, status: 200 });
@@ -8,4 +8,4 @@ const fakeAuthAPI = (username, password, users) => {
       reject({ success: false, status: 401 });
     }, 3000);
   });
-};
+}
