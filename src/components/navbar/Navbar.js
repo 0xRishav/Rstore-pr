@@ -75,7 +75,6 @@ function Navbar() {
       return product;
     }
   });
-  console.log("HISTORY", history);
 
   const handleSearchKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -88,6 +87,8 @@ function Navbar() {
     <div
       className={
         isScrolled === false
+          ? "navbar__wrapper"
+          : isSideMenuOpen === true
           ? "navbar__wrapper"
           : "navbar__wrapper navbar__wrapper--scrolled"
       }
