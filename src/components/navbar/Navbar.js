@@ -9,6 +9,8 @@ import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import useProduct from "../../helpers/useProducts";
+import { FaUserAlt } from "react-icons/fa";
+import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
   const { products, dispatch } = useProduct();
@@ -18,6 +20,7 @@ function Navbar() {
   const [searchInput, setSearchInput] = useState("");
   const { height, width } = useWindowDimensions();
   const navbarRef = useRef(null);
+  const { isUserLoggedIn } = useContext(authContext);
 
   const serchClickHandler = () => {
     setIsSearchClicked(true);
@@ -327,6 +330,20 @@ function Navbar() {
             >
               <BsBag />
               <span className="navbar__productCount">{cartCount}</span>
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to={isUserLoggedIn ? "/profile" : "/signin"}
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
+              {isUserLoggedIn ? (
+                <FaUserAlt />
+              ) : (
+                <button className="navbar__signInBtn">Sign in</button>
+              )}
             </NavLink>
           </li>
         </ul>
