@@ -15,6 +15,8 @@ const ImageSlider = ({ images, parent }) => {
     nextIndex < 0 ? setIndex(images.length - 1) : setIndex(nextIndex);
   };
 
+  console.log(images);
+
   return (
     images.length > 0 && (
       <div
@@ -35,9 +37,15 @@ const ImageSlider = ({ images, parent }) => {
             className={
               parent === "homepage" ? "bannerImage" : "productPage__image"
             }
-            style={{ position: "absolute", top: "0", left: "0" }}
-            src={parent === "homepage" ? images[index].imageUrl : images[index]}
-            alt={index}
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              opacity: index === i ? "1" : "0",
+            }}
+            src={parent === "homepage" ? images[i].imageUrl : images[i]}
+            alt={i}
+            ssssssssss
           />
         ))}
         <button
