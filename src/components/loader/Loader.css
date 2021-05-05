@@ -1,5 +1,5 @@
 /* LOADER CSS */
-.lds-roller {
+/* .lds-roller {
   display: inline-block;
   position: fixed;
   width: 80px;
@@ -83,4 +83,18 @@
   100% {
     transform: rotate(360deg);
   }
+} */
+
+.preloader {
+  align-items: center;
+  background: white;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity 0.3s linear;
+  width: 100%;
+  z-index: 9999;
 }
