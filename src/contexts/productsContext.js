@@ -1,11 +1,14 @@
 import React, { createContext, useState, useEffect, useReducer } from "react";
 import axios from "axios";
+import { useAuth } from "./authContext";
 
 export const ProductsContext = createContext();
 
 export const ProductsContextProvider = ({ children }) => {
   const initialState = {
     products: [],
+    cart: [],
+    wishlist: [],
     isLoading: false,
     productsToShow: "AllProducts",
     isErr: false,
@@ -14,11 +17,112 @@ export const ProductsContextProvider = ({ children }) => {
     showFreeShippingOnly: false,
     filterPrice: false,
   };
+  const currentUser = useAuth();
+
+  const addToCart = async (productId) => {
+    dispatch({ type: "TOGGLE_LOADING" });
+    try {
+      const res = await axios.post(
+        `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`,
+        {
+          productId: productId,
+          quantity: 1,
+        }
+      );
+      if (res.data.success) {
+        dispatch({ type: "SET_CART", payload: [...res.data.data] });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "TOGGLE_LOADING" });
+    }
+  };
+
+  const removeFromCart = async (productId) => {
+    dispatch({ type: "TOGGLE_LOADING" });
+    try {
+      const {
+        data: { data, success },
+      } = await axios.delete(
+        `https://rstoreapi.herokuapp.com/cart/${currentUser._id}/products/${productId}`
+      );
+      if (success) {
+        dispatch({ type: "SET_CART", payload: [...data] });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "TOGGLE_LOADING" });
+    }
+  };
+
+  const changeQuantity = async (productId, quantity) => {
+    dispatch({ type: "TOGGLE_LOADING" });
+    try {
+      const {
+        data: { data, success },
+      } = await axios.put(
+        `https://rstoreapi.herokuapp.com/cart/${currentUser._id}/products/${productId}`,
+        { quantity }
+      );
+      if (success) {
+        dispatch({ type: "SET_CART", payload: [...data] });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "TOGGLE_LOADING" });
+    }
+  };
+
+  const addToWishlist = async (productId) => {
+    dispatch({ type: "TOGGLE_LOADING" });
+    try {
+      const res = await axios.post(
+        `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`,
+        {
+          productId,
+        }
+      );
+      if (res.data.success) {
+        dispatch({ type: "SET_WISHLIST", payload: [...res.data.data] });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "TOGGLE_LOADING" });
+    }
+  };
+
+  const removeFromWishlist = async (productId) => {
+    dispatch({ type: "TOGGLE_LOADING" });
+    try {
+      const {
+        data: { data, success },
+      } = await axios.delete(
+        `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}/products/${productId}`
+      );
+      if (success) {
+        dispatch({ type: "SET_WISHLIST", payload: [...data] });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "TOGGLE_LOADING" });
+    }
+  };
 
   const ProductsReducer = (state, action) => {
     switch (action.type) {
       case "SET_PRODUCTS":
         return { ...state, products: action.payload };
+
+      case "SET_CART":
+        return { ...state, cart: [...action.payload] };
+
+      case "SET_WISHLIST":
+        return { ...state, wishlist: [...action.payload] };
 
       case "TOGGLE_LOADING":
         return { ...state, isLoading: !state.isLoading };
@@ -101,8 +205,49 @@ export const ProductsContextProvider = ({ children }) => {
     (async function () {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
-        const prods = await axios.get("/api/products");
-        dispatch({ type: "SET_PRODUCTS", payload: prods.data.products });
+        const response = await axios.get(
+          "https://rstoreapi.herokuapp.com/products"
+        );
+        console.log(response);
+        if (response.data.success) {
+          dispatch({ type: "SET_PRODUCTS", payload: response.data.products });
+        }
+      } catch (err) {
+        dispatch({ type: "TOGGLE_ERR" });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async function () {
+      dispatch({ type: "TOGGLE_LOADING" });
+      try {
+        const response = await axios.get(
+          `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
+        );
+        console.log(response);
+        if (response.data.success) {
+          dispatch({ type: "SET_CART", payload: [...response.data.data] });
+        }
+      } catch (err) {
+        dispatch({ type: "TOGGLE_ERR" });
+      }
+      dispatch({ type: "TOGGLE_LOADING" });
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async function () {
+      dispatch({ type: "TOGGLE_LOADING" });
+      try {
+        const response = await axios.get(
+          `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
+        );
+        console.log(response);
+        if (response.data.success) {
+          dispatch({ type: "SET_WISHLIST", payload: [...response.data.data] });
+        }
       } catch (err) {
         dispatch({ type: "TOGGLE_ERR" });
       }
@@ -140,7 +285,18 @@ export const ProductsContextProvider = ({ children }) => {
 
   return (
     <ProductsContext.Provider
-      value={{ products: { ...state, dispatch, filteredData } }}
+      value={{
+        products: {
+          ...state,
+          dispatch,
+          filteredData,
+          addToCart,
+          removeFromCart,
+          addToWishlist,
+          removeFromWishlist,
+          changeQuantity,
+        },
+      }}
     >
       {children}
     </ProductsContext.Provider>

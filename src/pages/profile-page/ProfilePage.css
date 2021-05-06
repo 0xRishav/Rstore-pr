@@ -1,0 +1,12 @@
+.profilePage {
+  margin-top: 10vh;
+}
+.profilePage__profileCircle {
+  /* display: inline; */
+  padding: 6rem 6rem;
+  border-radius: 360px;
+  font-size: 4rem;
+  background: pink;
+  color: var(--white-clr);
+  font-weight: 600;
+}

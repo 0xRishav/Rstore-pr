@@ -21,7 +21,7 @@ function ProductPage() {
     freeShipping,
     about,
     rating,
-  } = products.find((product) => product.id === id);
+  } = products.find((product) => product._id === id);
 
   return (
     <div className="productPage">

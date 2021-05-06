@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router";
+import { Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
 import useLocalStorage from "../../custom-hooks/useLocalStorage";
 import "./SignUpPage.css";
 
 function SignUpPage() {
+  const [isLoading, setIsLoading] = useState(false);
   const { signUpUser } = useContext(authContext);
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -15,11 +17,19 @@ function SignUpPage() {
 
   let history = useHistory();
 
-  const handleSignUpClick = () => {
+  const handleSignUpClick = async () => {
     if (isNameValid && isPasswordValid && isEmailValid) {
-      signUpUser(name, email, password);
-      history.push("/signin");
+      setIsLoading(true);
+      try {
+        const res = await signUpUser(name, email, password);
+        if (res.success) {
+          history.push("/signin");
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
+    setIsLoading(false);
   };
 
   const emailChangeHandler = (e) => {
@@ -38,7 +48,9 @@ function SignUpPage() {
 
   const passwordChangeHandler = (e) => {
     setPassword(e.target.value);
-    e.target.value === "" ? setIsPasswordValid(false) : setIsPasswordValid(true);
+    e.target.value === ""
+      ? setIsPasswordValid(false)
+      : setIsPasswordValid(true);
   };
 
   console.log("EMAIL_VALIDATION", isPasswordValid);
@@ -47,6 +59,7 @@ function SignUpPage() {
 
   return (
     <div className="signup">
+      {isLoading && <Loader />}
       <h2>Sign up to RStore</h2>
       <div className="signup__inputContainer">
         <input type="text" placeholder="Name" onChange={nameChangeHandler} />

@@ -15,6 +15,7 @@ import {
   WatchPage,
   WishlistPage,
   SignUpPage,
+  ProfilePage,
 } from "../../pages";
 import ProductPage from "../product-page/ProductPage";
 
@@ -32,7 +33,7 @@ function App() {
           <div className="App">
             <Route path="/products" component={AllProductsPage} />
             <PrivateRoute path="/wishlist" component={WishlistPage} />
-            {/* <Route path="/wishlist" component={WishlistPage} /> */}
+            <PrivateRoute path="/profile" component={ProfilePage} />
             <Route path="/cart" component={CartPage} />
             <Route path="/tv" component={TVPage} />
             <Route path="/mobile" component={MobilesPage} />

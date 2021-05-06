@@ -1,11 +1,18 @@
 import React, { useContext, useState } from "react";
-import { CartProduct, CouponModal } from "../../components";
+import { CartProduct, CouponModal, Loader } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
 import { useProduct } from "../../helpers";
 import "./CartPage.css";
 
 function CartPage() {
-  const { products, dispatch } = useProduct();
+  const {
+    products,
+    dispatch,
+    cart,
+    addToCart,
+    removeFromCart,
+    isLoading,
+  } = useProduct();
   const cartProducts = products.filter((product) => product.isInCart);
 
   const [selectedCoupon, setSelectedCoupon] = useState(false);
@@ -55,7 +62,8 @@ function CartPage() {
     : false;
   return (
     <div className="CartPage">
-      {cartProducts.map((product) => (
+      {isLoading && <Loader />}
+      {cart.map((product) => (
         <CartProduct
           {...product}
           dispatch={dispatch}
@@ -64,8 +72,8 @@ function CartPage() {
         />
       ))}
 
-      {cartProducts.length !== 0 && <div className="hr-div"></div>}
-      {cartProducts.length !== 0 && (
+      {cart.length !== 0 && <div className="hr-div"></div>}
+      {cart.length !== 0 && (
         <div className="CartPage__totalApplyOfferWrapper">
           <div className="CartPage__totalCartPriceContainer">
             Total: Rs.

@@ -9,3 +9,4 @@ export { default as WatchPage } from "./watch-page/WatchPage";
 export { default as SearchPage } from "./search-page/SearchPage";
 export { default as SignInPage } from "./signin-page/SignInPage";
 export { default as SignUpPage } from "./signup-page/SignUpPage";
+export { default as ProfilePage } from "./profile-page/ProfilePage";

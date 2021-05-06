@@ -1,4 +1,5 @@
 import React from "react";
+import { useProduct } from "../../helpers";
 import "./CartWishlistBtn.css";
 
 function CartWishlistBtn({
@@ -8,6 +9,12 @@ function CartWishlistBtn({
   dispatch,
   isProductsPage,
 }) {
+  const {
+    addToCart,
+    removeFromCart,
+    addToWishList,
+    removeFromWishlist,
+  } = useProduct();
   return (
     <div
       className={
@@ -15,7 +22,7 @@ function CartWishlistBtn({
       }
     >
       <button
-        onClick={() => dispatch({ type: "TOGGLE_ITEM_IN_CART", payload: id })}
+        onClick={addToCart(id)}
         className={
           isProductsPage
             ? "blue-btn--primary allProductsBtn"

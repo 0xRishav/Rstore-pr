@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import axios from "axios";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import useLocalStorage from "../custom-hooks/useLocalStorage";
 import { fakeAuthAPI } from "../helpers";
@@ -8,6 +9,7 @@ export const authContext = createContext();
 export const AuthContextProvider = ({ children }) => {
   const [users, setUsers] = useLocalStorage("users", []);
   const [currentUser, setCurrentUser] = useLocalStorage("currentUser", false);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
   useEffect(() => {
     if (currentUser) {
@@ -15,26 +17,45 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
-  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
-  const signUpUser = (name, email, password) => {
-    setUsers([...users, { name, email, password }]);
-    setCurrentUser({ name, email, password });
+  const signUpUser = async (name, email, password) => {
+    try {
+      const res = await axios.post(
+        "https://rstoreapi.herokuapp.com/users/signup",
+        {
+          name: name,
+          email: email,
+          password: password,
+        }
+      );
+      if (res.data.success) {
+        return { success: true, message: "user signed up" };
+      } else {
+        console.log("invalid email or password");
+        return { success: false, message: "user sign up fail" };
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   async function loginWithCredentials(email, password) {
     try {
-      const response = await fakeAuthAPI(email, password, users);
-      if (response.success === true) {
-        const user = users.find((user) => user.email === email);
-        setCurrentUser(user);
+      const response = await axios.post(
+        "https://rstoreapi.herokuapp.com/users/signin",
+        { email, password }
+      );
+      console.log(response);
+
+      if (response.data.success) {
+        setCurrentUser(response.user);
         setIsUserLoggedIn(true);
-        // return response;
         return response;
+      } else {
+        console.log("invalid login request");
+        return { success: false, message: "invalid login request" };
       }
     } catch (err) {
       console.log(err);
-      // return response;
     }
   }
   return (
@@ -44,9 +65,14 @@ export const AuthContextProvider = ({ children }) => {
         setIsUserLoggedIn,
         loginWithCredentials,
         signUpUser,
+        currentUser,
       }}
     >
       {children}
     </authContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  return useContext(authContext);
 };

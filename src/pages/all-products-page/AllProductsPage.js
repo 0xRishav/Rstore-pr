@@ -24,6 +24,8 @@ function AllProductsPage() {
     filteredData,
   } = useProduct();
 
+  filteredData.map((product) => console.log(product));
+
   return (
     <div className="AllProductsPage">
       <div className="AllProductsPage__sortfilteSignBtnWrapper">
@@ -34,7 +36,12 @@ function AllProductsPage() {
       {isLoading && <Loader />}
       <div className="products-wrapper">
         {filteredData.map((product) => (
-          <Product {...product} dispatch={dispatch} key={product.id} />
+          <Product
+            {...product}
+            id={product._id}
+            dispatch={dispatch}
+            key={product._id}
+          />
         ))}
       </div>
     </div>

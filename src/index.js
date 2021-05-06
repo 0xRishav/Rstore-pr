@@ -11,7 +11,7 @@ import Homepage from "./pages/homepage/Homepage";
 import { WishlistPage, CartPage, AllProductsPage } from "./pages";
 import { AuthContextProvider } from "./contexts/authContext";
 
-setupMockServer();
+// setupMockServer();
 
 ReactDOM.render(
   <React.StrictMode>
