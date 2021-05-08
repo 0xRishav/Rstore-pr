@@ -1,33 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
-  FilterCheckboxes,
   Loader,
   Product,
   SignInSignOutBtn,
   SortFilterWrapper,
-  SortRadioBtns,
 } from "../../components";
-import { ProductsContext } from "../../contexts/productsContext";
 import { useProduct } from "../../helpers";
 import "./AllProductsPage.css";
 
 function AllProductsPage() {
-  const {
-    products,
-    isLoading,
-    productsToShow,
-    isErr,
-    sortBy,
-    showFastDeliveryOnly,
-    showFreeShippingOnly,
-    dispatch,
-    filteredData,
-    cart,
-    wishlist,
-  } = useProduct();
-  console.log("WISHLIST", wishlist);
-
-  // filteredData.map((product) => console.log(product));
+  const { isLoading, dispatch, filteredData } = useProduct();
 
   return (
     <div className="AllProductsPage">
@@ -38,8 +20,9 @@ function AllProductsPage() {
 
       {isLoading && <Loader />}
       <div className="products-wrapper">
-        {filteredData.map((product) => (
+        {filteredData.map((product, index) => (
           <Product
+            key={index}
             {...product}
             id={product._id}
             dispatch={dispatch}

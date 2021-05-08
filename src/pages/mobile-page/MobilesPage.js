@@ -15,8 +15,13 @@ function MobilesPage() {
       <SortFilterWrapper />
       {isLoading && <Loader />}
       <div className="products-wrapper">
-        {Mobiles.map((product) => (
-          <Product {...product} dispatch={dispatch} key={product.id} />
+        {Mobiles.map((product, index) => (
+          <Product
+            key={index}
+            {...product}
+            dispatch={dispatch}
+            key={product.id}
+          />
         ))}
       </div>
     </div>

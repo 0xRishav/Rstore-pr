@@ -19,7 +19,6 @@ export const ProductsContextProvider = ({ children }) => {
     filterPrice: false,
   };
   const { currentUser, isUserLoggedIn } = useAuth();
-  console.log({ currentUser });
   let history = useHistory();
 
   const addToCart = async (productId) => {
@@ -70,7 +69,6 @@ export const ProductsContextProvider = ({ children }) => {
         `https://rstoreapi.herokuapp.com/cart/${currentUser._id}/products/${productId}`,
         { quantity: quantity }
       );
-      console.log("DATA", data)
       if (success) {
         dispatch({ type: "SET_CART", payload: [...data] });
       }
@@ -216,7 +214,6 @@ export const ProductsContextProvider = ({ children }) => {
         const productResponse = await axios.get(
           "https://rstoreapi.herokuapp.com/products"
         );
-        console.log(productResponse);
         if (productResponse.data.success) {
           dispatch({
             type: "SET_PRODUCTS",
@@ -237,7 +234,6 @@ export const ProductsContextProvider = ({ children }) => {
         const cartResponse = await axios.get(
           `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
         );
-        console.log("WISHLIST_FETCH", cartResponse);
         if (cartResponse.data.success) {
           dispatch({ type: "SET_CART", payload: [...cartResponse.data.data] });
         }
@@ -255,7 +251,6 @@ export const ProductsContextProvider = ({ children }) => {
         const wishlistResponse = await axios.get(
           `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
         );
-        console.log(wishlistResponse);
         if (wishlistResponse.data.success) {
           dispatch({
             type: "SET_WISHLIST",

@@ -15,8 +15,6 @@ const ImageSlider = ({ images, parent }) => {
     nextIndex < 0 ? setIndex(images.length - 1) : setIndex(nextIndex);
   };
 
-  console.log(images);
-
   return (
     images.length > 0 && (
       <div
@@ -34,6 +32,7 @@ const ImageSlider = ({ images, parent }) => {
         </button>
         {images.map((image, i) => (
           <img
+            key={index}
             className={
               parent === "homepage" ? "bannerImage" : "productPage__image"
             }

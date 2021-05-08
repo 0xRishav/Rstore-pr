@@ -109,8 +109,8 @@ function Homepage() {
       {/* FEATURED PRODS */}
       <h2 className="Homepage__subHeading">Featured Products</h2>
       <div className="Homepage__featuredProductsWrapper">
-        {featuredProducts.map((product) => (
-          <div className="Homepage__featuredProductContainer">
+        {featuredProducts.map((product, index) => (
+          <div key={index} className="Homepage__featuredProductContainer">
             <img
               className="Homepage__featuredProdImage"
               src={product.imgSrc}
@@ -127,12 +127,10 @@ function Homepage() {
         ))}
       </div>
 
-
-
       <h2 className="Homepage__subHeading">Categories</h2>
       <div className="Homepage__categoryWrapper">
-        {categories.map((category) => (
-          <div className="Homepage__categoryContainer">
+        {categories.map((category, index) => (
+          <div key={index} className="Homepage__categoryContainer">
             <img
               src={category.imgSrc}
               alt={category.alt}

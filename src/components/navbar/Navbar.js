@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
-import { ProductsContext } from "../../contexts/productsContext";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
@@ -13,12 +12,12 @@ import { FaUserAlt } from "react-icons/fa";
 import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
-  const { products, dispatch } = useProduct();
+  const { products } = useProduct();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const { height, width } = useWindowDimensions();
+  const {  width } = useWindowDimensions();
   const navbarRef = useRef(null);
   const { isUserLoggedIn } = useContext(authContext);
 

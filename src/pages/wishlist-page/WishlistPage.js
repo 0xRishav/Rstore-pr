@@ -11,8 +11,13 @@ function WishlistPage() {
   return (
     <div className="WishlistPage">
       <div className="products-wrapper">
-        {wishlist.map((product) => (
-          <Product {...product} dispatch={dispatch} key={product.id} />
+        {wishlist.map((product, index) => (
+          <Product
+            key={index}
+            {...product}
+            dispatch={dispatch}
+            key={product.id}
+          />
         ))}
       </div>
       {wishlist.length === 0 && (

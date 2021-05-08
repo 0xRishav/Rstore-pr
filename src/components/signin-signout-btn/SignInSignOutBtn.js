@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import "./SignInSignOutBtn.css";
 

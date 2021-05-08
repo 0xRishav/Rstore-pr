@@ -1,21 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { CartProduct, CouponModal, Loader } from "../../components";
-import { ProductsContext } from "../../contexts/productsContext";
 import { useProduct } from "../../helpers";
 import "./CartPage.css";
 
 function CartPage() {
-  const {
-    products,
-    dispatch,
-    cart,
-    addToCart,
-    removeFromCart,
-    isLoading,
-  } = useProduct();
-  const cartProducts = products.filter((product) => product.isInCart);
-
-  console.log({ cart });
+  const { dispatch, cart, isLoading } = useProduct();
 
   const [selectedCoupon, setSelectedCoupon] = useState(false);
 
@@ -32,7 +21,6 @@ function CartPage() {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     console.log("modal opened");
   }
 
@@ -57,16 +45,15 @@ function CartPage() {
 
   const totalPrice = getTotalPrice();
 
-  cart.map((cartProduct) => console.log("PRODUCT", cartProduct.quantity));
-
   let newTotal = selectedCoupon
     ? totalPrice - Math.round(getTotalPrice() * selectedCoupon.discount)
     : false;
   return (
     <div className="CartPage">
       {isLoading && <Loader />}
-      {cart.map((product) => (
+      {cart.map((product, index) => (
         <CartProduct
+          key={index}
           product={product.product}
           cartId={product._id}
           quantity={product.quantity}

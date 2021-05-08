@@ -24,8 +24,6 @@ function SignInPage() {
     setIsLoading(false);
   }
 
-  console.log({ state });
-
   return (
     <div className="signin">
       {isLoading && <Loader />}

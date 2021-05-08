@@ -44,10 +44,8 @@ export const AuthContextProvider = ({ children }) => {
         "https://rstoreapi.herokuapp.com/users/signin",
         { email, password }
       );
-      console.log(response);
 
       if (response.data.success) {
-        console.log(response);
         setCurrentUser(response.data.user);
         setIsUserLoggedIn(true);
         return response;

@@ -53,8 +53,6 @@ function SignUpPage() {
       : setIsPasswordValid(true);
   };
 
-  console.log("EMAIL_VALIDATION", isPasswordValid);
-
   const validateSignUp = () => {};
 
   return (

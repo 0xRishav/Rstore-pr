@@ -1,7 +1,5 @@
-import { useContext } from "react";
 import { useParams } from "react-router";
 import { CartWishlistBtn, ImageSlider } from "..";
-import { ProductsContext } from "../../contexts/productsContext";
 import StarRatings from "react-star-ratings";
 import "./ProductPage.css";
 import { useProduct } from "../../helpers";
@@ -14,7 +12,6 @@ function ProductPage() {
     name,
     image,
     price,
-    description,
     isInCart,
     isInWishlist,
     fastDelivery,
@@ -55,8 +52,10 @@ function ProductPage() {
           </div>
           <ul>
             <h4>About this Product</h4>
-            {about.map((about) => (
-              <li className="ProductPage__aboutLi">{about}</li>
+            {about.map((about, index) => (
+              <li className="ProductPage__aboutLi" key={index}>
+                {about}
+              </li>
             ))}
           </ul>
         </div>

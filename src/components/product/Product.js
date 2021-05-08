@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./Product.css";
 import { AiFillTag } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { CartWishlistBtn } from "..";
-import axios from "axios";
 
 function Product({
   id,

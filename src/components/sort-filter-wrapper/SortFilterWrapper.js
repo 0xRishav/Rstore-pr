@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FilterDropDown, SortDropdown } from "..";
-import { ProductsContext } from "../../contexts/productsContext";
 import { useProduct } from "../../helpers";
 import "./SortFilterWrapper.css";
 

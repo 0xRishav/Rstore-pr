@@ -1,20 +1,19 @@
 import React from "react";
 import { useProduct } from "../../helpers";
 import "./CartWishlistBtn.css";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
-function CartWishlistBtn({ id, dispatch, isProductsPage }) {
+function CartWishlistBtn({ id, isProductsPage }) {
   const {
     addToCart,
     removeFromCart,
-    addToWishList,
     removeFromWishlist,
     wishlist,
     addToWishlist,
     cart,
   } = useProduct();
-  
+
   const history = useHistory();
   const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
   const isInWishlist = wishlist.some(
@@ -22,10 +21,6 @@ function CartWishlistBtn({ id, dispatch, isProductsPage }) {
   );
 
   const { isUserLoggedIn } = useAuth();
-
-  if(isInCart){
-    console.log("from btn", id);
-  }
 
   return (
     <div

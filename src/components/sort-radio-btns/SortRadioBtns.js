@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { ProductsContext } from "../../contexts/productsContext";
 import { useProduct } from "../../helpers";
 import "./SortRadioBtns.css";
 

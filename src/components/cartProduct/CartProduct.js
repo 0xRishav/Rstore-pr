@@ -6,23 +6,15 @@ import { useProduct } from "../../helpers";
 import { Loader } from "..";
 
 // : { id, name, price, image }
-function CartProduct({
-  product: { _id: id, name, price, image },
-  dispatch,
-  getTotalPrice,
-  quantity,
-  cartId,
-}) {
-  const TotalPrice = getTotalPrice();
+function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
   const { changeQuantity, isLoading, removeFromCart } = useProduct();
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const options = [1, 2, 3, 4, 5];
   const dropDownChangeHandler = (e) => {
+    setSelectedQuantity(e.value);
     changeQuantity(id, e.value);
   };
 
-  console.log("Normal id", id);
-  console.log("second id", cartId);
   return (
     <div className="CartProduct">
       {isLoading && <Loader />}
@@ -35,7 +27,7 @@ function CartProduct({
           <Dropdown
             options={options}
             onChange={dropDownChangeHandler}
-            value={setSelectedQuantity}
+            value={selectedQuantity}
             placeholder="Select Quantity"
           />
         </div>

@@ -13,8 +13,13 @@ function TVPage() {
       <SortFilterWrapper />
       {isLoading && <Loader />}
       <div className="products-wrapper">
-        {TVs.map((product) => (
-          <Product {...product} dispatch={dispatch} key={product.id} />
+        {TVs.map((product, index) => (
+          <Product
+            key={index}
+            {...product}
+            dispatch={dispatch}
+            key={product.id}
+          />
         ))}
       </div>
     </div>
