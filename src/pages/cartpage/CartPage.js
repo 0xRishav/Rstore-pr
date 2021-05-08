@@ -15,6 +15,8 @@ function CartPage() {
   } = useProduct();
   const cartProducts = products.filter((product) => product.isInCart);
 
+  console.log({ cart });
+
   const [selectedCoupon, setSelectedCoupon] = useState(false);
 
   const couponCodes = [
@@ -43,19 +45,19 @@ function CartPage() {
     setIsOpen(false);
   };
 
-  const getTotalPriceReducer = (acc, { price, quantity }) => {
-    return acc + price * quantity;
+  const getTotalPriceReducer = (acc, product) => {
+    return acc + product.product.price * product.quantity;
   };
 
   const getTotalPrice = () => {
-    const totalPrice = products
-      .filter((product) => product.isInCart)
-      .reduce(getTotalPriceReducer, 0);
+    const totalPrice = cart.reduce(getTotalPriceReducer, 0);
 
     return totalPrice;
   };
 
   const totalPrice = getTotalPrice();
+
+  cart.map((cartProduct) => console.log("PRODUCT", cartProduct.quantity));
 
   let newTotal = selectedCoupon
     ? totalPrice - Math.round(getTotalPrice() * selectedCoupon.discount)
@@ -65,7 +67,9 @@ function CartPage() {
       {isLoading && <Loader />}
       {cart.map((product) => (
         <CartProduct
-          {...product}
+          product={product.product}
+          cartId={product._id}
+          quantity={product.quantity}
           dispatch={dispatch}
           getTotalPrice={getTotalPrice}
           key={product.id}
@@ -101,7 +105,7 @@ function CartPage() {
           />
         </div>
       )}
-      {cartProducts.length === 0 && (
+      {cart.length === 0 && (
         <div className="CartPage__totalCartPrice">Cart Is Empty</div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useReducer } from "react";
 import axios from "axios";
 import { useAuth } from "./authContext";
+import { useHistory } from "react-router-dom";
 
 export const ProductsContext = createContext();
 
@@ -17,7 +18,9 @@ export const ProductsContextProvider = ({ children }) => {
     showFreeShippingOnly: false,
     filterPrice: false,
   };
-  const currentUser = useAuth();
+  const { currentUser, isUserLoggedIn } = useAuth();
+  console.log({ currentUser });
+  let history = useHistory();
 
   const addToCart = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });
@@ -29,6 +32,7 @@ export const ProductsContextProvider = ({ children }) => {
           quantity: 1,
         }
       );
+      console.log("res", res);
       if (res.data.success) {
         dispatch({ type: "SET_CART", payload: [...res.data.data] });
       }
@@ -64,8 +68,9 @@ export const ProductsContextProvider = ({ children }) => {
         data: { data, success },
       } = await axios.put(
         `https://rstoreapi.herokuapp.com/cart/${currentUser._id}/products/${productId}`,
-        { quantity }
+        { quantity: quantity }
       );
+      console.log("DATA", data)
       if (success) {
         dispatch({ type: "SET_CART", payload: [...data] });
       }
@@ -116,10 +121,13 @@ export const ProductsContextProvider = ({ children }) => {
   const ProductsReducer = (state, action) => {
     switch (action.type) {
       case "SET_PRODUCTS":
-        return { ...state, products: action.payload };
+        return { ...state, products: [...action.payload] };
 
       case "SET_CART":
-        return { ...state, cart: [...action.payload] };
+        return {
+          ...state,
+          cart: [...action.payload],
+        };
 
       case "SET_WISHLIST":
         return { ...state, wishlist: [...action.payload] };
@@ -205,12 +213,15 @@ export const ProductsContextProvider = ({ children }) => {
     (async function () {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
-        const response = await axios.get(
+        const productResponse = await axios.get(
           "https://rstoreapi.herokuapp.com/products"
         );
-        console.log(response);
-        if (response.data.success) {
-          dispatch({ type: "SET_PRODUCTS", payload: response.data.products });
+        console.log(productResponse);
+        if (productResponse.data.success) {
+          dispatch({
+            type: "SET_PRODUCTS",
+            payload: [...productResponse.data.products],
+          });
         }
       } catch (err) {
         dispatch({ type: "TOGGLE_ERR" });
@@ -223,12 +234,12 @@ export const ProductsContextProvider = ({ children }) => {
     (async function () {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
-        const response = await axios.get(
+        const cartResponse = await axios.get(
           `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
         );
-        console.log(response);
-        if (response.data.success) {
-          dispatch({ type: "SET_CART", payload: [...response.data.data] });
+        console.log("WISHLIST_FETCH", cartResponse);
+        if (cartResponse.data.success) {
+          dispatch({ type: "SET_CART", payload: [...cartResponse.data.data] });
         }
       } catch (err) {
         dispatch({ type: "TOGGLE_ERR" });
@@ -241,12 +252,15 @@ export const ProductsContextProvider = ({ children }) => {
     (async function () {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
-        const response = await axios.get(
+        const wishlistResponse = await axios.get(
           `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
         );
-        console.log(response);
-        if (response.data.success) {
-          dispatch({ type: "SET_WISHLIST", payload: [...response.data.data] });
+        console.log(wishlistResponse);
+        if (wishlistResponse.data.success) {
+          dispatch({
+            type: "SET_WISHLIST",
+            payload: [...wishlistResponse.data.data],
+          });
         }
       } catch (err) {
         dispatch({ type: "TOGGLE_ERR" });

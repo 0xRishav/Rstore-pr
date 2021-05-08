@@ -22,9 +22,12 @@ function AllProductsPage() {
     showFreeShippingOnly,
     dispatch,
     filteredData,
+    cart,
+    wishlist,
   } = useProduct();
+  console.log("WISHLIST", wishlist);
 
-  filteredData.map((product) => console.log(product));
+  // filteredData.map((product) => console.log(product));
 
   return (
     <div className="AllProductsPage">
