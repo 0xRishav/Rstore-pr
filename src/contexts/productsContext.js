@@ -142,52 +142,6 @@ export const ProductsContextProvider = ({ children }) => {
       case "TOGGLE_ERR":
         return { ...state, isErr: !state.isErr };
 
-      case "TOGGLE_ITEM_IN_CART":
-        return {
-          ...state,
-          products: state.products.map((ele) =>
-            ele.id === action.payload
-              ? { ...ele, isInCart: !ele.isInCart, quantity: 1 }
-              : ele
-          ),
-        };
-
-      case "TOGGLE_ITEM_IN_WISHLIST":
-        return {
-          ...state,
-          products: state.products.map((ele) =>
-            ele.id === action.payload
-              ? { ...ele, isInWishlist: !ele.isInWishlist }
-              : ele
-          ),
-        };
-
-      case "INCREASE_QUANTITY":
-        return {
-          ...state,
-          products: state.products.map((ele) =>
-            ele.id === action.payload
-              ? { ...ele, quantity: ele.quantity + 1 }
-              : ele
-          ),
-        };
-
-      case "DECREASE_QUANTITY":
-        const index = state.products.findIndex(
-          (ele, index) => ele.id === action.payload
-        );
-        if (state.products[index].quantity < 2) {
-          return state;
-        }
-        return {
-          ...state,
-          products: state.products.map((ele) =>
-            ele.id === action.payload
-              ? { ...ele, quantity: ele.quantity - 1 }
-              : ele
-          ),
-        };
-
       case "TOGGLE_SHOWFASTDELIVERY":
         return { ...state, showFastDeliveryOnly: !state.showFastDeliveryOnly };
 
