@@ -18,8 +18,13 @@ function WatchPage() {
 
       {isLoading && <Loader />}
       <div className="products-wrapper">
-        {Watches.map((product) => (
-          <Product {...product} dispatch={dispatch} key={product.id} />
+        {Watches.map((product, index) => (
+          <Product
+            key={index}
+            {...product}
+            dispatch={dispatch}
+            key={product.id}
+          />
         ))}
       </div>
     </div>

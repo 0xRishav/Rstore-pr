@@ -30,13 +30,23 @@ const ImageSlider = ({ images, parent }) => {
         >
           {"<"}
         </button>
-        <img
-          className={
-            parent === "homepage" ? "bannerImage" : "productPage__image"
-          }
-          src={parent === "homepage" ? images[index].imageUrl : images[index]}
-          alt={index}
-        />
+        {images.map((image, i) => (
+          <img
+            key={index}
+            className={
+              parent === "homepage" ? "bannerImage" : "productPage__image"
+            }
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              opacity: index === i ? "1" : "0",
+            }}
+            src={parent === "homepage" ? images[i].imageUrl : images[i]}
+            alt={i}
+            ssssssssss
+          />
+        ))}
         <button
           onClick={slideRight}
           className="ImageSlider__sliderBtn ImageSlider__sliderBtn--right"

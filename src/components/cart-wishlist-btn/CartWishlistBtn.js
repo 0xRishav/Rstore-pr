@@ -1,13 +1,27 @@
 import React from "react";
+import { useProduct } from "../../helpers";
 import "./CartWishlistBtn.css";
+import { useHistory } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 
-function CartWishlistBtn({
-  id,
-  isInCart,
-  isInWishlist,
-  dispatch,
-  isProductsPage,
-}) {
+function CartWishlistBtn({ id, isProductsPage }) {
+  const {
+    addToCart,
+    removeFromCart,
+    removeFromWishlist,
+    wishlist,
+    addToWishlist,
+    cart,
+  } = useProduct();
+
+  const history = useHistory();
+  const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
+  const isInWishlist = wishlist.some(
+    (wishlistProduct) => wishlistProduct._id == id
+  );
+
+  const { isUserLoggedIn } = useAuth();
+
   return (
     <div
       className={
@@ -15,7 +29,15 @@ function CartWishlistBtn({
       }
     >
       <button
-        onClick={() => dispatch({ type: "TOGGLE_ITEM_IN_CART", payload: id })}
+        onClick={
+          isUserLoggedIn
+            ? isInCart
+              ? () => removeFromCart(id)
+              : () => {
+                  addToCart(id);
+                }
+            : () => history.push("/signin")
+        }
         className={
           isProductsPage
             ? "blue-btn--primary allProductsBtn"
@@ -25,8 +47,16 @@ function CartWishlistBtn({
         {isInCart ? "Remove From Cart" : "Add To Cart"}
       </button>
       <button
-        onClick={() =>
-          dispatch({ type: "TOGGLE_ITEM_IN_WISHLIST", payload: id })
+        onClick={
+          isUserLoggedIn
+            ? isInWishlist
+              ? () => {
+                  removeFromWishlist(id);
+                }
+              : () => {
+                  addToWishlist(id);
+                }
+            : () => history.push("/signin")
         }
         className={
           isProductsPage

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 // import { Switch, Route } from "react-router-dom";
 import { Switch, Route, withRouter } from "react-router-dom";
 import { Navbar } from "..";
-import { _ScrollToTop } from "../../helpers";
+import { PrivateRoute, _ScrollToTop } from "../../helpers";
 import {
   AllProductsPage,
   CartPage,
@@ -10,9 +10,12 @@ import {
   LaptopsPage,
   MobilesPage,
   SearchPage,
+  SignInPage,
   TVPage,
   WatchPage,
   WishlistPage,
+  SignUpPage,
+  ProfilePage,
 } from "../../pages";
 import ProductPage from "../product-page/ProductPage";
 
@@ -26,37 +29,20 @@ function App() {
       <Navbar />
       <Switch>
         <ScrollToTop>
-          <Route exact path="/">
-            <Homepage />
-          </Route>
+          <Route exact path="/" component={Homepage} />
           <div className="App">
-            <Route path="/products">
-              <AllProductsPage />
-            </Route>
-            <Route path="/wishlist">
-              <WishlistPage />
-            </Route>
-            <Route path="/cart">
-              <CartPage />
-            </Route>
-            <Route path="/tv">
-              <TVPage />
-            </Route>
-            <Route path="/mobile">
-              <MobilesPage />
-            </Route>
-            <Route path="/laptop">
-              <LaptopsPage />
-            </Route>
-            <Route path="/watch">
-              <WatchPage />
-            </Route>
-            <Route path="/product/:id">
-              <ProductPage />
-            </Route>
-            <Route path="/search">
-              <SearchPage />
-            </Route>
+            <Route path="/products" component={AllProductsPage} />
+            <PrivateRoute path="/wishlist" component={WishlistPage} />
+            <PrivateRoute path="/profile" component={ProfilePage} />
+            <Route path="/cart" component={CartPage} />
+            <Route path="/tv" component={TVPage} />
+            <Route path="/mobile" component={MobilesPage} />
+            <Route path="/laptop" component={LaptopsPage} />
+            <Route path="/watch" component={WatchPage} />
+            <Route path="/product/:id" component={ProductPage} />
+            <Route path="/search" component={SearchPage} />
+            <Route path="/signin" component={SignInPage} />
+            <Route path="/signup" component={SignUpPage} />
           </div>
         </ScrollToTop>
       </Switch>

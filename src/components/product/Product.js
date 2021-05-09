@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./Product.css";
 import { AiFillTag } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -6,14 +6,10 @@ import { CartWishlistBtn } from "..";
 
 function Product({
   id,
+  dispatch,
   name,
   image,
   price,
-  description,
-  isInCart,
-  isInWishlist,
-  dispatch,
-  quantity,
   fastDelivery,
   freeShipping,
 }) {
@@ -61,8 +57,8 @@ function Product({
       <div className="Product__buttonWrapper">
         <CartWishlistBtn
           id={id}
-          isInCart={isInCart}
-          isInWishlist={isInWishlist}
+          isInCart={false}
+          isInWishlist={false}
           dispatch={dispatch}
           isProductsPage
         />

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
-import { ProductsContext } from "../../contexts/productsContext";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
@@ -9,15 +8,18 @@ import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import useProduct from "../../helpers/useProducts";
+import { FaUserAlt } from "react-icons/fa";
+import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
-  const { products, dispatch } = useProduct();
+  const { products } = useProduct();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const { height, width } = useWindowDimensions();
+  const {  width } = useWindowDimensions();
   const navbarRef = useRef(null);
+  const { isUserLoggedIn } = useContext(authContext);
 
   const serchClickHandler = () => {
     setIsSearchClicked(true);
@@ -75,7 +77,6 @@ function Navbar() {
       return product;
     }
   });
-  console.log("HISTORY", history);
 
   const handleSearchKeyPress = (e) => {
     if (e.key === "Enter") {
@@ -88,6 +89,8 @@ function Navbar() {
     <div
       className={
         isScrolled === false
+          ? "navbar__wrapper"
+          : isSideMenuOpen === true
           ? "navbar__wrapper"
           : "navbar__wrapper navbar__wrapper--scrolled"
       }
@@ -181,9 +184,6 @@ function Navbar() {
               <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/wishlist"
-                  onClick={() =>
-                    dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
-                  }
                   className="navbar__Link"
                   activeClassName="Navbar__activeLink"
                   onClick={sideNavLinkClickHandler}
@@ -196,139 +196,117 @@ function Navbar() {
         </div>
       )}
       <div className="navbar" ref={navbarRef}>
-        <ul className="navbar__ul">
-          {width < 770 && (
-            <li>
-              {isSideMenuOpen ? (
-                <AiOutlineClose
-                  onClick={handleMenuClick}
-                  style={{ cursor: "pointer" }}
-                  color="white"
-                />
-              ) : (
-                <IoReorderTwoOutline
-                  onClick={handleMenuClick}
-                  style={{ cursor: "pointer" }}
-                  color="white"
-                />
-              )}
-            </li>
-          )}
-          <li>
-            <NavLink to="/" className="Navbar__logo">
-              <div>RStore</div>
-            </NavLink>
-          </li>
+        {width < 770 && (
+          <>
+            {isSideMenuOpen ? (
+              <AiOutlineClose
+                onClick={handleMenuClick}
+                style={{ cursor: "pointer" }}
+                color="white"
+              />
+            ) : (
+              <IoReorderTwoOutline
+                onClick={handleMenuClick}
+                style={{ cursor: "pointer" }}
+                color="white"
+              />
+            )}
+          </>
+        )}
+        <NavLink to="/" className="Navbar__logo">
+          <div>RStore</div>
+        </NavLink>
 
-          {width > 770 ? (
-            <>
-              <li>
-                <NavLink
-                  to="/products"
-                  className="navbar__Link"
-                  onClick={() =>
-                    dispatch({
-                      type: "PRODUCTS_TO_SHOW",
-                      payload: "AllProducts",
-                    })
-                  }
-                  activeClassName="Navbar__activeLink"
-                >
-                  All Products
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/mobile"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
-                >
-                  Mobile
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/tv"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
-                >
-                  TV
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/laptop"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
-                >
-                  Laptop
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/watch"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
-                >
-                  Watch
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/wishlist"
-                  onClick={() =>
-                    dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Wishlist" })
-                  }
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
-                >
-                  Wishlist
-                </NavLink>
-              </li>
-              <li>
-                <div className="navbar__Link" onClick={serchClickHandler}>
-                  {!isSearchClicked && (
-                    <AiOutlineSearch className="navbar__searchIcon" />
-                  )}
-                  {isSearchClicked && (
-                    <div className="navbar__searchboxWrapper">
-                      <input
-                        type="text"
-                        placeholder="Search here..."
-                        className="navbar__searchbox"
-                        onChange={handleSearchInputChange}
-                        onKeyPress={handleSearchKeyPress}
-                      />
-                      <Link
-                        to={{
-                          pathname: "/search",
-                          state: { filteredProducts: filteredProducts },
-                        }}
-                        className="Navbar__desktopSearchLink"
-                      >
-                        <AiOutlineSearch className="navbar__searchIcon" />
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </li>
-            </>
-          ) : null}
-
-          <li>
+        {width > 770 ? (
+          <>
             <NavLink
-              to="/cart"
-              onClick={() =>
-                dispatch({ type: "PRODUCTS_TO_SHOW", payload: "Cart" })
-              }
+              to="/products"
               className="navbar__Link"
               activeClassName="Navbar__activeLink"
             >
-              <BsBag />
-              <span className="navbar__productCount">{cartCount}</span>
+              All Products
             </NavLink>
-          </li>
-        </ul>
+            <NavLink
+              to="/mobile"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
+              Mobile
+            </NavLink>
+            <NavLink
+              to="/tv"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
+              TV
+            </NavLink>
+            <NavLink
+              to="/laptop"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
+              Laptop
+            </NavLink>
+            <NavLink
+              to="/watch"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
+              Watch
+            </NavLink>
+            <NavLink
+              to="/wishlist"
+              className="navbar__Link"
+              activeClassName="Navbar__activeLink"
+            >
+              Wishlist
+            </NavLink>
+            <div className="navbar__Link" onClick={serchClickHandler}>
+              {!isSearchClicked && (
+                <AiOutlineSearch className="navbar__searchIcon" />
+              )}
+              {isSearchClicked && (
+                <div className="navbar__searchboxWrapper">
+                  <input
+                    type="text"
+                    placeholder="Search here..."
+                    className="navbar__searchbox"
+                    onChange={handleSearchInputChange}
+                    onKeyPress={handleSearchKeyPress}
+                  />
+                  <Link
+                    to={{
+                      pathname: "/search",
+                      state: { filteredProducts: filteredProducts },
+                    }}
+                    className="Navbar__desktopSearchLink"
+                  >
+                    <AiOutlineSearch className="navbar__searchIcon" />
+                  </Link>
+                </div>
+              )}
+            </div>
+          </>
+        ) : null}
+        <NavLink
+          to="/cart"
+          className="navbar__Link"
+          activeClassName="Navbar__activeLink"
+        >
+          <BsBag />
+          <span className="navbar__productCount">{cartCount}</span>
+        </NavLink>
+        <NavLink
+          to={isUserLoggedIn ? "/profile" : "/signin"}
+          className="navbar__Link"
+          activeClassName="Navbar__activeLink"
+        >
+          {isUserLoggedIn ? (
+            <FaUserAlt />
+          ) : (
+            <button className="navbar__signInBtn">Sign in</button>
+          )}
+        </NavLink>
       </div>
     </div>
   );

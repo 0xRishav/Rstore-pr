@@ -5,6 +5,7 @@
 }
 .ImageSlider {
   position: relative;
+  height: 94vh;
 }
 
 .ImageSlider__sliderBtn {
@@ -17,6 +18,7 @@
   background: var(--white-clr);
   opacity: 0.2;
   cursor: pointer;
+  z-index: 10;
 }
 .ImageSlider__sliderBtn--left {
   left: 2%;
@@ -27,9 +29,12 @@
 }
 
 .ImageSlider__linkBtnWrapper {
+  position: absolute;
+  bottom: 10px;
   margin: auto;
   width: 100%;
   margin-top: 16px;
+  z-index: 10;
 }
 
 .ImageSlider__link {

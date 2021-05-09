@@ -35,8 +35,10 @@
 }
 
 .CartProduct__quantityWrapper {
+  display: flex;
+
   width: 20%;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .CartProduct__subTotal {

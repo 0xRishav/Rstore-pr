@@ -149,6 +149,16 @@
   color: var(--white-clr);
 }
 
+.navbar__signInBtn {
+  background: transparent;
+  color: var(--white-clr);
+  border: 1.7px solid var(--white-clr);
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 4px 8px;
+}
+
 @media only screen and (max-width: 900px) {
   .navbar {
     width: 95%;

@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
-import { CartProduct, CouponModal } from "../../components";
-import { ProductsContext } from "../../contexts/productsContext";
+import React, { useState } from "react";
+import { CartProduct, CouponModal, Loader } from "../../components";
 import { useProduct } from "../../helpers";
 import "./CartPage.css";
 
 function CartPage() {
-  const { products, dispatch } = useProduct();
-  const cartProducts = products.filter((product) => product.isInCart);
+  const { dispatch, cart, isLoading } = useProduct();
 
   const [selectedCoupon, setSelectedCoupon] = useState(false);
 
@@ -23,7 +21,6 @@ function CartPage() {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     console.log("modal opened");
   }
 
@@ -36,14 +33,12 @@ function CartPage() {
     setIsOpen(false);
   };
 
-  const getTotalPriceReducer = (acc, { price, quantity }) => {
-    return acc + price * quantity;
+  const getTotalPriceReducer = (acc, product) => {
+    return acc + product.product.price * product.quantity;
   };
 
   const getTotalPrice = () => {
-    const totalPrice = products
-      .filter((product) => product.isInCart)
-      .reduce(getTotalPriceReducer, 0);
+    const totalPrice = cart.reduce(getTotalPriceReducer, 0);
 
     return totalPrice;
   };
@@ -55,17 +50,21 @@ function CartPage() {
     : false;
   return (
     <div className="CartPage">
-      {cartProducts.map((product) => (
+      {isLoading && <Loader />}
+      {cart.map((product, index) => (
         <CartProduct
-          {...product}
+          key={index}
+          product={product.product}
+          cartId={product._id}
+          quantity={product.quantity}
           dispatch={dispatch}
           getTotalPrice={getTotalPrice}
           key={product.id}
         />
       ))}
 
-      {cartProducts.length !== 0 && <div className="hr-div"></div>}
-      {cartProducts.length !== 0 && (
+      {cart.length !== 0 && <div className="hr-div"></div>}
+      {cart.length !== 0 && (
         <div className="CartPage__totalApplyOfferWrapper">
           <div className="CartPage__totalCartPriceContainer">
             Total: Rs.
@@ -93,7 +92,7 @@ function CartPage() {
           />
         </div>
       )}
-      {cartProducts.length === 0 && (
+      {cart.length === 0 && (
         <div className="CartPage__totalCartPrice">Cart Is Empty</div>
       )}
     </div>

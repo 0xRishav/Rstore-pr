@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
-import { ProductsContext } from "../../contexts/productsContext";
+import { useState } from "react";
 import { useProduct } from "../../helpers";
-import { Checkbox, SortRadioBtns } from "../index";
+import { Checkbox } from "../index";
 import "./FilterDropDown.css";
 
 function FilterDropDown() {
@@ -12,7 +11,6 @@ function FilterDropDown() {
     setPriceFilterInput(e.target.value);
     dispatch({ type: "FILTER_BY_PRICE", payload: priceFilterInput });
   };
-
 
   return (
     <div className="FilterDropDown">
