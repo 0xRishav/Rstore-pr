@@ -153,6 +153,8 @@ export const ProductsContextProvider = ({ children }) => {
           ...state,
           filterPrice: action.payload,
         };
+      case "CLEAR_STATE":
+        return initialState;
 
       default:
         return state;

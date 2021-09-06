@@ -12,7 +12,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
-  const { products, cart } = useProduct();
+  const { products, cart, dispatch } = useProduct();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -22,12 +22,13 @@ function Navbar() {
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(authContext);
   const [cartCount, setCartCount] = useState(0);
 
-  const signinBtnHandler = () => {
+  const signoutBtnHandler = () => {
     if (isUserLoggedIn) {
       window.localStorage.removeItem("currentUser");
       setIsUserLoggedIn(!isUserLoggedIn);
     }
     setIsSideMenuOpen(!isSideMenuOpen);
+    dispatch({ type: "CLEAR_STATE" });
   };
 
   const serchClickHandler = () => {
@@ -208,7 +209,7 @@ function Navbar() {
                 <NavLink
                   to={isUserLoggedIn ? "/products" : "/signin"}
                   className="navbar__Link"
-                  onClick={signinBtnHandler}
+                  onClick={signoutBtnHandler}
                 >
                   {isUserLoggedIn ? "Sign Out" : "Sign In"}
                 </NavLink>
@@ -323,7 +324,7 @@ function Navbar() {
             to={isUserLoggedIn ? "/products" : "/signin"}
             className="navbar__Link"
             // activeClassName="Navbar__activeLink"
-            onClick={signinBtnHandler}
+            onClick={signoutBtnHandler}
           >
             {isUserLoggedIn ? "Sign Out" : "Sign In"}
           </NavLink>

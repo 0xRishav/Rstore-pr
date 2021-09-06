@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProduct } from "../../helpers";
 import "./CartWishlistBtn.css";
 import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
+import { useEffect } from "react/cjs/react.development";
 
 function CartWishlistBtn({ id, isProductsPage }) {
   const {
@@ -15,12 +16,27 @@ function CartWishlistBtn({ id, isProductsPage }) {
   } = useProduct();
 
   const history = useHistory();
-  const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
-  const isInWishlist = wishlist.some((wishlistProduct) => {
-    return wishlistProduct._id == id;
-  });
-
   const { isUserLoggedIn } = useAuth();
+  const [isInCart, setIsInCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+  // const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
+  // const isInWishlist = wishlist.some((wishlistProduct) => {
+  //   return wishlistProduct._id == id;
+  // });
+
+  console.log("cart", cart);
+
+  useEffect(() => {
+    setIsInCart(cart?.some((cartProduct) => cartProduct?.product?._id == id));
+    cart?.map((cartProduct) => {
+      console.log(cartProduct?.product?._id);
+    });
+  }, [cart]);
+  useEffect(() => {
+    setIsInWishlist(
+      wishlist?.some((wishlistProduct) => wishlistProduct?._id == id)
+    );
+  }, [wishlist]);
 
   return (
     <div
