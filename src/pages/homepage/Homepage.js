@@ -52,13 +52,13 @@ function Homepage() {
   ];
 
   const bannerImages = [
-    {
-      imageUrl:
-        width > 754
-          ? "https://www.spark.co.nz/content/dam/telecomcms/responsive/images/shop/apple/iphone-12-pro/buy-now/buy-now-consumer/iphone12-buy-now-banner-mobile.jpg"
-          : "https://www.apple.com/v/home/x/images/heroes/iphone-12-pro/iphone_12_pro_us__e5oyysg4k0ya_small_2x.jpg",
-      productUrl: "/product/2",
-    },
+    // {
+    //   imageUrl:
+    //     width > 754
+    //       ? "https://www.spark.co.nz/content/dam/telecomcms/responsive/images/shop/apple/iphone-12-pro/buy-now/buy-now-consumer/iphone12-buy-now-banner-mobile.jpg"
+    //       : "https://www.apple.com/v/home/x/images/heroes/iphone-12-pro/iphone_12_pro_us__e5oyysg4k0ya_small_2x.jpg",
+    //   productUrl: "/product/2",
+    // },
     {
       imageUrl:
         "https://theaxo.com/wp-content/uploads/2020/10/OnePlus-8T-1024x576.jpg",
