@@ -110,7 +110,7 @@ function Homepage() {
       <h2 className="Homepage__subHeading">Featured Products</h2>
       <div className="Homepage__featuredProductsWrapper">
         {featuredProducts.map((product, index) => (
-          <div key={index} className="Homepage__featuredProductContainer">
+          <div key={product._id} className="Homepage__featuredProductContainer">
             <img
               className="Homepage__featuredProdImage"
               src={product.imgSrc}

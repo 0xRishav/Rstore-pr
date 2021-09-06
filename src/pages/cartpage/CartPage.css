@@ -9,8 +9,14 @@
 
 .CartPage__totalCartPriceContainer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   font-size: 2rem;
   font-weight: 600;
+  /* margin: 2rem auto; */
+  margin-top: 6rem;
+  margin-bottom: 2rem;
 }
 
 .CartPage__totalCartPrice--original {

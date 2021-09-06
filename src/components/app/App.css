@@ -5,3 +5,20 @@
   margin: auto;
   margin-top: 6vh;
 }
+.App__wrapper {
+  width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .App__wrapper {
+    width: 90%;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .App__wrapper {
+    width: 95%;
+    margin: auto;
+  }
+}

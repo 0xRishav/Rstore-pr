@@ -15,14 +15,14 @@ function AllProductsPage() {
     <div className="AllProductsPage">
       <div className="AllProductsPage__sortfilteSignBtnWrapper">
         <SortFilterWrapper />
-        <SignInSignOutBtn />
+        {/* <SignInSignOutBtn /> */}
       </div>
 
       {isLoading && <Loader />}
       <div className="products-wrapper">
-        {filteredData.map((product, index) => (
+        {filteredData.map((product) => (
           <Product
-            key={index}
+            key={product._id}
             {...product}
             id={product._id}
             dispatch={dispatch}

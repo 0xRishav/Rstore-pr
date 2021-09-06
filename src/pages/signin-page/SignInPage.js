@@ -24,29 +24,71 @@ function SignInPage() {
     setIsLoading(false);
   }
 
+  const demoAccountClickHandler = async () => {
+    setIsLoading(true);
+    const response = await loginWithCredentials(
+      "testuser40@gmail.com",
+      "123456"
+    );
+    if (response.data.success) {
+      history.push(state?.from ? state.from : "/");
+    } else {
+      console.log(response.message);
+    }
+    setIsLoading(false);
+  };
+
   return (
     <div className="signin">
       {isLoading && <Loader />}
       <h2>Sign in to RStore</h2>
       <div className="signin__inputContainer">
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="Signin__input-field">
+          <input
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            className="Signin__input"
+            id="email"
+          />
+          <label htmlFor="email">Email</label>
+        </div>
+        <div className="Signin__input-field">
+          <input
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            className="Signin__input"
+            id="password"
+          />
+          <label htmlFor="password">Password</label>
+        </div>
       </div>
-      <button className="blue-btn--primary" onClick={signinHandler}>
+      <button
+        className="blue-btn--primary"
+        style={{ padding: "0.8rem 4rem", margin: "auto" }}
+        onClick={signinHandler}
+      >
         Sign in
       </button>
-      <div>
-        Do not have an RStore account?{" "}
-        <Link to="/signup">
-          Create yours now <BsArrowUpRight />{" "}
+
+      <h3>OR</h3>
+
+      <button
+        className="blue-btn--secondary"
+        style={{ padding: "0.8rem 2rem", margin: "auto" }}
+        onClick={demoAccountClickHandler}
+      >
+        Use Demo Account
+      </button>
+      <div style={{ marginTop: "2rem" }}>
+        <Link
+          style={{
+            textDecoration: "none",
+
+            fontWeight: "600",
+          }}
+          to="/signup"
+        >
+          Do not have an RStore account?
         </Link>
       </div>
     </div>

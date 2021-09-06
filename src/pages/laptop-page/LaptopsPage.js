@@ -4,9 +4,8 @@ import { ProductsContext } from "../../contexts/productsContext";
 import "./LaptopsPage.css";
 
 function LaptopsPage() {
-  const { isLoading, filteredData, dispatch } = useContext(
-    ProductsContext
-  ).products;
+  const { isLoading, filteredData, dispatch } =
+    useContext(ProductsContext).products;
   const Laptops = filteredData.filter(
     (product) => product.category === "Laptop"
   );
@@ -20,7 +19,7 @@ function LaptopsPage() {
             key={index}
             {...product}
             dispatch={dispatch}
-            key={product.id}
+            key={product._id}
           />
         ))}
       </div>

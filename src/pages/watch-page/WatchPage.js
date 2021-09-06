@@ -4,9 +4,8 @@ import { ProductsContext } from "../../contexts/productsContext";
 import "./WatchPage.css";
 
 function WatchPage() {
-  const { isLoading, filteredData, dispatch } = useContext(
-    ProductsContext
-  ).products;
+  const { isLoading, filteredData, dispatch } =
+    useContext(ProductsContext).products;
 
   const Watches = filteredData.filter(
     (product) => product.category === "Watch"
@@ -23,7 +22,7 @@ function WatchPage() {
             key={index}
             {...product}
             dispatch={dispatch}
-            key={product.id}
+            key={product._id}
           />
         ))}
       </div>
