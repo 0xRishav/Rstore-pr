@@ -12,7 +12,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
-  const { products } = useProduct();
+  const { products, cart } = useProduct();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -20,6 +20,7 @@ function Navbar() {
   const { width } = useWindowDimensions();
   const navbarRef = useRef(null);
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(authContext);
+  const [cartCount, setCartCount] = useState(0);
 
   const signinBtnHandler = () => {
     if (isUserLoggedIn) {
@@ -51,7 +52,7 @@ function Navbar() {
 
   let history = useHistory();
 
-  let cartCount = 0;
+  // let cartCount = 0;
   const cartCountReducer = (acc, val) => {
     return acc + val.quantity;
   };
@@ -66,7 +67,9 @@ function Navbar() {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
 
-  cartCount = getCartCount();
+  useEffect(() => {
+    setCartCount(getCartCount());
+  }, [products]);
 
   const sideNavLinkClickHandler = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
@@ -313,7 +316,7 @@ function Navbar() {
           activeClassName="Navbar__activeLink"
         >
           <BsBag />
-          <span className="navbar__productCount">{cartCount}</span>
+          <span className="navbar__productCount">{cart.length}</span>
         </NavLink>
         {width > 770 && (
           <NavLink
