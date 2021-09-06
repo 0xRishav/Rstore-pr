@@ -4,9 +4,8 @@ import { ProductsContext } from "../../contexts/productsContext";
 import "./TVPage.css";
 
 function TVPage() {
-  const { isLoading, filteredData, dispatch } = useContext(
-    ProductsContext
-  ).products;
+  const { isLoading, filteredData, dispatch } =
+    useContext(ProductsContext).products;
   const TVs = filteredData.filter((product) => product.category === "TV");
   return (
     <div className="TVPage">
@@ -18,7 +17,7 @@ function TVPage() {
             key={index}
             {...product}
             dispatch={dispatch}
-            key={product.id}
+            key={product._id}
           />
         ))}
       </div>

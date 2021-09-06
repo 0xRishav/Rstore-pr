@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "./Product.css";
 import { AiFillTag } from "react-icons/ai";
 import { Link } from "react-router-dom";

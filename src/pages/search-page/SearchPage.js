@@ -24,7 +24,7 @@ function SearchPage() {
               key={index}
               {...product}
               dispatch={dispatch}
-              key={product.id}
+              key={product._id}
             />
           ))}
         </div>

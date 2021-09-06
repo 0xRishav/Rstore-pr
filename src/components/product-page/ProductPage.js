@@ -1,12 +1,13 @@
 import { useParams } from "react-router";
-import { CartWishlistBtn, ImageSlider } from "..";
+import { CartWishlistBtn, ImageSlider, Loader } from "..";
 import StarRatings from "react-star-ratings";
 import "./ProductPage.css";
 import { useProduct } from "../../helpers";
 
 function ProductPage() {
   const { id } = useParams();
-  const { products, dispatch } = useProduct();
+  console.log(id);
+  const { isLoading, products, dispatch } = useProduct();
 
   const {
     name,
@@ -22,6 +23,7 @@ function ProductPage() {
 
   return (
     <div className="productPage">
+      {isLoading && <Loader />}
       <div className="productPage__wrapper">
         <ImageSlider images={image} parent={ProductPage} />
         <div className="ProductPage__rightContainer">

@@ -16,9 +16,9 @@ function CartWishlistBtn({ id, isProductsPage }) {
 
   const history = useHistory();
   const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
-  const isInWishlist = wishlist.some(
-    (wishlistProduct) => wishlistProduct._id == id
-  );
+  const isInWishlist = wishlist.some((wishlistProduct) => {
+    return wishlistProduct._id == id;
+  });
 
   const { isUserLoggedIn } = useAuth();
 
