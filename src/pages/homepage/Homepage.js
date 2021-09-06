@@ -19,7 +19,7 @@ function Homepage() {
         "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/a71331107041495.5fac2c616f3ae.jpg",
       alt: "one-plus-phone",
       logo: <SiOneplus color="red" className="Homepage__featuredProdLogo" />,
-      link: "/product/6",
+      link: "/product/6091ff73fd79302e84dfe81b",
     },
     {
       name: "iPhone 11",
@@ -29,7 +29,7 @@ function Homepage() {
       logo: (
         <AiFillApple color="black" className="Homepage__featuredProdLogo" />
       ),
-      link: "/product/1",
+      link: "/product/6091ff73fd79302e84dfe816",
     },
     {
       name: "HP Spectre x360",
@@ -37,7 +37,7 @@ function Homepage() {
         "https://mir-s3-cdn-cf.behance.net/project_modules/1400/131e2099947973.5efde4c45921a.jpg",
       alt: "HP-Spectre-x360",
       logo: <SiHp color="#0091CF" className="Homepage__featuredProdLogo" />,
-      link: "/product/36",
+      link: "/product/6091ff73fd79302e84dfe839",
     },
     {
       name: "Apple Macbook pro",
@@ -47,7 +47,7 @@ function Homepage() {
       logo: (
         <AiFillApple color="black" className="Homepage__featuredProdLogo" />
       ),
-      link: "/product/37",
+      link: "/product/6091ff73fd79302e84dfe83a",
     },
   ];
 
@@ -62,12 +62,12 @@ function Homepage() {
     {
       imageUrl:
         "https://theaxo.com/wp-content/uploads/2020/10/OnePlus-8T-1024x576.jpg",
-      productUrl: "/product/6",
+      productUrl: "/product/6091ff73fd79302e84dfe81b",
     },
     {
       imageUrl:
         "https://images.samsung.com/is/image/samsung/assets/in/smartphones/galaxy-s20/galaxy-s20-fe/Homepage_banner1440.jpg",
-      productUrl: "/product/12",
+      productUrl: "/product/6091ff73fd79302e84dfe820",
     },
   ];
 
