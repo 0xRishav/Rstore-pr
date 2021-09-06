@@ -26,12 +26,6 @@ function CartPage() {
 
   const [selectedCoupon, setSelectedCoupon] = useState(false);
 
-  const couponCodes = [
-    { name: "OFF30", discount: 0.3 },
-    { name: "OFF50", discount: 0.5 },
-    { name: "OFF70", discount: 0.7 },
-  ];
-
   const displayRazorPay = async () => {
     const res = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
@@ -77,25 +71,6 @@ function CartPage() {
     });
   };
 
-  // MODAL
-  const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    console.log("modal opened");
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  const handleCouponClick = (index) => {
-    setSelectedCoupon(couponCodes[index]);
-    setIsOpen(false);
-  };
-
   const getTotalPriceReducer = (acc, product) => {
     return acc + product.product.price * product.quantity;
   };
@@ -114,42 +89,39 @@ function CartPage() {
   return (
     <div className="CartPage">
       {isLoading && <Loader />}
-      {cart.map((product, index) => (
+      {cart.length === 0 && (
+        <div className="CartPage__totalCartPrice">Cart Is Empty</div>
+      )}
+
+      {cart.length !== 0 && (
+        <>
+          <div
+            className="CartPage__totalCartPriceContainer"
+            style={{ textAlign: "center" }}
+          >
+            Your Cart Total Is Rs. {totalPrice.toLocaleString()}
+            <button
+              className="blue-btn--primary"
+              style={{ padding: "1rem 8rem" }}
+              onClick={displayRazorPay}
+            >
+              CheckOut
+            </button>
+          </div>
+        </>
+      )}
+
+      {cart.map((product) => (
         <CartProduct
           key={product._id}
           product={product.product}
-          cartId={product._id}
           quantity={product.quantity}
           dispatch={dispatch}
           getTotalPrice={getTotalPrice}
-          key={product.id}
         />
       ))}
 
       {cart.length !== 0 && <div className="hr-div"></div>}
-      {cart.length !== 0 && (
-        <div className="CartPage__totalApplyOfferWrapper">
-          <div className="CartPage__totalCartPriceContainer">
-            Total: Rs.
-            {newTotal ? (
-              <div style={{ display: "flex" }}>
-                <div className="CartPage__totalCartPrice--original">
-                  {totalPrice.toLocaleString()}
-                </div>
-                <div className="CartPage__totalCartPrice--discounted">
-                  {newTotal.toLocaleString()}
-                </div>
-              </div>
-            ) : (
-              <div>{totalPrice.toLocaleString()}</div>
-            )}
-          </div>
-          <button onClick={displayRazorPay}>CheckOut</button>
-        </div>
-      )}
-      {cart.length === 0 && (
-        <div className="CartPage__totalCartPrice">Cart Is Empty</div>
-      )}
     </div>
   );
 }

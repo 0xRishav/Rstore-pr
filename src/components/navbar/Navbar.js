@@ -17,9 +17,17 @@ function Navbar() {
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const {  width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const navbarRef = useRef(null);
-  const { isUserLoggedIn } = useContext(authContext);
+  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(authContext);
+
+  const signinBtnHandler = () => {
+    if (isUserLoggedIn) {
+      window.localStorage.removeItem("currentUser");
+      setIsUserLoggedIn(!isUserLoggedIn);
+    }
+    setIsSideMenuOpen(!isSideMenuOpen);
+  };
 
   const serchClickHandler = () => {
     setIsSearchClicked(true);
@@ -191,6 +199,17 @@ function Navbar() {
                   Wishlist
                 </NavLink>
               </div>
+
+              <div className="hr-div"></div>
+              <div className="Navbar__sideMenu--linkContainer">
+                <NavLink
+                  to={isUserLoggedIn ? "/products" : "/signin"}
+                  className="navbar__Link"
+                  onClick={signinBtnHandler}
+                >
+                  {isUserLoggedIn ? "Sign Out" : "Sign In"}
+                </NavLink>
+              </div>
             </div>
           </nav>
         </div>
@@ -296,17 +315,16 @@ function Navbar() {
           <BsBag />
           <span className="navbar__productCount">{cartCount}</span>
         </NavLink>
-        <NavLink
-          to={isUserLoggedIn ? "/profile" : "/signin"}
-          className="navbar__Link"
-          activeClassName="Navbar__activeLink"
-        >
-          {isUserLoggedIn ? (
-            <FaUserAlt />
-          ) : (
-            <button className="navbar__signInBtn">Sign in</button>
-          )}
-        </NavLink>
+        {width > 770 && (
+          <NavLink
+            to={isUserLoggedIn ? "/products" : "/signin"}
+            className="navbar__Link"
+            // activeClassName="Navbar__activeLink"
+            onClick={signinBtnHandler}
+          >
+            {isUserLoggedIn ? "Sign Out" : "Sign In"}
+          </NavLink>
+        )}
       </div>
     </div>
   );

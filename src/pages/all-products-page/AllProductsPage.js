@@ -15,7 +15,7 @@ function AllProductsPage() {
     <div className="AllProductsPage">
       <div className="AllProductsPage__sortfilteSignBtnWrapper">
         <SortFilterWrapper />
-        <SignInSignOutBtn />
+        {/* <SignInSignOutBtn /> */}
       </div>
 
       {isLoading && <Loader />}
