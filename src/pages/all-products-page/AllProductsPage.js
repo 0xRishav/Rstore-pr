@@ -27,7 +27,6 @@ function AllProductsPage() {
             {...product}
             id={product._id}
             dispatch={dispatch}
-            key={product._id}
           />
         ))}
       </div>

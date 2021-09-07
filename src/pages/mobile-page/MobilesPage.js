@@ -16,10 +16,10 @@ function MobilesPage() {
       <div className="products-wrapper">
         {Mobiles.map((product, index) => (
           <Product
-            key={index}
+            key={product._id}
             {...product}
             dispatch={dispatch}
-            key={product._id}
+            id={product._id}
           />
         ))}
       </div>

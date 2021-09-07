@@ -16,7 +16,7 @@ function LaptopsPage() {
       <div className="products-wrapper">
         {Laptops.map((product, index) => (
           <Product
-            key={index}
+            id={product._id}
             {...product}
             dispatch={dispatch}
             key={product._id}

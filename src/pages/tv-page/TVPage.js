@@ -14,7 +14,7 @@ function TVPage() {
       <div className="products-wrapper">
         {TVs.map((product, index) => (
           <Product
-            key={index}
+            id={product._id}
             {...product}
             dispatch={dispatch}
             key={product._id}
