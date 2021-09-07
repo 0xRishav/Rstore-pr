@@ -38,7 +38,6 @@ function CartPage() {
     const data = await axios.post("https://rstoreapi.herokuapp.com/checkout", {
       userId: currentUser._id,
     });
-    console.log("RAZORPAY", data);
     const options = {
       key: process.env.RAZORPAY_KEY,
       amount: data.data.amount,
