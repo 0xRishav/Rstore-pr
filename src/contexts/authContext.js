@@ -45,7 +45,7 @@ export const AuthContextProvider = ({ children }) => {
         { email, password }
       );
 
-      if (response.data.success) {
+      if (response.status === 200) {
         setCurrentUser(response.data.user);
         setIsUserLoggedIn(true);
         return response;

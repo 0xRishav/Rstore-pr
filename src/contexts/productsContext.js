@@ -185,40 +185,47 @@ export const ProductsContextProvider = ({ children }) => {
 
   useEffect(() => {
     (async function () {
-      dispatch({ type: "TOGGLE_LOADING" });
-      try {
-        const cartResponse = await axios.get(
-          `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
-        );
-        if (cartResponse.data.success) {
-          dispatch({ type: "SET_CART", payload: [...cartResponse.data.data] });
+      if (currentUser) {
+        dispatch({ type: "TOGGLE_LOADING" });
+        try {
+          const cartResponse = await axios.get(
+            `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
+          );
+          if (cartResponse.data.success) {
+            dispatch({
+              type: "SET_CART",
+              payload: [...cartResponse.data.data],
+            });
+          }
+        } catch (err) {
+          dispatch({ type: "TOGGLE_ERR" });
         }
-      } catch (err) {
-        dispatch({ type: "TOGGLE_ERR" });
+        dispatch({ type: "TOGGLE_LOADING" });
       }
-      dispatch({ type: "TOGGLE_LOADING" });
     })();
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     (async function () {
-      dispatch({ type: "TOGGLE_LOADING" });
-      try {
-        const wishlistResponse = await axios.get(
-          `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
-        );
-        if (wishlistResponse.data.success) {
-          dispatch({
-            type: "SET_WISHLIST",
-            payload: [...wishlistResponse.data.data],
-          });
+      if (currentUser) {
+        dispatch({ type: "TOGGLE_LOADING" });
+        try {
+          const wishlistResponse = await axios.get(
+            `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
+          );
+          if (wishlistResponse.data.success) {
+            dispatch({
+              type: "SET_WISHLIST",
+              payload: [...wishlistResponse.data.data],
+            });
+          }
+        } catch (err) {
+          dispatch({ type: "TOGGLE_ERR" });
         }
-      } catch (err) {
-        dispatch({ type: "TOGGLE_ERR" });
+        dispatch({ type: "TOGGLE_LOADING" });
       }
-      dispatch({ type: "TOGGLE_LOADING" });
     })();
-  }, []);
+  }, [currentUser]);
 
   const getSortedDate = (productList, sortBy) => {
     if (sortBy && sortBy === "LOW_TO_HIGH") {
