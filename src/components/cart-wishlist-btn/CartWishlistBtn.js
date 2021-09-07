@@ -14,26 +14,35 @@ function CartWishlistBtn({ id, isProductsPage }) {
     addToWishlist,
     cart,
   } = useProduct();
+    console.log("🚀 ~ file: CartWishlistBtn.js ~ line 17 ~ CartWishlistBtn ~ wishlist", wishlist)
+    console.log("🚀 ~ file: CartWishlistBtn.js ~ line 17 ~ CartWishlistBtn ~ cart", cart)
 
   const history = useHistory();
   const { isUserLoggedIn } = useAuth();
   const [isInCart, setIsInCart] = useState(false);
   const [isInWishlist, setIsInWishlist] = useState(false);
-  // const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
-  // const isInWishlist = wishlist.some((wishlistProduct) => {
-  //   return wishlistProduct._id == id;
-  // });
 
 
-  useEffect(() => {
-    setIsInCart(cart?.some((cartProduct) => cartProduct?.product?._id == id));
+  // useEffect(() => {
+  //   setIsInCart(cart?.some((cartProduct) => cartProduct?.product?._id == id));
 
+  // }, [cart]);
+
+  useEffect(()=>{
+    const isInCart = cart?.some((cartProduct)=>cartProduct?.product._id === id);
+    setIsInCart(isInCart);
   }, [cart]);
-  useEffect(() => {
-    setIsInWishlist(
-      wishlist?.some((wishlistProduct) => wishlistProduct?._id == id)
-    );
-  }, [wishlist]);
+
+  useEffect(()=>{
+    const isInWishlist = wishlist?.some((wishlistProduct) => wishlistProduct?._id === id);
+    setIsInWishlist(isInWishlist);
+  }, [wishlist])
+
+  // useEffect(() => {
+  //   setIsInWishlist(
+  //     wishlist?.some((wishlistProduct) => wishlistProduct?._id == id)
+  //   );
+  // }, [wishlist]);
 
   return (
     <div
