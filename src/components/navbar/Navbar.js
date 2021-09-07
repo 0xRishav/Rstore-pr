@@ -28,7 +28,7 @@ function Navbar() {
       setIsUserLoggedIn(!isUserLoggedIn);
     }
     setIsSideMenuOpen(!isSideMenuOpen);
-    dispatch({ type: "CLEAR_STATE" });
+    dispatch({ type: "CLEAR_USER_STATE" });
   };
 
   const serchClickHandler = () => {
@@ -206,13 +206,19 @@ function Navbar() {
 
               <div className="hr-div"></div>
               <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to={isUserLoggedIn ? "/products" : "/signin"}
-                  className="navbar__Link"
-                  onClick={signoutBtnHandler}
-                >
-                  {isUserLoggedIn ? "Sign Out" : "Sign In"}
-                </NavLink>
+                {isUserLoggedIn ? (
+                  <NavLink
+                    to="/"
+                    className="navbar__Link"
+                    onClick={signoutBtnHandler}
+                  >
+                    Sign Out
+                  </NavLink>
+                ) : (
+                  <NavLink to="/signin" className="navbar__Link">
+                    Sign In
+                  </NavLink>
+                )}
               </div>
             </div>
           </nav>

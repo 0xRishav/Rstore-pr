@@ -11,6 +11,7 @@ import "./AllProductsPage.css";
 function AllProductsPage() {
   const { isLoading, dispatch, filteredData } = useProduct();
 
+
   return (
     <div className="AllProductsPage">
       <div className="AllProductsPage__sortfilteSignBtnWrapper">

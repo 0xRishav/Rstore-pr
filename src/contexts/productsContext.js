@@ -18,6 +18,7 @@ export const ProductsContextProvider = ({ children }) => {
     showFreeShippingOnly: false,
     filterPrice: false,
   };
+
   const { currentUser, isUserLoggedIn } = useAuth();
   let history = useHistory();
 
@@ -31,7 +32,6 @@ export const ProductsContextProvider = ({ children }) => {
           quantity: 1,
         }
       );
-      console.log("res", res);
       if (res.data.success) {
         dispatch({ type: "SET_CART", payload: [...res.data.data] });
       }
@@ -153,8 +153,8 @@ export const ProductsContextProvider = ({ children }) => {
           ...state,
           filterPrice: action.payload,
         };
-      case "CLEAR_STATE":
-        return initialState;
+      case "CLEAR_USER_STATE":
+        return { ...state, cart: [], wishlist: [] };
 
       default:
         return state;
@@ -181,7 +181,7 @@ export const ProductsContextProvider = ({ children }) => {
       }
       dispatch({ type: "TOGGLE_LOADING" });
     })();
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     (async function () {
@@ -254,6 +254,7 @@ export const ProductsContextProvider = ({ children }) => {
 
   const sortedData = getSortedDate(state.products, state.sortBy);
   const filteredData = getFilteredData(sortedData, { ...state });
+
 
   return (
     <ProductsContext.Provider

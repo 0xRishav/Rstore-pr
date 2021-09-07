@@ -24,13 +24,10 @@ function CartWishlistBtn({ id, isProductsPage }) {
   //   return wishlistProduct._id == id;
   // });
 
-  console.log("cart", cart);
 
   useEffect(() => {
     setIsInCart(cart?.some((cartProduct) => cartProduct?.product?._id == id));
-    cart?.map((cartProduct) => {
-      console.log(cartProduct?.product?._id);
-    });
+
   }, [cart]);
   useEffect(() => {
     setIsInWishlist(

@@ -24,7 +24,6 @@ function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
 
   const [selectedQuantity, setSelectedQuantity] = useState(options[0]);
 
-  console.log("selectedQuantity", selectedQuantity);
 
   const dropDownChangeHandler = (e) => {
     setSelectedQuantity(e.value);
