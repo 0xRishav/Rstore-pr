@@ -27,7 +27,7 @@ function SignInPage() {
   const demoAccountClickHandler = async () => {
     setIsLoading(true);
     const response = await loginWithCredentials(
-      "demoaccount11@gmail.com",
+      "testuser100@gmail.com",
       "123456"
     );
     if (response.status === 200) {
