@@ -12,7 +12,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
-  const { products } = useProduct();
+  const { products, cart, dispatch } = useProduct();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -20,13 +20,15 @@ function Navbar() {
   const { width } = useWindowDimensions();
   const navbarRef = useRef(null);
   const { isUserLoggedIn, setIsUserLoggedIn } = useContext(authContext);
+  const [cartCount, setCartCount] = useState(0);
 
-  const signinBtnHandler = () => {
+  const signoutBtnHandler = () => {
     if (isUserLoggedIn) {
       window.localStorage.removeItem("currentUser");
       setIsUserLoggedIn(!isUserLoggedIn);
     }
     setIsSideMenuOpen(!isSideMenuOpen);
+    dispatch({ type: "CLEAR_USER_STATE" });
   };
 
   const serchClickHandler = () => {
@@ -51,7 +53,7 @@ function Navbar() {
 
   let history = useHistory();
 
-  let cartCount = 0;
+  // let cartCount = 0;
   const cartCountReducer = (acc, val) => {
     return acc + val.quantity;
   };
@@ -66,7 +68,9 @@ function Navbar() {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
 
-  cartCount = getCartCount();
+  useEffect(() => {
+    setCartCount(getCartCount());
+  }, [products]);
 
   const sideNavLinkClickHandler = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
@@ -202,13 +206,19 @@ function Navbar() {
 
               <div className="hr-div"></div>
               <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to={isUserLoggedIn ? "/products" : "/signin"}
-                  className="navbar__Link"
-                  onClick={signinBtnHandler}
-                >
-                  {isUserLoggedIn ? "Sign Out" : "Sign In"}
-                </NavLink>
+                {isUserLoggedIn ? (
+                  <NavLink
+                    to="/"
+                    className="navbar__Link"
+                    onClick={signoutBtnHandler}
+                  >
+                    Sign Out
+                  </NavLink>
+                ) : (
+                  <NavLink to="/signin" className="navbar__Link">
+                    Sign In
+                  </NavLink>
+                )}
               </div>
             </div>
           </nav>
@@ -313,14 +323,14 @@ function Navbar() {
           activeClassName="Navbar__activeLink"
         >
           <BsBag />
-          <span className="navbar__productCount">{cartCount}</span>
+          <span className="navbar__productCount">{cart.length}</span>
         </NavLink>
         {width > 770 && (
           <NavLink
             to={isUserLoggedIn ? "/products" : "/signin"}
             className="navbar__Link"
             // activeClassName="Navbar__activeLink"
-            onClick={signinBtnHandler}
+            onClick={signoutBtnHandler}
           >
             {isUserLoggedIn ? "Sign Out" : "Sign In"}
           </NavLink>

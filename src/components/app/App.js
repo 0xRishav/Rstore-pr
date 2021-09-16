@@ -35,7 +35,7 @@ function App() {
               <Route path="/products" component={AllProductsPage} />
               <PrivateRoute path="/wishlist" component={WishlistPage} />
               <PrivateRoute path="/profile" component={ProfilePage} />
-              <Route path="/cart" component={CartPage} />
+              <PrivateRoute path="/cart" component={CartPage} />
               <Route path="/tv" component={TVPage} />
               <Route path="/mobile" component={MobilesPage} />
               <Route path="/laptop" component={LaptopsPage} />

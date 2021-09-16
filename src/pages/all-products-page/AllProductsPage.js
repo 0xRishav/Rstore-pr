@@ -11,6 +11,7 @@ import "./AllProductsPage.css";
 function AllProductsPage() {
   const { isLoading, dispatch, filteredData } = useProduct();
 
+
   return (
     <div className="AllProductsPage">
       <div className="AllProductsPage__sortfilteSignBtnWrapper">
@@ -26,7 +27,6 @@ function AllProductsPage() {
             {...product}
             id={product._id}
             dispatch={dispatch}
-            key={product._id}
           />
         ))}
       </div>

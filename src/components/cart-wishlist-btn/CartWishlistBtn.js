@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useProduct } from "../../helpers";
 import "./CartWishlistBtn.css";
 import { useHistory } from "react-router-dom";
@@ -15,12 +15,23 @@ function CartWishlistBtn({ id, isProductsPage }) {
   } = useProduct();
 
   const history = useHistory();
-  const isInCart = cart.some((cartProduct) => cartProduct.product._id == id);
-  const isInWishlist = wishlist.some((wishlistProduct) => {
-    return wishlistProduct._id == id;
-  });
-
   const { isUserLoggedIn } = useAuth();
+  const [isInCart, setIsInCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+
+ 
+  useEffect(()=>{
+  const IsInCart = cart?.some((cartProduct) => cartProduct?.product._id === id);
+  setIsInCart(IsInCart);
+  }, [cart]);
+
+  useEffect(()=>{
+    const IsInWishlist = wishlist?.some(
+      (wishlistProduct) => wishlistProduct?._id === id
+    );
+    setIsInWishlist(IsInWishlist);
+  }, [wishlist])
+
 
   return (
     <div

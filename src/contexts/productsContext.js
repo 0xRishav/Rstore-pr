@@ -18,6 +18,7 @@ export const ProductsContextProvider = ({ children }) => {
     showFreeShippingOnly: false,
     filterPrice: false,
   };
+
   const { currentUser, isUserLoggedIn } = useAuth();
   let history = useHistory();
 
@@ -31,7 +32,6 @@ export const ProductsContextProvider = ({ children }) => {
           quantity: 1,
         }
       );
-      console.log("res", res);
       if (res.data.success) {
         dispatch({ type: "SET_CART", payload: [...res.data.data] });
       }
@@ -153,6 +153,8 @@ export const ProductsContextProvider = ({ children }) => {
           ...state,
           filterPrice: action.payload,
         };
+      case "CLEAR_USER_STATE":
+        return { ...state, cart: [], wishlist: [] };
 
       default:
         return state;
@@ -179,44 +181,51 @@ export const ProductsContextProvider = ({ children }) => {
       }
       dispatch({ type: "TOGGLE_LOADING" });
     })();
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     (async function () {
-      dispatch({ type: "TOGGLE_LOADING" });
-      try {
-        const cartResponse = await axios.get(
-          `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
-        );
-        if (cartResponse.data.success) {
-          dispatch({ type: "SET_CART", payload: [...cartResponse.data.data] });
+      if (currentUser) {
+        dispatch({ type: "TOGGLE_LOADING" });
+        try {
+          const cartResponse = await axios.get(
+            `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
+          );
+          if (cartResponse.data.success) {
+            dispatch({
+              type: "SET_CART",
+              payload: [...cartResponse.data.data],
+            });
+          }
+        } catch (err) {
+          dispatch({ type: "TOGGLE_ERR" });
         }
-      } catch (err) {
-        dispatch({ type: "TOGGLE_ERR" });
+        dispatch({ type: "TOGGLE_LOADING" });
       }
-      dispatch({ type: "TOGGLE_LOADING" });
     })();
-  }, []);
+  }, [currentUser]);
 
   useEffect(() => {
     (async function () {
-      dispatch({ type: "TOGGLE_LOADING" });
-      try {
-        const wishlistResponse = await axios.get(
-          `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
-        );
-        if (wishlistResponse.data.success) {
-          dispatch({
-            type: "SET_WISHLIST",
-            payload: [...wishlistResponse.data.data],
-          });
+      if (currentUser) {
+        dispatch({ type: "TOGGLE_LOADING" });
+        try {
+          const wishlistResponse = await axios.get(
+            `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
+          );
+          if (wishlistResponse.data.success) {
+            dispatch({
+              type: "SET_WISHLIST",
+              payload: [...wishlistResponse.data.data],
+            });
+          }
+        } catch (err) {
+          dispatch({ type: "TOGGLE_ERR" });
         }
-      } catch (err) {
-        dispatch({ type: "TOGGLE_ERR" });
+        dispatch({ type: "TOGGLE_LOADING" });
       }
-      dispatch({ type: "TOGGLE_LOADING" });
     })();
-  }, []);
+  }, [currentUser]);
 
   const getSortedDate = (productList, sortBy) => {
     if (sortBy && sortBy === "LOW_TO_HIGH") {
@@ -245,6 +254,7 @@ export const ProductsContextProvider = ({ children }) => {
 
   const sortedData = getSortedDate(state.products, state.sortBy);
   const filteredData = getFilteredData(sortedData, { ...state });
+
 
   return (
     <ProductsContext.Provider

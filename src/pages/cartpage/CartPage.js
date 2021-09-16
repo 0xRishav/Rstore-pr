@@ -38,7 +38,6 @@ function CartPage() {
     const data = await axios.post("https://rstoreapi.herokuapp.com/checkout", {
       userId: currentUser._id,
     });
-    console.log("RAZORPAY", data);
     const options = {
       key: process.env.RAZORPAY_KEY,
       amount: data.data.amount,
@@ -90,7 +89,9 @@ function CartPage() {
     <div className="CartPage">
       {isLoading && <Loader />}
       {cart.length === 0 && (
-        <div className="CartPage__totalCartPrice">Cart Is Empty</div>
+        <h1 className="CartPage__totalCartPrice" style={{ marginTop: "6rem" }}>
+          Cart Is Empty
+        </h1>
       )}
 
       {cart.length !== 0 && (

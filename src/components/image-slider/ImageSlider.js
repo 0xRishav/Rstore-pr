@@ -32,7 +32,7 @@ const ImageSlider = ({ images, parent }) => {
         </button>
         {images.map((image, i) => (
           <img
-            key={index}
+            key={parent === "Homepage" ? image.imageUrl : image}
             className={
               parent === "homepage" ? "bannerImage" : "productPage__image"
             }

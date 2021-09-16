@@ -6,7 +6,6 @@ import { useProduct } from "../../helpers";
 
 function ProductPage() {
   const { id } = useParams();
-  console.log(id);
   const { isLoading, products, dispatch } = useProduct();
 
   const {

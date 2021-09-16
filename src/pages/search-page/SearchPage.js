@@ -21,10 +21,10 @@ function SearchPage() {
         <div className="products-wrapper">
           {filteredProducts.map((product, index) => (
             <Product
-              key={index}
+              key={product._id}
               {...product}
               dispatch={dispatch}
-              key={product._id}
+              id={product._id}
             />
           ))}
         </div>

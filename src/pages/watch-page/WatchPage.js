@@ -19,7 +19,7 @@ function WatchPage() {
       <div className="products-wrapper">
         {Watches.map((product, index) => (
           <Product
-            key={index}
+            id={product._id}
             {...product}
             dispatch={dispatch}
             key={product._id}

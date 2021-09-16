@@ -16,7 +16,7 @@ function SignInPage() {
   async function signinHandler() {
     setIsLoading(true);
     const response = await loginWithCredentials(email, password);
-    if (response.data.success) {
+    if (response.status === 200) {
       history.push(state?.from ? state.from : "/");
     } else {
       console.log(response.message);
@@ -27,10 +27,10 @@ function SignInPage() {
   const demoAccountClickHandler = async () => {
     setIsLoading(true);
     const response = await loginWithCredentials(
-      "testuser40@gmail.com",
+      "testuser100@gmail.com",
       "123456"
     );
-    if (response.data.success) {
+    if (response.status === 200) {
       history.push(state?.from ? state.from : "/");
     } else {
       console.log(response.message);
