@@ -26,7 +26,7 @@ export const ProductsContextProvider = ({ children }) => {
     dispatch({ type: "TOGGLE_LOADING" });
     try {
       const res = await axios.post(
-        `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`,
+        `https://rstore-api.onrender.com/cart/${currentUser._id}`,
         {
           productId: productId,
           quantity: 1,
@@ -48,7 +48,7 @@ export const ProductsContextProvider = ({ children }) => {
       const {
         data: { data, success },
       } = await axios.delete(
-        `https://rstoreapi.herokuapp.com/cart/${currentUser._id}/products/${productId}`
+        `https://rstore-api.onrender.com/cart/${currentUser._id}/products/${productId}`
       );
       if (success) {
         dispatch({ type: "SET_CART", payload: [...data] });
@@ -66,7 +66,7 @@ export const ProductsContextProvider = ({ children }) => {
       const {
         data: { data, success },
       } = await axios.put(
-        `https://rstoreapi.herokuapp.com/cart/${currentUser._id}/products/${productId}`,
+        `https://rstore-api.onrender.com/cart/${currentUser._id}/products/${productId}`,
         { quantity: quantity }
       );
       if (success) {
@@ -83,7 +83,7 @@ export const ProductsContextProvider = ({ children }) => {
     dispatch({ type: "TOGGLE_LOADING" });
     try {
       const res = await axios.post(
-        `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`,
+        `https://rstore-api.onrender.com/wishlist/${currentUser._id}`,
         {
           productId,
         }
@@ -104,7 +104,7 @@ export const ProductsContextProvider = ({ children }) => {
       const {
         data: { data, success },
       } = await axios.delete(
-        `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}/products/${productId}`
+        `https://rstore-api.onrender.com/wishlist/${currentUser._id}/products/${productId}`
       );
       if (success) {
         dispatch({ type: "SET_WISHLIST", payload: [...data] });
@@ -168,7 +168,7 @@ export const ProductsContextProvider = ({ children }) => {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
         const productResponse = await axios.get(
-          "https://rstoreapi.herokuapp.com/products"
+          "https://rstore-api.onrender.com/products"
         );
         if (productResponse.data.success) {
           dispatch({
@@ -189,7 +189,7 @@ export const ProductsContextProvider = ({ children }) => {
         dispatch({ type: "TOGGLE_LOADING" });
         try {
           const cartResponse = await axios.get(
-            `https://rstoreapi.herokuapp.com/cart/${currentUser._id}`
+            `https://rstore-api.onrender.com/cart/${currentUser._id}`
           );
           if (cartResponse.data.success) {
             dispatch({
@@ -211,7 +211,7 @@ export const ProductsContextProvider = ({ children }) => {
         dispatch({ type: "TOGGLE_LOADING" });
         try {
           const wishlistResponse = await axios.get(
-            `https://rstoreapi.herokuapp.com/wishlist/${currentUser._id}`
+            `https://rstore-api.onrender.com/wishlist/${currentUser._id}`
           );
           if (wishlistResponse.data.success) {
             dispatch({

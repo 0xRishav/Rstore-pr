@@ -35,7 +35,7 @@ function CartPage() {
       return;
     }
 
-    const data = await axios.post("https://rstoreapi.herokuapp.com/checkout", {
+    const data = await axios.post("https://rstore-api.onrender.com/checkout", {
       userId: currentUser._id,
     });
     const options = {
