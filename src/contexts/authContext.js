@@ -20,7 +20,7 @@ export const AuthContextProvider = ({ children }) => {
   const signUpUser = async (name, email, password) => {
     try {
       const res = await axios.post(
-        "https://rstoreapi.herokuapp.com/users/signup",
+        "https://rstore-api.onrender.com/users/signup",
         {
           name: name,
           email: email,
@@ -41,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
   async function loginWithCredentials(email, password) {
     try {
       const response = await axios.post(
-        "https://rstoreapi.herokuapp.com/users/signin",
+        "https://rstore-api.onrender.com/users/signin",
         { email, password }
       );
 
