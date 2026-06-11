@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-// import { Switch, Route } from "react-router-dom";
-import { Switch, Route, withRouter } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 import { Navbar } from "..";
-import { PrivateRoute, _ScrollToTop } from "../../helpers";
+import { PrivateRoute } from "../../helpers";
 import {
   AllProductsPage,
   CartPage,
@@ -21,33 +20,123 @@ import ProductPage from "../product-page/ProductPage";
 
 import "./App.css";
 
-function App() {
-  const ScrollToTop = withRouter(_ScrollToTop);
+function AppLayout({ children }) {
+  return (
+    <div className="App__wrapper">
+      <div className="App">{children}</div>
+    </div>
+  );
+}
 
+function App() {
   return (
     <>
       <Navbar />
-      <Route exact path="/" component={Homepage} />
-      <div className="App__wrapper">
-        <Switch>
-          <ScrollToTop>
-            <div className="App">
-              <Route path="/products" component={AllProductsPage} />
-              <PrivateRoute path="/wishlist" component={WishlistPage} />
-              <PrivateRoute path="/profile" component={ProfilePage} />
-              <PrivateRoute path="/cart" component={CartPage} />
-              <Route path="/tv" component={TVPage} />
-              <Route path="/mobile" component={MobilesPage} />
-              <Route path="/laptop" component={LaptopsPage} />
-              <Route path="/watch" component={WatchPage} />
-              <Route path="/product/:id" component={ProductPage} />
-              <Route path="/search" component={SearchPage} />
-              <Route path="/signin" component={SignInPage} />
-              <Route path="/signup" component={SignUpPage} />
-            </div>
-          </ScrollToTop>
-        </Switch>
-      </div>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/products"
+          element={
+            <AppLayout>
+              <AllProductsPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <AppLayout>
+              <PrivateRoute>
+                <WishlistPage />
+              </PrivateRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <AppLayout>
+              <PrivateRoute>
+                <ProfilePage />
+              </PrivateRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <AppLayout>
+              <PrivateRoute>
+                <CartPage />
+              </PrivateRoute>
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/tv"
+          element={
+            <AppLayout>
+              <TVPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/mobile"
+          element={
+            <AppLayout>
+              <MobilesPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/laptop"
+          element={
+            <AppLayout>
+              <LaptopsPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/watch"
+          element={
+            <AppLayout>
+              <WatchPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/product/:id"
+          element={
+            <AppLayout>
+              <ProductPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <AppLayout>
+              <SearchPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <AppLayout>
+              <SignInPage />
+            </AppLayout>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <AppLayout>
+              <SignUpPage />
+            </AppLayout>
+          }
+        />
+      </Routes>
     </>
   );
 }
