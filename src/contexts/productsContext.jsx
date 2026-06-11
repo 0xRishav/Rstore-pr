@@ -1,7 +1,6 @@
 import React, { createContext, useState, useEffect, useReducer } from "react";
 import axios from "axios";
 import { useAuth } from "./authContext";
-import { useHistory } from "react-router-dom";
 
 export const ProductsContext = createContext();
 
@@ -20,7 +19,6 @@ export const ProductsContextProvider = ({ children }) => {
   };
 
   const { currentUser, isUserLoggedIn } = useAuth();
-  let history = useHistory();
 
   const addToCart = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });

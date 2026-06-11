@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { CartWishlistBtn, ImageSlider, Loader } from "..";
 import StarRatings from "react-star-ratings";
 import "./ProductPage.css";

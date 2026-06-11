@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "react-router-dom";
 import { Loader, Product, SortFilterWrapper } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./SearchPage.css";
@@ -8,7 +8,7 @@ function SearchPage() {
   const { isLoading, dispatch } = useContext(ProductsContext).products;
 
   const location = useLocation();
-  const { filteredProducts } = location.state;
+  const { filteredProducts } = location.state || {};
 
   return (
     <div className="SearchPage">
