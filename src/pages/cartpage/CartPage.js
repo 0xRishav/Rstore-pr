@@ -39,7 +39,7 @@ function CartPage() {
       userId: currentUser._id,
     });
     const options = {
-      key: process.env.RAZORPAY_KEY,
+      key: import.meta.env.VITE_RAZORPAY_KEY,
       amount: data.data.amount,
       currency: data.data.currency,
       name: "RStore",
