@@ -1,8 +1,26 @@
 import { useParams } from "react-router-dom";
 import { CartWishlistBtn, ImageSlider, Loader } from "..";
-import StarRatings from "react-star-ratings";
 import "./ProductPage.css";
 import { useProduct } from "../../helpers";
+
+function Stars({ rating, size = 16, color = "#06c" }) {
+  return (
+    <span className="stars">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span
+          key={star}
+          style={{
+            color: star <= Math.round(rating) ? color : "#ddd",
+            fontSize: size,
+            marginRight: "2px",
+          }}
+        >
+          ★
+        </span>
+      ))}
+    </span>
+  );
+}
 
 function ProductPage() {
   const { id } = useParams();
@@ -28,12 +46,7 @@ function ProductPage() {
         <div className="ProductPage__rightContainer">
           <div className="productPage__name">{name}</div>
           <div className="productPage__price">Rs. {price.toLocaleString()}</div>
-          <StarRatings
-            rating={rating}
-            starDimension="16px"
-            starSpacing="2px"
-            starRatedColor="#06c"
-          />
+          <Stars rating={rating} />
           <div className="productPage__offerWrapper">
             {fastDelivery && (
               <div className="productPage__offer">Fast Delivery</div>
