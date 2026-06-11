@@ -1,20 +1,11 @@
 import { useContext } from "react";
-import { Redirect, Route } from "react-router";
+import { Navigate } from "react-router-dom";
 import { authContext } from "../contexts/authContext";
 
-export default function PrivateRoute({ component, path, ...props }) {
+export default function PrivateRoute({ children }) {
   const { isUserLoggedIn } = useContext(authContext);
-  const Component = component;
-  return (
-    <Route path={path} {...props}>
-      {isUserLoggedIn ? (
-        <Component />
-      ) : (
-        <Redirect
-          replace
-          to={{ pathname: "/signin", state: { from: path } }}
-        />
-      )}
-    </Route>
-  );
+  if (!isUserLoggedIn) {
+    return <Navigate to="/signin" replace />;
+  }
+  return children;
 }
