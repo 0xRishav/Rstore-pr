@@ -3,7 +3,7 @@ import { CartProduct, CouponModal, Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
 import { useProduct } from "../../helpers";
 import "./CartPage.css";
-import axios from "axios";
+import api from "../../api/client";
 
 function loadScript(src) {
   return new Promise((resolve) => {
@@ -35,18 +35,16 @@ function CartPage() {
       return;
     }
 
-    const data = await axios.post("https://rstore-api.onrender.com/checkout", {
-      userId: currentUser._id,
-    });
+    const response = await api.post("/api/checkout");
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY,
-      amount: data.data.amount,
-      currency: data.data.currency,
+      amount: response.data.data.amount,
+      currency: response.data.data.currency,
       name: "RStore",
       description: "RStore Checkout",
       image:
         "https://res.cloudinary.com/dxnixxwnf/image/upload/v1630847953/RLogo_fjtk3d.png",
-      order_id: data.data.id,
+      order_id: response.data.data.id,
       handler: function (response) {
         alert(
           `Payment successful for payment id - ,${response.razorpay_payment_id}`
