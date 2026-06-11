@@ -136,9 +136,10 @@ function Navbar() {
               >
                 <NavLink
                   to="/products"
-                  className="navbar__Link"
                   onClick={sideNavLinkClickHandler}
-                  activeClassName="Navbar__activeLink"
+                  className={({ isActive }) =>
+                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                  }
                 >
                   All Products
                 </NavLink>
@@ -148,9 +149,10 @@ function Navbar() {
               <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/mobile"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
                   onClick={sideNavLinkClickHandler}
+                  className={({ isActive }) =>
+                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                  }
                 >
                   Mobile
                 </NavLink>
@@ -160,9 +162,10 @@ function Navbar() {
               <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/tv"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
                   onClick={sideNavLinkClickHandler}
+                  className={({ isActive }) =>
+                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                  }
                 >
                   TV
                 </NavLink>
@@ -172,9 +175,10 @@ function Navbar() {
               <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/laptop"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
                   onClick={sideNavLinkClickHandler}
+                  className={({ isActive }) =>
+                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                  }
                 >
                   Laptop
                 </NavLink>
@@ -184,9 +188,10 @@ function Navbar() {
               <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/watch"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
                   onClick={sideNavLinkClickHandler}
+                  className={({ isActive }) =>
+                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                  }
                 >
                   Watch
                 </NavLink>
@@ -196,9 +201,10 @@ function Navbar() {
               <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/wishlist"
-                  className="navbar__Link"
-                  activeClassName="Navbar__activeLink"
                   onClick={sideNavLinkClickHandler}
+                  className={({ isActive }) =>
+                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                  }
                 >
                   Wishlist
                 </NavLink>
@@ -250,43 +256,49 @@ function Navbar() {
           <>
             <NavLink
               to="/products"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
+              className={({ isActive }) =>
+                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+              }
             >
               All Products
             </NavLink>
             <NavLink
               to="/mobile"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
+              className={({ isActive }) =>
+                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+              }
             >
               Mobile
             </NavLink>
             <NavLink
               to="/tv"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
+              className={({ isActive }) =>
+                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+              }
             >
               TV
             </NavLink>
             <NavLink
               to="/laptop"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
+              className={({ isActive }) =>
+                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+              }
             >
               Laptop
             </NavLink>
             <NavLink
               to="/watch"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
+              className={({ isActive }) =>
+                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+              }
             >
               Watch
             </NavLink>
             <NavLink
               to="/wishlist"
-              className="navbar__Link"
-              activeClassName="Navbar__activeLink"
+              className={({ isActive }) =>
+                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+              }
             >
               Wishlist
             </NavLink>
@@ -319,8 +331,9 @@ function Navbar() {
         ) : null}
         <NavLink
           to="/cart"
-          className="navbar__Link"
-          activeClassName="Navbar__activeLink"
+          className={({ isActive }) =>
+            isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+          }
         >
           <BsBag />
           <span className="navbar__productCount">{cart.length}</span>
@@ -329,7 +342,6 @@ function Navbar() {
           <NavLink
             to={isUserLoggedIn ? "/products" : "/signin"}
             className="navbar__Link"
-            // activeClassName="Navbar__activeLink"
             onClick={signoutBtnHandler}
           >
             {isUserLoggedIn ? "Sign Out" : "Sign In"}
