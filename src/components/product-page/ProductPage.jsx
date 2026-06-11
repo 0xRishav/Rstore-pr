@@ -1,7 +1,8 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CartWishlistBtn, ImageSlider, Loader } from "..";
 import "./ProductPage.css";
-import { useProduct } from "../../helpers";
+import api from "../../api/client";
 
 function Stars({ rating, size = 16, color = "#06c" }) {
   return (
@@ -24,25 +25,45 @@ function Stars({ rating, size = 16, color = "#06c" }) {
 
 function ProductPage() {
   const { id } = useParams();
-  const { isLoading, products, dispatch } = useProduct();
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  const {
-    name,
-    image,
-    price,
-    isInCart,
-    isInWishlist,
-    fastDelivery,
-    freeShipping,
-    about,
-    rating,
-  } = products.find((product) => product._id === id);
+  useEffect(() => {
+    (async function () {
+      setIsLoading(true);
+      try {
+        const res = await api.get(`/api/products/${id}`);
+        if (res.data.success) {
+          setProduct(res.data.data);
+        } else {
+          setError(true);
+        }
+      } catch {
+        setError(true);
+      }
+      setIsLoading(false);
+    })();
+  }, [id]);
+
+  if (isLoading) return <Loader />;
+  if (error || !product) {
+    return (
+      <div className="productPage">
+        <h1 style={{ margin: "6rem auto", textAlign: "center" }}>
+          Product not found
+        </h1>
+      </div>
+    );
+  }
+
+  const { name, images, price, fastDelivery, freeShipping, about, rating } =
+    product;
 
   return (
     <div className="productPage">
-      {isLoading && <Loader />}
       <div className="productPage__wrapper">
-        <ImageSlider images={image} parent={ProductPage} />
+        <ImageSlider images={images} parent={ProductPage} />
         <div className="ProductPage__rightContainer">
           <div className="productPage__name">{name}</div>
           <div className="productPage__price">Rs. {price.toLocaleString()}</div>
@@ -57,18 +78,13 @@ function ProductPage() {
           </div>
 
           <div className="ProductPage__buttonWrapper">
-            <CartWishlistBtn
-              id={id}
-              isInCart={isInCart}
-              isInWishlist={isInWishlist}
-              dispatch={dispatch}
-            />
+            <CartWishlistBtn id={id} />
           </div>
           <ul>
             <h4>About this Product</h4>
-            {about.map((about, index) => (
+            {about?.map((item, index) => (
               <li className="ProductPage__aboutLi" key={index}>
-                {about}
+                {item}
               </li>
             ))}
           </ul>
