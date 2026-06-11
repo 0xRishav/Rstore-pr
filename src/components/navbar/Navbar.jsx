@@ -19,13 +19,12 @@ function Navbar() {
   const [searchInput, setSearchInput] = useState("");
   const { width } = useWindowDimensions();
   const navbarRef = useRef(null);
-  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(authContext);
+  const { isUserLoggedIn, logoutUser } = useContext(authContext);
   const [cartCount, setCartCount] = useState(0);
 
   const signoutBtnHandler = () => {
     if (isUserLoggedIn) {
-      window.localStorage.removeItem("currentUser");
-      setIsUserLoggedIn(!isUserLoggedIn);
+      logoutUser();
     }
     setIsSideMenuOpen(!isSideMenuOpen);
     dispatch({ type: "CLEAR_USER_STATE" });

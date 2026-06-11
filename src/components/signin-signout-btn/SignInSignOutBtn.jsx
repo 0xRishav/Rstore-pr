@@ -4,11 +4,10 @@ import { authContext } from "../../contexts/authContext";
 import "./SignInSignOutBtn.css";
 
 function SignInSignOutBtn() {
-  const { isUserLoggedIn, setIsUserLoggedIn } = useContext(authContext);
+  const { isUserLoggedIn, logoutUser } = useContext(authContext);
   const signinBtnHandler = () => {
     if (isUserLoggedIn) {
-      window.localStorage.removeItem("currentUser");
-      setIsUserLoggedIn(!isUserLoggedIn);
+      logoutUser();
     }
   };
 

@@ -1,12 +1,10 @@
-import axios from "axios";
+import api from "../api/client";
 import { createContext, useContext, useEffect, useState } from "react";
 import useLocalStorage from "../custom-hooks/useLocalStorage";
-import { fakeAuthAPI } from "../helpers";
 
 export const authContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [users, setUsers] = useLocalStorage("users", []);
   const [currentUser, setCurrentUser] = useLocalStorage("currentUser", false);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
 
@@ -18,52 +16,49 @@ export const AuthContextProvider = ({ children }) => {
 
   const signUpUser = async (name, email, password) => {
     try {
-      const res = await axios.post(
-        "https://rstore-api.onrender.com/users/signup",
-        {
-          name: name,
-          email: email,
-          password: password,
-        }
-      );
-      if (res.data.success) {
-        return { success: true, message: "user signed up" };
-      } else {
-        console.log("invalid email or password");
-        return { success: false, message: "user sign up fail" };
-      }
+      const res = await api.post("/api/auth/signup", {
+        name,
+        email,
+        password,
+      });
+      return { success: res.data.success, message: res.data.message };
     } catch (err) {
       console.log(err);
+      return { success: false, message: "Sign up failed" };
     }
   };
 
-  async function loginWithCredentials(email, password) {
+  const loginWithCredentials = async (email, password) => {
     try {
-      const response = await axios.post(
-        "https://rstore-api.onrender.com/users/signin",
-        { email, password }
-      );
-
-      if (response.status === 200) {
-        setCurrentUser(response.data.user);
+      const response = await api.post("/api/auth/signin", { email, password });
+      if (response.data.success) {
+        localStorage.setItem("token", response.data.data.token);
+        setCurrentUser(response.data.data.user);
         setIsUserLoggedIn(true);
-        return response;
-      } else {
-        console.log("invalid login request");
-        return { success: false, message: "invalid login request" };
+        return { success: true };
       }
+      return { success: false, message: response.data.message };
     } catch (err) {
       console.log(err);
+      return { success: false, message: "Login failed" };
     }
-  }
+  };
+
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("currentUser");
+    setCurrentUser(false);
+    setIsUserLoggedIn(false);
+  };
+
   return (
     <authContext.Provider
       value={{
         isUserLoggedIn,
-        setIsUserLoggedIn,
         loginWithCredentials,
         signUpUser,
         currentUser,
+        logoutUser,
       }}
     >
       {children}

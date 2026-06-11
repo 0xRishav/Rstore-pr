@@ -16,7 +16,7 @@ function SignInPage() {
   async function signinHandler() {
     setIsLoading(true);
     const response = await loginWithCredentials(email, password);
-    if (response.status === 200) {
+    if (response.success) {
       navigate(state?.from ? state.from : "/");
     } else {
       console.log(response.message);
@@ -30,7 +30,7 @@ function SignInPage() {
       "testuser100@gmail.com",
       "123456"
     );
-    if (response.status === 200) {
+    if (response.success) {
       navigate(state?.from ? state.from : "/");
     } else {
       console.log(response.message);
