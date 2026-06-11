@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useProduct } from "../../helpers";
 import "./CartWishlistBtn.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
 function CartWishlistBtn({ id, isProductsPage }) {
@@ -14,7 +14,7 @@ function CartWishlistBtn({ id, isProductsPage }) {
     cart,
   } = useProduct();
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { isUserLoggedIn } = useAuth();
   const [isInCart, setIsInCart] = useState(false);
   const [isInWishlist, setIsInWishlist] = useState(false);
@@ -47,7 +47,7 @@ function CartWishlistBtn({ id, isProductsPage }) {
               : () => {
                   addToCart(id);
                 }
-            : () => history.push("/signin")
+            : () => navigate("/signin")
         }
         className={
           isProductsPage
@@ -67,7 +67,7 @@ function CartWishlistBtn({ id, isProductsPage }) {
               : () => {
                   addToWishlist(id);
                 }
-            : () => history.push("/signin")
+            : () => navigate("/signin")
         }
         className={
           isProductsPage

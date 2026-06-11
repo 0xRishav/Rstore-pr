@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
 import useLocalStorage from "../../custom-hooks/useLocalStorage";
@@ -15,7 +15,7 @@ function SignUpPage() {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isNameValid, setIsNameValid] = useState(false);
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const handleSignUpClick = async () => {
     if (isNameValid && isPasswordValid && isEmailValid) {
@@ -23,7 +23,7 @@ function SignUpPage() {
       try {
         const res = await signUpUser(name, email, password);
         if (res.success) {
-          history.push("/signin");
+          navigate("/signin");
         }
       } catch (err) {
         console.log(err);

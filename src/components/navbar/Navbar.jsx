@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
@@ -51,7 +51,7 @@ function Navbar() {
     };
   }, []);
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   // let cartCount = 0;
   const cartCountReducer = (acc, val) => {
@@ -92,7 +92,7 @@ function Navbar() {
 
   const handleSearchKeyPress = (e) => {
     if (e.key === "Enter") {
-      history.push("/search", { filteredProducts });
+      navigate("/search", { state: { filteredProducts } });
       setIsSideMenuOpen(false);
     }
   };

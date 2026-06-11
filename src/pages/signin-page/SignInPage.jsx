@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./SignInPage.css";
 import { BsArrowUpRight } from "react-icons/bs";
 import { authContext } from "../../contexts/authContext";
@@ -11,13 +11,13 @@ function SignInPage() {
   const { state } = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let history = useHistory();
+  let navigate = useNavigate();
 
   async function signinHandler() {
     setIsLoading(true);
     const response = await loginWithCredentials(email, password);
     if (response.status === 200) {
-      history.push(state?.from ? state.from : "/");
+      navigate(state?.from ? state.from : "/");
     } else {
       console.log(response.message);
     }
@@ -31,7 +31,7 @@ function SignInPage() {
       "123456"
     );
     if (response.status === 200) {
-      history.push(state?.from ? state.from : "/");
+      navigate(state?.from ? state.from : "/");
     } else {
       console.log(response.message);
     }
