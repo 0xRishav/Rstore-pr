@@ -4,23 +4,17 @@ import { AiFillTag } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { CartWishlistBtn } from "..";
 
-function Product({
-  id,
-  dispatch,
-  name,
-  image,
-  price,
-  fastDelivery,
-  freeShipping,
-}) {
-  const [imageToBeShown, setImageToBeShown] = useState(image[0]);
+function Product(props) {
+  const { id, name, images, price, fastDelivery, freeShipping } = props;
+  // console.log("props", props);
+  const [imageToBeShown, setImageToBeShown] = useState(images[0]);
 
   const imageMouseEnterHandler = () => {
-    setImageToBeShown(image[1]);
+    setImageToBeShown(images[1]);
   };
 
   const imageMouseLeaveHandler = () => {
-    setImageToBeShown(image[0]);
+    setImageToBeShown(images[0]);
   };
 
   const truncate = (string, n) => {
@@ -57,9 +51,6 @@ function Product({
       <div className="Product__buttonWrapper">
         <CartWishlistBtn
           id={id}
-          isInCart={false}
-          isInWishlist={false}
-          dispatch={dispatch}
           isProductsPage
         />
       </div>

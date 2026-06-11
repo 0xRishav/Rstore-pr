@@ -20,8 +20,6 @@ function Navbar() {
   const { width } = useWindowDimensions();
   const navbarRef = useRef(null);
   const { isUserLoggedIn, logoutUser } = useContext(authContext);
-  const [cartCount, setCartCount] = useState(0);
-
   const signoutBtnHandler = () => {
     if (isUserLoggedIn) {
       logoutUser();
@@ -52,24 +50,9 @@ function Navbar() {
 
   let navigate = useNavigate();
 
-  // let cartCount = 0;
-  const cartCountReducer = (acc, val) => {
-    return acc + val.quantity;
-  };
-
-  const getCartCount = () => {
-    return products
-      .filter((ele) => ele.isInCart === true)
-      .reduce(cartCountReducer, 0);
-  };
-
   const handleMenuClick = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
   };
-
-  useEffect(() => {
-    setCartCount(getCartCount());
-  }, [products]);
 
   const sideNavLinkClickHandler = () => {
     setIsSideMenuOpen(!isSideMenuOpen);
