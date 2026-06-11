@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useReducer } from "react";
-import axios from "axios";
+import api from "../api/client";
 import { useAuth } from "./authContext";
 
 export const ProductsContext = createContext();
@@ -23,8 +23,8 @@ export const ProductsContextProvider = ({ children }) => {
   const addToCart = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });
     try {
-      const res = await axios.post(
-        `https://rstore-api.onrender.com/cart/${currentUser._id}`,
+      const res = await api.post(
+        `/api/cart`,
         {
           productId: productId,
           quantity: 1,
@@ -45,8 +45,8 @@ export const ProductsContextProvider = ({ children }) => {
     try {
       const {
         data: { data, success },
-      } = await axios.delete(
-        `https://rstore-api.onrender.com/cart/${currentUser._id}/products/${productId}`
+      } = await api.delete(
+        `/api/cart/products/${productId}`
       );
       if (success) {
         dispatch({ type: "SET_CART", payload: [...data] });
@@ -63,8 +63,8 @@ export const ProductsContextProvider = ({ children }) => {
     try {
       const {
         data: { data, success },
-      } = await axios.put(
-        `https://rstore-api.onrender.com/cart/${currentUser._id}/products/${productId}`,
+      } = await api.put(
+        `/api/cart/products/${productId}`,
         { quantity: quantity }
       );
       if (success) {
@@ -80,8 +80,8 @@ export const ProductsContextProvider = ({ children }) => {
   const addToWishlist = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });
     try {
-      const res = await axios.post(
-        `https://rstore-api.onrender.com/wishlist/${currentUser._id}`,
+      const res = await api.post(
+        `/api/wishlist`,
         {
           productId,
         }
@@ -101,8 +101,8 @@ export const ProductsContextProvider = ({ children }) => {
     try {
       const {
         data: { data, success },
-      } = await axios.delete(
-        `https://rstore-api.onrender.com/wishlist/${currentUser._id}/products/${productId}`
+      } = await api.delete(
+        `/api/wishlist/products/${productId}`
       );
       if (success) {
         dispatch({ type: "SET_WISHLIST", payload: [...data] });
@@ -165,13 +165,13 @@ export const ProductsContextProvider = ({ children }) => {
     (async function () {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
-        const productResponse = await axios.get(
-          "https://rstore-api.onrender.com/products"
+        const productResponse = await api.get(
+          "/api/products"
         );
         if (productResponse.data.success) {
           dispatch({
             type: "SET_PRODUCTS",
-            payload: [...productResponse.data.products],
+            payload: [...productResponse.data.data],
           });
         }
       } catch (err) {
@@ -186,8 +186,8 @@ export const ProductsContextProvider = ({ children }) => {
       if (currentUser) {
         dispatch({ type: "TOGGLE_LOADING" });
         try {
-          const cartResponse = await axios.get(
-            `https://rstore-api.onrender.com/cart/${currentUser._id}`
+          const cartResponse = await api.get(
+            `/api/cart`
           );
           if (cartResponse.data.success) {
             dispatch({
@@ -208,8 +208,8 @@ export const ProductsContextProvider = ({ children }) => {
       if (currentUser) {
         dispatch({ type: "TOGGLE_LOADING" });
         try {
-          const wishlistResponse = await axios.get(
-            `https://rstore-api.onrender.com/wishlist/${currentUser._id}`
+          const wishlistResponse = await api.get(
+            `/api/wishlist`
           );
           if (wishlistResponse.data.success) {
             dispatch({
