@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./CartProduct.css";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
 import { useProduct } from "../../helpers";
 import { Loader } from "..";
 import Select from "react-select";

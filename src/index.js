@@ -3,15 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import { App } from "./components";
 import reportWebVitals from "./reportWebVitals";
-import setupMockServer from "./api/mock.server";
 import { ProductsContextProvider } from "./contexts/productsContext";
 import { BrowserRouter } from "react-router-dom";
-import ProductPage from "./components/product-page/ProductPage";
-import Homepage from "./pages/homepage/Homepage";
-import { WishlistPage, CartPage, AllProductsPage } from "./pages";
 import { AuthContextProvider } from "./contexts/authContext";
-
-// setupMockServer();
 
 ReactDOM.render(
   <React.StrictMode>
