@@ -64,12 +64,12 @@ function CartWishlistBtn({ id, isProductsPage }) {
 
   return (
     <div className="product-actions">
-      <button className="btn btn--primary btn--lg" onClick={handleCartClick}>
+      <button className="btn btn--primary" onClick={handleCartClick}>
         {isInCart ? <BsCartCheck size={18} /> : <BsCart3 size={18} />}
         {isInCart ? "Remove from Cart" : "Add to Cart"}
       </button>
       <button
-        className={`btn ${isInWishlist ? "btn--danger" : "btn--secondary"} btn--lg`}
+        className={`btn ${isInWishlist ? "btn--danger" : "btn--secondary"}`}
         onClick={handleWishlistClick}
       >
         {isInWishlist ? <BsHeartFill size={18} /> : <BsHeart size={18} />}
