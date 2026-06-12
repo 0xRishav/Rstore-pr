@@ -60,7 +60,8 @@
 @media only screen and (max-width: 543px) {
   .Homepage__featuredProductContainer {
     flex-direction: column;
-    height: 94vh;
+    height: auto;
+    min-height: 80vh;
   }
   .Homepage__featuredProductContainer:nth-child(even) {
     flex-direction: column;
