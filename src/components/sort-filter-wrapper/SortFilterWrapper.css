@@ -49,3 +49,14 @@
   padding: 4px 8px;
   border-radius: 6px;
 }
+
+@media only screen and (max-width: 440px) {
+  .SortFilterWrapper {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .SortFilterWrapper__filterDropDownContainer,
+  .SortFilterWrapper__sortDropDownContainer {
+    width: 100%;
+  }
+}
