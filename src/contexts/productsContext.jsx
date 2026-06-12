@@ -9,7 +9,7 @@ export const ProductsContextProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState(null);
   const [showFastDeliveryOnly, setShowFastDeliveryOnly] = useState(false);
   const [showFreeShippingOnly, setShowFreeShippingOnly] = useState(false);
-  const [filterPrice, setFilterPrice] = useState(false);
+  const [filterPrice, setFilterPrice] = useState("150000");
 
   const toggleFastDelivery = () => setShowFastDeliveryOnly((prev) => !prev);
   const toggleFreeShipping = () => setShowFreeShippingOnly((prev) => !prev);
