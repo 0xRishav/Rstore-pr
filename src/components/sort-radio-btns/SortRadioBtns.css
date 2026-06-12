@@ -66,12 +66,6 @@
   background: var(--white-clr);
 }
 
-.App__totalCartPrice {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 32px 0;
-}
-
 .radio-btn-container {
   margin: 16px 0;
 }

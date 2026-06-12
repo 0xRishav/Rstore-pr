@@ -115,12 +115,6 @@ code {
   width: 95%;
   margin: auto;
 }
-.hr-div--nav {
-  border: 1px solid var(--light-grey-clr);
-  width: 80%;
-  margin: auto;
-}
-
 @media only screen and (max-width: 1000px) {
   .products-wrapper {
     grid-template-columns: repeat(3, 1fr);

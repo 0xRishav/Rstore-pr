@@ -1,17 +1,7 @@
-.AllProductsPage__checkboxRadioBtnWrapper {
-  display: flex;
-}
-
 .AllProductsPage__sortfilteSignBtnWrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 95%;
   margin: auto;
-}
-
-@media only screen and (max-width: 900px) {
-  .AllProductsPage__checkboxRadioBtnWrapper {
-    flex-direction: column;
-  }
 }

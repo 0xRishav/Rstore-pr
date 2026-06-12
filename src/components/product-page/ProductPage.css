@@ -52,20 +52,6 @@
   font-size: 0.7rem;
 }
 
-.ProductPage__button--primary {
-  background: var(--light-blue-clr);
-  border: none;
-  outline: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--white-clr);
-}
-
-.ProductPage__button--primary:hover {
-  background: var(--bright-light-blue-clr);
-}
-
 @media only screen and (max-width: 768px) {
   .productPage__wrapper {
     flex-direction: column;
@@ -77,9 +63,6 @@
   }
   .ProductPage__rightContainer {
     width: 100%;
-  }
-  .productPage__description {
-    margin-bottom: 0;
   }
   .productPage__name {
     margin-top: 16px;

@@ -76,9 +76,6 @@
     height: 30%;
     margin-top: 5%;
   }
-  .macbookpro-img {
-    width: 90%;
-  }
   .Homepage__categoryWrapper {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
