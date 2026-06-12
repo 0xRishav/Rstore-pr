@@ -71,6 +71,7 @@
 
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -206,5 +207,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   .products-wrapper {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .products-wrapper {
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
   }
 }
