@@ -91,10 +91,10 @@ function Navbar() {
     <div
       className={
         isScrolled === false
-          ? "navbar__wrapper"
+          ? "Navbar__wrapper"
           : isSideMenuOpen === true
-          ? "navbar__wrapper"
-          : "navbar__wrapper navbar__wrapper--scrolled"
+          ? "Navbar__wrapper"
+          : "Navbar__wrapper Navbar__wrapper--scrolled"
       }
     >
       {isSideMenuOpen && width < 770 && (
@@ -125,7 +125,7 @@ function Navbar() {
                   to="/products"
                   onClick={sideNavLinkClickHandler}
                   className={({ isActive }) =>
-                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
                   }
                 >
                   All Products
@@ -138,7 +138,7 @@ function Navbar() {
                   to="/mobile"
                   onClick={sideNavLinkClickHandler}
                   className={({ isActive }) =>
-                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
                   }
                 >
                   Mobile
@@ -151,7 +151,7 @@ function Navbar() {
                   to="/tv"
                   onClick={sideNavLinkClickHandler}
                   className={({ isActive }) =>
-                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
                   }
                 >
                   TV
@@ -164,7 +164,7 @@ function Navbar() {
                   to="/laptop"
                   onClick={sideNavLinkClickHandler}
                   className={({ isActive }) =>
-                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
                   }
                 >
                   Laptop
@@ -177,7 +177,7 @@ function Navbar() {
                   to="/watch"
                   onClick={sideNavLinkClickHandler}
                   className={({ isActive }) =>
-                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
                   }
                 >
                   Watch
@@ -190,7 +190,7 @@ function Navbar() {
                   to="/wishlist"
                   onClick={sideNavLinkClickHandler}
                   className={({ isActive }) =>
-                    isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
                   }
                 >
                   Wishlist
@@ -202,13 +202,13 @@ function Navbar() {
                 {isUserLoggedIn ? (
                   <NavLink
                     to="/"
-                    className="navbar__Link"
+                    className="Navbar__Link"
                     onClick={signoutBtnHandler}
                   >
                     Sign Out
                   </NavLink>
                 ) : (
-                  <NavLink to="/signin" className="navbar__Link">
+                  <NavLink to="/signin" className="Navbar__Link">
                     Sign In
                   </NavLink>
                 )}
@@ -217,7 +217,7 @@ function Navbar() {
           </nav>
         </div>
       )}
-      <div className="navbar" ref={navbarRef}>
+      <div className="Navbar" ref={navbarRef}>
         {width < 770 && (
           <>
             {isSideMenuOpen ? (
@@ -244,7 +244,7 @@ function Navbar() {
             <NavLink
               to="/products"
               className={({ isActive }) =>
-                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
             >
               All Products
@@ -252,7 +252,7 @@ function Navbar() {
             <NavLink
               to="/mobile"
               className={({ isActive }) =>
-                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
             >
               Mobile
@@ -260,7 +260,7 @@ function Navbar() {
             <NavLink
               to="/tv"
               className={({ isActive }) =>
-                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
             >
               TV
@@ -268,7 +268,7 @@ function Navbar() {
             <NavLink
               to="/laptop"
               className={({ isActive }) =>
-                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
             >
               Laptop
@@ -276,7 +276,7 @@ function Navbar() {
             <NavLink
               to="/watch"
               className={({ isActive }) =>
-                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
             >
               Watch
@@ -284,21 +284,21 @@ function Navbar() {
             <NavLink
               to="/wishlist"
               className={({ isActive }) =>
-                isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
             >
               Wishlist
             </NavLink>
-            <div className="navbar__Link" onClick={serchClickHandler}>
+            <div className="Navbar__Link" onClick={serchClickHandler}>
               {!isSearchClicked && (
-                <AiOutlineSearch className="navbar__searchIcon" />
+                <AiOutlineSearch className="Navbar__searchIcon" />
               )}
               {isSearchClicked && (
-                <div className="navbar__searchboxWrapper">
+                <div className="Navbar__searchboxWrapper">
                   <input
                     type="text"
                     placeholder="Search here..."
-                    className="navbar__searchbox"
+                    className="Navbar__searchbox"
                     onChange={handleSearchInputChange}
                     onKeyPress={handleSearchKeyPress}
                   />
@@ -309,7 +309,7 @@ function Navbar() {
                     }}
                     className="Navbar__desktopSearchLink"
                   >
-                    <AiOutlineSearch className="navbar__searchIcon" />
+                    <AiOutlineSearch className="Navbar__searchIcon" />
                   </Link>
                 </div>
               )}
@@ -319,16 +319,16 @@ function Navbar() {
         <NavLink
           to="/cart"
           className={({ isActive }) =>
-            isActive ? "navbar__Link Navbar__activeLink" : "navbar__Link"
+            isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
           }
         >
           <BsBag />
-          <span className="navbar__productCount">{cart.length}</span>
+          <span className="Navbar__productCount">{cart.length}</span>
         </NavLink>
         {width > 770 && (
           <NavLink
             to={isUserLoggedIn ? "/products" : "/signin"}
-            className="navbar__Link"
+            className="Navbar__Link"
             onClick={signoutBtnHandler}
           >
             {isUserLoggedIn ? "Sign Out" : "Sign In"}

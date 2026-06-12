@@ -1,4 +1,4 @@
-.navbar__wrapper {
+.Navbar__wrapper {
   text-align: center;
   width: 100%;
   background-color: var(--dark-grey-text-clr);
@@ -19,7 +19,7 @@
   margin: 0 16px;
   cursor: pointer;
 }
-.navbar__wrapper--scrolled {
+.Navbar__wrapper--scrolled {
   color: var(--dark-grey-text-clr);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
@@ -37,25 +37,25 @@
   height: 100%;
 }
 
-.navbar__Link {
+.Navbar__Link {
   color: var(--light-grey-text-clr);
   text-decoration: none;
   margin: 0 16px;
   cursor: pointer;
   transition: all 0.1s ease-in;
 }
-.navbar__Link:hover {
+.Navbar__Link:hover {
   color: var(--light-blue-clr);
 }
 
-.navbar__productCount {
+.Navbar__productCount {
   position: relative;
   bottom: 0;
   right: 0;
   font-size: 10px;
 }
 
-.navbar__searchbox {
+.Navbar__searchbox {
   background: var(--white-clr);
   height: 150%;
   /* opacity: 30%; */
@@ -63,12 +63,12 @@
   border: none;
   border-bottom: 1px var(--light-grey-text-clr);
 }
-.navbar__searchIcon {
+.Navbar__searchIcon {
   font-size: 20px;
   margin-left: 16px;
 }
 
-.navbar__searchboxWrapper {
+.Navbar__searchboxWrapper {
   display: flex;
   align-items: center;
 }
@@ -148,13 +148,14 @@
 }
 
 @media only screen and (max-width: 900px) {
-  .navbar {
+.Navbar {
+
     width: 95%;
   }
 }
 
 @media only screen and (max-width: 770px) {
-  .navbar__Link {
+  .Navbar__Link {
     margin: 0;
   }
 }
