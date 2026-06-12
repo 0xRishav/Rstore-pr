@@ -4,7 +4,7 @@ import { useProduct } from "../../helpers";
 import "./AllProductsPage.css";
 
 function AllProductsPage() {
-  const { isLoading, dispatch, filteredData } = useProduct();
+  const { isLoading, filteredData } = useProduct();
 
 
   return (
@@ -21,7 +21,6 @@ function AllProductsPage() {
             key={product._id}
             {...product}
             id={product._id}
-            dispatch={dispatch}
           />
         ))}
       </div>

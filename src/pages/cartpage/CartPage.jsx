@@ -20,7 +20,7 @@ function loadScript(src) {
 }
 
 function CartPage() {
-  const { dispatch, cart, isLoading } = useProduct();
+  const { cart, isLoading } = useProduct();
 
   const { currentUser } = useContext(authContext);
 
@@ -115,8 +115,6 @@ function CartPage() {
           key={product._id}
           product={product.product}
           quantity={product.quantity}
-          dispatch={dispatch}
-          getTotalPrice={getTotalPrice}
         />
       ))}
 

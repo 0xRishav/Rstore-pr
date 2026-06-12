@@ -5,7 +5,7 @@ import { useProduct } from "../../helpers";
 import "./SearchPage.css";
 
 function SearchPage() {
-  const { isLoading, dispatch } = useProduct();
+  const { isLoading } = useProduct();
 
   const location = useLocation();
   const { filteredProducts } = location.state || {};
@@ -23,7 +23,6 @@ function SearchPage() {
             <Product
               key={product._id}
               {...product}
-              dispatch={dispatch}
               id={product._id}
             />
           ))}

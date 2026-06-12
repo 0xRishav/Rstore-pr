@@ -4,7 +4,7 @@ import { useProduct } from "../../helpers";
 import "./WatchPage.css";
 
 function WatchPage() {
-  const { isLoading, filteredData, dispatch } = useProduct();
+  const { isLoading, filteredData } = useProduct();
 
   const Watches = filteredData.filter(
     (product) => product.category === "Watch"
@@ -18,10 +18,9 @@ function WatchPage() {
       <div className="products-wrapper">
         {Watches.map((product, index) => (
           <Product
-            id={product._id}
-            {...product}
-            dispatch={dispatch}
             key={product._id}
+            {...product}
+            id={product._id}
           />
         ))}
       </div>

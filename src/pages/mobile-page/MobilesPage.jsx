@@ -4,7 +4,7 @@ import { useProduct } from "../../helpers";
 import "./MobilesPage.css";
 
 function MobilesPage() {
-  const { isLoading, filteredData, dispatch } = useProduct();
+  const { isLoading, filteredData } = useProduct();
   const Mobiles = filteredData.filter(
     (product) => product.category === "Mobiles"
   );
@@ -17,7 +17,6 @@ function MobilesPage() {
           <Product
             key={product._id}
             {...product}
-            dispatch={dispatch}
             id={product._id}
           />
         ))}
