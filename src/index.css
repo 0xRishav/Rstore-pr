@@ -63,6 +63,12 @@
   --transition-base: 250ms ease;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -75,6 +81,31 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.text--sm {
+  font-size: var(--font-size-sm);
+}
+.text--lg {
+  font-size: var(--font-size-lg);
+}
+.text--xl {
+  font-size: var(--font-size-xl);
+}
+.text--2xl {
+  font-size: var(--font-size-2xl);
+}
+.text--muted {
+  color: var(--text-secondary-clr);
+}
+.text--center {
+  text-align: center;
 }
 
 /* Buttons */
