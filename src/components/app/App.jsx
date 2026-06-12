@@ -6,12 +6,9 @@ import {
   AllProductsPage,
   CartPage,
   Homepage,
-  LaptopsPage,
-  MobilesPage,
+  CategoryPage,
   SearchPage,
   SignInPage,
-  TVPage,
-  WatchPage,
   WishlistPage,
   SignUpPage,
   ProfilePage,
@@ -73,34 +70,10 @@ function App() {
           }
         />
         <Route
-          path="/tv"
+          path="/category/:category"
           element={
             <AppLayout>
-              <TVPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/mobile"
-          element={
-            <AppLayout>
-              <MobilesPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/laptop"
-          element={
-            <AppLayout>
-              <LaptopsPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/watch"
-          element={
-            <AppLayout>
-              <WatchPage />
+              <CategoryPage />
             </AppLayout>
           }
         />

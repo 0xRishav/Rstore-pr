@@ -1,8 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import { Loader, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 
-function CategoryPage({ category }) {
+function CategoryPage() {
+  const { category } = useParams();
   const { isLoading, filteredData } = useProduct();
   const filtered = filteredData.filter(
     (product) => product.category === category

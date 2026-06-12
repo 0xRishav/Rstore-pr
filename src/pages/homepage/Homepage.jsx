@@ -75,28 +75,28 @@ function Homepage() {
       imgSrc:
         "https://fdn.gsmarena.com/imgroot/news/20/08/huawei-y9a-specs-design-ad-banner/-1220x526/gsmarena_004.jpg",
       alt: "mobiles-banner",
-      link: "/mobile",
+      link: "/category/Mobiles",
     },
     {
       name: "Laptop",
       imgSrc:
         "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/3c018587711043.5dc0b3f75a8ca.jpg",
       alt: "laptops-banner",
-      link: "/laptop",
+      link: "/category/Laptop",
     },
     {
       name: "TV",
       imgSrc:
         "https://oasis.opstatics.com/content/dam/oasis/page/store/tv/new/New-TV_Banner_1600x1200.jpg",
       alt: "TV-banner",
-      link: "/tv",
+      link: "/category/TV",
     },
     {
       name: "Smart Watch",
       imgSrc:
         "https://cdn.dribbble.com/users/1146422/screenshots/6781898/main.png?compress=1&resize=800x600",
       alt: "Watch-banner",
-      link: "/watch",
+      link: "/category/Watch",
     },
   ];
 

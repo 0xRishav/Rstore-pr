@@ -6,11 +6,11 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
-import { BiSearch } from "react-icons/bi";
 import useProduct from "../../helpers/useProducts";
 import { useCart } from "../../contexts/CartContext";
 import { useWishlist } from "../../contexts/WishlistContext";
 import { authContext } from "../../contexts/authContext";
+import NavbarSideMenu from "./NavbarSideMenu";
 
 function Navbar() {
   const { products } = useProduct();
@@ -98,124 +98,14 @@ function Navbar() {
       }
     >
       {isSideMenuOpen && width < 770 && (
-        <div className="Navbar__sideMenu">
-          <nav className="Navbar__sideMenuNav">
-            <div className="Navbar__searchInputContainer">
-              <input
-                type="text"
-                className="Navbar__searchInput"
-                placeholder="Search..."
-                onChange={handleSearchInputChange}
-                onKeyPress={handleSearchKeyPress}
-              />
-              <Link
-                to={{
-                  pathname: "/search",
-                  state: { filteredProducts: filteredProducts },
-                }}
-                className="Navbar__searchInputIcon"
-                onClick={() => setIsSideMenuOpen(false)}
-              >
-                <BiSearch className="Navbar__searchInputIcon" color="#6e6e73" />
-              </Link>
-            </div>
-            <div className="Navbar__sideMenu--linkWrapper">
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to="/products"
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  All Products
-                </NavLink>
-              </div>
-
-              <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to="/mobile"
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  Mobile
-                </NavLink>
-              </div>
-
-              <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to="/tv"
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  TV
-                </NavLink>
-              </div>
-
-              <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to="/laptop"
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  Laptop
-                </NavLink>
-              </div>
-
-              <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to="/watch"
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  Watch
-                </NavLink>
-              </div>
-
-              <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to="/wishlist"
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  Wishlist
-                </NavLink>
-              </div>
-
-              <div className="hr-div"></div>
-              <div className="Navbar__sideMenu--linkContainer">
-                {isUserLoggedIn ? (
-                  <NavLink
-                    to="/"
-                    className="Navbar__Link"
-                    onClick={signoutBtnHandler}
-                  >
-                    Sign Out
-                  </NavLink>
-                ) : (
-                  <NavLink to="/signin" className="Navbar__Link">
-                    Sign In
-                  </NavLink>
-                )}
-              </div>
-            </div>
-          </nav>
-        </div>
+        <NavbarSideMenu
+          filteredProducts={filteredProducts}
+          handleSearchInputChange={handleSearchInputChange}
+          handleSearchKeyPress={handleSearchKeyPress}
+          sideNavLinkClickHandler={sideNavLinkClickHandler}
+          signoutBtnHandler={signoutBtnHandler}
+          isUserLoggedIn={isUserLoggedIn}
+        />
       )}
       <div className="Navbar" ref={navbarRef}>
         {width < 770 && (
@@ -250,7 +140,7 @@ function Navbar() {
               All Products
             </NavLink>
             <NavLink
-              to="/mobile"
+              to="/category/Mobiles"
               className={({ isActive }) =>
                 isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
@@ -258,7 +148,7 @@ function Navbar() {
               Mobile
             </NavLink>
             <NavLink
-              to="/tv"
+              to="/category/TV"
               className={({ isActive }) =>
                 isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
@@ -266,7 +156,7 @@ function Navbar() {
               TV
             </NavLink>
             <NavLink
-              to="/laptop"
+              to="/category/Laptop"
               className={({ isActive }) =>
                 isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
@@ -274,7 +164,7 @@ function Navbar() {
               Laptop
             </NavLink>
             <NavLink
-              to="/watch"
+              to="/category/Watch"
               className={({ isActive }) =>
                 isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
               }
