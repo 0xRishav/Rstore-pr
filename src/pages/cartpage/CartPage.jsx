@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
+import { FiShoppingCart, FiTrash2, FiShield } from "react-icons/fi";
 import { CartProduct, Loader, EmptyState } from "../../components";
-import { authContext } from "../../contexts/authContext";
+import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
 import "./CartPage.css";
 import api from "../../api/client";
@@ -9,27 +10,18 @@ function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
     script.src = src;
-    script.onload = () => {
-      resolve(true);
-    };
-    script.onerror = () => {
-      resolve(false);
-    };
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
     document.body.appendChild(script);
   });
 }
 
 function CartPage() {
-  const { cart, isLoading } = useCart();
-
-  const { currentUser } = useContext(authContext);
-
-  const [selectedCoupon, setSelectedCoupon] = useState(false);
+  const { cart, isLoading, clearCart } = useCart();
+  const { currentUser } = useAuth();
 
   const displayRazorPay = async () => {
-    const res = await loadScript(
-      "https://checkout.razorpay.com/v1/checkout.js"
-    );
+    const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
     if (!res) {
       alert("RazorPay SDK failed to load. Please try again after some time.");
       return;
@@ -42,76 +34,103 @@ function CartPage() {
       currency: response.data.data.currency,
       name: "RStore",
       description: "RStore Checkout",
-      image:
-        "https://res.cloudinary.com/dxnixxwnf/image/upload/v1630847953/RLogo_fjtk3d.png",
+      image: "https://res.cloudinary.com/dxnixxwnf/image/upload/v1630847953/RLogo_fjtk3d.png",
       order_id: response.data.data.id,
       handler: function (response) {
-        alert(
-          `Payment successful for payment id - ,${response.razorpay_payment_id}`
-        );
+        alert(`Payment successful for payment id - ${response.razorpay_payment_id}`);
       },
       prefill: {
-        name: currentUser.name,
-        email: currentUser.email,
+        name: currentUser?.name,
+        email: currentUser?.email,
       },
       theme: {
-        color: "#06c",
+        color: "#0066ff",
       },
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
-
     paymentObject.on("payment.failed", function (response) {
-      alert(
-        `Razorpay payment failed please try again later - ${response.error.description}`
-      );
+      alert(`Razorpay payment failed - ${response.error.description}`);
     });
   };
 
-  const getTotalPriceReducer = (acc, product) => {
-    return acc + product.product.price * product.quantity;
-  };
+  const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+  const shipping = subtotal >= 999 ? 0 : 99;
 
-  const getTotalPrice = () => {
-    const totalPrice = cart.reduce(getTotalPriceReducer, 0);
+  if (isLoading) return <Loader />;
 
-    return totalPrice;
-  };
+  if (cart.length === 0) {
+    return (
+      <EmptyState
+        message="Your cart is empty"
+        linkTo="/products"
+        linkText="Start Shopping"
+        icon={<FiShoppingCart size={48} />}
+      />
+    );
+  }
 
-  const totalPrice = getTotalPrice();
-
-  let newTotal = selectedCoupon
-    ? totalPrice - Math.round(getTotalPrice() * selectedCoupon.discount)
-    : false;
   return (
-    <div className="CartPage">
-      {isLoading && <Loader />}
-      {cart.length === 0 && (
-        <EmptyState message="Your cart is empty" linkTo="/products" icon="🛒" />
-      )}
+    <div className="cart-page">
+      <div className="cart-page__header">
+        <h1 className="cart-page__title">Shopping Cart</h1>
+        <span className="cart-page__count">{cart.length} item{cart.length !== 1 ? "s" : ""}</span>
+        <button className="cart-page__clear" onClick={clearCart}>
+          <FiTrash2 size={14} />
+          Clear all
+        </button>
+      </div>
 
-      {cart.map((product) => (
-        <CartProduct
-          key={product._id}
-          product={product.product}
-          quantity={product.quantity}
-        />
-      ))}
+      <div className="cart-page__layout">
+        <div className="cart-page__items">
+          {cart.map((item) => (
+            <CartProduct
+              key={item._id}
+              product={item.product}
+              quantity={item.quantity}
+            />
+          ))}
+        </div>
 
-      {cart.length !== 0 && (
-        <>
-          <div className="CartPage__totalCartPriceContainer">
-            Your Cart Total Is Rs. {totalPrice.toLocaleString()}
+        <div className="cart-page__summary">
+          <div className="cart-page__summary-card">
+            <h3 className="cart-page__summary-title">Order Summary</h3>
+
+            <div className="cart-page__summary-row">
+              <span>Subtotal</span>
+              <span>Rs. {subtotal.toLocaleString()}</span>
+            </div>
+
+            <div className="cart-page__summary-row">
+              <span>Shipping</span>
+              {shipping === 0 ? (
+                <span className="badge badge--success">FREE</span>
+              ) : (
+                <span>Rs. {shipping}</span>
+              )}
+            </div>
+
+            <div className="cart-page__summary-divider" />
+
+            <div className="cart-page__summary-row cart-page__summary-row--total">
+              <span>Total</span>
+              <span>Rs. {(subtotal + shipping).toLocaleString()}</span>
+            </div>
+
             <button
-              className="blue-btn--primary CartPage__checkoutBtn"
+              className="btn btn--primary btn--full btn--lg"
               onClick={displayRazorPay}
             >
-              CheckOut
+              Proceed to Checkout
             </button>
+
+            <div className="cart-page__secure">
+              <FiShield size={14} />
+              <span>Secure checkout via Razorpay</span>
+            </div>
           </div>
-          <div className="hr-div"></div>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,20 +1,28 @@
-.EmptyState {
-  margin-top: 6rem;
+.empty-state {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--space-4);
+  padding: var(--space-16) var(--space-6);
   text-align: center;
+  min-height: 50vh;
 }
 
-.EmptyState__icon {
-  font-size: 3rem;
-  line-height: 1;
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-full);
+  background: var(--gray-50);
+  color: var(--text-tertiary);
 }
 
-.EmptyState__message {
-  font-weight: 600;
+.empty-state__message {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
   margin: 0;
-  font-size: 1.25rem;
-  color: var(--text-secondary-clr);
 }
