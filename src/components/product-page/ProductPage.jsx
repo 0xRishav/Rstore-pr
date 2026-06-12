@@ -1,28 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CartWishlistBtn, ImageSlider, Loader } from "..";
+import { CartWishlistBtn, ImageSlider, Loader, Stars } from "..";
 import "./ProductPage.css";
 import api from "../../api/client";
-
-function Stars({ rating, size = 16, color = "#06c" }) {
-  return (
-    <span className="stars" aria-label={`Rating: ${rating} out of 5`}>
-      {[1, 2, 3, 4, 5].map((star) => (
-        <span
-          key={star}
-          style={{
-            color: star <= Math.round(rating) ? color : "#ddd",
-            fontSize: size,
-            marginRight: "2px",
-          }}
-          aria-hidden="true"
-        >
-          ★
-        </span>
-      ))}
-    </span>
-  );
-}
 
 function ProductPage() {
   const { id } = useParams();

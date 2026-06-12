@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Product, Loader } from "../../components";
+import { Product, Loader, EmptyState } from "../../components";
 import { useWishlist } from "../../contexts/WishlistContext";
 import "./WishlistPage.css";
 
@@ -20,12 +19,7 @@ function WishlistPage() {
         ))}
       </div>
       {wishlist.length === 0 && (
-        <div className="WishlistPage__emptyWishlist">
-          <p>Your wishlist is empty</p>
-          <Link className="blue-btn--secondary" to="/products">
-            Browse Products
-          </Link>
-        </div>
+        <EmptyState message="Your wishlist is empty" linkTo="/products" />
       )}
     </div>
   );
