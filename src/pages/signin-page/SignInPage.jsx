@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { FiLock, FiEye, FiEyeOff, FiAlertCircle, FiStar, FiGithub } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
+import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
 import "./SignInPage.css";
 
@@ -47,64 +46,55 @@ function SignInPage() {
 
   return (
     <div className="signin-page">
-      <div className="auth-card">
-        <div className="auth-card__accent-bar" />
+      <div className="signin-page__inner">
+        <h1 className="signin-page__title">Sign in to RStore</h1>
 
-        <div className="auth-card__header">
-          <div className="auth-card__icon">
-            <FiLock size={24} />
-          </div>
-          <h1 className="auth-card__title">Welcome back</h1>
-          <p className="auth-card__subtitle">Sign in to your account to continue</p>
-        </div>
-
-        <form className="auth-card__form" onSubmit={handleSubmit}>
+        <form className="signin-page__form" onSubmit={handleSubmit}>
           {error && (
-            <div className="auth-card__banner-error">
+            <div className="signin-page__banner-error">
               <FiAlertCircle size={14} />
               <span>{error}</span>
             </div>
           )}
 
-          <div className="form-group">
-            <label className="form-label" htmlFor="email">Email</label>
+          <div className="input-field">
             <input
-              className="form-input"
+              className="input-field__input"
               type="email"
               id="email"
-              placeholder="you@example.com"
+              placeholder=" "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
             />
+            <label className="input-field__label" htmlFor="email">Email</label>
           </div>
 
-          <div className="form-group">
-            <label className="form-label" htmlFor="password">Password</label>
-            <div className="input-password-wrapper">
-              <input
-                className="form-input"
-                type={showPassword ? "text" : "password"}
-                id="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
-              />
-              <button
-                type="button"
-                className="input-password-toggle"
-                onClick={() => setShowPassword(!showPassword)}
-                tabIndex={-1}
-              >
-                {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
-              </button>
-            </div>
+          <div className="input-field">
+            <input
+              className="input-field__input"
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder=" "
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+            />
+            <label className="input-field__label" htmlFor="password">Password</label>
+            <button
+              type="button"
+              className="input-field__toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              tabIndex={-1}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+            </button>
           </div>
 
           <button
             type="submit"
-            className="btn btn--primary btn--full btn--lg"
+            className="btn btn--primary signin-page__btn"
             disabled={isLoading}
           >
             {isLoading ? <span className="btn-spinner" /> : "Sign In"}
@@ -113,36 +103,22 @@ function SignInPage() {
 
         <div className="divider">
           <span className="divider__line" />
-          <span className="divider__text">or continue with</span>
+          <span className="divider__text">or</span>
           <span className="divider__line" />
-        </div>
-
-        <div className="social-buttons">
-          <button type="button" className="btn btn--secondary btn--full btn--social">
-            <FcGoogle size={20} />
-            Continue with Google
-          </button>
-          <button type="button" className="btn btn--secondary btn--full btn--social">
-            <FiGithub size={20} />
-            Continue with GitHub
-          </button>
         </div>
 
         <button
           type="button"
-          className="btn btn--ghost btn--full demo-button"
+          className="btn btn--secondary signin-page__btn"
           onClick={demoAccountClickHandler}
           disabled={isLoading}
         >
-          <FiStar size={16} />
-          Try demo account
+          Use Demo Account
         </button>
 
-        <p className="auth-card__footer">
+        <p className="signin-page__footer">
           Don't have an account?{" "}
-          <Link to="/signup" className="auth-card__link">
-            Sign up
-          </Link>
+          <Link to="/signup" className="signin-page__link">Sign up</Link>
         </p>
       </div>
     </div>
