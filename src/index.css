@@ -175,44 +175,33 @@ h1, h2, h3, h4, h5, h6 {
 
 .products-wrapper {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto;
-  grid-gap: 16px;
-  margin-top: 16px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  margin-top: var(--space-6);
 }
 
 .hr-div {
-  border: 1px solid var(--light-grey-clr);
+  border: 1px solid var(--border-primary);
   width: 95%;
   margin: auto;
 }
-@media only screen and (max-width: 1000px) {
+
+@media (max-width: 1200px) {
   .products-wrapper {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media only screen and (max-width: 768px) {
-  html {
-    font-size: 15px;
-  }
-  .products-wrapper {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media only screen and (max-width: 425px) {
-  html {
-    font-size: 14px;
-  }
+@media (max-width: 768px) {
   .products-wrapper {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
   }
 }
 
-@media only screen and (max-width: 375px) {
+@media (max-width: 480px) {
   .products-wrapper {
-    grid-template-columns: 1fr;
-    grid-gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
   }
 }

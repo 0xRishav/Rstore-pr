@@ -1,10 +1,9 @@
-import React from "react";
 import { SortRadioBtns } from "..";
 import "./SortDropdown.css";
 
 function SortDropdown() {
   return (
-    <div className="SortDropdown">
+    <div className="sort-dropdown">
       <SortRadioBtns />
     </div>
   );

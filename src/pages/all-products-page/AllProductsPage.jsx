@@ -1,4 +1,3 @@
-import React from "react";
 import { Loader, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 import "./AllProductsPage.css";
@@ -6,24 +5,24 @@ import "./AllProductsPage.css";
 function AllProductsPage() {
   const { isLoading, filteredData } = useProduct();
 
-
   return (
-    <div className="AllProductsPage">
-      <div className="AllProductsPage__sortfilteSignBtnWrapper">
-        <SortFilterWrapper />
-        {/* <SignInSignOutBtn /> */}
+    <div className="all-products-page">
+      <div className="all-products-page__header">
+        <h1 className="all-products-page__title">All Products</h1>
+        <span className="all-products-page__count">{filteredData.length} products</span>
       </div>
 
-      {isLoading && <Loader />}
-      <div className="products-wrapper">
-        {filteredData.map((product) => (
-          <Product
-            key={product._id}
-            {...product}
-            id={product._id}
-          />
-        ))}
-      </div>
+      <SortFilterWrapper />
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="products-wrapper">
+          {filteredData.map((product) => (
+            <Product key={product._id} {...product} id={product._id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import { useProduct } from "../../helpers";
 import "./SortRadioBtns.css";
 
@@ -6,36 +5,39 @@ function SortRadioBtns() {
   const { sortBy, setSortBy } = useProduct();
 
   return (
-    <div className="radio-btn-wrapper">
-      <h5>Price: </h5>
-
-      <label className="radio-btn-container" htmlFor="low-to-high">
+    <div className="sort-radio-group">
+      <label className="sort-radio">
         <input
           type="radio"
-          id="low-to-high"
-          value="sort"
           name="sort"
+          className="sort-radio__input"
           onChange={() => setSortBy("LOW_TO_HIGH")}
-          checked={sortBy && sortBy === "LOW_TO_HIGH"}
-          className="radio-btn"
+          checked={sortBy === "LOW_TO_HIGH"}
         />
-        <span className="checkmark"></span>
-        Low To High
+        <span className="sort-radio__circle" />
+        <span className="sort-radio__label">Price: Low to High</span>
       </label>
 
-      <label htmlFor="high-to-low" className="radio-btn-container">
+      <label className="sort-radio">
         <input
           type="radio"
-          id="high-to-low"
-          value="sort"
           name="sort"
+          className="sort-radio__input"
           onChange={() => setSortBy("HIGH_TO_LOW")}
-          checked={sortBy && sortBy === "HIGH_TO_LOW"}
-          className="radio-btn"
+          checked={sortBy === "HIGH_TO_LOW"}
         />
-        <span className="checkmark"></span>
-        High To Low
+        <span className="sort-radio__circle" />
+        <span className="sort-radio__label">Price: High to Low</span>
       </label>
+
+      {sortBy && (
+        <button
+          className="sort-radio__clear"
+          onClick={() => setSortBy(null)}
+        >
+          Clear sort
+        </button>
+      )}
     </div>
   );
 }
