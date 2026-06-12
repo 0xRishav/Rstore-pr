@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { CartProduct, Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
@@ -87,9 +88,12 @@ function CartPage() {
     <div className="CartPage">
       {isLoading && <Loader />}
       {cart.length === 0 && (
-        <h1 className="CartPage__totalCartPrice">
-          Cart Is Empty
-        </h1>
+        <div className="CartPage__emptyCart">
+          <p>Your cart is empty</p>
+          <Link className="blue-btn--secondary" to="/products">
+            Browse Products
+          </Link>
+        </div>
       )}
 
       {cart.length !== 0 && (
