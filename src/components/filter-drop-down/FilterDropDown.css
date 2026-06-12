@@ -2,6 +2,7 @@
   position: absolute;
   top: 100%;
   left: 50%;
+  transform: translateX(-50%);
   background: var(--whitesmoke-clr);
   padding: 32px;
   border-radius: 16px;

@@ -1,6 +1,7 @@
 .productPage__wrapper {
   width: 90%;
-  height: 95vh;
+  min-height: 95vh;
+  height: auto;
   margin: auto;
   position: relative;
   display: flex;
