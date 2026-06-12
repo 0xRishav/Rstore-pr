@@ -15,9 +15,10 @@
 
 .Product__productName {
   font-weight: 500;
+  text-align: left;
 }
 .Product__price {
-  opacity: 0.9;
+  font-weight: 600;
 }
 
 .Product__buttonWrapper {

@@ -1,7 +1,10 @@
 .SortFilterWrapper {
   display: flex;
   width: 90%;
-  margin: auto;
+  margin: 16px auto;
+  background: var(--bg-secondary-clr);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
 }
 
 .SortFilterWrapper__filterDropDownContainer {
