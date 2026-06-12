@@ -6,7 +6,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
 import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
-import useProduct from "../../helpers/useProducts";
+import { useProduct } from "../../helpers";
 import { useCart } from "../../contexts/CartContext";
 import { useWishlist } from "../../contexts/WishlistContext";
 import { authContext } from "../../contexts/authContext";
