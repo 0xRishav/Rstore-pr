@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useMemo, useReducer } from "react";
 import api from "../api/client";
 import { useAuth } from "./authContext";
 
@@ -233,8 +233,24 @@ export const ProductsContextProvider = ({ children }) => {
       });
   };
 
-  const sortedData = getSortedDate(state.products, state.sortBy);
-  const filteredData = getFilteredData(sortedData, { ...state });
+  const sortedData = useMemo(
+    () => getSortedDate(state.products, state.sortBy),
+    [state.products, state.sortBy],
+  );
+  const filteredData = useMemo(
+    () =>
+      getFilteredData(sortedData, {
+        showFastDeliveryOnly: state.showFastDeliveryOnly,
+        showFreeShippingOnly: state.showFreeShippingOnly,
+        filterPrice: state.filterPrice,
+      }),
+    [
+      sortedData,
+      state.showFastDeliveryOnly,
+      state.showFreeShippingOnly,
+      state.filterPrice,
+    ],
+  );
 
   return (
     <ProductsContext.Provider

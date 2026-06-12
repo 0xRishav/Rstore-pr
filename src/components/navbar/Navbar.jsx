@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useMemo, useState, useRef } from "react";
 import "./Navbar.css";
 import { BsBag } from "react-icons/bs";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -61,15 +61,19 @@ function Navbar() {
     setSearchInput(e.target.value);
   };
 
-  const filteredProducts = products.filter((product) => {
-    if (
-      product.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-      product.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchInput.toLowerCase())
-    ) {
-      return product;
-    }
-  });
+  const filteredProducts = useMemo(
+    () =>
+      products.filter((product) => {
+        if (
+          product.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+          product.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
+          product.category.toLowerCase().includes(searchInput.toLowerCase())
+        ) {
+          return product;
+        }
+      }),
+    [products, searchInput],
+  );
 
   const handleSearchKeyPress = (e) => {
     if (e.key === "Enter") {
