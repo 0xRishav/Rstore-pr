@@ -145,6 +145,14 @@
   margin: 16px 8px;
 }
 
+.Navbar__sideMenu--linkContainer:first-child {
+  margin-top: 32px;
+}
+
+.Navbar__toggleIcon {
+  cursor: pointer;
+}
+
 .Navbar__desktopSearchLink {
   color: var(--white-clr);
 }

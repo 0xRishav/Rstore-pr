@@ -89,3 +89,8 @@
 .ProductPage__aboutLi {
   margin: 8px auto;
 }
+
+.productPage__notFound {
+  margin: 6rem auto;
+  text-align: center;
+}

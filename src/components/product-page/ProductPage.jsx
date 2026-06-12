@@ -51,7 +51,7 @@ function ProductPage() {
   if (error || !product) {
     return (
       <div className="productPage">
-        <h1 style={{ margin: "6rem auto", textAlign: "center" }}>
+        <h1 className="productPage__notFound">
           Product not found
         </h1>
       </div>

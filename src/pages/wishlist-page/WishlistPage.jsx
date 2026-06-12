@@ -19,10 +19,7 @@ function WishlistPage() {
         ))}
       </div>
       {wishlist.length === 0 && (
-        <div
-          className="WishlistPage__emptyWishlist"
-          style={{ marginTop: "6rem" }}
-        >
+        <div className="WishlistPage__emptyWishlist">
           wishlist is empty
         </div>
       )}

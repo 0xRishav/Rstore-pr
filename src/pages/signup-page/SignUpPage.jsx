@@ -94,17 +94,11 @@ function SignUpPage() {
         </div>
         {!isPasswordValid && <p className="Signup__validationMsg">Enter valid Password</p>}
       </div>
-      <button className="blue-btn--primary" style={{ padding: "0.8rem 4rem", margin: "auto" }} onClick={handleSignUpClick}>
+      <button className="blue-btn--primary signup__btn" onClick={handleSignUpClick}>
         Sign up
       </button>
-      <div style={{ marginTop: "2rem" }}>
-        <Link
-          style={{
-            textDecoration: "none",
-            fontWeight: "600",
-          }}
-          to="/signin"
-        >
+      <div className="signup__bottomLink">
+        <Link className="signup__link" to="/signin">
           Already have an RStore account?
         </Link>
       </div>

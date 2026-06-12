@@ -53,6 +53,20 @@
   margin: 0;
 }
 
+.signup__bottomLink {
+  margin-top: 2rem;
+}
+
+.signup__link {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup__btn {
+  padding: 0.8rem 4rem;
+  margin: auto;
+}
+
 .signup .error-message {
   background: #ffe0e0;
   border: 1px solid #e74c3c;

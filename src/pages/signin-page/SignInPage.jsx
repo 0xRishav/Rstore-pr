@@ -64,8 +64,7 @@ function SignInPage() {
         </div>
       </div>
       <button
-        className="blue-btn--primary"
-        style={{ padding: "0.8rem 4rem", margin: "auto" }}
+        className="blue-btn--primary signin__btn--primary"
         onClick={signinHandler}
       >
         Sign in
@@ -74,21 +73,13 @@ function SignInPage() {
       <h3>OR</h3>
 
       <button
-        className="blue-btn--secondary"
-        style={{ padding: "0.8rem 2rem", margin: "auto" }}
+        className="blue-btn--secondary signin__btn--secondary"
         onClick={demoAccountClickHandler}
       >
         Use Demo Account
       </button>
-      <div style={{ marginTop: "2rem" }}>
-        <Link
-          style={{
-            textDecoration: "none",
-
-            fontWeight: "600",
-          }}
-          to="/signup"
-        >
+      <div className="signin__bottomLink">
+        <Link className="signin__link" to="/signup">
           Do not have an RStore account?
         </Link>
       </div>

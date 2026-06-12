@@ -120,10 +120,7 @@ function Navbar() {
               </Link>
             </div>
             <div className="Navbar__sideMenu--linkWrapper">
-              <div
-                className="Navbar__sideMenu--linkContainer"
-                style={{ marginTop: "32px" }}
-              >
+              <div className="Navbar__sideMenu--linkContainer">
                 <NavLink
                   to="/products"
                   onClick={sideNavLinkClickHandler}
@@ -226,13 +223,13 @@ function Navbar() {
             {isSideMenuOpen ? (
               <AiOutlineClose
                 onClick={handleMenuClick}
-                style={{ cursor: "pointer" }}
+                className="Navbar__toggleIcon"
                 color="white"
               />
             ) : (
               <IoReorderTwoOutline
                 onClick={handleMenuClick}
-                style={{ cursor: "pointer" }}
+                className="Navbar__toggleIcon"
                 color="white"
               />
             )}

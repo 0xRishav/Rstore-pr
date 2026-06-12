@@ -52,6 +52,25 @@ input:valid ~ label {
   outline: var(--light-blue-clr);
 }
 
+.signin__bottomLink {
+  margin-top: 2rem;
+}
+
+.signin__link {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signin__btn--primary {
+  padding: 0.8rem 4rem;
+  margin: auto;
+}
+
+.signin__btn--secondary {
+  padding: 0.8rem 2rem;
+  margin: auto;
+}
+
 @media only screen and (max-width: 770px) {
   .Signin__input-field {
     width: 70%;

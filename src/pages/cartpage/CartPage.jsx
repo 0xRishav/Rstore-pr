@@ -87,21 +87,17 @@ function CartPage() {
     <div className="CartPage">
       {isLoading && <Loader />}
       {cart.length === 0 && (
-        <h1 className="CartPage__totalCartPrice" style={{ marginTop: "6rem" }}>
+        <h1 className="CartPage__totalCartPrice">
           Cart Is Empty
         </h1>
       )}
 
       {cart.length !== 0 && (
         <>
-          <div
-            className="CartPage__totalCartPriceContainer"
-            style={{ textAlign: "center" }}
-          >
+          <div className="CartPage__totalCartPriceContainer">
             Your Cart Total Is Rs. {totalPrice.toLocaleString()}
             <button
-              className="blue-btn--primary"
-              style={{ padding: "1rem 8rem" }}
+              className="blue-btn--primary CartPage__checkoutBtn"
               onClick={displayRazorPay}
             >
               CheckOut

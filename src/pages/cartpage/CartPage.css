@@ -19,6 +19,20 @@
   margin-bottom: 2rem;
 }
 
+.CartPage__totalCartPrice {
+  margin-top: 6rem;
+}
+
+.CartPage__checkoutBtn {
+  padding: 1rem 8rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .CartPage__checkoutBtn {
+    padding: 0.8rem 4rem;
+  }
+}
+
 .CartPage__totalCartPrice--original {
   text-decoration: line-through;
   opacity: 0.5;
