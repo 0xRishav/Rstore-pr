@@ -50,6 +50,15 @@
   flex-direction: column;
   height: 100%;
   justify-content: start;
+  background: var(--white-clr);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-3);
+  transition: box-shadow var(--transition-base);
+}
+
+.Product:hover {
+  box-shadow: var(--shadow-md);
 }
 .Product__offerWrapper {
   flex-direction: column;
