@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Loader, Product, SortFilterWrapper } from "../../components";
+import { Loader, Product, SortFilterWrapper, EmptyState } from "../../components";
 import { useProduct } from "../../helpers";
 import "./SearchPage.css";
 
@@ -16,7 +16,7 @@ function SearchPage() {
 
       {isLoading && <Loader />}
       {filteredProducts && filteredProducts?.length === 0 ? (
-        <h1>No Such Product is available</h1>
+        <EmptyState message="No products match your search" icon="🔍" />
       ) : (
         <div className="products-wrapper">
           {filteredProducts.map((product, index) => (

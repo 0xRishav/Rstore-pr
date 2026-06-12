@@ -87,7 +87,7 @@ function CartPage() {
     <div className="CartPage">
       {isLoading && <Loader />}
       {cart.length === 0 && (
-        <EmptyState message="Your cart is empty" linkTo="/products" />
+        <EmptyState message="Your cart is empty" linkTo="/products" icon="🛒" />
       )}
 
       {cart.length !== 0 && (

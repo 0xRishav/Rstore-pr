@@ -7,8 +7,14 @@
   text-align: center;
 }
 
+.EmptyState__icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .EmptyState__message {
   font-weight: 600;
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--text-secondary-clr);
 }

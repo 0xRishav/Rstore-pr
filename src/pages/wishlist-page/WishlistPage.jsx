@@ -19,7 +19,7 @@ function WishlistPage() {
         ))}
       </div>
       {wishlist.length === 0 && (
-        <EmptyState message="Your wishlist is empty" linkTo="/products" />
+        <EmptyState message="Your wishlist is empty" linkTo="/products" icon="❤️" />
       )}
     </div>
   );
