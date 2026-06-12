@@ -13,7 +13,7 @@ function SortRadioBtns() {
     <div className="radio-btn-wrapper">
       <h5>Price: </h5>
 
-      <label className="radio-btn-container" for="low-to-high">
+      <label className="radio-btn-container" htmlFor="low-to-high">
         <input
           type="radio"
           id="low-to-high"
@@ -23,11 +23,11 @@ function SortRadioBtns() {
           checked={sortBy && sortBy === "LOW_TO_HIGH"}
           className="radio-btn"
         />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
         Low To High
       </label>
 
-      <label for="high-to-low" className="radio-btn-container">
+      <label htmlFor="high-to-low" className="radio-btn-container">
         <input
           type="radio"
           id="high-to-low"
@@ -37,7 +37,7 @@ function SortRadioBtns() {
           checked={sortBy && sortBy === "HIGH_TO_LOW"}
           className="radio-btn"
         />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
         High To Low
       </label>
     </div>

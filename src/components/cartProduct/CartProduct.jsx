@@ -43,12 +43,12 @@ function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
         <div className="CartProduct__subTotal">
           Rs. {(price * quantity).toLocaleString()}
         </div>
-        <div
+        <button
           className="CartProduct__removeProuctLink"
           onClick={() => removeFromCart(id)}
         >
           Remove
-        </div>
+        </button>
       </div>
     </div>
   );

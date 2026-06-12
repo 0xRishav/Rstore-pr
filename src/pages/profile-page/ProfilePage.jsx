@@ -4,10 +4,16 @@ import "./ProfilePage.css";
 
 function ProfilePage() {
   const { currentUser } = useContext(authContext);
+  if (!currentUser || !currentUser.name) return null;
+
   return (
     <div className="profilePage">
-      {/* <h1>Welcome back, {currentUser.name[0]}</h1> */}
-      <div className="profilePage__profileCircle">{currentUser.name[0]}</div>
+      <div
+        className="profilePage__profileCircle"
+        aria-label={`${currentUser.name}'s profile`}
+      >
+        {currentUser.name[0]}
+      </div>
     </div>
   );
 }

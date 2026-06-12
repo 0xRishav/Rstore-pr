@@ -6,7 +6,7 @@ import api from "../../api/client";
 
 function Stars({ rating, size = 16, color = "#06c" }) {
   return (
-    <span className="stars">
+    <span className="stars" aria-label={`Rating: ${rating} out of 5`}>
       {[1, 2, 3, 4, 5].map((star) => (
         <span
           key={star}
@@ -15,6 +15,7 @@ function Stars({ rating, size = 16, color = "#06c" }) {
             fontSize: size,
             marginRight: "2px",
           }}
+          aria-hidden="true"
         >
           ★
         </span>
@@ -80,8 +81,8 @@ function ProductPage() {
           <div className="ProductPage__buttonWrapper">
             <CartWishlistBtn id={id} />
           </div>
+          <h4>About this Product</h4>
           <ul>
-            <h4>About this Product</h4>
             {about?.map((item, index) => (
               <li className="ProductPage__aboutLi" key={index}>
                 {item}

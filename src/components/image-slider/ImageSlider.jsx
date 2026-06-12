@@ -27,12 +27,13 @@ const ImageSlider = ({ images, parent }) => {
         <button
           onClick={slideLeft}
           className="ImageSlider__sliderBtn ImageSlider__sliderBtn--left"
+          aria-label="Previous image"
         >
           {"<"}
         </button>
         {images.map((image, i) => (
           <img
-            key={parent === "Homepage" ? image.imageUrl : image}
+            key={parent === "homepage" ? image.imageUrl : image}
             className={
               parent === "homepage" ? "bannerImage" : "productPage__image"
             }
@@ -43,13 +44,13 @@ const ImageSlider = ({ images, parent }) => {
               opacity: index === i ? "1" : "0",
             }}
             src={parent === "homepage" ? images[i].imageUrl : images[i]}
-            alt={i}
-            ssssssssss
+            alt={parent === "homepage" ? `Banner ${i + 1}` : `Product image ${i + 1}`}
           />
         ))}
         <button
           onClick={slideRight}
           className="ImageSlider__sliderBtn ImageSlider__sliderBtn--right"
+          aria-label="Next image"
         >
           {">"}
         </button>
