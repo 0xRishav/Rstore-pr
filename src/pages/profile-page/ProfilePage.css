@@ -1,12 +1,28 @@
 .profilePage {
-  margin-top: 10vh;
+  margin-top: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.profilePage--loggedOut {
+  gap: var(--space-4);
+}
+
+.profilePage--loggedOut .blue-btn--primary {
+  text-decoration: none;
+  display: inline-block;
+}
+
 .profilePage__profileCircle {
-  /* display: inline; */
-  padding: 6rem 6rem;
-  border-radius: 360px;
-  font-size: 4rem;
-  background: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-3xl);
+  background: var(--light-blue-clr);
   color: var(--white-clr);
   font-weight: 600;
 }
