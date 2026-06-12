@@ -90,6 +90,14 @@ function CartPage() {
         <EmptyState message="Your cart is empty" linkTo="/products" icon="🛒" />
       )}
 
+      {cart.map((product) => (
+        <CartProduct
+          key={product._id}
+          product={product.product}
+          quantity={product.quantity}
+        />
+      ))}
+
       {cart.length !== 0 && (
         <>
           <div className="CartPage__totalCartPriceContainer">
@@ -101,18 +109,9 @@ function CartPage() {
               CheckOut
             </button>
           </div>
+          <div className="hr-div"></div>
         </>
       )}
-
-      {cart.map((product) => (
-        <CartProduct
-          key={product._id}
-          product={product.product}
-          quantity={product.quantity}
-        />
-      ))}
-
-      {cart.length !== 0 && <div className="hr-div"></div>}
     </div>
   );
 }

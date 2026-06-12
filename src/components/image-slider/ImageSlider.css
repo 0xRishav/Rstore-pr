@@ -1,11 +1,11 @@
 .bannerImage {
-  height: 85vh;
+  height: 60vh;
   width: 100%;
   object-fit: cover;
 }
 .ImageSlider {
   position: relative;
-  height: 94vh;
+  height: 60vh;
 }
 
 .ImageSlider__sliderBtn {
