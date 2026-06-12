@@ -1,106 +1,138 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Loader } from "../../components";
-import { authContext } from "../../contexts/authContext";
+import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
+import { useAuth } from "../../contexts/authContext";
 import "./SignUpPage.css";
 
 function SignUpPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const { signUpUser } = useContext(authContext);
-  const [password, setPassword] = useState("");
+  const { signUp } = useAuth();
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
-  const [isNameValid, setIsNameValid] = useState(false);
-  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  let navigate = useNavigate();
+  const validate = () => {
+    const newErrors = {};
+    if (!name.trim()) newErrors.name = "Name is required";
+    if (!email.trim()) newErrors.email = "Email is required";
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = "Enter a valid email";
+    if (!password) newErrors.password = "Password is required";
+    else if (password.length < 6) newErrors.password = "At least 6 characters";
+    return newErrors;
+  };
 
-  const handleSignUpClick = async () => {
-    if (isNameValid && isPasswordValid && isEmailValid) {
-      setIsLoading(true);
-      try {
-        const res = await signUpUser(name, email, password);
-        if (res.success) {
-          navigate("/signin");
-        }
-      } catch (err) {
-        setError(err.response?.data?.message || err.message || "Sign up failed");
-      }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = validate();
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+    setIsLoading(true);
+    const response = await signUp(name, email, password);
+    if (response.success) {
+      navigate("/signin");
+    } else {
+      setErrors({ form: response.message || "Something went wrong" });
     }
     setIsLoading(false);
   };
 
-  const emailChangeHandler = (e) => {
-    setEmail(e.target.value);
-    const emailRE =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    emailRE.test(String(e.target.value).toLowerCase())
-      ? setIsEmailValid(true)
-      : setIsEmailValid(false);
-  };
-
-  const nameChangeHandler = (e) => {
-    setName(e.target.value);
-    e.target.value === "" ? setIsNameValid(false) : setIsNameValid(true);
-  };
-
-  const passwordChangeHandler = (e) => {
-    setPassword(e.target.value);
-    e.target.value === ""
-      ? setIsPasswordValid(false)
-      : setIsPasswordValid(true);
+  const handleBlur = (field) => {
+    const allErrors = validate();
+    if (allErrors[field]) {
+      setErrors((prev) => ({ ...prev, [field]: allErrors[field] }));
+    } else {
+      setErrors((prev) => {
+        const copy = { ...prev };
+        delete copy[field];
+        return copy;
+      });
+    }
   };
 
   return (
-    <div className="signup">
-      {isLoading && <Loader />}
-      {error && <div className="error-message">{error}</div>}
-      <h2>Sign up to RStore</h2>
-      <div className="signup__inputContainer">
-        <div className="Signup__input-field">
-          <input
-            type="text"
-            className="Signup__input"
-            id="name"
-            placeholder=" "
-            onChange={nameChangeHandler}
-          />
-          <label htmlFor="name">Name</label>
-        </div>
-        {!isNameValid && <p className="Signup__validationMsg">Enter valid Name</p>}
-        <div className="Signup__input-field">
-          <input
-            type="email"
-            className="Signup__input"
-            id="email"
-            placeholder=" "
-            onChange={emailChangeHandler}
-          />
-          <label htmlFor="email">Email</label>
-        </div>
-        {!isEmailValid && <p className="Signup__validationMsg">Enter valid Email</p>}
-        <div className="Signup__input-field">
-          <input
-            type="password"
-            className="Signup__input"
-            id="password"
-            placeholder=" "
-            onChange={passwordChangeHandler}
-          />
-          <label htmlFor="password">Password</label>
-        </div>
-        {!isPasswordValid && <p className="Signup__validationMsg">Enter valid Password</p>}
-      </div>
-      <button className="blue-btn--primary signup__btn" onClick={handleSignUpClick}>
-        Sign up
-      </button>
-      <div className="signup__bottomLink">
-        <Link className="signup__link" to="/signin">
-          Already have an RStore account?
-        </Link>
+    <div className="signup-page">
+      <div className="signup-page__inner">
+        <h1 className="signup-page__title">Create your account</h1>
+
+        <form className="signup-page__form" onSubmit={handleSubmit}>
+          {errors.form && (
+            <div className="signup-page__banner-error">
+              <FiAlertCircle size={14} />
+              <span>{errors.form}</span>
+            </div>
+          )}
+
+          <div className="input-field">
+            <input
+              className={`input-field__input ${errors.name ? "input-field__input--error" : ""}`}
+              type="text"
+              id="name"
+              placeholder=" "
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              onBlur={() => handleBlur("name")}
+              autoComplete="name"
+            />
+            <label className="input-field__label" htmlFor="name">Name</label>
+            {errors.name && <span className="input-field__error">{errors.name}</span>}
+          </div>
+
+          <div className="input-field">
+            <input
+              className={`input-field__input ${errors.email ? "input-field__input--error" : ""}`}
+              type="email"
+              id="email"
+              placeholder=" "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={() => handleBlur("email")}
+              autoComplete="email"
+            />
+            <label className="input-field__label" htmlFor="email">Email</label>
+            {errors.email && <span className="input-field__error">{errors.email}</span>}
+          </div>
+
+          <div className="input-field">
+            <input
+              className={`input-field__input ${errors.password ? "input-field__input--error" : ""}`}
+              type={showPassword ? "text" : "password"}
+              id="password"
+              placeholder=" "
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onBlur={() => handleBlur("password")}
+              autoComplete="new-password"
+            />
+            <label className="input-field__label" htmlFor="password">Password</label>
+            <button
+              type="button"
+              className="input-field__toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              tabIndex={-1}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <FiEyeOff size={18} /> : <FiEye size={18} />}
+            </button>
+            {errors.password && <span className="input-field__error">{errors.password}</span>}
+          </div>
+
+          <button
+            type="submit"
+            className="btn btn--primary signup-page__btn"
+            disabled={isLoading}
+          >
+            {isLoading ? <span className="btn-spinner" /> : "Create Account"}
+          </button>
+        </form>
+
+        <p className="signup-page__footer">
+          Already have an account?{" "}
+          <Link to="/signin" className="signup-page__link">Sign in</Link>
+        </p>
       </div>
     </div>
   );

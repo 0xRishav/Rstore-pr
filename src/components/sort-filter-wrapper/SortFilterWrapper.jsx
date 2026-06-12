@@ -1,61 +1,63 @@
-import React, { useState } from "react";
-import { AiFillCaretDown } from "react-icons/ai";
+import { useState, useRef, useEffect } from "react";
+import { FiSliders, FiChevronDown } from "react-icons/fi";
 import { FilterDropDown, SortDropdown } from "..";
-import { useProduct } from "../../helpers";
 import "./SortFilterWrapper.css";
 
 function SortFilterWrapper() {
-  const {
-    showFastDeliveryOnly,
-    showFreeShippingOnly,
-    filterPrice,
-    sortBy,
-  } = useProduct();
-  const [showFilterDropDown, setShowFilterDropDown] = useState(false);
-  const [showSortDropDown, setShowSortDropDown] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+  const [showSort, setShowSort] = useState(false);
+  const filterRef = useRef(null);
+  const sortRef = useRef(null);
 
-  const filterDropDownClickHandler = () => {
-    if (showSortDropDown === true) {
-      setShowSortDropDown(false);
-    }
-    setShowFilterDropDown(!showFilterDropDown);
-  };
-  const sortDropDownClickHandler = () => {
-    if (showFilterDropDown === true) {
-      setShowFilterDropDown(false);
-    }
-    setShowSortDropDown(!showSortDropDown);
-  };
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (filterRef.current && !filterRef.current.contains(e.target)) {
+        setShowFilter(false);
+      }
+      if (sortRef.current && !sortRef.current.contains(e.target)) {
+        setShowSort(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <div className="SortFilterWrapper">
-      <div className="SortFilterWrapper__filterDropDownContainer">
-        <h4 className="SortFilterWrapper__filterHeading">Filter:</h4>
+    <div className="sort-filter-bar">
+      <div className="sort-filter-bar__left" ref={filterRef}>
         <button
-          className="SortFilterWrapper__filterDropDownBtn"
-          onClick={filterDropDownClickHandler}
+          className={`btn btn--secondary btn--sm ${showFilter ? "btn--secondary--active" : ""}`}
+          onClick={() => {
+            setShowFilter(!showFilter);
+            setShowSort(false);
+          }}
         >
-          {showFastDeliveryOnly || showFreeShippingOnly ? "Tags" : "None"}
-          {filterPrice ? " & Price" : ""}
-          <AiFillCaretDown />
+          <FiSliders size={14} />
+          Filters
         </button>
-        {showFilterDropDown && <FilterDropDown />}
+        {showFilter && (
+          <div className="sort-filter-bar__dropdown">
+            <FilterDropDown />
+          </div>
+        )}
       </div>
 
-      <div className="SortFilterWrapper__sortDropDownContainer">
-        <h4 className="SortFilterWrapper__sortHeading">Sort by Price:</h4>
+      <div className="sort-filter-bar__right" ref={sortRef}>
         <button
-          className="SortFilterWrapper__sortDropDownBtn"
-          onClick={sortDropDownClickHandler}
+          className={`btn btn--secondary btn--sm ${showSort ? "btn--secondary--active" : ""}`}
+          onClick={() => {
+            setShowSort(!showSort);
+            setShowFilter(false);
+          }}
         >
-          {sortBy
-            ? sortBy === "LOW_TO_HIGH"
-              ? "Low To High"
-              : "High To Low"
-            : "None"}
-          <AiFillCaretDown />
+          Sort by
+          <FiChevronDown size={14} />
         </button>
-        {showSortDropDown && <SortDropdown />}
+        {showSort && (
+          <div className="sort-filter-bar__dropdown sort-filter-bar__dropdown--right">
+            <SortDropdown />
+          </div>
+        )}
       </div>
     </div>
   );

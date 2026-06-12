@@ -3,11 +3,11 @@ import "./EmptyState.css";
 
 function EmptyState({ message, linkTo, linkText, icon }) {
   return (
-    <div className="EmptyState">
-      {icon && <span className="EmptyState__icon" aria-hidden="true">{icon}</span>}
-      <p className="EmptyState__message">{message}</p>
+    <div className="empty-state">
+      {icon && <div className="empty-state__icon">{icon}</div>}
+      <p className="empty-state__message">{message}</p>
       {linkTo && (
-        <Link className="blue-btn--secondary" to={linkTo}>
+        <Link className="btn btn--primary" to={linkTo}>
           {linkText || "Browse Products"}
         </Link>
       )}

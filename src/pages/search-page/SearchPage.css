@@ -1,1 +1,20 @@
-/* Intentionally empty */
+.search-page {
+  padding-bottom: var(--space-10);
+  animation: fadeIn var(--transition-base) ease forwards;
+}
+
+.search-page__header {
+  margin-bottom: var(--space-6);
+}
+
+.search-page__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-1);
+}
+
+.search-page__count {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}

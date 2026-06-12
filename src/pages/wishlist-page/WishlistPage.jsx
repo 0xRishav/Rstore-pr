@@ -1,5 +1,5 @@
-import React from "react";
-import { Product, Loader, EmptyState } from "../../components";
+import { FiHeart } from "react-icons/fi";
+import { SkeletonProductGrid, Product, EmptyState } from "../../components";
 import { useWishlist } from "../../contexts/WishlistContext";
 import "./WishlistPage.css";
 
@@ -7,19 +7,27 @@ function WishlistPage() {
   const { isLoading, wishlist } = useWishlist();
 
   return (
-    <div className="WishlistPage">
-      {isLoading && <Loader />}
-      <div className="products-wrapper">
-        {wishlist.map((product, index) => (
-          <Product
-            key={product._id}
-            {...product}
-            id={product._id}
-          />
-        ))}
+    <div className="wishlist-page">
+      <div className="wishlist-page__header">
+        <h1 className="wishlist-page__title">My Wishlist</h1>
+        <span className="wishlist-page__count">{wishlist.length} item{wishlist.length !== 1 ? "s" : ""}</span>
       </div>
-      {wishlist.length === 0 && (
-        <EmptyState message="Your wishlist is empty" linkTo="/products" icon="❤️" />
+
+      {isLoading ? (
+        <SkeletonProductGrid />
+      ) : wishlist.length === 0 ? (
+        <EmptyState
+          message="Your wishlist is empty"
+          linkTo="/products"
+          linkText="Browse Products"
+          icon={<FiHeart size={40} />}
+        />
+      ) : (
+        <div className="products-wrapper">
+          {wishlist.map((product) => (
+            <Product key={product._id} {...product} id={product._id} />
+          ))}
+        </div>
       )}
     </div>
   );

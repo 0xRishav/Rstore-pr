@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 
-const categoryLinks = [
+const menuLinks = [
   { to: "/products", label: "All Products" },
   { to: "/category/Mobiles", label: "Mobile" },
   { to: "/category/TV", label: "TV" },
@@ -12,63 +12,60 @@ const categoryLinks = [
 
 function NavbarSideMenu({
   filteredProducts,
-  handleSearchInputChange,
-  handleSearchKeyPress,
-  sideNavLinkClickHandler,
-  signoutBtnHandler,
+  searchInput,
+  onSearchChange,
+  onSearchKeyDown,
+  onLinkClick,
+  onSignOut,
   isUserLoggedIn,
 }) {
   return (
-    <div className="Navbar__sideMenu">
-      <nav className="Navbar__sideMenuNav">
-        <div className="Navbar__searchInputContainer">
-          <input
-            type="text"
-            className="Navbar__searchInput"
-            placeholder="Search..."
-            onChange={handleSearchInputChange}
-            onKeyPress={handleSearchKeyPress}
-          />
-          <Link
-            to={{ pathname: "/search", state: { filteredProducts } }}
-            className="Navbar__searchInputIcon"
-            onClick={sideNavLinkClickHandler}
-          >
-            <BiSearch className="Navbar__searchInputIcon" color="#6e6e73" />
-          </Link>
-        </div>
-        <div className="Navbar__sideMenu--linkWrapper">
-          {categoryLinks.map(({ to, label }) => (
-            <div key={to}>
-              <div className="Navbar__sideMenu--linkContainer">
-                <NavLink
-                  to={to}
-                  onClick={sideNavLinkClickHandler}
-                  className={({ isActive }) =>
-                    isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-                  }
-                >
-                  {label}
-                </NavLink>
-              </div>
-              <div className="hr-div"></div>
-            </div>
-          ))}
-          <div className="Navbar__sideMenu--linkContainer">
-            {isUserLoggedIn ? (
-              <NavLink
-                to="/"
-                className="Navbar__Link"
-                onClick={signoutBtnHandler}
-              >
-                Sign Out
-              </NavLink>
-            ) : (
-              <NavLink to="/signin" className="Navbar__Link">
-                Sign In
-              </NavLink>
-            )}
+    <div className="side-menu">
+      <div className="side-menu__search">
+        <input
+          className="side-menu__search-input"
+          type="text"
+          placeholder="Search..."
+          value={searchInput}
+          onChange={onSearchChange}
+          onKeyDown={onSearchKeyDown}
+          autoFocus
+        />
+        <Link
+          to={{ pathname: "/search", state: { filteredProducts } }}
+          className="side-menu__search-link"
+          onClick={onLinkClick}
+        >
+          <BiSearch size={18} />
+        </Link>
+      </div>
+
+      <nav className="side-menu__nav">
+        {menuLinks.map(({ to, label }) => (
+          <div key={to}>
+            <NavLink
+              to={to}
+              onClick={onLinkClick}
+              className={({ isActive }) =>
+                `side-menu__link ${isActive ? "side-menu__link--active" : ""}`
+              }
+            >
+              {label}
+            </NavLink>
+            <div className="side-menu__divider" />
           </div>
+        ))}
+
+        <div className="side-menu__link">
+          {isUserLoggedIn ? (
+            <button className="side-menu__signout" onClick={onSignOut}>
+              Sign Out
+            </button>
+          ) : (
+            <Link to="/signin" className="side-menu__signin" onClick={onLinkClick}>
+              Sign In
+            </Link>
+          )}
         </div>
       </nav>
     </div>

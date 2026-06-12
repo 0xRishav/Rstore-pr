@@ -1,231 +1,172 @@
-import React, { useContext, useEffect, useMemo, useState, useRef } from "react";
-import "./Navbar.css";
-import { BsBag } from "react-icons/bs";
+import { useContext, useEffect, useMemo, useState, useRef } from "react";
+import { BsBag, BsSearch } from "react-icons/bs";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { AiOutlineSearch } from "react-icons/ai";
 import { useWindowDimensions } from "../../custom-hooks";
-import { IoReorderTwoOutline } from "react-icons/io5";
-import { AiOutlineClose } from "react-icons/ai";
 import { useProduct } from "../../helpers";
 import { useCart } from "../../contexts/CartContext";
 import { useWishlist } from "../../contexts/WishlistContext";
 import { authContext } from "../../contexts/authContext";
 import NavbarSideMenu from "./NavbarSideMenu";
+import "./Navbar.css";
 
 function Navbar() {
   const { products } = useProduct();
   const { cart, clearCart } = useCart();
   const { clearWishlist } = useWishlist();
+  const { isUserLoggedIn, logoutUser, currentUser } = useContext(authContext);
+
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const { width } = useWindowDimensions();
-  const navbarRef = useRef(null);
-  const { isUserLoggedIn, logoutUser } = useContext(authContext);
-  const signoutBtnHandler = () => {
-    if (isUserLoggedIn) {
-      logoutUser();
-    }
-    setIsSideMenuOpen(!isSideMenuOpen);
-    clearCart();
-    clearWishlist();
-  };
+  const navigate = useNavigate();
 
-  const serchClickHandler = () => {
-    setIsSearchClicked(true);
-  };
-
-  const transitionNavbar = () => {
-    if (window.scrollY > 100) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
-    }
-  };
+  const isMobile = width < 770;
 
   useEffect(() => {
-    window.addEventListener("scroll", transitionNavbar);
-
-    return () => {
-      window.removeEventListener("scroll", transitionNavbar);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  let navigate = useNavigate();
-
-  const handleMenuClick = () => {
-    setIsSideMenuOpen(!isSideMenuOpen);
-  };
-
-  const sideNavLinkClickHandler = () => {
-    setIsSideMenuOpen(!isSideMenuOpen);
-  };
-
-  const handleSearchInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
 
   const filteredProducts = useMemo(
     () =>
       products.filter((product) => {
-        if (
-          product.name.toLowerCase().includes(searchInput.toLowerCase()) ||
-          product.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
-          product.category.toLowerCase().includes(searchInput.toLowerCase())
-        ) {
-          return product;
-        }
+        const q = searchInput.toLowerCase();
+        return (
+          product.name.toLowerCase().includes(q) ||
+          product.brand.toLowerCase().includes(q) ||
+          product.category.toLowerCase().includes(q)
+        );
       }),
-    [products, searchInput],
+    [products, searchInput]
   );
 
-  const handleSearchKeyPress = (e) => {
+  const handleSearchChange = (e) => setSearchInput(e.target.value);
+
+  const handleSearchKeyDown = (e) => {
     if (e.key === "Enter") {
       navigate("/search", { state: { filteredProducts } });
+      setSearchInput("");
       setIsSideMenuOpen(false);
     }
   };
 
+  const toggleMenu = () => setIsSideMenuOpen((v) => !v);
+  const closeMenu = () => setIsSideMenuOpen(false);
+
+  const handleSignOut = () => {
+    logoutUser();
+    closeMenu();
+    clearCart();
+    clearWishlist();
+  };
+
+  const navLinkClass = ({ isActive }) =>
+    `navbar__link ${isActive ? "navbar__link--active" : ""}`;
+
+  const userInitial = currentUser?.name?.charAt(0)?.toUpperCase() || "?";
+
   return (
-    <div
-      className={
-        isScrolled === false
-          ? "Navbar__wrapper"
-          : isSideMenuOpen === true
-          ? "Navbar__wrapper"
-          : "Navbar__wrapper Navbar__wrapper--scrolled"
-      }
-    >
-      {isSideMenuOpen && width < 770 && (
+    <>
+      <header
+        className={`navbar ${isScrolled ? "navbar--scrolled" : ""}`}
+      >
+        <div className="navbar__inner">
+          <div className="navbar__left">
+            {isMobile && (
+              <button
+                className="navbar__hamburger"
+                onClick={toggleMenu}
+                aria-label={isSideMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {isSideMenuOpen ? (
+                  <AiOutlineClose size={20} />
+                ) : (
+                  <AiOutlineMenu size={20} />
+                )}
+              </button>
+            )}
+
+            <Link to="/" className="navbar__logo" onClick={closeMenu}>
+              RStore
+            </Link>
+
+            {!isMobile && (
+              <nav className="navbar__links">
+                <NavLink to="/products" className={navLinkClass}>
+                  Products
+                </NavLink>
+                <NavLink to="/category/Mobiles" className={navLinkClass}>
+                  Mobile
+                </NavLink>
+                <NavLink to="/category/TV" className={navLinkClass}>
+                  TV
+                </NavLink>
+                <NavLink to="/category/Laptop" className={navLinkClass}>
+                  Laptop
+                </NavLink>
+                <NavLink to="/category/Watch" className={navLinkClass}>
+                  Watch
+                </NavLink>
+              </nav>
+            )}
+          </div>
+
+          <div className="navbar__right">
+            {!isMobile && (
+              <div className="navbar__search">
+                <BsSearch className="navbar__search-icon" size={14} />
+                <input
+                  className="navbar__search-input"
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchInput}
+                  onChange={handleSearchChange}
+                  onKeyDown={handleSearchKeyDown}
+                />
+              </div>
+            )}
+
+            <Link to="/cart" className="navbar__cart" onClick={closeMenu}>
+              <BsBag size={20} />
+              {cart.length > 0 && (
+                <span className="navbar__cart-badge">{cart.length}</span>
+              )}
+            </Link>
+
+            {!isMobile && (
+              <>
+                {isUserLoggedIn ? (
+                  <Link to="/profile" className="navbar__avatar">
+                    {userInitial}
+                  </Link>
+                ) : (
+                  <Link to="/signin" className="btn btn--secondary btn--sm">
+                    Sign In
+                  </Link>
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      </header>
+
+      {isMobile && isSideMenuOpen && (
         <NavbarSideMenu
           filteredProducts={filteredProducts}
-          handleSearchInputChange={handleSearchInputChange}
-          handleSearchKeyPress={handleSearchKeyPress}
-          sideNavLinkClickHandler={sideNavLinkClickHandler}
-          signoutBtnHandler={signoutBtnHandler}
+          searchInput={searchInput}
+          onSearchChange={handleSearchChange}
+          onSearchKeyDown={handleSearchKeyDown}
+          onLinkClick={closeMenu}
+          onSignOut={handleSignOut}
           isUserLoggedIn={isUserLoggedIn}
+          userInitial={userInitial}
+          cartCount={cart.length}
         />
       )}
-      <div className="Navbar" ref={navbarRef}>
-        {width < 770 && (
-          <>
-            {isSideMenuOpen ? (
-              <AiOutlineClose
-                onClick={handleMenuClick}
-                className="Navbar__toggleIcon"
-                color="white"
-              />
-            ) : (
-              <IoReorderTwoOutline
-                onClick={handleMenuClick}
-                className="Navbar__toggleIcon"
-                color="white"
-              />
-            )}
-          </>
-        )}
-        <NavLink to="/" className="Navbar__logo">
-          <div>RStore</div>
-        </NavLink>
-
-        {width > 770 ? (
-          <>
-            <NavLink
-              to="/products"
-              className={({ isActive }) =>
-                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-              }
-            >
-              All Products
-            </NavLink>
-            <NavLink
-              to="/category/Mobiles"
-              className={({ isActive }) =>
-                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-              }
-            >
-              Mobile
-            </NavLink>
-            <NavLink
-              to="/category/TV"
-              className={({ isActive }) =>
-                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-              }
-            >
-              TV
-            </NavLink>
-            <NavLink
-              to="/category/Laptop"
-              className={({ isActive }) =>
-                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-              }
-            >
-              Laptop
-            </NavLink>
-            <NavLink
-              to="/category/Watch"
-              className={({ isActive }) =>
-                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-              }
-            >
-              Watch
-            </NavLink>
-            <NavLink
-              to="/wishlist"
-              className={({ isActive }) =>
-                isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-              }
-            >
-              Wishlist
-            </NavLink>
-            <div className="Navbar__Link" onClick={serchClickHandler}>
-              {!isSearchClicked && (
-                <AiOutlineSearch className="Navbar__searchIcon" />
-              )}
-              {isSearchClicked && (
-                <div className="Navbar__searchboxWrapper">
-                  <input
-                    type="text"
-                    placeholder="Search here..."
-                    className="Navbar__searchbox"
-                    onChange={handleSearchInputChange}
-                    onKeyPress={handleSearchKeyPress}
-                  />
-                  <Link
-                    to={{
-                      pathname: "/search",
-                      state: { filteredProducts: filteredProducts },
-                    }}
-                    className="Navbar__desktopSearchLink"
-                  >
-                    <AiOutlineSearch className="Navbar__searchIcon" />
-                  </Link>
-                </div>
-              )}
-            </div>
-          </>
-        ) : null}
-        <NavLink
-          to="/cart"
-          className={({ isActive }) =>
-            isActive ? "Navbar__Link Navbar__activeLink" : "Navbar__Link"
-          }
-        >
-          <BsBag />
-          <span className="Navbar__productCount">{cart.length}</span>
-        </NavLink>
-        {width > 770 && (
-          <NavLink
-            to={isUserLoggedIn ? "/products" : "/signin"}
-            className="Navbar__Link"
-            onClick={signoutBtnHandler}
-          >
-            {isUserLoggedIn ? "Sign Out" : "Sign In"}
-          </NavLink>
-        )}
-      </div>
-    </div>
+    </>
   );
 }
 

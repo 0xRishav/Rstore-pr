@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Navbar } from "..";
+import { Navbar, Footer } from "..";
 import { PrivateRoute } from "../../helpers";
 import {
   AllProductsPage,
@@ -110,6 +110,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </>
   );
 }

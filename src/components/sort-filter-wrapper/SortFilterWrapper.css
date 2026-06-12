@@ -1,65 +1,37 @@
-.SortFilterWrapper {
+.sort-filter-bar {
   display: flex;
-  width: 90%;
-  margin: 16px auto;
-  background: var(--bg-secondary-clr);
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-primary);
+  margin-bottom: var(--space-2);
 }
 
-.SortFilterWrapper__filterDropDownContainer {
+.sort-filter-bar__left,
+.sort-filter-bar__right {
   position: relative;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 190px;
 }
 
-.SortFilterWrapper__filterHeading {
-  margin-right: 16px;
-}
-.SortFilterWrapper__filterDropDownBtn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  background: var(--light-blue-clr);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-}
-
-.SortFilterWrapper__sortDropDownContainer {
-  position: relative;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 250px;
+.sort-filter-bar__dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  z-index: var(--z-index-dropdown);
+  min-width: 240px;
+  background: var(--surface-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-4);
+  animation: fadeIn var(--transition-fast) ease forwards;
 }
 
-.SortFilterWrapper__sortHeading {
-  margin-right: 16px;
-}
-.SortFilterWrapper__sortDropDownBtn {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border: none;
-  background: var(--light-blue-clr);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
+.sort-filter-bar__dropdown--right {
+  left: auto;
+  right: 0;
 }
 
-@media only screen and (max-width: 440px) {
-  .SortFilterWrapper {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .SortFilterWrapper__filterDropDownContainer,
-  .SortFilterWrapper__sortDropDownContainer {
-    width: 100%;
-  }
+.btn--secondary--active {
+  background: var(--accent-subtle);
+  border-color: var(--accent);
+  color: var(--accent);
 }

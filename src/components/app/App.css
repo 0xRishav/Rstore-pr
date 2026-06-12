@@ -1,23 +1,22 @@
 .App {
-  text-align: center;
   width: 90%;
   margin: auto;
-  margin-top: 48px;
+  margin-top: 56px;
 }
+
 .App__wrapper {
   width: 80%;
   margin: auto;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .App__wrapper {
     width: 90%;
-    margin: auto;
   }
 }
-@media only screen and (max-width: 500px) {
+
+@media (max-width: 500px) {
   .App__wrapper {
     width: 95%;
-    margin: auto;
   }
 }
