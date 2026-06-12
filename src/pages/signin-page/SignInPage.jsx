@@ -10,6 +10,7 @@ function SignInPage() {
   const { state } = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   let navigate = useNavigate();
 
   async function signinHandler() {
@@ -18,7 +19,7 @@ function SignInPage() {
     if (response.success) {
       navigate(state?.from ? state.from : "/");
     } else {
-      console.log(response.message);
+      setError(response.message);
     }
     setIsLoading(false);
   }
@@ -32,7 +33,7 @@ function SignInPage() {
     if (response.success) {
       navigate(state?.from ? state.from : "/");
     } else {
-      console.log(response.message);
+      setError(response.message);
     }
     setIsLoading(false);
   };
@@ -40,6 +41,7 @@ function SignInPage() {
   return (
     <div className="signin">
       {isLoading && <Loader />}
+      {error && <div className="error-message">{error}</div>}
       <h2>Sign in to RStore</h2>
       <div className="signin__inputContainer">
         <div className="Signin__input-field">

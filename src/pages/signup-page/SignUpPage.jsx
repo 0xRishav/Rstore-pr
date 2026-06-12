@@ -13,6 +13,7 @@ function SignUpPage() {
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [isNameValid, setIsNameValid] = useState(false);
+  const [error, setError] = useState("");
 
   let navigate = useNavigate();
 
@@ -25,7 +26,7 @@ function SignUpPage() {
           navigate("/signin");
         }
       } catch (err) {
-        console.log(err);
+        setError(err.response?.data?.message || err.message || "Sign up failed");
       }
     }
     setIsLoading(false);
@@ -58,6 +59,7 @@ function SignUpPage() {
   return (
     <div className="signup">
       {isLoading && <Loader />}
+      {error && <div className="error-message">{error}</div>}
       <h2>Sign up to RStore</h2>
       <div className="signup__inputContainer">
         <input type="text" placeholder="Name" onChange={nameChangeHandler} />
