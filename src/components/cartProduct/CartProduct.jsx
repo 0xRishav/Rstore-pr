@@ -20,11 +20,8 @@ function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
     label: quantity,
   });
 
-  const [selectedQuantity, setSelectedQuantity] = useState(options[0]);
-
-
   const dropDownChangeHandler = (e) => {
-    setSelectedQuantity(e.value);
+    setSelectValue(e);
     changeQuantity(id, e.value);
   };
 
@@ -39,7 +36,6 @@ function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
           <Select
             options={options}
             onChange={dropDownChangeHandler}
-            defaultValue={selectedQuantity}
             value={selectValue}
           />
         </div>
