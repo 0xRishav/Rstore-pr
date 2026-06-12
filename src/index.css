@@ -119,9 +119,16 @@ h1, h2, h3, h4, h5, h6 {
   cursor: pointer;
   color: white;
   margin-left: 0;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 .blue-btn--primary:hover {
   background: var(--bright-light-blue-clr);
+}
+.blue-btn--primary:active {
+  transform: scale(0.97);
+}
+.blue-btn--primary:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.4);
 }
 .blue-btn--secondary {
   outline: none;
@@ -133,13 +140,18 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   color: var(--light-blue-clr);
   font-weight: 500;
-  transition: all 0.2s ease-in-out;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
   margin-right: 0;
 }
 .blue-btn--secondary:hover {
-  /* border: none; */
   background: var(--light-blue-clr);
   color: white;
+}
+.blue-btn--secondary:active {
+  transform: scale(0.97);
+}
+.blue-btn--secondary:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.4);
 }
 
 .products-wrapper {
