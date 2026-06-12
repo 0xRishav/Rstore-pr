@@ -5,6 +5,15 @@
   --dark-grey-text-clr: #1d1d1f;
   --light-green-clr: #34c759;
   --bright-light-blue-clr: #0c82ff;
+  --accent-clr: #06c;
+  --success-clr: #34c759;
+  --warning-clr: #ff9500;
+  --error-clr: #ff3b30;
+  --text-primary-clr: #1d1d1f;
+  --text-secondary-clr: #6e6e73;
+  --bg-primary-clr: #fff;
+  --bg-secondary-clr: #f5f5f7;
+  --border-clr: #d2d2d7;
   --checkbox-blue-clr: #2196f3;
   --white-clr: white;
   --black-clr: black;
