@@ -1,6 +1,82 @@
+.signup {
+  margin-top: 10rem;
+}
+
 .signup__inputContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+}
+
+.Signup__input-field {
+  position: relative;
+  margin: 1rem auto;
+  width: 50%;
+  line-height: 44px;
+}
+
+.Signup__input {
+  width: 100%;
+  outline: 0;
+  padding: 1.2rem 1rem;
+  border: 0.5px solid grey;
+  box-shadow: none;
+  border-radius: 0.8rem;
+  color: #111;
+}
+
+.Signup__input:focus {
+  border-color: var(--light-blue-clr);
+}
+
+.Signup__input:focus ~ label,
+.Signup__input:not(:placeholder-shown) ~ label {
+  font-size: 0.6rem;
+  top: -0.4rem;
+  outline: var(--light-blue-clr);
+}
+
+.Signup__input-field label {
+  position: absolute;
+  top: 10%;
+  left: 2rem;
+  color: grey;
+  transition: 0.2s all;
+  cursor: text;
+}
+
+.Signup__validationMsg {
+  color: #e74c3c;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.signup .error-message {
+  background: #ffe0e0;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  color: #c0392b;
+  padding: 0.75rem 1rem;
+  width: 50%;
+  margin: 1rem auto;
+  font-size: 0.875rem;
+}
+
+@media only screen and (max-width: 770px) {
+  .Signup__input-field {
+    width: 70%;
+  }
+  .signup .error-message {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .Signup__input-field {
+    width: 90%;
+  }
+  .signup .error-message {
+    width: 90%;
+  }
 }

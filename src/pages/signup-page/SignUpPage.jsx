@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
 import "./SignUpPage.css";
@@ -54,28 +54,60 @@ function SignUpPage() {
       : setIsPasswordValid(true);
   };
 
-  const validateSignUp = () => {};
-
   return (
     <div className="signup">
       {isLoading && <Loader />}
       {error && <div className="error-message">{error}</div>}
       <h2>Sign up to RStore</h2>
       <div className="signup__inputContainer">
-        <input type="text" placeholder="Name" onChange={nameChangeHandler} />
-        {!isNameValid && <div>Enter valid Name</div>}
-        <input type="email" placeholder="Email" onChange={emailChangeHandler} />
-        {!isEmailValid && <div>Enter valid Email</div>}
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={passwordChangeHandler}
-        />
-        {!isPasswordValid && <div>Enter valid Password</div>}
+        <div className="Signup__input-field">
+          <input
+            type="text"
+            className="Signup__input"
+            id="name"
+            placeholder=" "
+            onChange={nameChangeHandler}
+          />
+          <label htmlFor="name">Name</label>
+        </div>
+        {!isNameValid && <p className="Signup__validationMsg">Enter valid Name</p>}
+        <div className="Signup__input-field">
+          <input
+            type="email"
+            className="Signup__input"
+            id="email"
+            placeholder=" "
+            onChange={emailChangeHandler}
+          />
+          <label htmlFor="email">Email</label>
+        </div>
+        {!isEmailValid && <p className="Signup__validationMsg">Enter valid Email</p>}
+        <div className="Signup__input-field">
+          <input
+            type="password"
+            className="Signup__input"
+            id="password"
+            placeholder=" "
+            onChange={passwordChangeHandler}
+          />
+          <label htmlFor="password">Password</label>
+        </div>
+        {!isPasswordValid && <p className="Signup__validationMsg">Enter valid Password</p>}
       </div>
-      <button className="blue-btn--primary" onClick={handleSignUpClick}>
+      <button className="blue-btn--primary" style={{ padding: "0.8rem 4rem", margin: "auto" }} onClick={handleSignUpClick}>
         Sign up
       </button>
+      <div style={{ marginTop: "2rem" }}>
+        <Link
+          style={{
+            textDecoration: "none",
+            fontWeight: "600",
+          }}
+          to="/signin"
+        >
+          Already have an RStore account?
+        </Link>
+      </div>
     </div>
   );
 }
