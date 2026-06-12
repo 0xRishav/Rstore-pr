@@ -11,6 +11,7 @@ import { CartContextProvider } from "./contexts/CartContext";
 import { WishlistContextProvider } from "./contexts/WishlistContext";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/authContext";
+import { ToastProvider } from "./contexts/ToastContext";
 import _ScrollToTop from "./helpers/_ScrollToTop";
 
 createRoot(document.getElementById("root")).render(
@@ -19,12 +20,14 @@ createRoot(document.getElementById("root")).render(
       <ProductsContextProvider>
         <CartContextProvider>
           <WishlistContextProvider>
+            <ToastProvider>
             <BrowserRouter>
           <_ScrollToTop />
           <ErrorBoundary>
             <App />
           </ErrorBoundary>
           </BrowserRouter>
+          </ToastProvider>
           </WishlistContextProvider>
         </CartContextProvider>
       </ProductsContextProvider>
