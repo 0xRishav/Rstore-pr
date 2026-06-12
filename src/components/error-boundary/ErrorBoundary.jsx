@@ -17,7 +17,7 @@ class ErrorBoundary extends React.Component {
           <h2>Something went wrong</h2>
           <p>{this.state.error?.message || "An unexpected error occurred"}</p>
           <button
-            className="blue-btn--primary"
+            className="btn btn--primary"
             onClick={() => {
               this.setState({ hasError: false, error: null });
             }}
