@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Loader, Product, SortFilterWrapper } from "../../components";
-import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./TVPage.css";
 
 function TVPage() {
-  const { isLoading, filteredData, dispatch } =
-    useContext(ProductsContext).products;
+  const { isLoading, filteredData, dispatch } = useProduct();
   const TVs = filteredData.filter((product) => product.category === "TV");
   return (
     <div className="TVPage">

@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { Loader, Product, SortFilterWrapper } from "../../components";
-import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./SearchPage.css";
 
 function SearchPage() {
-  const { isLoading, dispatch } = useContext(ProductsContext).products;
+  const { isLoading, dispatch } = useProduct();
 
   const location = useLocation();
   const { filteredProducts } = location.state || {};

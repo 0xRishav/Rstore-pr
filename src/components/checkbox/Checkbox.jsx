@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
-import { ProductsContext } from "../../contexts/productsContext";
+import React from "react";
+import { useProduct } from "../../helpers";
 import "./Checkbox.css";
 
 function Checkbox({ name }) {
-  const { showFreeShippingOnly, showFastDeliveryOnly, dispatch } = useContext(
-    ProductsContext
-  ).products;
+  const { showFreeShippingOnly, showFastDeliveryOnly, dispatch } = useProduct();
   return (
     <label className="checkbox">
       <span className="checkbox__input">

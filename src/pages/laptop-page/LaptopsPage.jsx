@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Loader, Product, SortFilterWrapper } from "../../components";
-import { ProductsContext } from "../../contexts/productsContext";
+import { useProduct } from "../../helpers";
 import "./LaptopsPage.css";
 
 function LaptopsPage() {
-  const { isLoading, filteredData, dispatch } =
-    useContext(ProductsContext).products;
+  const { isLoading, filteredData, dispatch } = useProduct();
   const Laptops = filteredData.filter(
     (product) => product.category === "Laptop"
   );
