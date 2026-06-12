@@ -1,30 +1,36 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
-import { Loader, Product, SortFilterWrapper, EmptyState } from "../../components";
-import { useProduct } from "../../helpers";
+import { FiSearch } from "react-icons/fi";
+import { Product, EmptyState } from "../../components";
 import "./SearchPage.css";
 
 function SearchPage() {
-  const { isLoading } = useProduct();
-
   const location = useLocation();
   const { filteredProducts } = location.state || {};
 
   return (
-    <div className="SearchPage">
-      <SortFilterWrapper />
+    <div className="search-page">
+      <div className="search-page__header">
+        <h1 className="search-page__title">
+          Search Results
+        </h1>
+        {filteredProducts && (
+          <span className="search-page__count">
+            {filteredProducts.length} product{filteredProducts.length !== 1 ? "s" : ""} found
+          </span>
+        )}
+      </div>
 
-      {isLoading && <Loader />}
-      {filteredProducts && filteredProducts?.length === 0 ? (
-        <EmptyState message="No products match your search" icon="🔍" />
+      {!filteredProducts || filteredProducts.length === 0 ? (
+        <EmptyState
+          message="No products match your search"
+          linkTo="/products"
+          linkText="Browse All Products"
+          icon={<FiSearch size={40} />}
+        />
       ) : (
         <div className="products-wrapper">
-          {filteredProducts.map((product, index) => (
-            <Product
-              key={product._id}
-              {...product}
-              id={product._id}
-            />
+          {filteredProducts.map((product) => (
+            <Product key={product._id} {...product} id={product._id} />
           ))}
         </div>
       )}

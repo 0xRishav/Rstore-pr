@@ -1,1 +1,22 @@
-/* Empty state moved to EmptyState component */
+.wishlist-page {
+  padding-bottom: var(--space-10);
+  animation: fadeIn var(--transition-base) ease forwards;
+}
+
+.wishlist-page__header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.wishlist-page__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+.wishlist-page__count {
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
