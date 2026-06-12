@@ -25,44 +25,7 @@
 }
 
 .Product__buttonWrapper {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between; */
   margin: auto;
-}
-/* .Product__buttonWrapper > * {
-  width: 100%;
-} */
-.Product__button--primary {
-  background: var(--light-blue-clr);
-  border: none;
-  outline: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  margin: 8px 16px;
-  cursor: pointer;
-  color: var(--white-clr);
-}
-.Product__button--primary:hover {
-  background: var(--bright-light-blue-clr);
-}
-.Product__button--secondary {
-  outline: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  margin: 8px 16px;
-  cursor: pointer;
-  border: 1px solid var(--light-blue-clr);
-  background: transparent;
-  color: var(--light-blue-clr);
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
-}
-.Product__button--secondary:hover {
-  border: none;
-  background: var(--light-blue-clr);
-  color: var(--white-clr);
 }
 
 .Product__offerWrapper {
