@@ -1,11 +1,11 @@
 :root {
   --light-blue-clr: #06c;
-  --light-green-clr: #34c759;
   --light-grey-clr: #c6c6c8;
   --light-grey-text-clr: #d7d7d7;
-  --dark-grey-text-clr: black;
+  --dark-grey-text-clr: #1d1d1f;
+  --light-green-clr: #34c759;
   --bright-light-blue-clr: #0c82ff;
-  --ckeckbox-blue-clr: #2196f3;
+  --checkbox-blue-clr: #2196f3;
   --white-clr: white;
   --black-clr: black;
   --min-opacity-white: rgba(255, 255, 255, 0.1);
