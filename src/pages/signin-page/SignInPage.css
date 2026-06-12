@@ -1,81 +1,141 @@
-/* .signin__.Signin__inputContainer {
+.signin-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 56px);
+  padding: var(--space-6);
+  background: var(--surface-secondary);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: fadeIn var(--transition-slow) ease forwards;
+}
+
+.auth-card__accent-bar {
+  height: 4px;
+  background: var(--accent-gradient);
+}
+
+.auth-card__header {
+  text-align: center;
+  padding: var(--space-10) var(--space-10) 0;
+}
+
+.auth-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: var(--accent-subtle);
+  color: var(--accent);
+  margin-bottom: var(--space-4);
+}
+
+.auth-card__title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.auth-card__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.auth-card__form {
+  padding: var(--space-8) var(--space-10) 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: var(--space-5);
+}
+
+.auth-card__banner-error {
+  display: flex;
   align-items: center;
-} */
-
-.signin {
-  margin-top: 10rem;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--error-subtle);
+  border: 1px solid var(--error);
+  border-radius: var(--radius-md);
+  color: var(--error);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
-.Signin__input-field {
-  position: relative;
-  margin: 1rem auto;
-  width: 50%;
-  /* height: 44px; */
-  line-height: 44px;
-}
-label {
-  position: absolute;
-  top: 10%;
-  left: 2rem;
-  /* width: 100%; */
-  color: grey;
-  transition: 0.2s all;
-  cursor: text;
-}
-.Signin__input {
-  width: 100%;
-  outline: 0;
-  padding: 1.2rem 1rem;
-  border: 1px solid var(--border-clr);
-  box-shadow: none;
-  border-radius: 0.8rem;
-  color: #111;
-  transition: border-color var(--transition-fast);
-}
-.Signin__input:invalid {
-  outline: 0;
-  /* color: #ff2300;
-  border-color: #ff2300; */
-}
-.Signin__input:focus {
-  border-color: var(--light-blue-clr);
-}
-input:focus ~ label,
-input:valid ~ label {
-  font-size: 0.6rem;
-  top: -0.4rem;
-  outline: var(--light-blue-clr);
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 0 var(--space-10);
 }
 
-.signin__bottomLink {
-  margin-top: 2rem;
+.demo-button {
+  margin-top: var(--space-2);
+  padding: 0 var(--space-10);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
 }
 
-.signin__link {
-  text-decoration: none;
-  font-weight: 600;
+.demo-button:hover {
+  color: var(--accent);
 }
 
-.signin__btn--primary {
-  padding: 0.8rem 4rem;
-  margin: auto;
+.auth-card__footer {
+  padding: var(--space-6) var(--space-10);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-secondary);
+  margin-top: var(--space-6);
 }
 
-.signin__btn--secondary {
-  padding: 0.8rem 2rem;
-  margin: auto;
+.auth-card__link {
+  color: var(--accent);
+  font-weight: var(--font-weight-semibold);
 }
 
-@media only screen and (max-width: 770px) {
-  .Signin__input-field {
-    width: 70%;
+.auth-card__link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .signin-page {
+    padding: var(--space-4);
+    background: var(--surface-primary);
   }
-}
-@media only screen and (max-width: 425px) {
-  .Signin__input-field {
-    width: 90%;
+
+  .auth-card {
+    box-shadow: none;
+  }
+
+  .auth-card__header {
+    padding: var(--space-8) var(--space-6) 0;
+  }
+
+  .auth-card__form {
+    padding: var(--space-6) var(--space-6) 0;
+  }
+
+  .social-buttons {
+    padding: 0 var(--space-6);
+  }
+
+  .demo-button {
+    padding: 0 var(--space-6);
+  }
+
+  .auth-card__footer {
+    padding: var(--space-6);
   }
 }
