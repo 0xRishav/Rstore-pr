@@ -2,7 +2,7 @@
   text-align: center;
   width: 100%;
   background-color: var(--dark-grey-text-clr);
-  height: 6vh;
+  height: 48px;
   color: var(--light-grey-text-clr);
   transition: all 0.2s ease-in;
   /* opacity: 90%; */
@@ -92,7 +92,7 @@
   height: 94vh;
   left: 0;
   width: 100%;
-  top: 6vh;
+  top: 48px;
   z-index: var(--zindex-header);
   color: var(--white-clr);
   backdrop-filter: saturate(180%) blur(20px);
