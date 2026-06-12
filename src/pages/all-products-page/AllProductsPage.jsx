@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Loader,
-  Product,
-  SignInSignOutBtn,
-  SortFilterWrapper,
-} from "../../components";
+import { Loader, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 import "./AllProductsPage.css";
 

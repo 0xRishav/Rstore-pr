@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { CartProduct, CouponModal, Loader } from "../../components";
+import { CartProduct, Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
 import { useProduct } from "../../helpers";
 import "./CartPage.css";
