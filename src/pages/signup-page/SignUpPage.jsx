@@ -1,106 +1,147 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Loader } from "../../components";
-import { authContext } from "../../contexts/authContext";
+import { FiUserPlus, FiAlertCircle } from "react-icons/fi";
+import { useAuth } from "../../contexts/authContext";
 import "./SignUpPage.css";
 
 function SignUpPage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const { signUpUser } = useContext(authContext);
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { signUpUser } = useAuth();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isEmailValid, setIsEmailValid] = useState(false);
-  const [isPasswordValid, setIsPasswordValid] = useState(false);
-  const [isNameValid, setIsNameValid] = useState(false);
-  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  let navigate = useNavigate();
+  const validate = () => {
+    const newErrors = {};
+    if (!name || name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+    const emailRE = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!email || !emailRE.test(String(email).toLowerCase())) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    if (!password || password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+    return newErrors;
+  };
 
-  const handleSignUpClick = async () => {
-    if (isNameValid && isPasswordValid && isEmailValid) {
-      setIsLoading(true);
-      try {
-        const res = await signUpUser(name, email, password);
-        if (res.success) {
-          navigate("/signin");
-        }
-      } catch (err) {
-        setError(err.response?.data?.message || err.message || "Sign up failed");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) return;
+
+    setIsLoading(true);
+    try {
+      const res = await signUpUser(name, email, password);
+      if (res.success) {
+        navigate("/signin");
+      } else {
+        setErrors({ form: res.message || "Sign up failed. Please try again." });
       }
+    } catch (err) {
+      setErrors({ form: err?.response?.data?.message || err.message || "Sign up failed" });
     }
     setIsLoading(false);
   };
 
-  const emailChangeHandler = (e) => {
-    setEmail(e.target.value);
-    const emailRE =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    emailRE.test(String(e.target.value).toLowerCase())
-      ? setIsEmailValid(true)
-      : setIsEmailValid(false);
-  };
-
-  const nameChangeHandler = (e) => {
-    setName(e.target.value);
-    e.target.value === "" ? setIsNameValid(false) : setIsNameValid(true);
-  };
-
-  const passwordChangeHandler = (e) => {
-    setPassword(e.target.value);
-    e.target.value === ""
-      ? setIsPasswordValid(false)
-      : setIsPasswordValid(true);
-  };
-
   return (
-    <div className="signup">
-      {isLoading && <Loader />}
-      {error && <div className="error-message">{error}</div>}
-      <h2>Sign up to RStore</h2>
-      <div className="signup__inputContainer">
-        <div className="Signup__input-field">
-          <input
-            type="text"
-            className="Signup__input"
-            id="name"
-            placeholder=" "
-            onChange={nameChangeHandler}
-          />
-          <label htmlFor="name">Name</label>
+    <div className="signup-page">
+      <div className="auth-card">
+        <div className="auth-card__accent-bar" />
+
+        <div className="auth-card__header">
+          <div className="auth-card__icon">
+            <FiUserPlus size={24} />
+          </div>
+          <h1 className="auth-card__title">Create an account</h1>
+          <p className="auth-card__subtitle">Get started with RStore</p>
         </div>
-        {!isNameValid && <p className="Signup__validationMsg">Enter valid Name</p>}
-        <div className="Signup__input-field">
-          <input
-            type="email"
-            className="Signup__input"
-            id="email"
-            placeholder=" "
-            onChange={emailChangeHandler}
-          />
-          <label htmlFor="email">Email</label>
-        </div>
-        {!isEmailValid && <p className="Signup__validationMsg">Enter valid Email</p>}
-        <div className="Signup__input-field">
-          <input
-            type="password"
-            className="Signup__input"
-            id="password"
-            placeholder=" "
-            onChange={passwordChangeHandler}
-          />
-          <label htmlFor="password">Password</label>
-        </div>
-        {!isPasswordValid && <p className="Signup__validationMsg">Enter valid Password</p>}
-      </div>
-      <button className="blue-btn--primary signup__btn" onClick={handleSignUpClick}>
-        Sign up
-      </button>
-      <div className="signup__bottomLink">
-        <Link className="signup__link" to="/signin">
-          Already have an RStore account?
-        </Link>
+
+        <form className="auth-card__form" onSubmit={handleSubmit}>
+          {errors.form && (
+            <div className="auth-card__banner-error">
+              <FiAlertCircle size={14} />
+              <span>{errors.form}</span>
+            </div>
+          )}
+
+          <div className="form-group">
+            <label className="form-label" htmlFor="signup-name">Name</label>
+            <input
+              className={`form-input ${errors.name ? "form-input--error" : ""}`}
+              type="text"
+              id="signup-name"
+              placeholder="John Doe"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="name"
+            />
+            {errors.name && (
+              <p className="form-error">
+                <FiAlertCircle size={12} />
+                {errors.name}
+              </p>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label className="form-label" htmlFor="signup-email">Email</label>
+            <input
+              className={`form-input ${errors.email ? "form-input--error" : ""}`}
+              type="email"
+              id="signup-email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+            />
+            {errors.email && (
+              <p className="form-error">
+                <FiAlertCircle size={12} />
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label className="form-label" htmlFor="signup-password">Password</label>
+            <input
+              className={`form-input ${errors.password ? "form-input--error" : ""}`}
+              type="password"
+              id="signup-password"
+              placeholder="At least 6 characters"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="new-password"
+            />
+            {errors.password && (
+              <p className="form-error">
+                <FiAlertCircle size={12} />
+                {errors.password}
+              </p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className="btn btn--primary btn--full btn--lg"
+            disabled={isLoading}
+          >
+            {isLoading ? <span className="btn-spinner" /> : "Create Account"}
+          </button>
+        </form>
+
+        <p className="auth-card__footer">
+          Already have an account?{" "}
+          <Link to="/signin" className="auth-card__link">
+            Sign in
+          </Link>
+        </p>
       </div>
     </div>
   );
