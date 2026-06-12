@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import "./styles/tokens.css";
 import "./styles/base.css";
+import "./styles/animations.css";
+import "./styles/components.css";
 import { App, ErrorBoundary } from "./components";
 import { ProductsContextProvider } from "./contexts/productsContext";
 import { CartContextProvider } from "./contexts/CartContext";
