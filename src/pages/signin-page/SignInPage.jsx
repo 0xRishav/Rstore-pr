@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./SignInPage.css";
-import { BsArrowUpRight } from "react-icons/bs";
 import { authContext } from "../../contexts/authContext";
 import { Loader } from "../../components";
 

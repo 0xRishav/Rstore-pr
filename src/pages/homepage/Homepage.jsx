@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-import { BuyNowTextLinks, ImageSlider, Navbar } from "../../components";
+import React from "react";
+import { BuyNowTextLinks, ImageSlider } from "../../components";
 import { SiOneplus, SiHp } from "react-icons/si";
 import { AiFillApple } from "react-icons/ai";
 import "./Homepage.css";
-import { Link } from "react-router-dom";
-import { ProductsContext } from "../../contexts/productsContext";
 import { useWindowDimensions } from "../../custom-hooks";
 import { useProduct } from "../../helpers";
 

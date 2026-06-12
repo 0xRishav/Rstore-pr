@@ -8,7 +8,6 @@ import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import useProduct from "../../helpers/useProducts";
-import { FaUserAlt } from "react-icons/fa";
 import { authContext } from "../../contexts/authContext";
 
 function Navbar() {

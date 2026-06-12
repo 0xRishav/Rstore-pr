@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
-import useLocalStorage from "../../custom-hooks/useLocalStorage";
 import "./SignUpPage.css";
 
 function SignUpPage() {

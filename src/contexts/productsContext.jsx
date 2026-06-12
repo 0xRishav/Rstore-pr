@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import api from "../api/client";
 import { useAuth } from "./authContext";
 
@@ -18,7 +18,7 @@ export const ProductsContextProvider = ({ children }) => {
     filterPrice: false,
   };
 
-  const { currentUser, isUserLoggedIn } = useAuth();
+  const { currentUser } = useAuth();
 
   const addToCart = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });

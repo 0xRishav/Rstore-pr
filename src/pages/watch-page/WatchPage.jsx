@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Loader, Product, SortFilterWrapper } from "../../components";
 import { ProductsContext } from "../../contexts/productsContext";
 import "./WatchPage.css";
