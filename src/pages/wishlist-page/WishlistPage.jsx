@@ -1,5 +1,5 @@
 import { FiHeart } from "react-icons/fi";
-import { Product, Loader, EmptyState } from "../../components";
+import { SkeletonProductGrid, Product, EmptyState } from "../../components";
 import { useWishlist } from "../../contexts/WishlistContext";
 import "./WishlistPage.css";
 
@@ -14,7 +14,7 @@ function WishlistPage() {
       </div>
 
       {isLoading ? (
-        <Loader />
+        <SkeletonProductGrid />
       ) : wishlist.length === 0 ? (
         <EmptyState
           message="Your wishlist is empty"

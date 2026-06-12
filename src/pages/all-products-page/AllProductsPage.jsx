@@ -1,4 +1,4 @@
-import { Loader, Product, SortFilterWrapper } from "../../components";
+import { SkeletonProductGrid, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 import "./AllProductsPage.css";
 
@@ -15,7 +15,7 @@ function AllProductsPage() {
       <SortFilterWrapper />
 
       {isLoading ? (
-        <Loader />
+        <SkeletonProductGrid />
       ) : (
         <div className="products-wrapper">
           {filteredData.map((product) => (

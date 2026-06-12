@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import { Loader, Stars, CartWishlistBtn } from "../../components";
+import { SkeletonProductDetail, Stars, CartWishlistBtn } from "../../components";
 import api from "../../api/client";
 import "./ProductPage.css";
 
@@ -30,7 +30,7 @@ function ProductPage() {
     })();
   }, [id]);
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <SkeletonProductDetail />;
   if (error || !product) {
     return (
       <div className="product-page__error">

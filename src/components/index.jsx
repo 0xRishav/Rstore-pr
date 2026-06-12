@@ -1,5 +1,7 @@
 export { default as App } from "./app/App";
-export { default as Loader } from "./loader/Loader";
+export { default as SkeletonProductGrid } from "./skeleton/SkeletonProductGrid";
+export { default as SkeletonCartPage } from "./skeleton/SkeletonCartPage";
+export { default as SkeletonProductDetail } from "./skeleton/SkeletonProductDetail";
 export { default as Product } from "./product/Product";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as CartProduct } from "./cartProduct/CartProduct";

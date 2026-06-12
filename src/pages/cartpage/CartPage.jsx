@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FiShoppingCart, FiTrash2, FiShield } from "react-icons/fi";
-import { CartProduct, Loader, EmptyState } from "../../components";
+import { CartProduct, SkeletonCartPage, EmptyState } from "../../components";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
 import "./CartPage.css";
@@ -57,7 +57,7 @@ function CartPage() {
   const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
   const shipping = subtotal >= 999 ? 0 : 99;
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <SkeletonCartPage />;
 
   if (cart.length === 0) {
     return (

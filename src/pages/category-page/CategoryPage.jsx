@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Loader, Product, SortFilterWrapper } from "../../components";
+import { SkeletonProductGrid, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 
 function CategoryPage() {
@@ -19,7 +19,7 @@ function CategoryPage() {
       <SortFilterWrapper />
 
       {isLoading ? (
-        <Loader />
+        <SkeletonProductGrid />
       ) : (
         <div className="products-wrapper">
           {filtered.map((product) => (
