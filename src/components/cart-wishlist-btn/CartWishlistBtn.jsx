@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useProduct } from "../../helpers";
+import { useCart } from "../../contexts/CartContext";
+import { useWishlist } from "../../contexts/WishlistContext";
 import "./CartWishlistBtn.css";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 
 function CartWishlistBtn({ id, isProductsPage }) {
-  const {
-    addToCart,
-    removeFromCart,
-    removeFromWishlist,
-    wishlist,
-    addToWishlist,
-    cart,
-  } = useProduct();
+  const { addToCart, removeFromCart, cart } = useCart();
+  const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
 
   const navigate = useNavigate();
   const { isUserLoggedIn } = useAuth();

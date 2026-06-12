@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { CartProduct, Loader } from "../../components";
 import { authContext } from "../../contexts/authContext";
-import { useProduct } from "../../helpers";
+import { useCart } from "../../contexts/CartContext";
 import "./CartPage.css";
 import api from "../../api/client";
 
@@ -20,7 +20,7 @@ function loadScript(src) {
 }
 
 function CartPage() {
-  const { cart, isLoading } = useProduct();
+  const { cart, isLoading } = useCart();
 
   const { currentUser } = useContext(authContext);
 

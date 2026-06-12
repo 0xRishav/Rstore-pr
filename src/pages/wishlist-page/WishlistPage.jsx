@@ -1,10 +1,10 @@
 import React from "react";
 import { Product, Loader } from "../../components";
-import { useProduct } from "../../helpers";
+import { useWishlist } from "../../contexts/WishlistContext";
 import "./WishlistPage.css";
 
 function WishlistPage() {
-  const { isLoading, wishlist } = useProduct();
+  const { isLoading, wishlist } = useWishlist();
 
   return (
     <div className="WishlistPage">

@@ -2,22 +2,15 @@ import React from "react";
 import { useProduct } from "../../helpers";
 import "./Checkbox.css";
 
-function Checkbox({ name }) {
-  const { showFreeShippingOnly, showFastDeliveryOnly, dispatch } = useProduct();
+function Checkbox({ name, onToggle }) {
+  const { showFreeShippingOnly, showFastDeliveryOnly } = useProduct();
   return (
     <label className="checkbox">
       <span className="checkbox__input">
         <input
           type="checkbox"
           name="checkbox"
-          onChange={() =>
-            dispatch({
-              type:
-                name === "Free Shipping"
-                  ? "TOGGLE_SHOWFREESHIPPING"
-                  : "TOGGLE_SHOWFASTDELIVERY",
-            })
-          }
+          onChange={onToggle}
           checked={
             name === "Free Shipping"
               ? showFreeShippingOnly === true

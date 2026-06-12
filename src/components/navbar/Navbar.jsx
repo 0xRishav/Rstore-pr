@@ -8,10 +8,14 @@ import { IoReorderTwoOutline } from "react-icons/io5";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import useProduct from "../../helpers/useProducts";
+import { useCart } from "../../contexts/CartContext";
+import { useWishlist } from "../../contexts/WishlistContext";
 import { authContext } from "../../contexts/authContext";
 
 function Navbar() {
-  const { products, cart, dispatch } = useProduct();
+  const { products } = useProduct();
+  const { cart, clearCart } = useCart();
+  const { clearWishlist } = useWishlist();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchClicked, setIsSearchClicked] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
@@ -24,7 +28,8 @@ function Navbar() {
       logoutUser();
     }
     setIsSideMenuOpen(!isSideMenuOpen);
-    dispatch({ type: "CLEAR_USER_STATE" });
+    clearCart();
+    clearWishlist();
   };
 
   const serchClickHandler = () => {

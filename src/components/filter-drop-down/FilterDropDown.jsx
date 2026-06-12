@@ -4,19 +4,20 @@ import { Checkbox } from "../index";
 import "./FilterDropDown.css";
 
 function FilterDropDown() {
-  const { dispatch, filterPrice } = useProduct();
+  const { filterPrice, toggleFastDelivery, toggleFreeShipping, setFilterPrice } =
+    useProduct();
   const [priceFilterInput, setPriceFilterInput] = useState(150000);
 
   const priceFilterInputHandler = (e) => {
     setPriceFilterInput(e.target.value);
-    dispatch({ type: "FILTER_BY_PRICE", payload: e.target.value });
+    setFilterPrice(e.target.value);
   };
 
   return (
     <div className="FilterDropDown">
       <h5>Tags:</h5>
-      <Checkbox name="Free Shipping" />
-      <Checkbox name="Fast Delivery" />
+      <Checkbox name="Free Shipping" onToggle={toggleFreeShipping} />
+      <Checkbox name="Fast Delivery" onToggle={toggleFastDelivery} />
       <h5>Price:</h5>
       <input
         type="range"

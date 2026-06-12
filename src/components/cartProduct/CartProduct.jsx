@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./CartProduct.css";
-import { useProduct } from "../../helpers";
+import { useCart } from "../../contexts/CartContext";
 import { Loader } from "..";
 import Select from "react-select";
 
 // : { id, name, price, image }
 function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
-  const { changeQuantity, isLoading, removeFromCart } = useProduct();
+  const { changeQuantity, isLoading, removeFromCart } = useCart();
   const options = [
     { value: 1, label: 1 },
     { value: 2, label: 2 },
