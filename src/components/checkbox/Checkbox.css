@@ -4,7 +4,7 @@
   grid-template-columns: min-content auto;
   grid-gap: 0.5em;
   font-size: 1rem;
-  color: var(--light-blue-clr);
+  color: var(--text-primary-clr);
   width: 150px;
   cursor: pointer;
   --disabled: #959495;

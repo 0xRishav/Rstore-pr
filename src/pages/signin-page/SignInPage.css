@@ -29,10 +29,11 @@ label {
   width: 100%;
   outline: 0;
   padding: 1.2rem 1rem;
-  border: 0.5px solid grey;
+  border: 1px solid var(--border-clr);
   box-shadow: none;
   border-radius: 0.8rem;
   color: #111;
+  transition: border-color var(--transition-fast);
 }
 .Signin__input:invalid {
   outline: 0;

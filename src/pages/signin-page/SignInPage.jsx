@@ -50,6 +50,7 @@ function SignInPage() {
             onChange={(e) => setEmail(e.target.value)}
             className="Signin__input"
             id="email"
+            required
           />
           <label htmlFor="email">Email</label>
         </div>
@@ -59,6 +60,7 @@ function SignInPage() {
             onChange={(e) => setPassword(e.target.value)}
             className="Signin__input"
             id="password"
+            required
           />
           <label htmlFor="password">Password</label>
         </div>
