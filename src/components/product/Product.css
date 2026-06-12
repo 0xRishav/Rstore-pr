@@ -105,3 +105,8 @@
     height: 240px;
   }
 }
+@media only screen and (max-width: 425px) {
+  .Product__image {
+    width: 70%;
+  }
+}
