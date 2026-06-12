@@ -9,7 +9,7 @@ function FilterDropDown() {
 
   const priceFilterInputHandler = (e) => {
     setPriceFilterInput(e.target.value);
-    dispatch({ type: "FILTER_BY_PRICE", payload: priceFilterInput });
+    dispatch({ type: "FILTER_BY_PRICE", payload: e.target.value });
   };
 
   return (

@@ -23,13 +23,10 @@ export const ProductsContextProvider = ({ children }) => {
   const addToCart = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });
     try {
-      const res = await api.post(
-        `/api/cart`,
-        {
-          productId: productId,
-          quantity: 1,
-        }
-      );
+      const res = await api.post(`/api/cart`, {
+        productId: productId,
+        // quantity: 1,
+      });
       if (res.data.success) {
         dispatch({ type: "SET_CART", payload: [...res.data.data] });
       }
@@ -45,9 +42,7 @@ export const ProductsContextProvider = ({ children }) => {
     try {
       const {
         data: { data, success },
-      } = await api.delete(
-        `/api/cart/products/${productId}`
-      );
+      } = await api.delete(`/api/cart/products/${productId}`);
       if (success) {
         dispatch({ type: "SET_CART", payload: [...data] });
       }
@@ -63,10 +58,9 @@ export const ProductsContextProvider = ({ children }) => {
     try {
       const {
         data: { data, success },
-      } = await api.put(
-        `/api/cart/products/${productId}`,
-        { quantity: quantity }
-      );
+      } = await api.put(`/api/cart/products/${productId}`, {
+        quantity: quantity,
+      });
       if (success) {
         dispatch({ type: "SET_CART", payload: [...data] });
       }
@@ -80,12 +74,9 @@ export const ProductsContextProvider = ({ children }) => {
   const addToWishlist = async (productId) => {
     dispatch({ type: "TOGGLE_LOADING" });
     try {
-      const res = await api.post(
-        `/api/wishlist`,
-        {
-          productId,
-        }
-      );
+      const res = await api.post(`/api/wishlist`, {
+        productId,
+      });
       if (res.data.success) {
         dispatch({ type: "SET_WISHLIST", payload: [...res.data.data] });
       }
@@ -101,9 +92,7 @@ export const ProductsContextProvider = ({ children }) => {
     try {
       const {
         data: { data, success },
-      } = await api.delete(
-        `/api/wishlist/products/${productId}`
-      );
+      } = await api.delete(`/api/wishlist/products/${productId}`);
       if (success) {
         dispatch({ type: "SET_WISHLIST", payload: [...data] });
       }
@@ -165,9 +154,7 @@ export const ProductsContextProvider = ({ children }) => {
     (async function () {
       dispatch({ type: "TOGGLE_LOADING" });
       try {
-        const productResponse = await api.get(
-          "/api/products"
-        );
+        const productResponse = await api.get("/api/products");
         if (productResponse.data.success) {
           dispatch({
             type: "SET_PRODUCTS",
@@ -186,9 +173,7 @@ export const ProductsContextProvider = ({ children }) => {
       if (currentUser) {
         dispatch({ type: "TOGGLE_LOADING" });
         try {
-          const cartResponse = await api.get(
-            `/api/cart`
-          );
+          const cartResponse = await api.get(`/api/cart`);
           if (cartResponse.data.success) {
             dispatch({
               type: "SET_CART",
@@ -208,9 +193,7 @@ export const ProductsContextProvider = ({ children }) => {
       if (currentUser) {
         dispatch({ type: "TOGGLE_LOADING" });
         try {
-          const wishlistResponse = await api.get(
-            `/api/wishlist`
-          );
+          const wishlistResponse = await api.get(`/api/wishlist`);
           if (wishlistResponse.data.success) {
             dispatch({
               type: "SET_WISHLIST",
@@ -236,7 +219,7 @@ export const ProductsContextProvider = ({ children }) => {
 
   const getFilteredData = (
     productList,
-    { showFastDeliveryOnly, showFreeShippingOnly, filterPrice }
+    { showFastDeliveryOnly, showFreeShippingOnly, filterPrice },
   ) => {
     return productList
       .filter((product) => {
@@ -252,7 +235,6 @@ export const ProductsContextProvider = ({ children }) => {
 
   const sortedData = getSortedDate(state.products, state.sortBy);
   const filteredData = getFilteredData(sortedData, { ...state });
-
 
   return (
     <ProductsContext.Provider

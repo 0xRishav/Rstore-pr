@@ -15,7 +15,7 @@ function SearchPage() {
       <SortFilterWrapper />
 
       {isLoading && <Loader />}
-      {filteredProducts.length === 0 ? (
+      {filteredProducts && filteredProducts?.length === 0 ? (
         <h1>No Such Product is available</h1>
       ) : (
         <div className="products-wrapper">
