@@ -8,6 +8,7 @@ import { useCart } from "../../contexts/CartContext";
 import { useWishlist } from "../../contexts/WishlistContext";
 import { authContext } from "../../contexts/authContext";
 import NavbarSideMenu from "./NavbarSideMenu";
+import { Button } from "../index";
 import "./Navbar.css";
 
 function Navbar() {
@@ -76,17 +77,13 @@ function Navbar() {
         <div className="navbar__inner">
           <div className="navbar__left">
             {isMobile && (
-              <button
-                className="navbar__hamburger"
+              <Button
+                variant="ghost"
+                icon={isSideMenuOpen ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
                 onClick={toggleMenu}
                 aria-label={isSideMenuOpen ? "Close menu" : "Open menu"}
-              >
-                {isSideMenuOpen ? (
-                  <AiOutlineClose size={20} />
-                ) : (
-                  <AiOutlineMenu size={20} />
-                )}
-              </button>
+                className="navbar__hamburger"
+              />
             )}
 
             <Link to="/" className="navbar__logo" onClick={closeMenu}>

@@ -1,4 +1,5 @@
 import { useProduct } from "../../helpers";
+import { Button } from "../index";
 import "./SortRadioBtns.css";
 
 function SortRadioBtns() {
@@ -31,12 +32,9 @@ function SortRadioBtns() {
       </label>
 
       {sortBy && (
-        <button
-          className="sort-radio__clear"
-          onClick={() => setSortBy(null)}
-        >
+        <Button variant="ghost" size="sm" onClick={() => setSortBy(null)}>
           Clear sort
-        </button>
+        </Button>
       )}
     </div>
   );

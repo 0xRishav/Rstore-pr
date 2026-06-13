@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiTwitter, FiGithub, FiInstagram } from "react-icons/fi";
 import { SiVisa, SiMastercard } from "react-icons/si";
+import { Button } from "../index";
 import "./Footer.css";
 
 function Footer() {
@@ -22,9 +23,13 @@ function Footer() {
               placeholder="Enter your email"
               required
             />
-            <button type="submit" className="footer__newsletter-btn">
-              <FiArrowRight size={18} />
-            </button>
+            <Button
+              variant="primary"
+              icon={<FiArrowRight size={18} />}
+              type="submit"
+              aria-label="Subscribe"
+              className="footer__newsletter-btn"
+            />
           </form>
         </div>
 

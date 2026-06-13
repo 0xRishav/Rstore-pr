@@ -4,6 +4,7 @@ import { useWishlist } from "../../contexts/WishlistContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
 import { BsHeart, BsHeartFill, BsCart3, BsCartCheck } from "react-icons/bs";
+import { Button } from "../index";
 import "./CartWishlistBtn.css";
 
 function CartWishlistBtn({ id, isProductsPage }) {
@@ -44,37 +45,42 @@ function CartWishlistBtn({ id, isProductsPage }) {
   if (isProductsPage) {
     return (
       <div className="product-card__actions">
-        <button
-          className={`btn btn--primary btn--full btn--sm`}
+        <Button
+          variant="primary"
+          size="sm"
+          fullWidth
+          icon={isInCart ? <BsCartCheck size={16} /> : <BsCart3 size={16} />}
           onClick={handleCartClick}
         >
-          {isInCart ? <BsCartCheck size={16} /> : <BsCart3 size={16} />}
           {isInCart ? "In Cart" : "Add to Cart"}
-        </button>
-        <button
-          className={`btn btn--secondary btn--sm btn--icon`}
+        </Button>
+        <Button
+          variant="secondary"
+          size="sm"
+          icon={isInWishlist ? <BsHeartFill size={16} color="#ef4444" /> : <BsHeart size={16} />}
           onClick={handleWishlistClick}
           aria-label={isInWishlist ? "Remove from wishlist" : "Add to wishlist"}
-        >
-          {isInWishlist ? <BsHeartFill size={16} color="#ef4444" /> : <BsHeart size={16} />}
-        </button>
+        />
       </div>
     );
   }
 
   return (
     <div className="product-actions">
-      <button className="btn btn--primary" onClick={handleCartClick}>
-        {isInCart ? <BsCartCheck size={18} /> : <BsCart3 size={18} />}
+      <Button
+        variant="primary"
+        icon={isInCart ? <BsCartCheck size={18} /> : <BsCart3 size={18} />}
+        onClick={handleCartClick}
+      >
         {isInCart ? "Remove from Cart" : "Add to Cart"}
-      </button>
-      <button
-        className={`btn ${isInWishlist ? "btn--danger" : "btn--secondary"}`}
+      </Button>
+      <Button
+        variant={isInWishlist ? "danger" : "secondary"}
+        icon={isInWishlist ? <BsHeartFill size={18} /> : <BsHeart size={18} />}
         onClick={handleWishlistClick}
       >
-        {isInWishlist ? <BsHeartFill size={18} /> : <BsHeart size={18} />}
         {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
-      </button>
+      </Button>
     </div>
   );
 }

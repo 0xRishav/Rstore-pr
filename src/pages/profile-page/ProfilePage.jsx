@@ -4,6 +4,7 @@ import { FiMail, FiCalendar, FiLogOut } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
 import { useWishlist } from "../../contexts/WishlistContext";
+import { Button } from "../../components";
 import "./ProfilePage.css";
 
 function ProfilePage() {
@@ -64,10 +65,9 @@ function ProfilePage() {
         </div>
       </div>
 
-      <button className="btn btn--ghost profile-page__signout" onClick={handleSignOut}>
-        <FiLogOut size={16} />
+      <Button variant="ghost" icon={<FiLogOut size={16} />} onClick={handleSignOut} className="profile-page__signout">
         Sign Out
-      </button>
+      </Button>
     </div>
   );
 }

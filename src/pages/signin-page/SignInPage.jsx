@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
+import { Button } from "../../components";
 import "./SignInPage.css";
 
 function SignInPage() {
@@ -92,13 +93,14 @@ function SignInPage() {
             </button>
           </div>
 
-          <button
+          <Button
+            variant="primary"
             type="submit"
-            className="btn btn--primary signin-page__btn"
-            disabled={isLoading}
+            loading={isLoading}
+            className="signin-page__btn"
           >
-            {isLoading ? <span className="btn-spinner" /> : "Sign In"}
-          </button>
+            Sign In
+          </Button>
         </form>
 
         <div className="divider">
@@ -107,14 +109,14 @@ function SignInPage() {
           <span className="divider__line" />
         </div>
 
-        <button
-          type="button"
-          className="btn btn--secondary signin-page__btn"
+        <Button
+          variant="secondary"
           onClick={demoAccountClickHandler}
-          disabled={isLoading}
+          loading={isLoading}
+          className="signin-page__btn"
         >
           Use Demo Account
-        </button>
+        </Button>
 
         <p className="signin-page__footer">
           Don't have an account?{" "}

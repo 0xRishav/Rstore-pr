@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
+import { Button } from "../../components";
 import "./SignUpPage.css";
 
 function SignUpPage() {
@@ -120,13 +121,14 @@ function SignUpPage() {
             {errors.password && <span className="input-field__error">{errors.password}</span>}
           </div>
 
-          <button
+          <Button
+            variant="primary"
             type="submit"
-            className="btn btn--primary signup-page__btn"
-            disabled={isLoading}
+            loading={isLoading}
+            className="signup-page__btn"
           >
-            {isLoading ? <span className="btn-spinner" /> : "Create Account"}
-          </button>
+            Create Account
+          </Button>
         </form>
 
         <p className="signup-page__footer">
