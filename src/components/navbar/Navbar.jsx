@@ -8,7 +8,7 @@ import { useCart } from "../../contexts/CartContext";
 import { useWishlist } from "../../contexts/WishlistContext";
 import { authContext } from "../../contexts/authContext";
 import NavbarSideMenu from "./NavbarSideMenu";
-import { Button, Input } from "../index";
+import { Button } from "../index";
 import "./Navbar.css";
 
 function Navbar() {
@@ -115,7 +115,7 @@ function Navbar() {
             {!isMobile && (
               <div className="navbar__search">
                 <BsSearch className="navbar__search-icon" size={14} />
-                <Input
+                <input
                   type="text"
                   placeholder="Search products..."
                   value={searchInput}
