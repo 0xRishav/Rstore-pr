@@ -1,10 +1,131 @@
 import { useContext, useState } from "react";
-import { FiShoppingCart, FiTrash2, FiShield } from "react-icons/fi";
-import { CartProduct, SkeletonCartPage, EmptyState, Button, Badge } from "../../components";
+import { FiShoppingCart, FiTrash2, FiShield, FiMinus, FiPlus } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { EmptyState, Button, Badge } from "../../components";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
+import Skeleton from "../../components/skeleton/Skeleton";
 import "./CartPage.css";
 import api from "../../api/client";
+
+function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
+  const { changeQuantity, removeFromCart } = useCart();
+
+  const decrease = () => {
+    if (quantity <= 1) {
+      removeFromCart(id);
+    } else {
+      changeQuantity(id, quantity - 1);
+    }
+  };
+
+  const increase = () => {
+    changeQuantity(id, quantity + 1);
+  };
+
+  return (
+    <div className="cart-product">
+      <Link to={`/product/${id}`} className="cart-product__image-link">
+        <div className="cart-product__image-wrapper">
+          <img className="cart-product__image" src={image} alt={name} />
+        </div>
+      </Link>
+
+      <div className="cart-product__details">
+        <Link to={`/product/${id}`} className="cart-product__name">
+          {name}
+        </Link>
+        <p className="cart-product__unit-price">Rs. {price.toLocaleString()}</p>
+
+        <div className="cart-product__actions">
+          <div className="quantity-stepper">
+            <button
+              className="quantity-stepper__btn"
+              onClick={decrease}
+              aria-label="Decrease quantity"
+            >
+              <FiMinus size={14} />
+            </button>
+            <span className="quantity-stepper__value">{quantity}</span>
+            <button
+              className="quantity-stepper__btn"
+              onClick={increase}
+              aria-label="Increase quantity"
+            >
+              <FiPlus size={14} />
+            </button>
+          </div>
+
+          <Button
+            variant="ghost"
+            icon={<FiTrash2 size={16} />}
+            onClick={() => removeFromCart(id)}
+            aria-label="Remove item"
+          />
+        </div>
+      </div>
+
+      <div className="cart-product__total">
+        Rs. {(price * quantity).toLocaleString()}
+      </div>
+    </div>
+  );
+}
+
+function CartItemSkeleton() {
+  return (
+    <div
+      style={{
+        display: "flex",
+        gap: "var(--space-4)",
+        padding: "var(--space-4)",
+        background: "var(--surface-primary)",
+        borderRadius: "var(--radius-xl)",
+        boxShadow: "var(--shadow-card)",
+      }}
+      aria-hidden="true"
+    >
+      <Skeleton width="100px" height="100px" borderRadius="12px" />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "var(--space-2)", justifyContent: "center" }}>
+        <Skeleton width="70%" height="16px" borderRadius="4px" />
+        <Skeleton width="40%" height="14px" borderRadius="4px" />
+        <Skeleton width="120px" height="32px" borderRadius="8px" />
+      </div>
+      <Skeleton width="80px" height="20px" borderRadius="4px" />
+    </div>
+  );
+}
+
+function SkeletonCartPage() {
+  return (
+    <div className="cart-page" aria-hidden="true">
+      <div className="cart-page__header">
+        <Skeleton width="220px" height="28px" borderRadius="6px" />
+        <Skeleton width="80px" height="16px" borderRadius="4px" />
+      </div>
+      <div className="cart-page__layout">
+        <div className="cart-page__items">
+          <CartItemSkeleton />
+          <CartItemSkeleton />
+          <CartItemSkeleton />
+        </div>
+        <div className="cart-page__summary">
+          <div
+            className="cart-page__summary-card"
+            style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}
+          >
+            <Skeleton width="140px" height="20px" borderRadius="4px" />
+            <Skeleton width="100%" height="14px" borderRadius="4px" />
+            <Skeleton width="100%" height="14px" borderRadius="4px" />
+            <Skeleton width="100%" height="1px" borderRadius="0" />
+            <Skeleton width="100%" height="18px" borderRadius="4px" />
+            <Skeleton width="100%" height="48px" borderRadius="12px" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function loadScript(src) {
   return new Promise((resolve) => {
