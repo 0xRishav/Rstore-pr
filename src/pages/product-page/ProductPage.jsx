@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import { CartWishlistBtn, Badge } from "../../components";
+import { BsHeart, BsHeartFill, BsCart3, BsCartCheck } from "react-icons/bs";
+import { Badge, Button } from "../../components";
+import { useCart } from "../../contexts/CartContext";
+import { useWishlist } from "../../contexts/WishlistContext";
+import { useAuth } from "../../contexts/authContext";
 import Skeleton from "../../components/skeleton/Skeleton";
 import api from "../../api/client";
 import "./ProductPage.css";
@@ -81,6 +85,38 @@ function ProductPage() {
   const [error, setError] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
   const [aboutOpen, setAboutOpen] = useState(true);
+  const [isInCart, setIsInCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
+  const { addToCart, removeFromCart, cart } = useCart();
+  const { addToWishlist, removeFromWishlist, wishlist } = useWishlist();
+  const navigate = useNavigate();
+  const { isUserLoggedIn } = useAuth();
+
+  useEffect(() => {
+    setIsInCart(cart?.some((item) => item?.product?._id === id));
+  }, [cart, id]);
+
+  useEffect(() => {
+    setIsInWishlist(wishlist?.some((item) => item?._id === id));
+  }, [wishlist, id]);
+
+  const handleCartClick = () => {
+    if (!isUserLoggedIn) return navigate("/signin");
+    if (isInCart) {
+      removeFromCart(id);
+    } else {
+      addToCart(id);
+    }
+  };
+
+  const handleWishlistClick = () => {
+    if (!isUserLoggedIn) return navigate("/signin");
+    if (isInWishlist) {
+      removeFromWishlist(id);
+    } else {
+      addToWishlist(id);
+    }
+  };
 
   useEffect(() => {
     (async function () {
@@ -165,8 +201,21 @@ function ProductPage() {
             {freeShipping && <Badge variant="success">Free Shipping</Badge>}
           </div>
 
-          <div className="product-page__actions">
-            <CartWishlistBtn id={id} />
+          <div className="product-actions">
+            <Button
+              variant="primary"
+              icon={isInCart ? <BsCartCheck size={18} /> : <BsCart3 size={18} />}
+              onClick={handleCartClick}
+            >
+              {isInCart ? "Remove from Cart" : "Add to Cart"}
+            </Button>
+            <Button
+              variant={isInWishlist ? "danger" : "secondary"}
+              icon={isInWishlist ? <BsHeartFill size={18} /> : <BsHeart size={18} />}
+              onClick={handleWishlistClick}
+            >
+              {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
+            </Button>
           </div>
 
           {/* About Section */}
