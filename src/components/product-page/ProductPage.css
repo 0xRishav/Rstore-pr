@@ -229,3 +229,7 @@
     padding: var(--space-4);
   }
 }
+
+.Stars__star {
+  margin-right: 2px;
+}
