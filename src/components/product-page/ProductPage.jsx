@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import { SkeletonProductDetail, Stars, CartWishlistBtn } from "../../components";
+import { SkeletonProductDetail, Stars, CartWishlistBtn, Badge } from "../../components";
 import api from "../../api/client";
 import "./ProductPage.css";
 
@@ -92,8 +92,8 @@ function ProductPage() {
           <p className="product-page__price">Rs. {price?.toLocaleString()}</p>
 
           <div className="product-page__badges">
-            {fastDelivery && <span className="badge badge--warning">Fast Delivery</span>}
-            {freeShipping && <span className="badge badge--success">Free Shipping</span>}
+            {fastDelivery && <Badge variant="warning">Fast Delivery</Badge>}
+            {freeShipping && <Badge variant="success">Free Shipping</Badge>}
           </div>
 
           <div className="product-page__actions">

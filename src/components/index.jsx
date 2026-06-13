@@ -19,4 +19,5 @@ export { default as EmptyState } from "./ui/EmptyState";
 export { default as Footer } from "./footer/Footer";
 export { default as Button } from "./ui/Button/Button";
 export { default as Input } from "./ui/Input/Input";
+export { default as Badge } from "./ui/Badge/Badge";
 

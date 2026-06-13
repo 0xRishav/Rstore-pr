@@ -103,7 +103,7 @@ function CartPage() {
             <div className="cart-page__summary-row">
               <span>Shipping</span>
               {shipping === 0 ? (
-                <span className="badge badge--success">FREE</span>
+                <Badge variant="success">FREE</Badge>
               ) : (
                 <span>Rs. {shipping}</span>
               )}

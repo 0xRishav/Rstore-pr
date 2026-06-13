@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AiFillTag } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { CartWishlistBtn } from "..";
+import { CartWishlistBtn, Badge } from "..";
 import "./Product.css";
 
 function Product(props) {
@@ -44,14 +44,14 @@ function Product(props) {
 
         <div className="product-card__badges">
           {fastDelivery && (
-            <span className="badge badge--warning">
-              <AiFillTag /> Fast Delivery
-            </span>
+            <Badge variant="warning" icon={<AiFillTag />}>
+              Fast Delivery
+            </Badge>
           )}
           {freeShipping && (
-            <span className="badge badge--success">
-              <AiFillTag /> Free Shipping
-            </span>
+            <Badge variant="success" icon={<AiFillTag />}>
+              Free Shipping
+            </Badge>
           )}
         </div>
 
