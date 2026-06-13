@@ -15,7 +15,7 @@ import {
   SignUpPage,
   ProfilePage,
 } from "../../pages";
-import ProductPage from "../product-page/ProductPage";
+import { ProductPage } from "../../pages";
 
 import "./App.css";
 

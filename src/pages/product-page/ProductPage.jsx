@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { CartWishlistBtn, Badge } from "../../components";
-import Skeleton from "../skeleton/Skeleton";
+import Skeleton from "../../components/skeleton/Skeleton";
 import api from "../../api/client";
 import "./ProductPage.css";
 
