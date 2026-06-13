@@ -9,7 +9,7 @@
 
 .BuyNowTextLinks__link {
   margin-left: 16px;
-  color: var(--light-blue-clr);
+  color: var(--accent);
   text-decoration: unset;
 }
 .BuyNowTextLinks__link:hover {

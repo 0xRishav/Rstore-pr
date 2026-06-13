@@ -15,7 +15,7 @@
   border-radius: 50px;
   outline: unset;
   border: none;
-  background: var(--white-clr);
+  background: #ffffff;
   opacity: 0.7;
   cursor: pointer;
   z-index: 10;
@@ -39,7 +39,7 @@
 
 .ImageSlider__link {
   margin-left: 16px;
-  color: var(--light-blue-clr);
+  color: var(--accent);
   text-decoration: unset;
 }
 .ImageSlider__link:hover {
