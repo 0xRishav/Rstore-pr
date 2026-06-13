@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
-import { Button } from "../index";
+import { Button, Input } from "../index";
 
 const menuLinks = [
   { to: "/products", label: "All Products" },
@@ -23,14 +23,14 @@ function NavbarSideMenu({
   return (
     <div className="side-menu">
       <div className="side-menu__search">
-        <input
-          className="side-menu__search-input"
+        <Input
           type="text"
           placeholder="Search..."
           value={searchInput}
           onChange={onSearchChange}
           onKeyDown={onSearchKeyDown}
           autoFocus
+          className="side-menu__search-input"
         />
         <Link
           to={{ pathname: "/search", state: { filteredProducts } }}

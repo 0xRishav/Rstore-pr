@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
-import { Button } from "../../components";
+import { Button, Input } from "../../components";
 import "./SignInPage.css";
 
 function SignInPage() {
@@ -59,27 +59,27 @@ function SignInPage() {
           )}
 
           <div className="input-field">
-            <input
-              className="input-field__input"
+            <Input
               type="email"
               id="email"
               placeholder=" "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="email">Email</label>
           </div>
 
           <div className="input-field">
-            <input
-              className="input-field__input"
+            <Input
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder=" "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="password">Password</label>
             <button

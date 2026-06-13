@@ -87,15 +87,6 @@
   box-shadow: 0 0 0 3px var(--accent-subtle);
 }
 
-.input-field__input--error {
-  border-color: var(--error);
-}
-
-.input-field__input--error:focus {
-  border-color: var(--error);
-  box-shadow: 0 0 0 3px var(--error-subtle);
-}
-
 .input-field__label {
   position: absolute;
   left: 16px;

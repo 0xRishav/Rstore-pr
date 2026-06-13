@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FiArrowRight, FiTwitter, FiGithub, FiInstagram } from "react-icons/fi";
 import { SiVisa, SiMastercard } from "react-icons/si";
-import { Button } from "../index";
+import { Button, Input } from "../index";
 import "./Footer.css";
 
 function Footer() {
@@ -17,11 +17,11 @@ function Footer() {
             </p>
           </div>
           <form className="footer__newsletter-form" onSubmit={(e) => e.preventDefault()}>
-            <input
+            <Input
               type="email"
-              className="footer__newsletter-input"
               placeholder="Enter your email"
               required
+              className="footer__newsletter-input"
             />
             <Button
               variant="primary"
