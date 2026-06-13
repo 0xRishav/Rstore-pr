@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
+import { Button, Input } from "../index";
 
 const menuLinks = [
   { to: "/products", label: "All Products" },
@@ -22,14 +23,14 @@ function NavbarSideMenu({
   return (
     <div className="side-menu">
       <div className="side-menu__search">
-        <input
-          className="side-menu__search-input"
+        <Input
           type="text"
           placeholder="Search..."
           value={searchInput}
           onChange={onSearchChange}
           onKeyDown={onSearchKeyDown}
           autoFocus
+          className="side-menu__search-input"
         />
         <Link
           to={{ pathname: "/search", state: { filteredProducts } }}
@@ -58,9 +59,9 @@ function NavbarSideMenu({
 
         <div className="side-menu__link">
           {isUserLoggedIn ? (
-            <button className="side-menu__signout" onClick={onSignOut}>
+            <Button variant="ghost" onClick={onSignOut} className="side-menu__signout">
               Sign Out
-            </button>
+            </Button>
           ) : (
             <Link to="/signin" className="side-menu__signin" onClick={onLinkClick}>
               Sign In

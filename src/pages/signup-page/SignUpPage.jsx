@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
+import { Button, Input } from "../../components";
 import "./SignUpPage.css";
 
 function SignUpPage() {
@@ -67,8 +68,7 @@ function SignUpPage() {
           )}
 
           <div className="input-field">
-            <input
-              className={`input-field__input ${errors.name ? "input-field__input--error" : ""}`}
+            <Input
               type="text"
               id="name"
               placeholder=" "
@@ -76,14 +76,15 @@ function SignUpPage() {
               onChange={(e) => setName(e.target.value)}
               onBlur={() => handleBlur("name")}
               autoComplete="name"
+              error={errors.name}
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="name">Name</label>
             {errors.name && <span className="input-field__error">{errors.name}</span>}
           </div>
 
           <div className="input-field">
-            <input
-              className={`input-field__input ${errors.email ? "input-field__input--error" : ""}`}
+            <Input
               type="email"
               id="email"
               placeholder=" "
@@ -91,14 +92,15 @@ function SignUpPage() {
               onChange={(e) => setEmail(e.target.value)}
               onBlur={() => handleBlur("email")}
               autoComplete="email"
+              error={errors.email}
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="email">Email</label>
             {errors.email && <span className="input-field__error">{errors.email}</span>}
           </div>
 
           <div className="input-field">
-            <input
-              className={`input-field__input ${errors.password ? "input-field__input--error" : ""}`}
+            <Input
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder=" "
@@ -106,6 +108,8 @@ function SignUpPage() {
               onChange={(e) => setPassword(e.target.value)}
               onBlur={() => handleBlur("password")}
               autoComplete="new-password"
+              error={errors.password}
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="password">Password</label>
             <button
@@ -120,13 +124,14 @@ function SignUpPage() {
             {errors.password && <span className="input-field__error">{errors.password}</span>}
           </div>
 
-          <button
+          <Button
+            variant="primary"
             type="submit"
-            className="btn btn--primary signup-page__btn"
-            disabled={isLoading}
+            loading={isLoading}
+            className="signup-page__btn"
           >
-            {isLoading ? <span className="btn-spinner" /> : "Create Account"}
-          </button>
+            Create Account
+          </Button>
         </form>
 
         <p className="signup-page__footer">

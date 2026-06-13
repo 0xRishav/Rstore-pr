@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiMinus, FiPlus, FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContext";
+import { Button } from "../index";
 import "./CartProduct.css";
 
 function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
@@ -52,13 +53,12 @@ function CartProduct({ product: { _id: id, name, price, image }, quantity }) {
             </button>
           </div>
 
-          <button
-            className="cart-product__remove"
+          <Button
+            variant="ghost"
+            icon={<FiTrash2 size={16} />}
             onClick={() => removeFromCart(id)}
             aria-label="Remove item"
-          >
-            <FiTrash2 size={16} />
-          </button>
+          />
         </div>
       </div>
 

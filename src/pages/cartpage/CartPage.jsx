@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FiShoppingCart, FiTrash2, FiShield } from "react-icons/fi";
-import { CartProduct, SkeletonCartPage, EmptyState } from "../../components";
+import { CartProduct, SkeletonCartPage, EmptyState, Button } from "../../components";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
 import "./CartPage.css";
@@ -75,10 +75,9 @@ function CartPage() {
       <div className="cart-page__header">
         <h1 className="cart-page__title">Shopping Cart</h1>
         <span className="cart-page__count">{cart.length} item{cart.length !== 1 ? "s" : ""}</span>
-        <button className="cart-page__clear" onClick={clearCart}>
-          <FiTrash2 size={14} />
+        <Button variant="ghost" icon={<FiTrash2 size={14} />} onClick={clearCart}>
           Clear all
-        </button>
+        </Button>
       </div>
 
       <div className="cart-page__layout">
@@ -104,7 +103,7 @@ function CartPage() {
             <div className="cart-page__summary-row">
               <span>Shipping</span>
               {shipping === 0 ? (
-                <span className="badge badge--success">FREE</span>
+                <Badge variant="success">FREE</Badge>
               ) : (
                 <span>Rs. {shipping}</span>
               )}
@@ -117,12 +116,14 @@ function CartPage() {
               <span>Rs. {(subtotal + shipping).toLocaleString()}</span>
             </div>
 
-            <button
-              className="btn btn--primary btn--full btn--lg"
+            <Button
+              variant="primary"
+              fullWidth
+              size="lg"
               onClick={displayRazorPay}
             >
               Proceed to Checkout
-            </button>
+            </Button>
 
             <div className="cart-page__secure">
               <FiShield size={14} />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../index";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -16,14 +17,14 @@ class ErrorBoundary extends React.Component {
         <div className="ErrorBoundary">
           <h2>Something went wrong</h2>
           <p>{this.state.error?.message || "An unexpected error occurred"}</p>
-          <button
-            className="btn btn--primary"
+          <Button
+            variant="primary"
             onClick={() => {
               this.setState({ hasError: false, error: null });
             }}
           >
             Try again
-          </button>
+          </Button>
         </div>
       );
     }

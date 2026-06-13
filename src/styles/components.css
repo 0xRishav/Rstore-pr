@@ -249,27 +249,6 @@
   text-transform: lowercase;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-full);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  line-height: 1;
-}
-
-.badge--success {
-  background: var(--success-subtle);
-  color: #065f46;
-}
-
-.badge--warning {
-  background: var(--warning-subtle);
-  color: #92400e;
-}
-
 .toast-container {
   position: fixed;
   bottom: var(--space-6);

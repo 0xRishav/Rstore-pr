@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
+import { Button, Input } from "../../components";
 import "./SignInPage.css";
 
 function SignInPage() {
@@ -58,27 +59,27 @@ function SignInPage() {
           )}
 
           <div className="input-field">
-            <input
-              className="input-field__input"
+            <Input
               type="email"
               id="email"
               placeholder=" "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="email">Email</label>
           </div>
 
           <div className="input-field">
-            <input
-              className="input-field__input"
+            <Input
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder=" "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
+              className="input-field__input"
             />
             <label className="input-field__label" htmlFor="password">Password</label>
             <button
@@ -92,13 +93,14 @@ function SignInPage() {
             </button>
           </div>
 
-          <button
+          <Button
+            variant="primary"
             type="submit"
-            className="btn btn--primary signin-page__btn"
-            disabled={isLoading}
+            loading={isLoading}
+            className="signin-page__btn"
           >
-            {isLoading ? <span className="btn-spinner" /> : "Sign In"}
-          </button>
+            Sign In
+          </Button>
         </form>
 
         <div className="divider">
@@ -107,14 +109,14 @@ function SignInPage() {
           <span className="divider__line" />
         </div>
 
-        <button
-          type="button"
-          className="btn btn--secondary signin-page__btn"
+        <Button
+          variant="secondary"
           onClick={demoAccountClickHandler}
-          disabled={isLoading}
+          loading={isLoading}
+          className="signin-page__btn"
         >
           Use Demo Account
-        </button>
+        </Button>
 
         <p className="signin-page__footer">
           Don't have an account?{" "}
