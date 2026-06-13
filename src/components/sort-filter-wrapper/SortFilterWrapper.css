@@ -30,8 +30,3 @@
   right: 0;
 }
 
-.btn--secondary--active {
-  background: var(--accent-subtle);
-  border-color: var(--accent);
-  color: var(--accent);
-}

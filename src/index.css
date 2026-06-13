@@ -33,12 +33,6 @@
   margin-top: var(--space-6);
 }
 
-.hr-div {
-  border: 1px solid var(--border-primary);
-  width: 95%;
-  margin: auto;
-}
-
 @media (max-width: 1200px) {
   .products-wrapper {
     grid-template-columns: repeat(3, 1fr);
