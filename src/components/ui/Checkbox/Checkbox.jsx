@@ -1,4 +1,4 @@
-import { useProduct } from "../../helpers";
+import { useProduct } from "../../../helpers";
 import "./Checkbox.css";
 
 function Checkbox({ name, onToggle }) {

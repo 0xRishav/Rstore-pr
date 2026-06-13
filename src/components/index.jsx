@@ -1,22 +1,14 @@
 export { default as App } from "./app/App";
 export { default as SkeletonProductGrid } from "./skeleton/SkeletonProductGrid";
-export { default as SkeletonCartPage } from "./skeleton/SkeletonCartPage";
-export { default as SkeletonProductDetail } from "./skeleton/SkeletonProductDetail";
 export { default as Product } from "./product/Product";
 export { default as Navbar } from "./navbar/Navbar";
-export { default as CartProduct } from "./cartProduct/CartProduct";
-export { default as Checkbox } from "./checkbox/Checkbox";
+export { default as Checkbox } from "./ui/Checkbox/Checkbox";
 export { default as SortRadioBtns } from "./sort-radio-btns/SortRadioBtns";
 export { default as CartWishlistBtn } from "./cart-wishlist-btn/CartWishlistBtn";
-export { default as ImageSlider } from "./image-slider/ImageSlider";
-export { default as BuyNowTextLinks } from "./buy-now-text-links/BuyNowTextLinks";
-export { default as FilterDropDown } from "./filter-drop-down/FilterDropDown";
+
 export { default as SortFilterWrapper } from "./sort-filter-wrapper/SortFilterWrapper";
-export { default as SortDropdown } from "./sort-dropdown/SortDropdown";
 export { default as ErrorBoundary } from "./error-boundary/ErrorBoundary";
-export { default as Stars } from "./ui/Stars";
 export { default as EmptyState } from "./ui/EmptyState";
-export { default as Footer } from "./footer/Footer";
 export { default as Button } from "./ui/Button/Button";
 export { default as Input } from "./ui/Input/Input";
 export { default as Badge } from "./ui/Badge/Badge";
