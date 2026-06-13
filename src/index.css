@@ -1,42 +1,8 @@
-:root {
-  /* Backward-compatible aliases for old design tokens */
-  --light-blue-clr: #06c;
-  --bright-light-blue-clr: #0c82ff;
-  --light-grey-clr: #c6c6c8;
-  --light-grey-text-clr: #d7d7d7;
-  --dark-grey-text-clr: #1d1d1f;
-  --light-green-clr: #34c759;
-  --success-clr: #34c759;
-  --warning-clr: #ff9500;
-  --error-clr: #ff3b30;
-  --text-primary-clr: #1d1d1f;
-  --text-secondary-clr: #6e6e73;
-  --bg-primary-clr: #fff;
-  --bg-secondary-clr: #f5f5f7;
-  --border-clr: #d2d2d7;
-  --checkbox-blue-clr: #2196f3;
-  --white-clr: white;
-  --black-clr: black;
-  --min-opacity-white: rgba(255, 255, 255, 0.1);
-  --whitesmoke-clr: whitesmoke;
-  --zindex-modal: 9000;
-  --zindex-overlay: 8000;
-  --zindex-dropdown: 7000;
-  --zindex-header: 6000;
-  --zindex-footer: 5000;
-}
-
 .products-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-5);
   margin-top: var(--space-6);
-}
-
-.hr-div {
-  border: 1px solid var(--border-primary);
-  width: 95%;
-  margin: auto;
 }
 
 @media (max-width: 1200px) {

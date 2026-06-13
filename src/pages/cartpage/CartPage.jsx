@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { FiShoppingCart, FiTrash2, FiShield } from "react-icons/fi";
-import { CartProduct, SkeletonCartPage, EmptyState, Button } from "../../components";
+import { CartProduct, SkeletonCartPage, EmptyState, Button, Badge } from "../../components";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/CartContext";
 import "./CartPage.css";

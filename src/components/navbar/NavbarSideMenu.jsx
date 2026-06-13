@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
-import { Button, Input } from "../index";
+import { Button } from "../index";
 
 const menuLinks = [
   { to: "/products", label: "All Products" },
@@ -23,7 +23,7 @@ function NavbarSideMenu({
   return (
     <div className="side-menu">
       <div className="side-menu__search">
-        <Input
+        <input
           type="text"
           placeholder="Search..."
           value={searchInput}

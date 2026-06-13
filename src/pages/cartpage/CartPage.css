@@ -22,26 +22,6 @@
   color: var(--text-tertiary);
 }
 
-.cart-page__clear {
-  margin-left: auto;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  border: none;
-  background: transparent;
-  color: var(--text-tertiary);
-  cursor: pointer;
-  font-size: var(--font-size-sm);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-md);
-  transition: all var(--transition-fast);
-}
-
-.cart-page__clear:hover {
-  color: var(--error);
-  background: var(--error-subtle);
-}
-
 .cart-page__layout {
   display: grid;
   grid-template-columns: 1fr 360px;
