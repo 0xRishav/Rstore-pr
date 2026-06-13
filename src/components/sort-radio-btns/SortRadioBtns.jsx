@@ -1,5 +1,5 @@
 import { useProduct } from "../../helpers";
-import { Button, Input } from "../index";
+import { Button } from "../index";
 import "./SortRadioBtns.css";
 
 function SortRadioBtns() {
@@ -8,7 +8,7 @@ function SortRadioBtns() {
   return (
     <div className="sort-radio-group">
       <label className="sort-radio">
-        <Input
+        <input
           type="radio"
           name="sort"
           onChange={() => setSortBy("LOW_TO_HIGH")}
@@ -20,7 +20,7 @@ function SortRadioBtns() {
       </label>
 
       <label className="sort-radio">
-        <Input
+        <input
           type="radio"
           name="sort"
           onChange={() => setSortBy("HIGH_TO_LOW")}

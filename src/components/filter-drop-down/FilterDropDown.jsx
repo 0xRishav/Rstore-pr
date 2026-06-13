@@ -1,5 +1,5 @@
 import { useProduct } from "../../helpers";
-import { Checkbox, Input } from "../index";
+import { Checkbox } from "../index";
 import "./FilterDropDown.css";
 
 function FilterDropDown() {
@@ -22,7 +22,7 @@ function FilterDropDown() {
         <h4 className="filter-dropdown__heading">
           Max Price: <span className="filter-dropdown__price">Rs. {Number(filterPrice).toLocaleString()}</span>
         </h4>
-        <Input
+        <input
           type="range"
           min={0}
           max={150000}
