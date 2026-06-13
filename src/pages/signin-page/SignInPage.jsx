@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FiEye, FiEyeOff, FiAlertCircle } from "react-icons/fi";
 import { useAuth } from "../../contexts/authContext";
 import { Button, Input } from "../../components";
+import "../../styles/floating-input.css";
 import "./SignInPage.css";
 
 function SignInPage() {
