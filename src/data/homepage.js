@@ -1,15 +1,21 @@
 export const heroSlides = [
   {
-    imageUrl: "https://theaxo.com/wp-content/uploads/2020/10/OnePlus-8T-1024x576.jpg",
-    productUrl: "/product/6091ff73fd79302e84dfe81b",
-    title: "OnePlus 8T",
-    description: "Ultra-fast charging. Flagship performance. Stunning display.",
+    imageUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/230a8486312713.5d9580970f876.jpg",
+    productUrl: "/product/6091ff73fd79302e84dfe816",
+    title: "iPhone 11",
+    description: "A powerful chip. A brilliant display. A new era of iPhone.",
   },
   {
-    imageUrl: "https://images.samsung.com/is/image/samsung/assets/in/smartphones/galaxy-s20/galaxy-s20-fe/Homepage_banner1440.jpg",
-    productUrl: "/product/6091ff73fd79302e84dfe820",
-    title: "Samsung Galaxy S20 FE",
-    description: "Built for the fans. Premium features, iconic design.",
+    imageUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/1400/131e2099947973.5efde4c45921a.jpg",
+    productUrl: "/product/6091ff73fd79302e84dfe839",
+    title: "HP Spectre x360",
+    description: "Convertible design. Stunning display. Uncompromising performance.",
+  },
+  {
+    imageUrl: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/0a175488400949.5dd52df927373.jpg",
+    productUrl: "/product/6091ff73fd79302e84dfe83a",
+    title: "Apple MacBook Pro",
+    description: "Supercharged for pros. The ultimate pro notebook.",
   },
 ];
 
