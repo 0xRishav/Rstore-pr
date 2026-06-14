@@ -1,14 +1,29 @@
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useMemo } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { SkeletonProductGrid, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 import "./ProductsPage.css";
 
 function ProductsPage() {
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
   const category = searchParams.get("category");
-  const { isLoading, filteredData } = useProduct();
+  const { isLoading, filteredData, products } = useProduct();
 
-  const products = category
+  const validCategories = useMemo(
+    () => [...new Set(products.map((p) => p.category))],
+    [products],
+  );
+
+  useEffect(() => {
+    if (category && !validCategories.includes(category)) {
+      navigate("/products", { replace: true });
+    }
+  }, [category, validCategories, navigate]);
+
+  if (category && !validCategories.includes(category)) return null;
+
+  const items = category && validCategories.includes(category)
     ? filteredData.filter((p) => p.category === category)
     : filteredData;
 
@@ -16,7 +31,7 @@ function ProductsPage() {
     <div className="products-page">
       <div className="products-page__header">
         <h1 className="products-page__title">{category || "All Products"}</h1>
-        <span className="products-page__count">{products.length} products</span>
+        <span className="products-page__count">{items.length} products</span>
       </div>
 
       <SortFilterWrapper />
@@ -25,7 +40,7 @@ function ProductsPage() {
         <SkeletonProductGrid />
       ) : (
         <div className="products-wrapper">
-          {products.map((p) => (
+          {items.map((p) => (
             <Product key={p._id} {...p} id={p._id} />
           ))}
         </div>
