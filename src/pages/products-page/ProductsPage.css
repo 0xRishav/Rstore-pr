@@ -1,21 +1,21 @@
-.all-products-page {
+.products-page {
   padding-bottom: var(--space-10);
 }
 
-.all-products-page__header {
+.products-page__header {
   display: flex;
   align-items: baseline;
   gap: var(--space-3);
   margin-bottom: var(--space-2);
 }
 
-.all-products-page__title {
+.products-page__title {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--tracking-tight);
 }
 
-.all-products-page__count {
+.products-page__count {
   font-size: var(--font-size-sm);
   color: var(--text-tertiary);
 }

@@ -1,8 +1,7 @@
 export { default as WishlistPage } from "./wishlist-page/WishlistPage";
 export { default as Homepage } from "./homepage/Homepage";
 export { default as CartPage } from "./cartpage/CartPage";
-export { default as AllProductsPage } from "./all-products-page/AllProductsPage";
-export { default as CategoryPage } from "./category-page/CategoryPage";
+export { default as ProductsPage } from "./products-page/ProductsPage";
 export { default as SearchPage } from "./search-page/SearchPage";
 export { default as SignInPage } from "./signin-page/SignInPage";
 export { default as SignUpPage } from "./signup-page/SignUpPage";

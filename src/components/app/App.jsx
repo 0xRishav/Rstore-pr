@@ -5,10 +5,9 @@ import { SiVisa, SiMastercard } from "react-icons/si";
 import { Navbar, Button } from "..";
 import { PrivateRoute } from "../../helpers";
 import {
-  AllProductsPage,
+  ProductsPage,
   CartPage,
   Homepage,
-  CategoryPage,
   SearchPage,
   SignInPage,
   WishlistPage,
@@ -126,7 +125,7 @@ function App() {
           path="/products"
           element={
             <AppLayout>
-              <AllProductsPage />
+              <ProductsPage />
             </AppLayout>
           }
         />
@@ -164,7 +163,7 @@ function App() {
           path="/category/:category"
           element={
             <AppLayout>
-              <CategoryPage />
+              <ProductsPage />
             </AppLayout>
           }
         />
