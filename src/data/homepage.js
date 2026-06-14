@@ -54,22 +54,22 @@ export const categories = [
   {
     name: "Mobile",
     imgSrc: "https://fdn.gsmarena.com/imgroot/news/20/08/huawei-y9a-specs-design-ad-banner/-1220x526/gsmarena_004.jpg",
-    link: "/category/Mobiles",
+    link: "/products?category=Mobiles",
   },
   {
     name: "Laptop",
     imgSrc: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/3c018587711043.5dc0b3f75a8ca.jpg",
-    link: "/category/Laptop",
+    link: "/products?category=Laptop",
   },
   {
     name: "TV",
     imgSrc: "https://oasis.opstatics.com/content/dam/oasis/page/store/tv/new/New-TV_Banner_1600x1200.jpg",
-    link: "/category/TV",
+    link: "/products?category=TV",
   },
   {
     name: "Smart Watch",
     imgSrc: "https://cdn.dribbble.com/users/1146422/screenshots/6781898/main.png?compress=1&resize=800x600",
-    link: "/category/Watch",
+    link: "/products?category=Watch",
   },
 ];
 

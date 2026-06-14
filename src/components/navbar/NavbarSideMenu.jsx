@@ -4,10 +4,10 @@ import { Button } from "../index";
 
 const menuLinks = [
   { to: "/products", label: "All Products" },
-  { to: "/category/Mobiles", label: "Mobile" },
-  { to: "/category/TV", label: "TV" },
-  { to: "/category/Laptop", label: "Laptop" },
-  { to: "/category/Watch", label: "Watch" },
+  { to: "/products?category=Mobiles", label: "Mobile" },
+  { to: "/products?category=TV", label: "TV" },
+  { to: "/products?category=Laptop", label: "Laptop" },
+  { to: "/products?category=Watch", label: "Watch" },
   { to: "/wishlist", label: "Wishlist" },
 ];
 

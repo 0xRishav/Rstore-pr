@@ -95,16 +95,16 @@ function Navbar() {
                 <NavLink to="/products" className={navLinkClass}>
                   Products
                 </NavLink>
-                <NavLink to="/category/Mobiles" className={navLinkClass}>
+                <NavLink to="/products?category=Mobiles" className={navLinkClass}>
                   Mobile
                 </NavLink>
-                <NavLink to="/category/TV" className={navLinkClass}>
+                <NavLink to="/products?category=TV" className={navLinkClass}>
                   TV
                 </NavLink>
-                <NavLink to="/category/Laptop" className={navLinkClass}>
+                <NavLink to="/products?category=Laptop" className={navLinkClass}>
                   Laptop
                 </NavLink>
-                <NavLink to="/category/Watch" className={navLinkClass}>
+                <NavLink to="/products?category=Watch" className={navLinkClass}>
                   Watch
                 </NavLink>
               </nav>

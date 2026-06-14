@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { SkeletonProductGrid, Product, SortFilterWrapper } from "../../components";
 import { useProduct } from "../../helpers";
 import "./ProductsPage.css";
 
 function ProductsPage() {
-  const { category } = useParams();
+  const [searchParams] = useSearchParams();
+  const category = searchParams.get("category");
   const { isLoading, filteredData } = useProduct();
 
   const products = category

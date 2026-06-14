@@ -59,10 +59,10 @@ function Footer() {
           <div className="footer__col">
             <h4 className="footer__col-title">Shop</h4>
             <Link to="/products" className="footer__link">All Products</Link>
-            <Link to="/category/Mobiles" className="footer__link">Mobile</Link>
-            <Link to="/category/Laptop" className="footer__link">Laptop</Link>
-            <Link to="/category/TV" className="footer__link">TV</Link>
-            <Link to="/category/Watch" className="footer__link">Watch</Link>
+            <Link to="/products?category=Mobiles" className="footer__link">Mobile</Link>
+            <Link to="/products?category=Laptop" className="footer__link">Laptop</Link>
+            <Link to="/products?category=TV" className="footer__link">TV</Link>
+            <Link to="/products?category=Watch" className="footer__link">Watch</Link>
           </div>
 
           <div className="footer__col">
@@ -156,14 +156,6 @@ function App() {
               <PrivateRoute>
                 <CartPage />
               </PrivateRoute>
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/category/:category"
-          element={
-            <AppLayout>
-              <ProductsPage />
             </AppLayout>
           }
         />

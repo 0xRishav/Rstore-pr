@@ -154,7 +154,7 @@ function ProductPage() {
       <nav className="product-page__breadcrumb">
         <Link to="/">Home</Link>
         <FiChevronRight size={14} />
-        {category && <Link to={`/category/${category}`}>{category}</Link>}
+        {category && <Link to={`/products?category=${category}`}>{category}</Link>}
         {category && <FiChevronRight size={14} />}
         <span>{name}</span>
       </nav>
