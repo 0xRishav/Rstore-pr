@@ -8,7 +8,6 @@ import {
   ProductsPage,
   CartPage,
   Homepage,
-  SearchPage,
   SignInPage,
   WishlistPage,
   SignUpPage,
@@ -164,14 +163,6 @@ function App() {
           element={
             <AppLayout>
               <ProductPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/search"
-          element={
-            <AppLayout>
-              <SearchPage />
             </AppLayout>
           }
         />

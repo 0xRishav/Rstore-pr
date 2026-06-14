@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import { FiSliders, FiChevronDown } from "react-icons/fi";
-import { SkeletonProductGrid, Product, Checkbox, Button } from "../../components";
+import { FiSliders, FiChevronDown, FiSearch } from "react-icons/fi";
+import { SkeletonProductGrid, Product, Checkbox, Button, EmptyState } from "../../components";
 import { useProduct } from "../../helpers";
 import "./ProductsPage.css";
 
@@ -15,6 +15,7 @@ function ProductsPage() {
   const fastDelivery = searchParams.get("fastDelivery") === "true";
   const freeShipping = searchParams.get("freeShipping") === "true";
   const maxPrice = searchParams.get("maxPrice") || "150000";
+  const query = searchParams.get("q") || "";
 
   const [showFilter, setShowFilter] = useState(false);
   const [showSort, setShowSort] = useState(false);
@@ -57,8 +58,17 @@ function ProductsPage() {
     return data
       .filter((p) => (fastDelivery ? p.fastDelivery : true))
       .filter((p) => (freeShipping ? p.freeShipping : true))
-      .filter((p) => (maxPrice ? p.price <= Number(maxPrice) : true));
-  }, [products, sortBy, fastDelivery, freeShipping, maxPrice]);
+      .filter((p) => (maxPrice ? p.price <= Number(maxPrice) : true))
+      .filter((p) => {
+        if (!query) return true;
+        const q = query.toLowerCase();
+        return (
+          p.name.toLowerCase().includes(q) ||
+          p.brand.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q)
+        );
+      });
+  }, [products, sortBy, fastDelivery, freeShipping, maxPrice, query]);
 
   const items = category && validCategories.includes(category)
     ? filteredData.filter((p) => p.category === category)
@@ -92,7 +102,7 @@ function ProductsPage() {
   return (
     <div className="products-page">
       <div className="products-page__header">
-        <h1 className="products-page__title">{category || "All Products"}</h1>
+        <h1 className="products-page__title">{query ? `Results for "${query}"` : category || "All Products"}</h1>
         <span className="products-page__count">{items.length} products</span>
       </div>
 
@@ -197,6 +207,13 @@ function ProductsPage() {
 
       {isLoading ? (
         <SkeletonProductGrid />
+      ) : items.length === 0 ? (
+        <EmptyState
+          message="No products match your filters"
+          linkTo="/products"
+          linkText="Clear all filters"
+          icon={<FiSearch size={40} />}
+        />
       ) : (
         <div className="products-wrapper">
           {items.map((p) => (

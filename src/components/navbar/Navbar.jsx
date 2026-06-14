@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState, useRef } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
@@ -33,24 +33,11 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const filteredProducts = useMemo(
-    () =>
-      products.filter((product) => {
-        const q = searchInput.toLowerCase();
-        return (
-          product.name.toLowerCase().includes(q) ||
-          product.brand.toLowerCase().includes(q) ||
-          product.category.toLowerCase().includes(q)
-        );
-      }),
-    [products, searchInput]
-  );
-
   const handleSearchChange = (e) => setSearchInput(e.target.value);
 
   const handleSearchKeyDown = (e) => {
     if (e.key === "Enter") {
-      navigate("/search", { state: { filteredProducts } });
+      navigate(`/products?q=${encodeURIComponent(searchInput)}`);
       setSearchInput("");
       setIsSideMenuOpen(false);
     }
@@ -160,7 +147,6 @@ function Navbar() {
 
       {isMobile && isSideMenuOpen && (
         <NavbarSideMenu
-          filteredProducts={filteredProducts}
           searchInput={searchInput}
           onSearchChange={handleSearchChange}
           onSearchKeyDown={handleSearchKeyDown}

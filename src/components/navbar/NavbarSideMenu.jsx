@@ -12,7 +12,6 @@ const menuLinks = [
 ];
 
 function NavbarSideMenu({
-  filteredProducts,
   searchInput,
   onSearchChange,
   onSearchKeyDown,
@@ -35,7 +34,7 @@ function NavbarSideMenu({
           className="side-menu__search-input"
         />
         <Link
-          to={{ pathname: "/search", state: { filteredProducts } }}
+          to={`/products?q=${encodeURIComponent(searchInput)}`}
           className="side-menu__search-link"
           onClick={onLinkClick}
         >
