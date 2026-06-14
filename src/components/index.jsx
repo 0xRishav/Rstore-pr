@@ -3,9 +3,7 @@ export { default as SkeletonProductGrid } from "./skeleton/SkeletonProductGrid";
 export { default as Product } from "./product/Product";
 export { default as Navbar } from "./navbar/Navbar";
 export { default as Checkbox } from "./ui/Checkbox/Checkbox";
-export { default as SortRadioBtns } from "./sort-radio-btns/SortRadioBtns";
 
-export { default as SortFilterWrapper } from "./sort-filter-wrapper/SortFilterWrapper";
 export { default as ErrorBoundary } from "./error-boundary/ErrorBoundary";
 export { default as EmptyState } from "./ui/EmptyState";
 export { default as Button } from "./ui/Button/Button";

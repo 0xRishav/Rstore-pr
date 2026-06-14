@@ -1,18 +1,13 @@
-import { useProduct } from "../../../helpers";
 import "./Checkbox.css";
 
-function Checkbox({ name, onToggle }) {
-  const { showFreeShippingOnly, showFastDeliveryOnly } = useProduct();
-  const isChecked =
-    name === "Free Shipping" ? showFreeShippingOnly : showFastDeliveryOnly;
-
+function Checkbox({ name, onToggle, checked }) {
   return (
     <label className="checkbox-wrapper">
       <input
         type="checkbox"
         className="checkbox-input"
         onChange={onToggle}
-        checked={isChecked}
+        checked={checked}
       />
       <span className="checkbox-checkmark">
         <svg viewBox="0 0 24 24" aria-hidden="true">
