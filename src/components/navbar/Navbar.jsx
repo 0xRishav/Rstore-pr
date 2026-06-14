@@ -1,7 +1,7 @@
 import { useContext, useEffect, useMemo, useState, useRef } from "react";
 import { BsBag, BsSearch } from "react-icons/bs";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { useWindowDimensions } from "../../custom-hooks";
 import { useProduct } from "../../helpers";
 import { useCart } from "../../contexts/CartContext";
@@ -22,6 +22,8 @@ function Navbar() {
   const [searchInput, setSearchInput] = useState("");
   const { width } = useWindowDimensions();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const currentCategory = searchParams.get("category");
 
   const isMobile = width < 770;
 
@@ -67,6 +69,12 @@ function Navbar() {
   const navLinkClass = ({ isActive }) =>
     `navbar__link ${isActive ? "navbar__link--active" : ""}`;
 
+  const productsLinkClass = ({ isActive }) =>
+    `navbar__link ${isActive && !currentCategory ? "navbar__link--active" : ""}`;
+
+  const categoryLinkClass = (cat) => ({ isActive }) =>
+    `navbar__link ${isActive && currentCategory === cat ? "navbar__link--active" : ""}`;
+
   const userInitial = currentUser?.name?.charAt(0)?.toUpperCase() || "?";
 
   return (
@@ -92,19 +100,19 @@ function Navbar() {
 
             {!isMobile && (
               <nav className="navbar__links">
-                <NavLink to="/products" className={navLinkClass}>
+                <NavLink to="/products" className={productsLinkClass}>
                   Products
                 </NavLink>
-                <NavLink to="/products?category=Mobiles" className={navLinkClass}>
+                <NavLink to="/products?category=Mobiles" className={categoryLinkClass("Mobiles")}>
                   Mobile
                 </NavLink>
-                <NavLink to="/products?category=TV" className={navLinkClass}>
+                <NavLink to="/products?category=TV" className={categoryLinkClass("TV")}>
                   TV
                 </NavLink>
-                <NavLink to="/products?category=Laptop" className={navLinkClass}>
+                <NavLink to="/products?category=Laptop" className={categoryLinkClass("Laptop")}>
                   Laptop
                 </NavLink>
-                <NavLink to="/products?category=Watch" className={navLinkClass}>
+                <NavLink to="/products?category=Watch" className={categoryLinkClass("Watch")}>
                   Watch
                 </NavLink>
               </nav>

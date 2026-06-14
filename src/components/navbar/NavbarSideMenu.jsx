@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useSearchParams } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { Button } from "../index";
 
@@ -20,6 +20,8 @@ function NavbarSideMenu({
   onSignOut,
   isUserLoggedIn,
 }) {
+  const [searchParams] = useSearchParams();
+  const currentCategory = searchParams.get("category");
   return (
     <div className="side-menu">
       <div className="side-menu__search">
@@ -46,10 +48,17 @@ function NavbarSideMenu({
           <div key={to}>
             <NavLink
               to={to}
+              end={to === "/products"}
               onClick={onLinkClick}
-              className={({ isActive }) =>
-                `side-menu__link ${isActive ? "side-menu__link--active" : ""}`
-              }
+              className={({ isActive }) => {
+                const cat = to.startsWith("/products?category=") ? to.split("=")[1] : null;
+                const isActiveLink = cat
+                  ? isActive && currentCategory === cat
+                  : to === "/products"
+                    ? isActive && !currentCategory
+                    : isActive;
+                return `side-menu__link ${isActiveLink ? "side-menu__link--active" : ""}`;
+              }}
             >
               {label}
             </NavLink>
