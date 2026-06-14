@@ -49,9 +49,9 @@ function ProductsPage() {
 
   const filteredData = useMemo(() => {
     let data = products;
-    if (sortBy === "LOW_TO_HIGH") {
+    if (sortBy === "price_asc") {
       data = [...data].sort((a, b) => a.price - b.price);
-    } else if (sortBy === "HIGH_TO_LOW") {
+    } else if (sortBy === "price_desc") {
       data = [...data].sort((a, b) => b.price - a.price);
     }
     return data
@@ -163,8 +163,8 @@ function ProductsPage() {
                     <input
                       type="radio"
                       name="sort"
-                      onChange={() => handleSort("LOW_TO_HIGH")}
-                      checked={sortBy === "LOW_TO_HIGH"}
+                      onChange={() => handleSort("price_asc")}
+                      checked={sortBy === "price_asc"}
                       className="sort-radio__input"
                     />
                     <span className="sort-radio__circle" />
@@ -175,8 +175,8 @@ function ProductsPage() {
                     <input
                       type="radio"
                       name="sort"
-                      onChange={() => handleSort("HIGH_TO_LOW")}
-                      checked={sortBy === "HIGH_TO_LOW"}
+                      onChange={() => handleSort("price_desc")}
+                      checked={sortBy === "price_desc"}
                       className="sort-radio__input"
                     />
                     <span className="sort-radio__circle" />
